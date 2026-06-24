@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gookie Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Gookie’s Cookies</h1>
+  <p>Fresh baked happiness, just a click away 🍪</p>
+</header>
+
+<section class="menu">
+
+  <div class="item">
+    <img src="https://i.imgur.com/1.png" alt="">
+    <h3>The OG</h3>
+    <p>Golden vanilla cookie with chocolate chips</p>
+    <p class="price">RM 8</p>
+    <button onclick="addItem('The OG', 8)">+ Add</button>
+  </div>
+
+  <div class="item">
+    <img src="https://i.imgur.com/2.png" alt="">
+    <h3>Dark Seasalt</h3>
+    <p>Rich cocoa with sea salt flakes</p>
+    <p class="price">RM 8</p>
+    <button onclick="addItem('Dark Seasalt', 8)">+ Add</button>
+  </div>
+
+  <div class="item">
+    <img src="https://i.imgur.com/3.png" alt="">
+    <h3>S’mores Gookie</h3>
+    <p>Marshmallow + chocolate + biscuit crunch</p>
+    <p class="price">RM 10</p>
+    <button onclick="addItem('S’mores Gookie', 10)">+ Add</button>
+  </div>
+
+</section>
+
+<!-- CART -->
+<div class="cart">
+  <h2>Your Order</h2>
+
+  <div id="cart-items"></div>
+
+  <p class="total">
+    Total: RM <span id="total">0</span>
+  </p>
+
+  <button class="checkout" onclick="checkout()">
+    Checkout via WhatsApp
+  </button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
