@@ -29,6 +29,6 @@ function checkout() {
 
   message += `%0ATotal: RM${total}%0A%0AName:%0APickup/Delivery:%0ADate:`;
 
-  let phone = "60123456789"; // nanti kita tukar nombor awak
+  let phone = "60102810487"; // nanti kita tukar nombor awak
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 }
