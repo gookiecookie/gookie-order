@@ -4,33 +4,22 @@ let items = {
   tiramisu: { name: "Tiramisu Lava", price: 10, qty: 0 }
 };
 
-function changeQty(key, amount) {
-  items[key].qty += amount;
-
+function changeQty(key, qty) {
+  items[key].qty += qty;
   if (items[key].qty < 0) items[key].qty = 0;
-
-  document.getElementById(`qty-${key}`).innerText = items[key].qty;
-
-  renderCart();
+  render();
 }
 
-function renderCart() {
-  let cartDiv = document.getElementById("cartItems");
+function render() {
+  let cart = document.getElementById("cart");
   let total = 0;
+  cart.innerHTML = "";
 
-  cartDiv.innerHTML = "";
-
-  Object.keys(items).forEach(key => {
-    let item = items[key];
-
-    if (item.qty > 0) {
-      total += item.qty * item.price;
-
-      let div = document.createElement("div");
-      div.innerHTML = `
-        <p>${item.name} x ${item.qty} - RM ${item.qty * item.price}</p>
-      `;
-      cartDiv.appendChild(div);
+  Object.keys(items).forEach(k => {
+    let i = items[k];
+    if (i.qty > 0) {
+      total += i.qty * i.price;
+      cart.innerHTML += `<p>${i.name} x${i.qty} = RM${i.qty * i.price}</p>`;
     }
   });
 
@@ -38,19 +27,31 @@ function renderCart() {
 }
 
 function checkout() {
-  let msg = "Hi Gookie! I want to order:%0A%0A";
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+  let note = document.getElementById("note").value;
+
+  let msg = `🍪 *NEW Gookie Order*%0A%0A`;
+
+  msg += `👤 Name: ${name}%0A`;
+  msg += `📞 Phone: ${phone}%0A`;
+  msg += `🏠 Address: ${address}%0A`;
+  msg += `📝 Notes: ${note}%0A%0A`;
+
+  msg += `🛒 *Order:*%0A`;
+
   let total = 0;
 
-  Object.keys(items).forEach(key => {
-    let item = items[key];
-
-    if (item.qty > 0) {
-      msg += `- ${item.name} x${item.qty} RM${item.qty * item.price}%0A`;
-      total += item.qty * item.price;
+  Object.keys(items).forEach(k => {
+    let i = items[k];
+    if (i.qty > 0) {
+      msg += `- ${i.name} x${i.qty} = RM${i.qty * i.price}%0A`;
+      total += i.qty * i.price;
     }
   });
 
-  msg += `%0ATotal: RM${total}`;
+  msg += `%0A💰 Total: RM${total}`;
 
-  window.open(`https://wa.me/60123456789?text=${msg}`, "_blank");
+  window.open(`https://wa.me/60102810487?text=${msg}`, "_blank");
 }
