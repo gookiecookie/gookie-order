@@ -1,112 +1,58 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
+  padding: 20px;
   background: #fffaf7;
-  color: #111;
 }
 
-/* MARQUEE */
-.marquee-bar {
-  overflow: hidden;
-  background: #111;
-  color: #fff;
-  padding: 10px 0;
-  font-size: 13px;
+.title {
+  text-align: center;
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-left 18s linear infinite;
+.form input, .form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
-.marquee-track span {
-  white-space: nowrap;
-  padding-right: 40px;
+.menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* NAVBAR */
-.navbar {
+.item {
+  background: white;
+  padding: 15px;
+  border: 1px solid #eee;
   display: flex;
   justify-content: space-between;
-  padding: 18px 25px;
-  background: white;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
+  border-radius: 10px;
 }
 
-.logo {
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-nav a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #111;
-  font-size: 14px;
-}
-
-/* HERO */
-.hero {
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(to bottom, #fffaf7, #fff);
-}
-
-.hero h1 {
-  font-size: 42px;
-  margin: 0;
-}
-
-.hero p {
-  margin: 10px 0 20px;
-  color: #555;
+button {
+  padding: 8px 12px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .btn {
-  background: #111;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  border-radius: 30px;
-  display: inline-block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  background: green;
+  font-size: 16px;
 }
 
-/* MENU */
-.menu {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-}
-
-.card {
+#cart li {
   background: white;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 12px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 12px;
-  color: #777;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
 }
