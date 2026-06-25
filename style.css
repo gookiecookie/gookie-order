@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #fff6f1;
 }
 
@@ -17,58 +17,38 @@ body {
   padding: 20px;
 }
 
-/* MENU */
 .menu {
   flex: 2;
 }
 
-.card {
-  display: flex;
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
-
-.card img {
-  width: 90px;
-  height: 90px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-right: 12px;
-}
-
-.info h3 {
-  margin: 0;
-}
-
-.controls {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.controls button {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  border: none;
-  background: #1f1410;
-  color: white;
-  font-size: 16px;
-}
-
-/* CART */
 .cart {
   flex: 1;
   background: white;
   padding: 15px;
   border-radius: 12px;
-  height: fit-content;
-  position: sticky;
-  top: 20px;
+}
+
+.card {
+  display: flex;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 .checkout {
@@ -78,5 +58,4 @@ body {
   color: white;
   border: none;
   border-radius: 10px;
-  margin-top: 10px;
 }
