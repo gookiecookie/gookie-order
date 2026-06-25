@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gookie POS Order</title>
+  <title>Gookie Order POS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,7 +11,7 @@
 
 <header class="topbar">
   <h1>Gookie’s Cookies</h1>
-  <p>Soft chunky cookies, baked fresh daily</p>
+  <p>Fresh baked soft chunky cookies</p>
 </header>
 
 <div class="layout">
@@ -19,47 +19,32 @@
   <!-- MENU -->
   <div class="menu">
 
-    <h2>Signature Cookies</h2>
+    <h2>Menu</h2>
 
     <div class="card">
       <img src="images/choco.jpg">
-      <div class="info">
+      <div>
         <h3>Double Chocolate</h3>
         <p>RM 8.00</p>
-
-        <div class="controls">
-          <button onclick="changeQty('choco', -1)">-</button>
-          <span id="qty-choco">0</span>
-          <button onclick="changeQty('choco', 1)">+</button>
-        </div>
+        <button onclick="changeQty('choco',1)">Add</button>
       </div>
     </div>
 
     <div class="card">
       <img src="images/smores.jpg">
-      <div class="info">
+      <div>
         <h3>S’mores Gookie</h3>
         <p>RM 9.00</p>
-
-        <div class="controls">
-          <button onclick="changeQty('smores', -1)">-</button>
-          <span id="qty-smores">0</span>
-          <button onclick="changeQty('smores', 1)">+</button>
-        </div>
+        <button onclick="changeQty('smores',1)">Add</button>
       </div>
     </div>
 
     <div class="card">
       <img src="images/tiramisu.jpg">
-      <div class="info">
+      <div>
         <h3>Tiramisu Lava</h3>
         <p>RM 10.00</p>
-
-        <div class="controls">
-          <button onclick="changeQty('tiramisu', -1)">-</button>
-          <span id="qty-tiramisu">0</span>
-          <button onclick="changeQty('tiramisu', 1)">+</button>
-        </div>
+        <button onclick="changeQty('tiramisu',1)">Add</button>
       </div>
     </div>
 
@@ -68,14 +53,22 @@
   <!-- CART -->
   <div class="cart">
 
-    <h2>Your Order</h2>
+    <h2>Customer Details</h2>
 
-    <div id="cartItems"></div>
+    <input id="name" placeholder="Full Name">
+    <input id="phone" placeholder="Phone Number">
+    <textarea id="address" placeholder="Address (optional)"></textarea>
+    <textarea id="note" placeholder="Order notes (less sweet, etc)"></textarea>
+
+    <hr>
+
+    <h2>Your Order</h2>
+    <div id="cart"></div>
 
     <h3>Total: RM <span id="total">0</span></h3>
 
-    <button class="checkout" onclick="checkout()">
-      Checkout WhatsApp
+    <button onclick="checkout()" class="checkout">
+      Send WhatsApp Order
     </button>
 
   </div>
