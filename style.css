@@ -12,6 +12,16 @@ header {
   padding: 20px;
 }
 
+.logo {
+  text-align: center;
+  margin: 20px 0 10px;
+}
+
+.log0-img {
+  height: 60px;  /*adjust size*/
+  width: auto;
+}
+
 .menu {
   padding: 20px;
 }
