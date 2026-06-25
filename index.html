@@ -3,59 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gookie’s Cookies</title>
+  <title>Gookie Order Page</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- MARQUEE -->
-<div class="marquee-bar">
-  <div class="marquee-track">
-    <span>🍪 Fresh baked daily • Soft chunky cookies • Made with love • Order via WhatsApp • </span>
-    <span>🍪 Fresh baked daily • Soft chunky cookies • Made with love • Order via WhatsApp • </span>
-  </div>
+<h1 class="title">Order Gookie’s Cookies</h1>
+
+<!-- CUSTOMER FORM -->
+<div class="form">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="text" id="phone" placeholder="Phone Number" required>
+  <textarea id="note" placeholder="Notes (optional)"></textarea>
 </div>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">GOOKIE’S</div>
+<!-- MENU -->
+<h2>Menu</h2>
 
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#order">Order</a>
-  </nav>
-</header>
+<div class="menu">
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Soft. Chunky. Addictive.</h1>
-    <p>Fresh baked cookies with crispy edges & gooey center.</p>
-
-    <a class="btn" href="https://wa.me/60102810487" target="_blank">
-      Order Now
-    </a>
+  <div class="item">
+    <p>Chocolate Chunk</p>
+    <button onclick="addItem('Chocolate Chunk')">Add</button>
   </div>
-</section>
 
-<!-- MENU SECTION -->
-<section id="menu" class="menu">
-  <h2>Our Cookies</h2>
-
-  <div class="menu-grid">
-    <div class="card">🍫 Chocolate Chunk</div>
-    <div class="card">🍓 Strawberry White Choc</div>
-    <div class="card">🍯 Salted Caramel</div>
-    <div class="card">🔥 Lava Cookie</div>
+  <div class="item">
+    <p>Strawberry White Choc</p>
+    <button onclick="addItem('Strawberry White Choc')">Add</button>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Gookie’s Cookies</p>
-</footer>
+  <div class="item">
+    <p>Salted Caramel</p>
+    <button onclick="addItem('Salted Caramel')">Add</button>
+  </div>
 
+  <div class="item">
+    <p>Lava Cookie</p>
+    <button onclick="addItem('Lava Cookie')">Add</button>
+  </div>
+
+</div>
+
+<!-- CART -->
+<h2>Your Order</h2>
+<ul id="cart"></ul>
+
+<button class="btn" onclick="sendWhatsApp()">Checkout via WhatsApp</button>
+
+<script src="script.js"></script>
 </body>
 </html>
