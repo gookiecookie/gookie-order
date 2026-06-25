@@ -1,34 +1,52 @@
 let cart = [];
-let total = 0;
 
-function addItem(name, price) {
-  cart.push({ name, price });
-  total += price;
+function addItem(item) {
+  cart.push(item);
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
   renderCart();
 }
 
 function renderCart() {
-  let container = document.getElementById("cart-items");
-  container.innerHTML = "";
+  const cartList = document.getElementById("cart");
+  cartList.innerHTML = "";
 
-  cart.forEach(item => {
-    container.innerHTML += `
-      <p>${item.name} - RM${item.price}</p>
+  cart.forEach((item, index) => {
+    cartList.innerHTML += `
+      <li>
+        ${item}
+        <button onclick="removeItem(${index})">X</button>
+      </li>
     `;
   });
-
-  document.getElementById("total").innerText = total;
 }
 
-function checkout() {
-  let message = "Hi Gookie! I want to order:%0A%0A";
+function sendWhatsApp() {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let note = document.getElementById("note").value;
 
+  if (!name || !phone) {
+    alert("Please fill in your name & phone number");
+    return;
+  }
+
+  let message = `🍪 *Gookie Order*\n\n`;
+  message += `Name: ${name}\n`;
+  message += `Phone: ${phone}\n\n`;
+
+  message += `Order:\n`;
   cart.forEach(item => {
-    message += `- ${item.name} RM${item.price}%0A`;
+    message += `- ${item}\n`;
   });
 
-  message += `%0ATotal: RM${total}%0A%0AName:%0APickup/Delivery:%0ADate:`;
+  if (note) {
+    message += `\nNotes: ${note}`;
+  }
 
-  let phone = "60123456789"; // nanti kita tukar nombor awak
-  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+  let url = `https://wa.me/60102810487?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
 }
