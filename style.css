@@ -22,6 +22,37 @@ header {
   width: auto;
 }
 
+.marquee-bar {
+  width: 100%;
+  overflow: hidden;
+  background: #111; /* tukar ikut brand Gookie */
+  color: #fff;
+  padding: 10px 0;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.marquee-track {
+  animation: scroll-left 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track span {
+  white-space: nowrap;
+  padding-right: 50px;
+}
+
+/* animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .menu {
   display: grid;
   grid-template-columns: 1fr;
