@@ -1,61 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gookie’s Cookies</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gookie Order</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <div class="topbar">✨ Freshly baked chunky cookies · Combo discounts auto-applied ✨</div>
 
-<!-- MARQUEE -->
-<div class="marquee-bar">
-  <div class="marquee-track">
-    <span>🍪 Fresh baked daily • Soft chunky cookies • Made with love • Order via WhatsApp • </span>
-    <span>🍪 Fresh baked daily • Soft chunky cookies • Made with love • Order via WhatsApp • </span>
-  </div>
-</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo-wrap" aria-label="Gookie home">
+        <img src="assets/images/logo.png" alt="Gookie's Cookies" class="site-logo">
+      </a>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">GOOKIE’S</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#">HOME</a>
+        <a href="#menu">MENU</a>
+        <a href="#menu">ORDER</a>
+        <a href="#gifts">GIFTS</a>
+      </nav>
 
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#order">Order</a>
-  </nav>
-</header>
+      <a href="#menu" class="header-cta">Order Now</a>
+    </div>
+  </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Soft. Chunky. Addictive.</h1>
-    <p>Fresh baked cookies with crispy edges & gooey center.</p>
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-content">
+        <p class="eyebrow">Gookie’s Cookies</p>
+        <h1>Baking Happiness,<br>One Gookie at a Time.</h1>
+        <div class="hero-line"><span></span><i></i></div>
+        <p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p>
+        <a href="#menu" class="hero-btn">Start Ordering</a>
+      </div>
+    </div>
+  </section>
 
-    <a class="btn" href="https://wa.me/60102810487" target="_blank">
-      Order Now
-    </a>
-  </div>
-</section>
+  <main id="menu" class="menu-section">
+    <div class="section-title">
+      <div class="star-line"><span></span><b>★ ★ ★</b><span></span></div>
+      <h2>Our Signature Gookies</h2>
+      <p>Freshly baked daily · Combo 4 save RM5 · Combo 6 save RM8</p>
+    </div>
+    <div id="productGrid" class="product-grid"></div>
+  </main>
 
-<!-- MENU SECTION -->
-<section id="menu" class="menu">
-  <h2>Our Cookies</h2>
+  <section id="gifts" class="gifts-section">
+    <div class="gift-card">
+      <p class="eyebrow">Gifts</p>
+      <h2>Send a box of happiness.</h2>
+      <p>Perfect for birthdays, thank-you gifts, office treats, or “I survived today” moments.</p>
+      <a href="#menu" class="gift-btn">Build a Gift Box</a>
+    </div>
+  </section>
 
-  <div class="menu-grid">
-    <div class="card">🍫 Chocolate Chunk</div>
-    <div class="card">🍓 Strawberry White Choc</div>
-    <div class="card">🍯 Salted Caramel</div>
-    <div class="card">🔥 Lava Cookie</div>
-  </div>
-</section>
+  <button class="cart-pill" id="openCart" aria-label="Open cart">
+    <span class="cart-icon">🛒</span>
+    <span class="pill-divider"></span>
+    <span id="cartCount">0 Gookies</span>
+    <span class="pill-divider"></span>
+    <strong id="cartTotal">RM0</strong>
+  </button>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Gookie’s Cookies</p>
-</footer>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <div>
+        <p class="eyebrow">Checkout</p>
+        <h3>Your Gookies</h3>
+      </div>
+      <button id="closeCart" class="close-cart" aria-label="Close cart">×</button>
+    </div>
 
+    <div id="comboMessage" class="combo-box">Add 4 Gookies to save RM5.</div>
+    <div class="combo-progress"><div id="comboProgressFill"></div></div>
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="customer-form">
+      <input id="customerName" placeholder="Name">
+      <input id="customerPhone" placeholder="Phone number">
+      <select id="orderType">
+        <option value="Pickup">Pickup</option>
+        <option value="Delivery">Delivery</option>
+      </select>
+      <input id="orderDate" placeholder="Preferred date & time">
+      <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
+    </div>
+
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="subtotal">RM0</strong></div>
+      <div><span>Combo Discount</span><strong id="discount">-RM0</strong></div>
+      <div class="grand"><span>Total</span><strong id="grandTotal">RM0</strong></div>
+    </div>
+
+    <button id="checkoutBtn" class="checkout-btn">Checkout via WhatsApp</button>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+  <div id="toast" class="toast">Added to cart 🍪</div>
 </body>
 </html>
