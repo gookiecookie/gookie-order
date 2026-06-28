@@ -27,14 +27,18 @@ function renderProducts(){
   grid.innerHTML = products.map(p => `
     <article class="product-card">
       ${p.badge ? `<div class="badge">${p.badge}</div>` : ""}
+
       <div class="image-wrap">
-        <img src="${p.image}" alt="${p.name}" onerror="this.src='logo.png'">
+        <img src="${p.image}" alt="${p.name}">
       </div>
+
       <div class="product-body">
         <h3>${p.name}</h3>
         <p>${p.desc}</p>
+
         <div class="card-bottom">
           <div class="price">${money(p.price)}</div>
+
           <div class="qty">
             <button onclick="changeQty('${p.id}', -1)">−</button>
             <span id="qty-${p.id}">0</span>
