@@ -1,15 +1,15 @@
 const WHATSAPP_NUMBER = "60102810487";
 
 const products = [
-  { id:"classic", name:"Classic Choc Chip", price:8, image:"classic choc chip.png", desc:"Golden vanilla cookie loaded with chocolate chips.", badge:"BEST SELLER" },
-  { id:"dark", name:"Dark Seasalt", price:8, image:"dark seasalt.png", desc:"Rich cocoa cookie with sea salt flakes.", badge:"BEST SELLER" },
-  { id:"red", name:"Red Velvet", price:9, image:"red velvet.png", desc:"Velvety cocoa cookie with creamy chocolate notes.", badge:"BEST SELLER" },
-  { id:"matcha", name:"Matchadamia", price:10, image:"matchadamia.png", desc:"Matcha cookie with macadamia and chocolate.", badge:"" },
-  { id:"smores", name:"Smores", price:10, image:"smores.png", desc:"Classic cookie with toasted marshmallow.", badge:"" },
-  { id:"berry", name:"White Berry", price:10, image:"white berry.png", desc:"Berry chocolate cookie with a tangy twist.", badge:"NEW" },
-  { id:"biscoff", name:"Biscoff Lava", price:11, image:"biscoff lava.png", desc:"Biscoff cookie butter lava centre.", badge:"LAVA" },
-  { id:"choco", name:"Choco Lava", price:11, image:"choco lava.png", desc:"Molten chocolate lava centre.", badge:"LAVA" },
-  { id:"tiramisu", name:"Tiramisu Lava", price:11, image:"tiramisu lava.png", desc:"Coffee-kissed tiramisu inspired cookie.", badge:"LAVA" }
+  { id:"classic", name:"Classic Choc Chip", price:8, image:"assets/images/classic choc chip.png", desc:"Golden vanilla cookie loaded with chocolate chips.", badge:"BEST SELLER" },
+  { id:"dark", name:"Dark Seasalt", price:8, image:"assets/images/dark seasalt.png", desc:"Rich cocoa cookie with sea salt flakes.", badge:"BEST SELLER" },
+  { id:"red", name:"Red Velvet", price:9, image:"assets/images/red velvet.png", desc:"Velvety cocoa cookie with creamy chocolate notes.", badge:"BEST SELLER" },
+  { id:"matcha", name:"Matchadamia", price:10, image:"assets/images/matchadamia.png", desc:"Matcha cookie with macadamia and chocolate.", badge:"" },
+  { id:"smores", name:"Smores", price:10, image:"assets/images/smores.png", desc:"Classic cookie with toasted marshmallow.", badge:"" },
+  { id:"berry", name:"White Berry", price:10, image:"assets/images/white berry.png", desc:"Berry chocolate cookie with a tangy twist.", badge:"NEW" },
+  { id:"biscoff", name:"Biscoff Lava", price:11, image:"assets/images/biscoff lava.png", desc:"Biscoff cookie butter lava centre.", badge:"LAVA" },
+  { id:"choco", name:"Choco Lava", price:11, image:"assets/images/choco lava.png", desc:"Molten chocolate lava centre.", badge:"LAVA" },
+  { id:"tiramisu", name:"Tiramisu Lava", price:11, image:"assets/images/tiramisu lava.png", desc:"Coffee-kissed tiramisu inspired cookie.", badge:"LAVA" }
 ];
 
 const cart = {};
