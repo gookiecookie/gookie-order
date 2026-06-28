@@ -763,7 +763,7 @@ body {
   font-size:13px;
   letter-spacing:1.5px}.main-nav a:not(:last-child)::after{height:24px}.header-cta{display:none}.hero{padding:22px 12px 20px}.hero-card{min-height:390px;
   border-radius:28px;
-  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.86) 58%,rgba(187,25,26,.50) 100%),url("assets/images/hero.png"),url("assets/images/classic choc chip.png");
+  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.86) 58%,rgba(187,25,26,.50) 100%),url("assets/images/hero.png"),url("header.png");
   background-size:cover;
   background-position:center}.hero-content{padding:38px 24px}.hero-text{font-size:16px}.menu-section{padding:20px 12px 54px}.product-grid{grid-template-columns:repeat(2,1fr);
   gap:16px}.cart-pill{min-width:0;
