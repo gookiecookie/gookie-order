@@ -357,8 +357,8 @@ body {
 }
 
 .image-wrap img {
-  width:80%;
-  height:80%;
+  width:50%;
+  height:50%;
   object-fit:cover;
   transition:.35s ease
 }
