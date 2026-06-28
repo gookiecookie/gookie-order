@@ -154,7 +154,7 @@ body {
   border-radius:var(--radius-lg);
   overflow:hidden;
   box-shadow:var(--shadow);
-  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.82) 28%,rgba(187,25,26,.20) 100%),url("assets/images/hero.png"),url("assets/images/header.png");
+  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.82) 28%,rgba(187,25,26,.20) 100%),url("hero.png"),url("header.png");
   background-size:110%;
   background-position:center;
   display:flex;
