@@ -100,7 +100,7 @@ function getCartData(){
 function getComboMessage(count){
   if(count >= 6) return "🎉 Combo 6 applied. You saved RM8!";
   if(count === 5) return "🍪 Add 1 more Gookie to upgrade your saving to RM8.";
-  if(count >= 4) return "🎉 Combo 4 applied. You saved RM5! Add 2 more Gookies to save RM8.";
+  if(count >= 4) return "🎉 Combo 4 applied. You saved RM5!";
   const needed = 4 - count;
   return `Add ${needed} more Gookie${needed > 1 ? "s" : ""} to save RM5.`;
 }
