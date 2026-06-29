@@ -21,7 +21,9 @@ const overlay = document.getElementById("overlay");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const toast = document.getElementById("toast");
 
-function money(n){ return "RM" + n; }
+function money(n){
+    return "RM" + Number(n).toFixed(2);
+}
 
 function renderProducts(){
   grid.innerHTML = products.map(p => `
