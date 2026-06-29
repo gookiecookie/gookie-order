@@ -153,6 +153,23 @@ function checkout(){
 
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
+  document.getElementById("customerName").parentElement.classList.remove("error");
+document.getElementById("customerPhone").parentElement.classList.remove("error");
+document.getElementById("nameError").innerText = "";
+document.getElementById("phoneError").innerText = "";
+
+if(!name){
+  document.getElementById("customerName").parentElement.classList.add("error");
+  document.getElementById("nameError").innerText = "Please enter your name.";
+  return;
+}
+
+if(!phone){
+  document.getElementById("customerPhone").parentElement.classList.add("error");
+  document.getElementById("phoneError").innerText = "Please enter your phone number.";
+  return;
+}
+  
   const type = document.getElementById("orderType").value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
