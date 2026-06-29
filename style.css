@@ -396,10 +396,11 @@ body {
   gap:12px
 }
 
-.price {
-  color:var(--primary);
-  font-weight:900;
-  font-size:22px
+.price{
+font-size:20px;
+font-weight:700;
+color:#4B2E21;
+letter-spacing:.2px;
 }
 
 .qty {
