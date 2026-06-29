@@ -115,7 +115,7 @@ function updateCart(){
   document.getElementById("subtotal").innerText = money(data.subtotal);
   document.getElementById("discount").innerText = "-" + money(data.discount);
   document.getElementById("grandTotal").innerText =
-money(data.total + deliveryFee);
+money(data.total);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
   const comboProgressFill = document.getElementById("comboProgressFill");
 if(comboProgressFill){
