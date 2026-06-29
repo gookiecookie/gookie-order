@@ -109,7 +109,7 @@ function updateCart(){
   const data = getCartData();
 
   document.getElementById("cartCount").innerText = data.count + (data.count === 1 ? " Gookie" : " Gookies");
-  document.getElementById("cartTotal").innerText = money(data.total);
+  document.getElementById("cartTotal").innerText = money(data.total);updateComboMeter(data.count);
   document.getElementById("subtotal").innerText = money(data.subtotal);
   document.getElementById("discount").innerText = "-" + money(data.discount);
   document.getElementById("grandTotal").innerText = money(data.total);
@@ -134,6 +134,37 @@ function updateCart(){
       </div>
     `).join("");
   }
+}
+
+function updateComboMeter(count){
+  const meter = document.getElementById("comboMeter");
+  const text = document.getElementById("comboMeterText");
+  const fill = document.getElementById("comboMeterFill");
+
+  let progress = 0;
+  let message = "";
+
+  meter.classList.remove("unlocked");
+
+  if(count >= 6){
+    progress = 100;
+    message = "🎉 Combo 6 unlocked — you saved RM8!";
+    meter.classList.add("unlocked");
+  } else if(count === 5){
+    progress = 85;
+    message = "Add 1 more Gookie to save RM8";
+  } else if(count >= 4){
+    progress = 100;
+    message = "🎉 Combo 4 unlocked — you saved RM5!";
+    meter.classList.add("unlocked");
+  } else {
+    progress = (count / 4) * 100;
+    const needed = 4 - count;
+    message = `Add ${needed} more Gookie${needed > 1 ? "s" : ""} to save RM5`;
+  }
+
+  text.innerText = message;
+  fill.style.width = progress + "%";
 }
 
 function openCart(){ cartDrawer.classList.add("open"); overlay.classList.add("show"); }
