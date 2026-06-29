@@ -134,7 +134,6 @@ function updateCart(){
       </div>
     `).join("");
   }
-}
 
 function updateComboMeter(count){
   const meter = document.getElementById("comboMeter");
