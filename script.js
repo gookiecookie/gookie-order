@@ -181,9 +181,68 @@ if(type === "Pickup" && !date){
   return;
 }
   
-  const type = document.getElementById("orderType").value;
+  const type = document.querySelector('input[name="orderType"]:checked').value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
+  const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+const pickupDateField = document.getElementById("pickupDateField");
+const deliveryNote = document.getElementById("deliveryNote");
+const orderDateInput = document.getElementById("orderDate");
+const calendarPopup = document.getElementById("calendarPopup");
+const dateButtons = document.querySelectorAll(".calendar-grid button.available");
+const confirmDateBtn = document.getElementById("confirmDate");
+
+let selectedPickupDate = "";
+
+function openCalendar(){
+  calendarPopup.classList.add("show");
+}
+
+function closeCalendar(){
+  calendarPopup.classList.remove("show");
+}
+
+function updateOrderTypeFields(){
+  const selectedType = document.querySelector('input[name="orderType"]:checked').value;
+
+  if(selectedType === "Delivery"){
+    pickupDateField.style.display = "none";
+    deliveryNote.style.display = "block";
+    orderDateInput.value = "";
+    selectedPickupDate = "";
+  } else {
+    pickupDateField.style.display = "block";
+    deliveryNote.style.display = "none";
+    openCalendar();
+  }
+}
+
+orderTypeRadios.forEach(radio => {
+  radio.addEventListener("change", updateOrderTypeFields);
+});
+
+orderDateInput.addEventListener("click", openCalendar);
+
+dateButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    dateButtons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+    selectedPickupDate = button.dataset.date;
+  });
+});
+
+confirmDateBtn.addEventListener("click", () => {
+  if(selectedPickupDate){
+    orderDateInput.value = selectedPickupDate;
+    closeCalendar();
+  }
+});
+
+calendarPopup.addEventListener("click", e => {
+  if(e.target === calendarPopup){
+    closeCalendar();
+  }
+});
 
   let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
   data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
