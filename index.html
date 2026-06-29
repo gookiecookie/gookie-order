@@ -91,8 +91,15 @@
     <div id="cartItems" class="cart-items"></div>
 
     <div class="customer-form">
-      <input id="customerName" placeholder="Name">
-      <input id="customerPhone" placeholder="Phone number">
+      <div class="form-field">
+  <input id="customerName" placeholder="Name">
+  <small id="nameError"></small>
+</div>
+
+<div class="form-field">
+  <input id="customerPhone" placeholder="Phone number">
+  <small id="phoneError"></small>
+</div>
       <select id="orderType">
         <option value="Pickup">Pickup</option>
         <option value="Delivery">Delivery</option>
