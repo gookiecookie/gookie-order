@@ -222,10 +222,6 @@ promoShop.addEventListener("click", () => {
   promoPopup.classList.remove("show");
 });
 
-
-orderTypeSelect.addEventListener("change", updateOrderTypeFields);
-updateOrderTypeFields();
-
 const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
 const pickupDateField = document.getElementById("pickupDateField");
 const deliveryNote = document.getElementById("deliveryNote");
