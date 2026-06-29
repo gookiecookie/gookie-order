@@ -149,50 +149,47 @@ function showToast(message){
 
 function checkout(){
   const data = getCartData();
-  if(data.count === 0){ alert("Please add at least 1 Gookie first."); return; }
+
+  if(data.count === 0){
+    alert("Please add at least 1 Gookie first.");
+    return;
+  }
 
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
-  document.getElementById("customerName").parentElement.classList.remove("error");
-document.getElementById("customerPhone").parentElement.classList.remove("error");
-document.getElementById("nameError").innerText = "";
-document.getElementById("phoneError").innerText = "";
-
-if(!name){
-  document.getElementById("customerName").parentElement.classList.add("error");
-  document.getElementById("nameError").innerText = "Please enter your name.";
-  return;
-}
-
-if(!phone){
-  document.getElementById("customerPhone").parentElement.classList.add("error");
-  document.getElementById("phoneError").innerText = "Please enter your phone number.";
-  return;
-}
-
-const dateField = document.getElementById("orderDate");
-
-dateField.parentElement.classList.remove("error");
-document.getElementById("dateError").innerText = "";
   const type = document.querySelector('input[name="orderType"]:checked').value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
 
-if(type === "Pickup" && !date){
-  dateField.parentElement.classList.add("error");
-  document.getElementById("dateError").innerText = "Please choose your pickup date.";
-  return;
-  
+  if(!name){
+    alert("Please enter your name.");
+    return;
+  }
+
+  if(!phone){
+    alert("Please enter your phone number.");
+    return;
+  }
+
+  if(type === "Pickup" && !date){
+    alert("Please choose your pickup date.");
+    return;
+  }
+
   let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
-  data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
+
+  data.items.forEach(item => {
+    message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`;
+  });
+
   message += `%0A%0ASubtotal: ${money(data.subtotal)}`;
   message += `%0ACombo Discount: -${money(data.discount)}`;
   message += `%0ATotal: ${money(data.total)}`;
   message += `%0A%0AName: ${encodeURIComponent(name)}`;
   message += `%0APhone: ${encodeURIComponent(phone)}`;
   message += `%0AOrder Type: ${encodeURIComponent(type)}`;
-  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
-  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
+  message += `%0APickup Date: ${encodeURIComponent(date || "-")}`;
+  message += `%0ANotes/Address: ${encodeURIComponent(note || "-")}`;
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
 }
