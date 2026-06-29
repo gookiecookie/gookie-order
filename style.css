@@ -922,3 +922,64 @@ transform:scale(.92);
     transform:translateX(-50%) scale(1);
   }
 }
+
+.promo-popup{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.95);
+  width:min(90vw,420px);
+  background:#fff8f1;
+  border:2px solid #BB191A;
+  border-radius:28px;
+  padding:34px 28px;
+  text-align:center;
+  z-index:100;
+  box-shadow:0 25px 80px rgba(0,0,0,.25);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s ease;
+}
+
+.promo-popup.show{
+  opacity:1;
+  pointer-events:auto;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.promo-popup h2{
+  font-family:"Playfair Display",serif;
+  font-size:42px;
+  margin:8px 0;
+  color:#4B2E21;
+}
+
+.promo-popup p{
+  color:#7C6C61;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.promo-popup a{
+  display:inline-flex;
+  margin-top:14px;
+  background:#BB191A;
+  color:white;
+  text-decoration:none;
+  padding:14px 24px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+.promo-close{
+  position:absolute;
+  right:16px;
+  top:14px;
+  border:none;
+  background:#f7e9da;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:24px;
+  cursor:pointer;
+}
