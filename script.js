@@ -222,20 +222,6 @@ promoShop.addEventListener("click", () => {
   promoPopup.classList.remove("show");
 });
 
-const orderTypeSelect = document.getElementById("orderType");
-const pickupDateField = document.getElementById("pickupDateField");
-const deliveryNote = document.getElementById("deliveryNote");
-
-function updateOrderTypeFields(){
-  if(orderTypeSelect.value === "Delivery"){
-    pickupDateField.style.display = "none";
-    deliveryNote.style.display = "block";
-    document.getElementById("orderDate").value = "";
-  } else {
-    pickupDateField.style.display = "grid";
-    deliveryNote.style.display = "none";
-  }
-}
 
 orderTypeSelect.addEventListener("change", updateOrderTypeFields);
 updateOrderTypeFields();
