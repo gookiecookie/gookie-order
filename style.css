@@ -1026,27 +1026,3 @@ transform:scale(.92);
   border-color:rgba(187,25,26,.55);
   background:#fff3e6;
 }
-
-.cookie-progress{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  font-size:18px;
-  line-height:1;
-}
-
-.cookie-progress span{
-  opacity:.35;
-  transform:scale(.9);
-  transition:.25s ease;
-}
-
-.cookie-progress span.filled{
-  opacity:1;
-  transform:scale(1.1);
-}
-
-.combo-meter.unlocked{
-  background:#fff3e6;
-  border-color:rgba(187,25,26,.55);
-}
