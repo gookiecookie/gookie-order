@@ -96,8 +96,17 @@ function getCartData(){
   if(count >= 6) discount = 8;
   else if(count >= 4) discount = 5;
 
-  return { items, count, subtotal, discount, total: Math.max(0, subtotal - discount) };
+const selectedType = document.querySelector('input[name="orderType"]:checked')?.value || "Pickup";
+
+let deliveryFee = 0;
+
+if(selectedType === "Delivery"){
+  deliveryFee = count >= 5 ? 15 : 10;
 }
+
+const total = Math.max(0, subtotal - discount + deliveryFee);
+
+  return { items, count, subtotal, discount, deliveryFee, total };
 
 function getComboMessage(count){
   if(count >= 6) return "🎉 Combo 6 applied. You saved RM8!";
