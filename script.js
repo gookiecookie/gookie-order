@@ -157,25 +157,6 @@ function showToast(message){
 
 function checkout(){
   const data = getCartData();
-  
-  const selectedType =
-document.querySelector('input[name="orderType"]:checked').value;
-
-let deliveryFee = 0;
-
-if(selectedType === "Delivery"){
-
-    if(data.count <=4){
-
-        deliveryFee = 10;
-
-    }else if(data.count >=5){
-
-        deliveryFee = 15;
-
-    }
-
-}
 
   if(data.count === 0){
     alert("Please add at least 1 Gookie first.");
