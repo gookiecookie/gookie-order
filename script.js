@@ -176,3 +176,19 @@ checkoutBtn.addEventListener("click", checkout);
 
 renderProducts();
 updateCart();
+
+const promoPopup = document.getElementById("promoPopup");
+const promoClose = document.getElementById("promoClose");
+const promoShop = document.getElementById("promoShop");
+
+setTimeout(() => {
+  promoPopup.classList.add("show");
+}, 900);
+
+promoClose.addEventListener("click", () => {
+  promoPopup.classList.remove("show");
+});
+
+promoShop.addEventListener("click", () => {
+  promoPopup.classList.remove("show");
+});
