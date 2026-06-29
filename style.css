@@ -1099,3 +1099,20 @@ transform:scale(.92);
     letter-spacing:5px;
   }
 }
+
+.form-field small{
+  display:none;
+  color:#BB191A;
+  font-size:12px;
+  font-weight:800;
+  margin:4px 0 0 6px;
+}
+
+.form-field.error input{
+  border-color:#BB191A;
+  background:#fff1f1;
+}
+
+.form-field.error small{
+  display:block;
+}
