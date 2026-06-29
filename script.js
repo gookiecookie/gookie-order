@@ -139,32 +139,32 @@ function updateCart(){
 function updateComboMeter(count){
   const meter = document.getElementById("comboMeter");
   const text = document.getElementById("comboMeterText");
-  const fill = document.getElementById("comboMeterFill");
-
-  let progress = 0;
-  let message = "";
+  const cookies = document.querySelectorAll("#cookieProgress span");
 
   meter.classList.remove("unlocked");
 
+  cookies.forEach((cookie, index) => {
+    if(index < count){
+      cookie.innerText = "🍪";
+      cookie.classList.add("filled");
+    } else {
+      cookie.innerText = "○";
+      cookie.classList.remove("filled");
+    }
+  });
+
   if(count >= 6){
-    progress = 100;
-    message = "🎉 Combo 6 unlocked — you saved RM8!";
+    text.innerText = "🏆 Best deal unlocked! You saved RM8";
     meter.classList.add("unlocked");
   } else if(count === 5){
-    progress = 85;
-    message = "Add 1 more Gookie to save RM8";
+    text.innerText = "Just 1 more Gookie to save RM8";
   } else if(count >= 4){
-    progress = 100;
-    message = "🎉 Combo 4 unlocked — you saved RM5!";
+    text.innerText = "🎉 Combo 4 unlocked! You saved RM5 · Add 2 more to save RM8";
     meter.classList.add("unlocked");
   } else {
-    progress = (count / 4) * 100;
     const needed = 4 - count;
-    message = `Add ${needed} more Gookie${needed > 1 ? "s" : ""} to save RM5`;
+    text.innerText = `Add ${needed} more Gookie${needed > 1 ? "s" : ""} to save RM5`;
   }
-
-  text.innerText = message;
-  fill.style.width = progress + "%";
 }
 
 function openCart(){ cartDrawer.classList.add("open"); overlay.classList.add("show"); }
