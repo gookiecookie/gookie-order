@@ -104,7 +104,20 @@
         <option value="Pickup">Pickup</option>
         <option value="Delivery">Delivery</option>
       </select>
-      <input id="orderDate" placeholder="Preferred date & time">
+      <div class="form-field" id="pickupDateField">
+  <label for="orderDate">Pickup date</label>
+  <select id="orderDate">
+    <option value="">Choose pickup date</option>
+    <option value="Friday, 5 July">Friday, 5 July</option>
+    <option value="Saturday, 6 July">Saturday, 6 July</option>
+    <option value="Sunday, 7 July">Sunday, 7 July</option>
+  </select>
+  <small id="dateError"></small>
+</div>
+
+<p class="delivery-note" id="deliveryNote">
+  Delivery will be done within 3 working days.
+</p>
       <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
     </div>
 
