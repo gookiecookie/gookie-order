@@ -118,7 +118,8 @@ function updateCart(){
 deliveryFee===0
 ? "FREE"
 : money(deliveryFee);
-  document.getElementById("grandTotal").innerText = money(data.total);
+  document.getElementById("grandTotal").innerText =
+money(data.total + deliveryFee);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
   const comboProgressFill = document.getElementById("comboProgressFill");
 if(comboProgressFill){
