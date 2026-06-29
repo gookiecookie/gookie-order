@@ -302,4 +302,3 @@ calendarPopup.addEventListener("click", e => {
     closeCalendar();
   }
 });
-}
