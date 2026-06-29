@@ -90,30 +90,17 @@
     <div class="combo-progress"><div id="comboProgressFill"></div></div>
     <div id="cartItems" class="cart-items"></div>
 
-    <div class="customer-form">
-      <div class="order-choice">
-  <label>
-    <input type="radio" name="orderType" value="Pickup" checked>
-    <span>Self Pickup</span>
-  </label>
+   <div class="customer-form">
 
-  <label>
-    <input type="radio" name="orderType" value="Delivery">
-    <span>Delivery</span>
-  </label>
-</div>
-      <div class="form-field">
-  <input id="customerName" placeholder="Name">
-  <small id="nameError"></small>
-</div>
+  <div class="form-field">
+    <input id="customerName" placeholder="Name">
+    <small id="nameError"></small>
+  </div>
 
-<div class="form-field">
-  <input id="customerPhone" placeholder="Phone number">
-  <small id="phoneError"></small>
-</div>
-      <p class="delivery-note" id="deliveryNote">
-  Delivery will be done within 3 working days.
-</p>
+  <div class="form-field">
+    <input id="customerPhone" placeholder="Phone number">
+    <small id="phoneError"></small>
+  </div>
 
 <div class="calendar-popup" id="calendarPopup">
   <div class="calendar-box">
@@ -132,12 +119,31 @@
     <button class="confirm-date" id="confirmDate">Confirm Date</button>
   </div>
 </div>
+     
+  <div class="order-choice">
+    <label>
+      <input type="radio" name="orderType" value="Pickup" checked>
+      <span>Self Pickup</span>
+    </label>
 
-<p class="delivery-note" id="deliveryNote">
-  Delivery will be done within 3 working days.
-</p>
-      <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
-    </div>
+    <label>
+      <input type="radio" name="orderType" value="Delivery">
+      <span>Delivery</span>
+    </label>
+  </div>
+
+  <div class="form-field" id="pickupDateField">
+    <input id="orderDate" placeholder="Pickup date" readonly>
+    <small id="dateError"></small>
+  </div>
+
+  <p class="delivery-note" id="deliveryNote">
+    Delivery will be done within 3 working days.
+  </p>
+
+  <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
+
+</div>
 
     <div class="cart-summary">
       <div><span>Subtotal</span><strong id="subtotal">RM0</strong></div>
