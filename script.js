@@ -192,6 +192,7 @@ function checkout(){
   message += `%0ANotes/Address: ${encodeURIComponent(note || "-")}`;
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+}
 
 openCartBtn.addEventListener("click", openCart);
 closeCartBtn.addEventListener("click", closeCart);
