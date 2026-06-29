@@ -1116,3 +1116,21 @@ transform:scale(.92);
 .form-field.error small{
   display:block;
 }
+
+#pickupDateField label{
+  font-size:12px;
+  font-weight:900;
+  color:#4B2E21;
+  margin-left:6px;
+}
+
+.delivery-note{
+  display:none;
+  margin:0;
+  font-size:12px;
+  font-weight:800;
+  color:#7C6C61;
+  background:#fff8f1;
+  border-radius:12px;
+  padding:10px 12px;
+}
