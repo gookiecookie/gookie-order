@@ -1089,9 +1089,11 @@ transform:scale(.92);
   }
 
   .footer-logo{
-    margin-left:auto;
-    margin-right:auto;
-  }
+    width:70px;
+    height:auto;
+    display:block;
+    margin:0 auto 16px;
+}
 
   .cookie-trail{
     letter-spacing:5px;
