@@ -169,6 +169,17 @@ if(!phone){
   document.getElementById("phoneError").innerText = "Please enter your phone number.";
   return;
 }
+
+const dateField = document.getElementById("orderDate");
+
+dateField.parentElement.classList.remove("error");
+document.getElementById("dateError").innerText = "";
+
+if(type === "Pickup" && !date){
+  dateField.parentElement.classList.add("error");
+  document.getElementById("dateError").innerText = "Please choose your pickup date.";
+  return;
+}
   
   const type = document.getElementById("orderType").value;
   const date = document.getElementById("orderDate").value.trim();
@@ -211,3 +222,21 @@ promoClose.addEventListener("click", () => {
 promoShop.addEventListener("click", () => {
   promoPopup.classList.remove("show");
 });
+
+const orderTypeSelect = document.getElementById("orderType");
+const pickupDateField = document.getElementById("pickupDateField");
+const deliveryNote = document.getElementById("deliveryNote");
+
+function updateOrderTypeFields(){
+  if(orderTypeSelect.value === "Delivery"){
+    pickupDateField.style.display = "none";
+    deliveryNote.style.display = "block";
+    document.getElementById("orderDate").value = "";
+  } else {
+    pickupDateField.style.display = "grid";
+    deliveryNote.style.display = "none";
+  }
+}
+
+orderTypeSelect.addEventListener("change", updateOrderTypeFields);
+updateOrderTypeFields();
