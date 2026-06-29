@@ -130,7 +130,7 @@ body {
   font-weight:900;
   border-radius:var(--radius-pill);
   padding:16px 26px;
-  box-shadow:0 14px 30px rgba(187,25,26,.25);
+  box-shadow:0 0px 0px rgba(187,25,26,.25);
   transition:.25s ease
 }
 
