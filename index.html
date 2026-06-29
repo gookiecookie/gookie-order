@@ -1,127 +1,119 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOOKIE ORDER V3.0</title>
+  <title>Gookie Order V3.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- TOP MOVING BAR -->
-  <div class="ticker">
-    <div class="ticker__track">
-      <span>🍪 Soft chunky cookies</span>
-      <span>Less sweet, still dangerous</span>
-      <span>Order melalui WhatsApp</span>
-      <span>Save your payment receipt</span>
-      <span>🍪 Soft chunky cookies</span>
-      <span>Less sweet, still dangerous</span>
-      <span>Order melalui WhatsApp</span>
-      <span>Save your payment receipt</span>
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <div class="marquee">
+      <span>Freshly baked chunky cookies · Less sweet, more cookie · Order via WhatsApp ·</span>
+      <span>Freshly baked chunky cookies · Less sweet, more cookie · Order via WhatsApp ·</span>
     </div>
   </div>
 
   <!-- HEADER -->
   <header class="site-header">
-    <div class="brand-wrap">
-      <div class="brand-mark">G</div>
-      <div>
-        <p class="eyebrow">GOOKIE ORDER V3.0</p>
-        <h1>Gookie’s Cookies</h1>
-      </div>
-    </div>
-
+    <a href="#top" class="brand">Gookie</a>
     <button class="cart-button" id="openCartBtn" type="button">
       Cart <span id="cartCount">0</span>
     </button>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero section-pad">
-    <div class="hero__content">
-      <p class="eyebrow">Well, hello there cookie hunter</p>
-      <h2>Pick your chunky wonders.</h2>
-      <p>
-        Pilih menu, isi details customer, tekan WhatsApp. Semua order details akan auto-generate terus untuk customer hantar kepada Gookie.
-      </p>
-      <div class="hero__actions">
-        <a href="#menu" class="primary-link">Start Order</a>
-        <a href="#customerDetails" class="secondary-link">Customer Details</a>
+  <main id="top">
+    <section class="hero-section">
+      <div class="hero-content">
+        <p class="eyebrow">Soft baked chunky cookies</p>
+        <h1>Freshly baked. Made to be craved.</h1>
+        <p class="hero-copy">Less sweet, deeply satisfying cookies with crisp edges, soft centres, and plenty of drama in every bite.</p>
+        <a href="#menu" class="primary-link">Order Now</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CUSTOMER DETAILS SECTION -->
-  <section class="customer-section section-pad" id="customerDetails">
-    <div class="section-heading">
-      <p class="eyebrow">Step 1</p>
-      <h2>Customer Details</h2>
-      <p>Isi details ni dulu supaya WhatsApp order nanti lengkap dan tak pening ulang tanya.</p>
-    </div>
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <p class="eyebrow">Our Menu</p>
+        <h2>Pick your chunky wonders</h2>
+        <p>Buy 4 and save RM5. Buy 6 and save RM8. Discount applies automatically.</p>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
 
-    <form class="customer-form" id="customerForm">
-      <label>
-        Nama Customer
-        <input type="text" id="customerName" placeholder="Contoh: Mira" required>
-      </label>
+    <!-- CUSTOMER DETAILS SECTION -->
+    <section class="details-section" id="details">
+      <div class="section-heading left-align">
+        <p class="eyebrow">Checkout</p>
+        <h2>Customer Details</h2>
+        <p>Please fill in your details before payment.</p>
+      </div>
 
-      <label>
-        No. Telefon
-        <input type="tel" id="customerPhone" placeholder="Contoh: 0123456789" required>
-      </label>
+      <form class="customer-form" id="customerForm">
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input type="text" id="customerName" placeholder="Your full name" required />
+        </div>
 
-      <label>
-        Order Method
-        <select id="orderMethod" required>
-          <option value="Self Pickup">Self Pickup</option>
-          <option value="Delivery">Delivery</option>
-          <option value="Postage">Postage</option>
-        </select>
-      </label>
+        <div class="form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" placeholder="Example: 0123456789" required />
+        </div>
 
-      <label class="full-span">
-        Alamat / Pickup Note
-        <textarea id="customerAddress" rows="3" placeholder="Alamat delivery/postage atau note pickup"></textarea>
-      </label>
+        <div class="form-group">
+          <label for="deliveryMethod">Delivery Method *</label>
+          <select id="deliveryMethod" required>
+            <option value="Self Pickup">Self Pickup</option>
+            <option value="Delivery">Delivery</option>
+          </select>
+        </div>
 
-      <label>
-        Tarikh Order / Pickup
-        <input type="date" id="orderDate">
-      </label>
+        <div class="form-group full-width">
+          <label for="customerAddress">Delivery Address</label>
+          <textarea id="customerAddress" rows="3" placeholder="Required for delivery orders"></textarea>
+        </div>
 
-      <label>
-        Masa Preferred
-        <input type="time" id="orderTime">
-      </label>
+        <div class="form-group">
+          <label for="orderDate">Preferred Date</label>
+          <input type="date" id="orderDate" />
+        </div>
 
-      <label class="full-span">
-        Notes / Request
-        <textarea id="customerNotes" rows="3" placeholder="Contoh: less choc topping, birthday note, etc."></textarea>
-      </label>
-    </form>
-  </section>
+        <div class="form-group">
+          <label for="orderTime">Preferred Time</label>
+          <select id="orderTime">
+            <option value="Not selected">Select a time slot</option>
+            <option value="11:00 AM - 1:00 PM">11:00 AM - 1:00 PM</option>
+            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+            <option value="5:00 PM - 7:00 PM">5:00 PM - 7:00 PM</option>
+          </select>
+        </div>
 
-  <!-- MENU SECTION -->
-  <main class="menu-section section-pad" id="menu">
-    <div class="section-heading">
-      <p class="eyebrow">Step 2</p>
-      <h2>Choose Your Cookies</h2>
-      <p>Harga single: RM7.90. Combo auto apply: 4 cookies = RM6.90 each, 6 cookies = RM6.57 each.</p>
-    </div>
-
-    <div class="menu-grid" id="menuGrid"></div>
+        <div class="form-group full-width">
+          <label for="orderNotes">Order Notes</label>
+          <textarea id="orderNotes" rows="3" placeholder="Any notes for us?"></textarea>
+        </div>
+      </form>
+    </section>
   </main>
+
+  <!-- FLOATING CART BUTTON -->
+  <button class="floating-cart" id="floatingCartBtn" type="button">
+    <span>View Cart</span>
+    <strong id="floatingTotal">RM0.00</strong>
+  </button>
 
   <!-- CART DRAWER -->
   <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-drawer__header">
+    <div class="cart-header">
       <div>
         <p class="eyebrow">Your Order</p>
-        <h2>Cart</h2>
+        <h3>Cart</h3>
       </div>
       <button class="icon-button" id="closeCartBtn" type="button">×</button>
     </div>
@@ -134,44 +126,36 @@
         <strong id="subtotalText">RM0.00</strong>
       </div>
       <div class="summary-row discount-row">
-        <span>Combo Discount</span>
-        <strong id="discountText">- RM0.00</strong>
+        <span>Discount</span>
+        <strong id="discountText">-RM0.00</strong>
       </div>
       <div class="summary-row total-row">
         <span>Total</span>
         <strong id="totalText">RM0.00</strong>
       </div>
-      <p class="combo-note" id="comboNote">Add 4 or 6 cookies to unlock combo pricing.</p>
-    </div>
-
-    <div class="cart-actions">
-      <button class="pay-button" id="payNowBtn" type="button">PAY NOW</button>
-      <button class="whatsapp-button" id="whatsappBtn" type="button">Send Order to WhatsApp</button>
-      <button class="clear-button" id="clearCartBtn" type="button">Clear Cart</button>
+      <p class="combo-note" id="comboNote">Add 4 cookies to unlock combo discount.</p>
+      <button class="pay-button" id="payNowBtn" type="button">Pay Now</button>
+      <button class="secondary-button" id="clearCartBtn" type="button">Clear Cart</button>
     </div>
   </aside>
 
   <div class="overlay" id="overlay"></div>
 
-  <!-- QR PAYMENT POPUP -->
-  <div class="qr-modal" id="qrModal" aria-hidden="true">
-    <div class="qr-modal__card">
-      <button class="icon-button qr-close" id="closeQrBtn" type="button">×</button>
+  <!-- PAYMENT MODAL -->
+  <div class="payment-modal" id="paymentModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="icon-button modal-close" id="closePaymentBtn" type="button">×</button>
       <p class="eyebrow">Payment</p>
-      <h2>Scan QR Code</h2>
+      <h3>Scan to Pay</h3>
+      <p>Please complete your payment by scanning the QR code below.</p>
       <div class="qr-box">
-        <img src="qrcode.png" alt="Gookie payment QR code">
+        <img src="qrcode.png" alt="Gookie payment QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="qr-placeholder">Place qrcode.png in this folder</span>
       </div>
-      <p class="qr-reminder">
-        Sila simpan bukti pembayaran dan hantar bersama order melalui WhatsApp. Terima kasih cookie bestie 🍪
-      </p>
+      <p class="receipt-note">Please keep your payment receipt until your order is confirmed.</p>
+      <button class="pay-button" id="paidBtn" type="button">I've Paid — Send Order</button>
     </div>
   </div>
-
-  <!-- FLOAT CART BUTTON MOBILE -->
-  <button class="floating-cart" id="floatingCartBtn" type="button">
-    View Cart <span id="floatingCartCount">0</span>
-  </button>
 
   <script src="script.js"></script>
 </body>
