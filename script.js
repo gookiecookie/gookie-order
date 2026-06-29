@@ -1,15 +1,15 @@
 const WHATSAPP_NUMBER = "60102810487";
 
 const products = [
-  { id:"classic", name:"Classic Choc Chip", price:10.90, image:"classic choc chip.png", desc:"Golden vanilla cookie loaded with chocolate chips.", badge:"BEST SELLER" },
-  { id:"dark", name:"Dark Seasalt", price:11.90, image:"dark seasalt.png", desc:"Rich cocoa cookie with sea salt flakes.", badge:"BEST SELLER" },
-  { id:"red", name:"Red Velvet", price:11.90, image:"red velvet.png", desc:"Velvety cocoa cookie with creamy chocolate notes.", badge:"BEST SELLER" },
-  { id:"matcha", name:"Matchadamia", price:12.90, image:"matchadamia.png", desc:"Matcha cookie with macadamia and chocolate.", badge:"" },
-  { id:"smores", name:"Smores", price:12.90, image:"smores.png", desc:"Classic cookie with toasted marshmallow.", badge:"" },
-  { id:"berry", name:"White Berry", price:11.90, image:"white berry.png", desc:"Berry chocolate cookie with a tangy twist.", badge:"NEW" },
-  { id:"biscoff", name:"Biscoff Lava", price:13.90, image:"biscoff lava.png", desc:"Biscoff cookie butter lava centre.", badge:"LAVA" },
-  { id:"choco", name:"Choco Lava", price:13.90, image:"choco lava.png", desc:"Molten chocolate lava centre.", badge:"LAVA" },
-  { id:"tiramisu", name:"Tiramisu Lava", price:13.90, image:"tiramisu lava.png", desc:"Coffee-kissed tiramisu inspired cookie.", badge:"LAVA" }
+  { id:"classic", name:"Classic Choc Chip", price:8, image:"assets/images/classic choc chip.png", desc:"Golden vanilla cookie loaded with chocolate chips.", badge:"BEST SELLER" },
+  { id:"dark", name:"Dark Seasalt", price:8, image:"assets/images/dark seasalt.png", desc:"Rich cocoa cookie with sea salt flakes.", badge:"BEST SELLER" },
+  { id:"red", name:"Red Velvet", price:9, image:"assets/images/red velvet.png", desc:"Velvety cocoa cookie with creamy chocolate notes.", badge:"BEST SELLER" },
+  { id:"matcha", name:"Matchadamia", price:10, image:"assets/images/matchadamia.png", desc:"Matcha cookie with macadamia and chocolate.", badge:"" },
+  { id:"smores", name:"S’mores", price:10, image:"assets/images/smores.png", desc:"Classic cookie with toasted marshmallow.", badge:"" },
+  { id:"berry", name:"White Berry", price:10, image:"assets/images/white berry.png", desc:"Berry chocolate cookie with a tangy twist.", badge:"NEW" },
+  { id:"biscoff", name:"Biscoff Lava", price:11, image:"assets/images/biscoff lava.png", desc:"Biscoff cookie butter lava centre.", badge:"LAVA" },
+  { id:"choco", name:"Choco Lava", price:11, image:"assets/images/choco lava.png", desc:"Molten chocolate lava centre.", badge:"LAVA" },
+  { id:"tiramisu", name:"Tiramisu Lava", price:11, image:"assets/images/tiramisu lava.png", desc:"Coffee-kissed tiramisu inspired cookie.", badge:"LAVA" }
 ];
 
 const cart = {};
@@ -21,26 +21,20 @@ const overlay = document.getElementById("overlay");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const toast = document.getElementById("toast");
 
-function money(n){
-    return "RM" + Number(n).toFixed(2);
-}
+function money(n){ return "RM" + n; }
 
 function renderProducts(){
   grid.innerHTML = products.map(p => `
     <article class="product-card">
       ${p.badge ? `<div class="badge">${p.badge}</div>` : ""}
-
       <div class="image-wrap">
-        <img src="${p.image}" alt="${p.name}">
+        <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/images/logo.png'">
       </div>
-
       <div class="product-body">
         <h3>${p.name}</h3>
         <p>${p.desc}</p>
-
         <div class="card-bottom">
           <div class="price">${money(p.price)}</div>
-
           <div class="qty">
             <button onclick="changeQty('${p.id}', -1)">−</button>
             <span id="qty-${p.id}">0</span>
@@ -56,18 +50,7 @@ function changeQty(id, amount){
   cart[id] = Math.max(0, (cart[id] || 0) + amount);
   if(cart[id] === 0) delete cart[id];
   updateCart();
-  bounceCart();
   if(amount > 0) showToast("Added to cart 🍪");
-}
-
-function bounceCart(){
-  const cartPill = document.getElementById("openCart");
-
-  cartPill.classList.remove("cart-bounce");
-
-  void cartPill.offsetWidth;
-
-  cartPill.classList.add("cart-bounce");
 }
 
 function getCartData(){
@@ -80,13 +63,7 @@ function getCartData(){
     if(qty > 0){
       count += qty;
       subtotal += qty * p.price;
-      items.push({
-  id: p.id,
-  name: p.name,
-  price: p.price,
-  qty: qty,
-  lineTotal: qty * p.price
-});
+      items.push({ ...p, qty, lineTotal: qty * p.price });
     }
     const qtyEl = document.getElementById("qty-" + p.id);
     if(qtyEl) qtyEl.innerText = qty;
@@ -96,17 +73,8 @@ function getCartData(){
   if(count >= 6) discount = 8;
   else if(count >= 4) discount = 5;
 
-const selectedType = document.querySelector('input[name="orderType"]:checked')?.value || "Pickup";
-
-let deliveryFee = 0;
-
-if(selectedType === "Delivery"){
-  deliveryFee = count >= 5 ? 15 : 10;
+  return { items, count, subtotal, discount, total: Math.max(0, subtotal - discount) };
 }
-
-const total = Math.max(0, subtotal - discount + deliveryFee);
-
-  return { items, count, subtotal, discount, deliveryFee, total };
 
 function getComboMessage(count){
   if(count >= 6) return "🎉 Combo 6 applied. You saved RM8!";
@@ -123,15 +91,9 @@ function updateCart(){
   document.getElementById("cartTotal").innerText = money(data.total);
   document.getElementById("subtotal").innerText = money(data.subtotal);
   document.getElementById("discount").innerText = "-" + money(data.discount);
- document.getElementById("deliveryFee").innerText =
-  data.deliveryFee === 0 ? "FREE" : money(data.deliveryFee);
-   document.getElementById("grandTotal").innerText =
-money(data.total);
+  document.getElementById("grandTotal").innerText = money(data.total);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
-  const comboProgressFill = document.getElementById("comboProgressFill");
-if(comboProgressFill){
-  comboProgressFill.style.width = Math.min(100, (data.count / 6) * 100) + "%";
-}
+  document.getElementById("comboProgressFill").style.width = Math.min(100, (data.count / 6) * 100) + "%";
 
   const cartItems = document.getElementById("cartItems");
   if(data.items.length === 0){
@@ -141,7 +103,7 @@ if(comboProgressFill){
       <div class="cart-row">
         <div>
           <strong>${item.name}</strong><br>
-<small>${item.qty} × ${money(item.price)} = ${money(item.lineTotal)}</small>
+          <small>${item.qty} × ${money(item.price)} = ${money(item.lineTotal)}</small>
         </div>
         <div class="mini-controls">
           <button onclick="changeQty('${item.id}', -1)">−</button>
@@ -164,48 +126,24 @@ function showToast(message){
 
 function checkout(){
   const data = getCartData();
-
-  if(data.count === 0){
-    alert("Please add at least 1 Gookie first.");
-    return;
-  }
+  if(data.count === 0){ alert("Please add at least 1 Gookie first."); return; }
 
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
-  const type = document.querySelector('input[name="orderType"]:checked').value;
+  const type = document.getElementById("orderType").value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
 
-  if(!name){
-    alert("Please enter your name.");
-    return;
-  }
-
-  if(!phone){
-    alert("Please enter your phone number.");
-    return;
-  }
-
-  if(type === "Pickup" && !date){
-    alert("Please choose your pickup date.");
-    return;
-  }
-
   let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
-
-  data.items.forEach(item => {
-    message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`;
-  });
-
+  data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
   message += `%0A%0ASubtotal: ${money(data.subtotal)}`;
   message += `%0ACombo Discount: -${money(data.discount)}`;
-  message += `%0ADelivery Fee: ${data.deliveryFee === 0 ? "FREE" : money(data.deliveryFee)}`;
   message += `%0ATotal: ${money(data.total)}`;
   message += `%0A%0AName: ${encodeURIComponent(name)}`;
   message += `%0APhone: ${encodeURIComponent(phone)}`;
   message += `%0AOrder Type: ${encodeURIComponent(type)}`;
-  message += `%0APickup Date: ${encodeURIComponent(date || "-")}`;
-  message += `%0ANotes/Address: ${encodeURIComponent(note || "-")}`;
+  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
+  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
 }
@@ -217,88 +155,3 @@ checkoutBtn.addEventListener("click", checkout);
 
 renderProducts();
 updateCart();
-
-const promoPopup = document.getElementById("promoPopup");
-const promoClose = document.getElementById("promoClose");
-const promoShop = document.getElementById("promoShop");
-
-if(promoPopup && promoClose && promoShop){
-  setTimeout(() => {
-    promoPopup.classList.add("show");
-  }, 900);
-
-  promoClose.addEventListener("click", () => {
-    promoPopup.classList.remove("show");
-  });
-
-  promoShop.addEventListener("click", () => {
-    promoPopup.classList.remove("show");
-  });
-}
-
-const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
-const pickupDateField = document.getElementById("pickupDateField");
-const deliveryNote = document.getElementById("deliveryNote");
-const orderDateInput = document.getElementById("orderDate");
-const calendarPopup = document.getElementById("calendarPopup");
-const dateButtons = document.querySelectorAll(".calendar-grid button.available");
-const confirmDateBtn = document.getElementById("confirmDate");
-
-let selectedPickupDate = "";
-
-function openCalendar(){
-  calendarPopup.classList.add("show");
-}
-
-function closeCalendar(){
-  calendarPopup.classList.remove("show");
-}
-
-function updateOrderTypeFields(){
-  const selectedType = document.querySelector('input[name="orderType"]:checked').value;
-
-  if(selectedType === "Delivery"){
-    pickupDateField.style.display = "none";
-    deliveryNote.style.display = "block";
-    orderDateInput.value = "";
-    selectedPickupDate = "";
-  } else {
-    pickupDateField.style.display = "block";
-    deliveryNote.style.display = "none";
-    openCalendar();
-  }
-}
-
-orderTypeRadios.forEach(radio => {
-  radio.addEventListener("change", updateOrderTypeFields);
-});
-
-orderDateInput.addEventListener("click", openCalendar);
-document.querySelector('input[value="Pickup"]').addEventListener("change", () => {
-  openCalendar();
-});
-pickupDateField.addEventListener("click", () => {
-  if(document.querySelector('input[name="orderType"]:checked').value === "Pickup"){
-    openCalendar();
-  }
-});
-dateButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    dateButtons.forEach(btn => btn.classList.remove("selected"));
-    button.classList.add("selected");
-    selectedPickupDate = button.dataset.date;
-  });
-});
-
-confirmDateBtn.addEventListener("click", () => {
-  if(selectedPickupDate){
-    orderDateInput.value = selectedPickupDate;
-    closeCalendar();
-  }
-});
-
-calendarPopup.addEventListener("click", e => {
-  if(e.target === calendarPopup){
-    closeCalendar();
-  }
-});
