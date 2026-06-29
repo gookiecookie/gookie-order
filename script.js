@@ -174,18 +174,14 @@ const dateField = document.getElementById("orderDate");
 
 dateField.parentElement.classList.remove("error");
 document.getElementById("dateError").innerText = "";
-
-
-  
   const type = document.querySelector('input[name="orderType"]:checked').value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
 
-  if(type === "Pickup" && !date){
+if(type === "Pickup" && !date){
   dateField.parentElement.classList.add("error");
   document.getElementById("dateError").innerText = "Please choose your pickup date.";
   return;
-}
   
   let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
   data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
