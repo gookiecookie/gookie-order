@@ -150,7 +150,7 @@ function updateComboMeter(count){
     progress = 100;
     message = "🎉 Combo 6 unlocked — you saved RM8!";
     meter.classList.add("unlocked");
-  } else if(count === 5){
+  } else if(count === 4){
     progress = 85;
     message = "Add 1 more Gookie to save RM8";
   } else if(count >= 4){
