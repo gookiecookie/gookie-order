@@ -123,7 +123,9 @@ function updateCart(){
   document.getElementById("cartTotal").innerText = money(data.total);
   document.getElementById("subtotal").innerText = money(data.subtotal);
   document.getElementById("discount").innerText = "-" + money(data.discount);
-  document.getElementById("grandTotal").innerText =
+ document.getElementById("deliveryFee").innerText =
+  data.deliveryFee === 0 ? "FREE" : money(data.deliveryFee);
+   document.getElementById("grandTotal").innerText =
 money(data.total);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
   const comboProgressFill = document.getElementById("comboProgressFill");
@@ -197,6 +199,7 @@ function checkout(){
 
   message += `%0A%0ASubtotal: ${money(data.subtotal)}`;
   message += `%0ACombo Discount: -${money(data.discount)}`;
+  message += `%0ADelivery Fee: ${data.deliveryFee === 0 ? "FREE" : money(data.deliveryFee)}`;
   message += `%0ATotal: ${money(data.total)}`;
   message += `%0A%0AName: ${encodeURIComponent(name)}`;
   message += `%0APhone: ${encodeURIComponent(phone)}`;
