@@ -1,1 +1,178 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Gookie Order</title><link rel="stylesheet" href="style.css"/><script defer src="script.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"></head><body><div class="topbar">✨ Freshly baked chunky cookies · Combo 4 save RM5 · Combo 6 save RM8 ✨</div><header class="site-header"><div class="header-inner"><a href="#" class="logo-wrap"><img src="logo.png" alt="Gookie's Cookies" class="site-logo"></a><nav class="main-nav"><a href="#">HOME</a><a href="#menu">MENU</a><a href="#menu">ORDER</a><a href="#gifts">GIFTS</a></nav><a href="#menu" class="header-cta">Order Now</a></div></header><section class="hero"><div class="hero-card"><div class="hero-content"><p class="eyebrow">Gookie’s Cookies</p><h1>Baking Happiness,<br>one Gookie at a Time.</h1><div class="hero-line"><span></span><i></i></div><p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p><a href="#menu" class="hero-btn">Start Ordering</a></div></div></section><main id="menu" class="menu-section"><div class="section-title"><div class="star-line"><span></span><b>★ ★ ★</b><span></span></div><h2>Our Signature Gookies</h2><p>Freshly baked daily · Add more Gookies to unlock combo deals</p></div><div id="productGrid" class="product-grid"></div></main><section id="gifts" class="gifts-section"><div class="gift-card"><p class="eyebrow">Gifts</p><h2>Send a box of happiness.</h2><p>Perfect for birthdays, thank-you gifts, office treats, or “I survived today” moments.</p><a href="#menu" class="gift-btn">Build a Gift Box</a></div></section><div class="combo-meter" id="comboMeter"><div class="combo-meter-text" id="comboMeterText">Add 4 Gookies to save RM5</div><div class="cookie-progress" id="cookieProgress"><span>○</span><span>○</span><span>○</span><span>○</span><span>○</span><span>○</span></div></div><button class="cart-pill" id="openCart"><span class="cart-icon">🛒</span><span class="pill-divider"></span><span id="cartCount">0 Gookies</span><span class="pill-divider"></span><strong id="cartTotal">RM0.00</strong></button><aside class="cart-drawer" id="cartDrawer"><div class="cart-header"><div><p class="eyebrow">Checkout</p><h3>Your Gookies</h3></div><button id="closeCart" class="close-cart">×</button></div><div id="comboMessage" class="combo-box">Add 4 Gookies to save RM5.</div><div class="combo-progress"><div id="comboProgressFill"></div></div><div id="cartItems" class="cart-items"></div><div class="customer-form"><div class="form-field"><input id="customerName" placeholder="Name"><small id="nameError"></small></div><div class="form-field"><input id="customerPhone" placeholder="Phone number"><small id="phoneError"></small></div><div class="order-choice"><label><input type="radio" name="orderType" value="Pickup" checked><span>Self Pickup</span></label><label><input type="radio" name="orderType" value="Delivery"><span>Delivery</span></label></div><div class="form-field" id="pickupDateField"><input id="orderDate" placeholder="Pickup date" readonly><small id="dateError"></small></div><p class="delivery-note" id="deliveryNote">Gookies will be shipped within 3 working days.</p><textarea id="orderNote" placeholder="Notes / delivery address"></textarea></div><div class="cart-summary"><div><span>Subtotal</span><strong id="subtotal">RM0.00</strong></div><div><span>Combo Discount</span><strong id="discount">-RM0.00</strong></div><div><span>Delivery Fee</span><strong id="deliveryFee">FREE</strong></div><div class="grand"><span>Total</span><strong id="grandTotal">RM0.00</strong></div></div><button id="checkoutBtn" class="checkout-btn">Checkout via WhatsApp</button></aside><div class="calendar-popup" id="calendarPopup"><div class="calendar-box"><h3>Choose Pickup Date</h3><p class="calendar-note">Grey dates are unavailable.</p><div class="calendar-grid"><button disabled>Mon<br><span>1</span></button><button disabled>Tue<br><span>2</span></button><button class="available" data-date="Wednesday, 3 July">Wed<br><span>3</span></button><button class="available" data-date="Thursday, 4 July">Thu<br><span>4</span></button><button disabled>Fri<br><span>5</span></button><button class="available" data-date="Saturday, 6 July">Sat<br><span>6</span></button><button class="available" data-date="Sunday, 7 July">Sun<br><span>7</span></button></div><button class="confirm-date" id="confirmDate">Confirm Date</button></div></div><div class="overlay" id="overlay"></div><div id="toast" class="toast">Added to cart 🍪</div><div class="promo-popup" id="promoPopup"><button class="promo-close" id="promoClose">×</button><p class="eyebrow">Gookie Deal</p><h2>Combo & Save 🍪</h2><p>Buy 4 Gookies, save RM5.<br>Buy 6 Gookies, save RM8.</p><a href="#menu" id="promoShop">Start Ordering</a></div><footer class="footer"><div class="footer-cta"><p>Still thinking?</p><h2>Life’s too short for boring cookies.</h2><a href="#menu">Order Your Gookies</a></div><div class="footer-main"><div><img src="logo.png" alt="Gookie's Cookies" class="footer-logo"><p>Baking Happiness,<br>One Gookie at a Time.</p></div><div><h3>Quick Links</h3><a href="#">Home</a><a href="#menu">Menu</a><a href="#menu">Order</a><a href="#gifts">Gifts</a></div><div><h3>Contact</h3><p>📍 Ampang, Selangor</p><p>📱 010-281 0487</p><p>🕘 Fresh baked daily</p></div><div><h3>Follow Gookie</h3><a href="https://www.instagram.com/gookie.my">Instagram</a><a href="https://www.tiktok.com/@gookie.my">TikTok</a><a href="#">Threads</a></div></div><div class="cookie-trail">🍪 🍪 🍪 🍪 🍪 🍪</div><div class="footer-bottom">© 2026 Gookie’s Cookies · Made with 🍪 in Malaysia</div></footer></body></html>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOOKIE ORDER V3.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP MOVING BAR -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order melalui WhatsApp</span>
+      <span>Save your payment receipt</span>
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order melalui WhatsApp</span>
+      <span>Save your payment receipt</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-mark">G</div>
+      <div>
+        <p class="eyebrow">GOOKIE ORDER V3.0</p>
+        <h1>Gookie’s Cookies</h1>
+      </div>
+    </div>
+
+    <button class="cart-button" id="openCartBtn" type="button">
+      Cart <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero section-pad">
+    <div class="hero__content">
+      <p class="eyebrow">Well, hello there cookie hunter</p>
+      <h2>Pick your chunky wonders.</h2>
+      <p>
+        Pilih menu, isi details customer, tekan WhatsApp. Semua order details akan auto-generate terus untuk customer hantar kepada Gookie.
+      </p>
+      <div class="hero__actions">
+        <a href="#menu" class="primary-link">Start Order</a>
+        <a href="#customerDetails" class="secondary-link">Customer Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER DETAILS SECTION -->
+  <section class="customer-section section-pad" id="customerDetails">
+    <div class="section-heading">
+      <p class="eyebrow">Step 1</p>
+      <h2>Customer Details</h2>
+      <p>Isi details ni dulu supaya WhatsApp order nanti lengkap dan tak pening ulang tanya.</p>
+    </div>
+
+    <form class="customer-form" id="customerForm">
+      <label>
+        Nama Customer
+        <input type="text" id="customerName" placeholder="Contoh: Mira" required>
+      </label>
+
+      <label>
+        No. Telefon
+        <input type="tel" id="customerPhone" placeholder="Contoh: 0123456789" required>
+      </label>
+
+      <label>
+        Order Method
+        <select id="orderMethod" required>
+          <option value="Self Pickup">Self Pickup</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Postage">Postage</option>
+        </select>
+      </label>
+
+      <label class="full-span">
+        Alamat / Pickup Note
+        <textarea id="customerAddress" rows="3" placeholder="Alamat delivery/postage atau note pickup"></textarea>
+      </label>
+
+      <label>
+        Tarikh Order / Pickup
+        <input type="date" id="orderDate">
+      </label>
+
+      <label>
+        Masa Preferred
+        <input type="time" id="orderTime">
+      </label>
+
+      <label class="full-span">
+        Notes / Request
+        <textarea id="customerNotes" rows="3" placeholder="Contoh: less choc topping, birthday note, etc."></textarea>
+      </label>
+    </form>
+  </section>
+
+  <!-- MENU SECTION -->
+  <main class="menu-section section-pad" id="menu">
+    <div class="section-heading">
+      <p class="eyebrow">Step 2</p>
+      <h2>Choose Your Cookies</h2>
+      <p>Harga single: RM7.90. Combo auto apply: 4 cookies = RM6.90 each, 6 cookies = RM6.57 each.</p>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+  </main>
+
+  <!-- CART DRAWER -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <div>
+        <p class="eyebrow">Your Order</p>
+        <h2>Cart</h2>
+      </div>
+      <button class="icon-button" id="closeCartBtn" type="button">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotalText">RM0.00</strong>
+      </div>
+      <div class="summary-row discount-row">
+        <span>Combo Discount</span>
+        <strong id="discountText">- RM0.00</strong>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <strong id="totalText">RM0.00</strong>
+      </div>
+      <p class="combo-note" id="comboNote">Add 4 or 6 cookies to unlock combo pricing.</p>
+    </div>
+
+    <div class="cart-actions">
+      <button class="pay-button" id="payNowBtn" type="button">PAY NOW</button>
+      <button class="whatsapp-button" id="whatsappBtn" type="button">Send Order to WhatsApp</button>
+      <button class="clear-button" id="clearCartBtn" type="button">Clear Cart</button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- QR PAYMENT POPUP -->
+  <div class="qr-modal" id="qrModal" aria-hidden="true">
+    <div class="qr-modal__card">
+      <button class="icon-button qr-close" id="closeQrBtn" type="button">×</button>
+      <p class="eyebrow">Payment</p>
+      <h2>Scan QR Code</h2>
+      <div class="qr-box">
+        <img src="qrcode.png" alt="Gookie payment QR code">
+      </div>
+      <p class="qr-reminder">
+        Sila simpan bukti pembayaran dan hantar bersama order melalui WhatsApp. Terima kasih cookie bestie 🍪
+      </p>
+    </div>
+  </div>
+
+  <!-- FLOAT CART BUTTON MOBILE -->
+  <button class="floating-cart" id="floatingCartBtn" type="button">
+    View Cart <span id="floatingCartCount">0</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
