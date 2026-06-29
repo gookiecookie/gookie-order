@@ -3,119 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gookie Order V3.0</title>
+  <title>GOOKIE ORDER V3.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- ANNOUNCEMENT BAR -->
-  <div class="announcement-bar">
-    <div class="marquee">
-      <span>Freshly baked chunky cookies · Less sweet, more cookie · Order via WhatsApp ·</span>
-      <span>Freshly baked chunky cookies · Less sweet, more cookie · Order via WhatsApp ·</span>
+
+  <!-- TOP MOVING BAR -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order via WhatsApp</span>
+      <span>Save your payment receipt</span>
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order via WhatsApp</span>
+      <span>Save your payment receipt</span>
     </div>
   </div>
 
   <!-- HEADER -->
   <header class="site-header">
-    <a href="#top" class="brand">Gookie</a>
+    <div class="brand-wrap">
+      <div class="brand-mark">G</div>
+      <div>
+        <p class="eyebrow">GOOKIE ORDER V3.0</p>
+        <h1>Gookie’s Cookies</h1>
+      </div>
+    </div>
+
     <button class="cart-button" id="openCartBtn" type="button">
       Cart <span id="cartCount">0</span>
     </button>
   </header>
 
   <!-- HERO SECTION -->
-  <main id="top">
-    <section class="hero-section">
-      <div class="hero-content">
-        <p class="eyebrow">Soft baked chunky cookies</p>
-        <h1>Freshly baked. Made to be craved.</h1>
-        <p class="hero-copy">Less sweet, deeply satisfying cookies with crisp edges, soft centres, and plenty of drama in every bite.</p>
-        <a href="#menu" class="primary-link">Order Now</a>
+  <section class="hero section-pad">
+    <div class="hero__content">
+      <p class="eyebrow">Well, hello there cookie hunter</p>
+      <h2>Pick your chunky wonders.</h2>
+      <p>
+        Choose your cookies, fill in your details, complete payment, then send your order to Gookie through WhatsApp.
+      </p>
+      <div class="hero__actions">
+        <a href="#menu" class="primary-link">Start Order</a>
+        <a href="#customerDetails" class="secondary-link">Customer Details</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- MENU SECTION -->
-    <section class="menu-section" id="menu">
-      <div class="section-heading">
-        <p class="eyebrow">Our Menu</p>
-        <h2>Pick your chunky wonders</h2>
-        <p>Buy 4 and save RM5. Buy 6 and save RM8. Discount applies automatically.</p>
-      </div>
-      <div class="menu-grid" id="menuGrid"></div>
-    </section>
+  <!-- CUSTOMER DETAILS SECTION -->
+  <section class="customer-section section-pad" id="customerDetails">
+    <div class="section-heading">
+      <p class="eyebrow">Step 1</p>
+      <h2>Customer Details</h2>
+      <p>Fill in your details so your WhatsApp order is complete and easy for us to confirm.</p>
+    </div>
 
-    <!-- CUSTOMER DETAILS SECTION -->
-    <section class="details-section" id="details">
-      <div class="section-heading left-align">
-        <p class="eyebrow">Checkout</p>
-        <h2>Customer Details</h2>
-        <p>Please fill in your details before payment.</p>
-      </div>
+    <form class="customer-form" id="customerForm">
+      <label>
+        Full Name
+        <input type="text" id="customerName" placeholder="Example: Mira" required>
+      </label>
 
-      <form class="customer-form" id="customerForm">
-        <div class="form-group">
-          <label for="customerName">Full Name *</label>
-          <input type="text" id="customerName" placeholder="Your full name" required />
-        </div>
+      <label>
+        Phone Number
+        <input type="tel" id="customerPhone" placeholder="Example: 0123456789" required>
+      </label>
 
-        <div class="form-group">
-          <label for="customerPhone">Phone Number *</label>
-          <input type="tel" id="customerPhone" placeholder="Example: 0123456789" required />
-        </div>
+      <label>
+        Order Method
+        <select id="orderMethod" required>
+          <option value="Self Pickup">Self Pickup</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Postage">Postage</option>
+        </select>
+      </label>
 
-        <div class="form-group">
-          <label for="deliveryMethod">Delivery Method *</label>
-          <select id="deliveryMethod" required>
-            <option value="Self Pickup">Self Pickup</option>
-            <option value="Delivery">Delivery</option>
-          </select>
-        </div>
+      <label>
+        Preferred Date
+        <input type="date" id="orderDate">
+      </label>
 
-        <div class="form-group full-width">
-          <label for="customerAddress">Delivery Address</label>
-          <textarea id="customerAddress" rows="3" placeholder="Required for delivery orders"></textarea>
-        </div>
+      <label>
+        Preferred Time
+        <input type="time" id="orderTime">
+      </label>
 
-        <div class="form-group">
-          <label for="orderDate">Preferred Date</label>
-          <input type="date" id="orderDate" />
-        </div>
+      <label class="full-span">
+        Delivery Address / Pickup Note
+        <textarea id="customerAddress" rows="3" placeholder="Delivery/postage address or pickup note"></textarea>
+      </label>
 
-        <div class="form-group">
-          <label for="orderTime">Preferred Time</label>
-          <select id="orderTime">
-            <option value="Not selected">Select a time slot</option>
-            <option value="11:00 AM - 1:00 PM">11:00 AM - 1:00 PM</option>
-            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
-            <option value="5:00 PM - 7:00 PM">5:00 PM - 7:00 PM</option>
-          </select>
-        </div>
+      <label class="full-span">
+        Order Notes
+        <textarea id="customerNotes" rows="3" placeholder="Example: birthday note, less topping, delivery instruction, etc."></textarea>
+      </label>
+    </form>
+  </section>
 
-        <div class="form-group full-width">
-          <label for="orderNotes">Order Notes</label>
-          <textarea id="orderNotes" rows="3" placeholder="Any notes for us?"></textarea>
-        </div>
-      </form>
-    </section>
+  <!-- MENU SECTION -->
+  <main class="menu-section section-pad" id="menu">
+    <div class="section-heading">
+      <p class="eyebrow">Step 2</p>
+      <h2>Choose Your Cookies</h2>
+      <p>Single price: RM7.90. Combo discount is applied automatically: Buy 4 save more, Buy 6 save even more.</p>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
   </main>
-
-  <!-- FLOATING CART BUTTON -->
-  <button class="floating-cart" id="floatingCartBtn" type="button">
-    <span>View Cart</span>
-    <strong id="floatingTotal">RM0.00</strong>
-  </button>
 
   <!-- CART DRAWER -->
   <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-header">
+    <div class="cart-drawer__header">
       <div>
         <p class="eyebrow">Your Order</p>
-        <h3>Cart</h3>
+        <h2>Cart</h2>
       </div>
-      <button class="icon-button" id="closeCartBtn" type="button">×</button>
+      <button class="icon-button" id="closeCartBtn" type="button" aria-label="Close cart">×</button>
     </div>
 
     <div class="cart-items" id="cartItems"></div>
@@ -126,36 +134,45 @@
         <strong id="subtotalText">RM0.00</strong>
       </div>
       <div class="summary-row discount-row">
-        <span>Discount</span>
-        <strong id="discountText">-RM0.00</strong>
+        <span>Combo Discount</span>
+        <strong id="discountText">- RM0.00</strong>
       </div>
       <div class="summary-row total-row">
         <span>Total</span>
         <strong id="totalText">RM0.00</strong>
       </div>
-      <p class="combo-note" id="comboNote">Add 4 cookies to unlock combo discount.</p>
+      <p class="combo-note" id="comboNote">Add 4 or 6 cookies to unlock combo pricing.</p>
+    </div>
+
+    <div class="cart-actions">
       <button class="pay-button" id="payNowBtn" type="button">Pay Now</button>
-      <button class="secondary-button" id="clearCartBtn" type="button">Clear Cart</button>
+      <button class="whatsapp-button" id="whatsappBtn" type="button">Place Order on WhatsApp</button>
+      <button class="clear-button" id="clearCartBtn" type="button">Clear Cart</button>
     </div>
   </aside>
 
   <div class="overlay" id="overlay"></div>
 
-  <!-- PAYMENT MODAL -->
-  <div class="payment-modal" id="paymentModal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="icon-button modal-close" id="closePaymentBtn" type="button">×</button>
-      <p class="eyebrow">Payment</p>
-      <h3>Scan to Pay</h3>
-      <p>Please complete your payment by scanning the QR code below.</p>
+  <!-- QR PAYMENT POPUP -->
+  <div class="qr-modal" id="qrModal" aria-hidden="true">
+    <div class="qr-modal__card">
+      <button class="icon-button qr-close" id="closeQrBtn" type="button" aria-label="Close payment popup">×</button>
+      <p class="eyebrow">Secure Payment</p>
+      <h2>Scan to Pay</h2>
       <div class="qr-box">
-        <img src="qrcode.png" alt="Gookie payment QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="qr-placeholder">Place qrcode.png in this folder</span>
+        <img src="qrcode.png" alt="Gookie payment QR code">
       </div>
-      <p class="receipt-note">Please keep your payment receipt until your order is confirmed.</p>
-      <button class="pay-button" id="paidBtn" type="button">I've Paid — Send Order</button>
+      <p class="qr-reminder">
+        Please keep your payment receipt until your order is confirmed. After payment, tap “I've Paid” to send your order via WhatsApp.
+      </p>
+      <button class="whatsapp-button" id="paidWhatsappBtn" type="button">I've Paid</button>
     </div>
   </div>
+
+  <!-- FLOATING CART BUTTON MOBILE -->
+  <button class="floating-cart" id="floatingCartBtn" type="button">
+    View Cart <span id="floatingCartCount">0</span>
+  </button>
 
   <script src="script.js"></script>
 </body>
