@@ -184,7 +184,63 @@ if(type === "Pickup" && !date){
   const type = document.querySelector('input[name="orderType"]:checked').value;
   const date = document.getElementById("orderDate").value.trim();
   const note = document.getElementById("orderNote").value.trim();
-  const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+  let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
+  data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
+  message += `%0A%0ASubtotal: ${money(data.subtotal)}`;
+  message += `%0ACombo Discount: -${money(data.discount)}`;
+  message += `%0ATotal: ${money(data.total)}`;
+  message += `%0A%0AName: ${encodeURIComponent(name)}`;
+  message += `%0APhone: ${encodeURIComponent(phone)}`;
+  message += `%0AOrder Type: ${encodeURIComponent(type)}`;
+  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
+  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+}
+
+openCartBtn.addEventListener("click", openCart);
+closeCartBtn.addEventListener("click", closeCart);
+overlay.addEventListener("click", closeCart);
+checkoutBtn.addEventListener("click", checkout);
+
+renderProducts();
+updateCart();
+
+const promoPopup = document.getElementById("promoPopup");
+const promoClose = document.getElementById("promoClose");
+const promoShop = document.getElementById("promoShop");
+
+setTimeout(() => {
+  promoPopup.classList.add("show");
+}, 900);
+
+promoClose.addEventListener("click", () => {
+  promoPopup.classList.remove("show");
+});
+
+promoShop.addEventListener("click", () => {
+  promoPopup.classList.remove("show");
+});
+
+const orderTypeSelect = document.getElementById("orderType");
+const pickupDateField = document.getElementById("pickupDateField");
+const deliveryNote = document.getElementById("deliveryNote");
+
+function updateOrderTypeFields(){
+  if(orderTypeSelect.value === "Delivery"){
+    pickupDateField.style.display = "none";
+    deliveryNote.style.display = "block";
+    document.getElementById("orderDate").value = "";
+  } else {
+    pickupDateField.style.display = "grid";
+    deliveryNote.style.display = "none";
+  }
+}
+
+orderTypeSelect.addEventListener("change", updateOrderTypeFields);
+updateOrderTypeFields();
+
+const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
 const pickupDateField = document.getElementById("pickupDateField");
 const deliveryNote = document.getElementById("deliveryNote");
 const orderDateInput = document.getElementById("orderDate");
@@ -243,59 +299,3 @@ calendarPopup.addEventListener("click", e => {
     closeCalendar();
   }
 });
-
-  let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
-  data.items.forEach(item => { message += `%0A${item.qty}x ${item.name} - ${money(item.lineTotal)}`; });
-  message += `%0A%0ASubtotal: ${money(data.subtotal)}`;
-  message += `%0ACombo Discount: -${money(data.discount)}`;
-  message += `%0ATotal: ${money(data.total)}`;
-  message += `%0A%0AName: ${encodeURIComponent(name)}`;
-  message += `%0APhone: ${encodeURIComponent(phone)}`;
-  message += `%0AOrder Type: ${encodeURIComponent(type)}`;
-  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
-  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
-
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-}
-
-openCartBtn.addEventListener("click", openCart);
-closeCartBtn.addEventListener("click", closeCart);
-overlay.addEventListener("click", closeCart);
-checkoutBtn.addEventListener("click", checkout);
-
-renderProducts();
-updateCart();
-
-const promoPopup = document.getElementById("promoPopup");
-const promoClose = document.getElementById("promoClose");
-const promoShop = document.getElementById("promoShop");
-
-setTimeout(() => {
-  promoPopup.classList.add("show");
-}, 900);
-
-promoClose.addEventListener("click", () => {
-  promoPopup.classList.remove("show");
-});
-
-promoShop.addEventListener("click", () => {
-  promoPopup.classList.remove("show");
-});
-
-const orderTypeSelect = document.getElementById("orderType");
-const pickupDateField = document.getElementById("pickupDateField");
-const deliveryNote = document.getElementById("deliveryNote");
-
-function updateOrderTypeFields(){
-  if(orderTypeSelect.value === "Delivery"){
-    pickupDateField.style.display = "none";
-    deliveryNote.style.display = "block";
-    document.getElementById("orderDate").value = "";
-  } else {
-    pickupDateField.style.display = "grid";
-    deliveryNote.style.display = "none";
-  }
-}
-
-orderTypeSelect.addEventListener("change", updateOrderTypeFields);
-updateOrderTypeFields();
