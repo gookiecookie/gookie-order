@@ -181,25 +181,22 @@ body {
   color:white
 }
 
-.eyebrow {
-  margin:0 0 14px;
-  text-transform:uppercase;
-  letter-spacing:4px;
-  font-size:12px;
-  font-weight:900
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-.hero h1,.section-title h2,.gift-card h2 {
-  font-family:"Playfair Display",serif
+.hero h1,
+.hero-title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
 }
-
-.hero h1 {
-  font-size:clamp(38px,5vw,64px);
-  line-height:.96;
-  margin:0;
-  letter-spacing:-1px
-}
-
 .hero-line {
   display:flex;
   align-items:center;
