@@ -114,6 +114,10 @@ function updateCart(){
   document.getElementById("cartTotal").innerText = money(data.total);
   document.getElementById("subtotal").innerText = money(data.subtotal);
   document.getElementById("discount").innerText = "-" + money(data.discount);
+  document.getElementById("deliveryFee").innerText =
+deliveryFee===0
+? "FREE"
+: money(deliveryFee);
   document.getElementById("grandTotal").innerText = money(data.total);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
   const comboProgressFill = document.getElementById("comboProgressFill");
