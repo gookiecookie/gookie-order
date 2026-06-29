@@ -264,7 +264,14 @@ orderTypeRadios.forEach(radio => {
 });
 
 orderDateInput.addEventListener("click", openCalendar);
-
+document.querySelector('input[value="Pickup"]').addEventListener("change", () => {
+  openCalendar();
+});
+pickupDateField.addEventListener("click", () => {
+  if(document.querySelector('input[name="orderType"]:checked').value === "Pickup"){
+    openCalendar();
+  }
+});
 dateButtons.forEach(button => {
   button.addEventListener("click", () => {
     dateButtons.forEach(btn => btn.classList.remove("selected"));
