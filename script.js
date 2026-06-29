@@ -50,6 +50,7 @@ function renderProducts(){
   `).join("");
 }
 
+
 function changeQty(id, amount){
   cart[id] = Math.max(0, (cart[id] || 0) + amount);
   if(cart[id] === 0) delete cart[id];
