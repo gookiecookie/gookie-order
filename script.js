@@ -116,7 +116,10 @@ function updateCart(){
   document.getElementById("discount").innerText = "-" + money(data.discount);
   document.getElementById("grandTotal").innerText = money(data.total);
   document.getElementById("comboMessage").innerText = getComboMessage(data.count);
-  document.getElementById("comboProgressFill").style.width = Math.min(100, (data.count / 6) * 100) + "%";
+  const comboProgressFill = document.getElementById("comboProgressFill");
+if(comboProgressFill){
+  comboProgressFill.style.width = Math.min(100, (data.count / 6) * 100) + "%";
+}
 
   const cartItems = document.getElementById("cartItems");
   if(data.items.length === 0){
@@ -206,17 +209,19 @@ const promoPopup = document.getElementById("promoPopup");
 const promoClose = document.getElementById("promoClose");
 const promoShop = document.getElementById("promoShop");
 
-setTimeout(() => {
-  promoPopup.classList.add("show");
-}, 900);
+if(promoPopup && promoClose && promoShop){
+  setTimeout(() => {
+    promoPopup.classList.add("show");
+  }, 900);
 
-promoClose.addEventListener("click", () => {
-  promoPopup.classList.remove("show");
-});
+  promoClose.addEventListener("click", () => {
+    promoPopup.classList.remove("show");
+  });
 
-promoShop.addEventListener("click", () => {
-  promoPopup.classList.remove("show");
-});
+  promoShop.addEventListener("click", () => {
+    promoPopup.classList.remove("show");
+  });
+}
 
 const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
 const pickupDateField = document.getElementById("pickupDateField");
