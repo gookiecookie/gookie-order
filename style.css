@@ -987,7 +987,7 @@ transform:scale(.92);
 .combo-meter{
   position:fixed;
   left:50%;
-  bottom:92px;
+  bottom:105px;
   transform:translateX(-50%);
   width:min(88vw,420px);
   background:rgba(255,248,241,.96);
