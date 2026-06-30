@@ -421,23 +421,28 @@ body {
     padding-top:16px;
 }
 
-.price {
-  color:var(--primary-dark);
-  font-weight:500;
-  font-size:22px
+.price{
+    font-size:18px;
+    font-weight:700;
+    color:#BB191A;
+    line-height:1;
 }
 
 .qty{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:12px;
-    width:fit-content;
+    gap:10px;
+
     margin-left:auto;
+
     padding:6px 10px;
-    background:#fff8f2;
-    border:1px solid #f2d9c9;
+
+    border:1px solid #f1ddd0;
     border-radius:999px;
+
+    background:#fffaf6;
+
+    width:fit-content;
 }
 
 .qty button{
