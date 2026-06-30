@@ -669,3 +669,59 @@ a {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* EMERGENCY REPAIR */
+.cart-drawer {
+  background: var(--cream);
+  color: var(--dark);
+}
+
+.drawer-header {
+  align-items: flex-start;
+}
+
+.cart-items {
+  display: grid;
+  gap: 12px;
+}
+
+.customer-form,
+.cart-summary {
+  width: 100%;
+}
+
+.drawer-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: grid;
+  gap: 10px;
+  background: var(--cream);
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+
+.checkout-button {
+  position: static;
+}
+
+.pay-button,
+.checkout-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.customer-form input,
+.customer-form textarea,
+.customer-form select {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.cart-summary div {
+  display: flex;
+  justify-content: space-between;
+}
+
