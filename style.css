@@ -731,3 +731,14 @@ a {
   font-weight: 900;
   text-align: center;
 }
+
+/* Hide floating cart when drawer is open */
+body.cart-open .floating-cart {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(20px);
+}
+
+.floating-cart {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
