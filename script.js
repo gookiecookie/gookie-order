@@ -14,7 +14,7 @@ const subtotalEl = document.getElementById("subtotal");
 const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
-const checkoutBtn = document.getElementById("checkoutBtn");
+const payNowBtn = document.getElementById("payNowBtn");
 
 const pickupBtn = document.getElementById("pickupBtn");
 const deliveryBtn = document.getElementById("deliveryBtn");
