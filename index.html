@@ -8,82 +8,51 @@
   <script defer src="script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="topbar">✨ Freshly baked chunky cookies · Combo discounts auto-applied ✨</div>
+  <div class="topbar">Freshly baked chunky cookies · Combo discounts auto-applied</div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo-wrap" aria-label="Gookie home">
-        <img src="assets/images/logo.png" alt="Gookie's Cookies" class="site-logo">
-      </a>
-
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#">HOME</a>
-        <a href="#menu">MENU</a>
-        <a href="#menu">ORDER</a>
-        <a href="#gifts">GIFTS</a>
-      </nav>
-
-      <a href="#menu" class="header-cta">Order Now</a>
-    </div>
+  <header class="nav">
+    <img src="assets/images/logo.png" alt="Gookie's Cookies" class="logo">
+    <a href="#menu" class="nav-btn">Order Now</a>
   </header>
 
   <section class="hero">
-    <div class="hero-card">
-      <div class="hero-content">
-        <p class="eyebrow">Gookie’s Cookies</p>
-        <h1>Baking Happiness,<br>One Gookie at a Time.</h1>
-        <div class="hero-line"><span></span><i></i></div>
-        <p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p>
-        <a href="#menu" class="hero-btn">Start Ordering</a>
-      </div>
+    <div class="hero-inner">
+      <p class="eyebrow">Gookie’s Cookies</p>
+      <h1>Chunky cookies, made to impress.</h1>
+      <p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p>
+      <a href="#menu" class="hero-cta">Start Ordering</a>
     </div>
   </section>
 
   <main id="menu" class="menu-section">
-    <div class="section-title">
-      <div class="star-line"><span></span><b>★ ★ ★</b><span></span></div>
-      <h2>Our Signature Gookies</h2>
-      <p>Freshly baked daily · Combo 4 save RM5 · Combo 6 save RM8</p>
+    <div class="section-head">
+      <p class="eyebrow">Menu</p>
+      <h2>10 Signature Gookies</h2>
+      <p>Combo 4 save RM5 · Combo 6 save RM8</p>
     </div>
     <div id="productGrid" class="product-grid"></div>
   </main>
 
-  <section id="gifts" class="gifts-section">
-    <div class="gift-card">
-      <p class="eyebrow">Gifts</p>
-      <h2>Send a box of happiness.</h2>
-      <p>Perfect for birthdays, thank-you gifts, office treats, or “I survived today” moments.</p>
-      <a href="#menu" class="gift-btn">Build a Gift Box</a>
-    </div>
-  </section>
-
-  <button class="cart-pill" id="openCart" aria-label="Open cart">
+  <button class="cart-pill" id="openCart">
     <span class="cart-icon">🛒</span>
-    <span class="pill-divider"></span>
-    <span id="cartCount">0 Gookies</span>
-    <span class="pill-divider"></span>
+    <span id="cartCount">0 cookies</span>
     <strong id="cartTotal">RM0</strong>
   </button>
 
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <aside class="cart-drawer" id="cartDrawer">
     <div class="cart-header">
-      <div>
-        <p class="eyebrow">Checkout</p>
-        <h3>Your Gookies</h3>
-      </div>
-      <button id="closeCart" class="close-cart" aria-label="Close cart">×</button>
+      <h3>Your Order</h3>
+      <button id="closeCart" aria-label="Close cart">×</button>
     </div>
 
-    <div id="comboMessage" class="combo-box">Add 4 Gookies to save RM5.</div>
-    <div class="combo-progress"><div id="comboProgressFill"></div></div>
+    <div id="comboMessage" class="combo-box">Add 4 cookies to save RM5.</div>
     <div id="cartItems" class="cart-items"></div>
 
     <div class="customer-form">
       <input id="customerName" placeholder="Name">
-      <input id="customerPhone" placeholder="Phone number">
       <select id="orderType">
         <option value="Pickup">Pickup</option>
         <option value="Delivery">Delivery</option>
@@ -102,6 +71,6 @@
   </aside>
 
   <div class="overlay" id="overlay"></div>
-  <div id="toast" class="toast">Added to cart 🍪</div>
+  <div id="toast" class="toast">Added to cart</div>
 </body>
 </html>

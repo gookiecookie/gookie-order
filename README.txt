@@ -1,20 +1,18 @@
-GOOKIE ORDER V2
+GOOKIE ORDER PREMIUM
 
-Cara guna:
-1. Extract ZIP ini.
-2. Copy index.html, style.css, script.js ke folder VS Code awak.
-3. Keep folder assets/images awak.
-4. Pastikan nama gambar:
-   logo.png
-   hero.png  (optional; kalau tak ada, hero fallback guna classic choc chip)
-   classic choc chip.png
-   dark seasalt.png
-   red velvet.png
-   matchadamia.png
-   smores.png
-   white berry.png
-   biscoff lava.png
-   choco lava.png
-   tiramisu lava.png
+1. Copy index.html, style.css, script.js into your VS Code project folder.
+2. Keep your images in assets/images.
+3. Important image file names expected:
+- logo.png
+- classic choc chip.png
+- dark seasalt.png
+- red velvet.png
+- matchadamia.png
+- og smores.png
+- dark smores.png
+- rocky road.png
+- biscoff lava.png
+- choco lava.png
+- tiramisu lava.png
 
-WhatsApp number sudah set kepada 60102810487.
+WhatsApp number is already set to 60102810487 in script.js.
