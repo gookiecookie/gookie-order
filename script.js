@@ -20,9 +20,15 @@ const subtotalEl = document.getElementById("subtotal");
 const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
-
-const orderMethod = document.getElementById("orderMethod");
 const checkoutBtn = document.getElementById("checkoutBtn");
+
+const pickupBtn = document.getElementById("pickupBtn");
+const deliveryBtn = document.getElementById("deliveryBtn");
+const pickupDate = document.getElementById("pickupDate");
+const shippingMessage = document.getElementById("shippingMessage");
+const deliveryAddress = document.getElementById("deliveryAddress");
+
+let selectedMethod = "pickup";
 
 function formatRM(amount) {
   return `RM${amount.toFixed(2).replace(".00", "")}`;
@@ -141,8 +147,35 @@ function getComboDiscount(totalQty) {
 }
 
 function getDeliveryCharge() {
-  return orderMethod.value === "delivery" ? 8 : 0;
+  return selectedMethod === "delivery" ? 8 : 0;
 }
+
+function setOrderMethod(method) {
+  selectedMethod = method;
+
+  if (method === "pickup") {
+    pickupBtn.classList.add("active");
+    deliveryBtn.classList.remove("active");
+
+    pickupDate.style.display = "block";
+    deliveryAddress.style.display = "none";
+    shippingMessage.style.display = "none";
+  }
+
+  if (method === "delivery") {
+    deliveryBtn.classList.add("active");
+    pickupBtn.classList.remove("active");
+
+    pickupDate.style.display = "none";
+    deliveryAddress.style.display = "block";
+    shippingMessage.style.display = "block";
+  }
+
+  renderCart();
+}
+
+pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
+deliveryBtn.addEventListener("click", () => setOrderMethod("delivery"));
 
 function updateComboMessage(totalQty, discount) {
   if (totalQty >= 6) {
@@ -211,8 +244,6 @@ menuCards.forEach((card) => {
     .join("");
 }
 
-orderMethod.addEventListener("change", renderCart);
-
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     alert("Your cart is empty.");
@@ -223,7 +254,8 @@ checkoutBtn.addEventListener("click", () => {
   const phone = document.getElementById("customerPhone").value.trim();
   const date = document.getElementById("pickupDate").value.trim();
   const notes = document.getElementById("customerNotes").value.trim();
-  const method = orderMethod.value;
+  const method = selectedMethod;
+const deliveryAddressValue = deliveryAddress.value.trim();
 
   if (!name || !phone) {
     alert("Please fill in your name and phone number.");
@@ -249,7 +281,8 @@ checkoutBtn.addEventListener("click", () => {
     `Phone: ${phone}%0A` +
     `Method: ${method}%0A` +
     `Date/Time: ${date || "-"}%0A` +
-    `Notes/Address: ${notes || "-"}%0A%0A` +
+    `Notes: ${notes || "-"}%0A` +
+`Delivery Address: ${deliveryAddressValue || "-"}%0A%0A` +
     `*Order*%0A` +
     `${orderList}%0A%0A` +
     `Subtotal: ${formatRM(subtotal)}%0A` +
@@ -287,6 +320,6 @@ pickupDate.style.display="none";
 pickupDate.readOnly=true;
 shippingMessage.style.display="block";
 
-renderCart();
+setOrderMethod("pickup");
 
 }
