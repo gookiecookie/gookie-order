@@ -3,276 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gookie Order Page</title>
-
+  <title>Gookie Order</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- TOP MARQUEE -->
-  <div class="top-marquee">
-    <span>Freshly baked chunky wonders • Less sweet, still dangerous • Order now via WhatsApp •</span>
+  <!-- MARQUEE BAR -->
+  <div class="promo-bar">
+    ✨ Freshly baked chunky cookies • Combo discounts auto-applied ✨
   </div>
 
   <!-- HEADER -->
-  <header class="site-header">
-    <div class="logo">Gookie</div>
+  <header class="main-header">
+    <img src="logo.png" alt="Gookie's Cookies Logo" class="logo" />
 
-    <button class="cart-button" id="openCartBtn">
-      Cart <span id="cartCount">0</span>
-    </button>
+    <nav class="nav-menu">
+      <a href="#">HOME</a>
+      <a href="#menu">MENU</a>
+      <a href="#menu">ORDER</a>
+      <a href="#">GIFTS</a>
+    </nav>
+
+    <a href="#menu" class="order-now">Order Now</a>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <p class="eyebrow">Well, hello there</p>
-    <h1>Pick your chunky wonders.</h1>
-    <p class="hero-text">
-      Soft baked cookies with crisp edges, chunky bites, and just the right amount of sweetness.
-    </p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <img src="header.png" alt="Gookie cookies box" class="hero-img" />
 
-    <a href="#menu" class="hero-button">Start Order</a>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <p class="mini-title">GOOKIE’S COOKIES</p>
+        <h1>Baking Happiness,<br>one Gookie at a Time.</h1>
+
+        <div class="hero-line">
+          <span></span>
+          <b></b>
+        </div>
+
+        <p class="hero-text">
+          Pick your favourites, unlock combo savings, then checkout via WhatsApp.
+        </p>
+
+        <a href="#menu" class="hero-btn">Start Ordering</a>
+      </div>
+    </div>
   </section>
 
-  <!-- MENU SECTION -->
-  <main class="menu-section" id="menu">
-    <div class="section-heading">
-      <p class="eyebrow">Gookie Menu</p>
-      <h2>Choose your cookies</h2>
-      <p>Add your favourites to cart. Combo discount will be calculated automatically.</p>
-    </div>
-
-    <div class="product-grid">
-
-      <!-- PRODUCT CARD -->
-      <article class="product-card" data-id="classic" data-name="Classic Choc Chip" data-price="10">
-        <div class="product-image placeholder">Classic</div>
-        <div class="product-info">
-          <h3>Classic Choc Chip</h3>
-          <p>Golden soft cookie loaded with chocolate chips.</p>
-          <div class="product-bottom">
-            <span class="price">RM10</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="dark-seasalt" data-name="Dark Seasalt" data-price="11">
-        <div class="product-image placeholder">Dark</div>
-        <div class="product-info">
-          <h3>Dark Seasalt</h3>
-          <p>Deep chocolate cookie with a tiny salty attitude.</p>
-          <div class="product-bottom">
-            <span class="price">RM11</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="red-velvet" data-name="Red Velvet" data-price="11">
-        <div class="product-image placeholder">Red</div>
-        <div class="product-info">
-          <h3>Red Velvet</h3>
-          <p>Soft red velvet cookie with creamy chocolate notes.</p>
-          <div class="product-bottom">
-            <span class="price">RM11</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="matchadamia" data-name="Matchadamia" data-price="12">
-        <div class="product-image placeholder">Matcha</div>
-        <div class="product-info">
-          <h3>Matchadamia</h3>
-          <p>Matcha cookie with macadamia and milk chocolate.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="og-smores" data-name="OG S’mores" data-price="12">
-        <div class="product-image placeholder">S’mores</div>
-        <div class="product-info">
-          <h3>OG S’mores</h3>
-          <p>Campfire-style cookie with chocolate and marshmallow.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="dark-smores" data-name="Dark S’mores" data-price="12">
-        <div class="product-image placeholder">Dark S’mores</div>
-        <div class="product-info">
-          <h3>Dark S’mores</h3>
-          <p>Dark chocolate version of our messy campfire cookie.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="rocky-road" data-name="Rocky Road" data-price="12">
-        <div class="product-image placeholder">Rocky</div>
-        <div class="product-info">
-          <h3>Rocky Road</h3>
-          <p>Chocolate, nuts, and marshmallow in one chaotic bite.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="biscoff-lava" data-name="Biscoff Lava" data-price="12">
-        <div class="product-image placeholder">Biscoff</div>
-        <div class="product-info">
-          <h3>Biscoff Lava</h3>
-          <p>Soft cookie filled with warm spiced Biscoff lava.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="choco-lava" data-name="Choco Lava" data-price="12">
-        <div class="product-image placeholder">Lava</div>
-        <div class="product-info">
-          <h3>Choco Lava</h3>
-          <p>Chocolate cookie with rich molten chocolate filling.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="tiramisu-lava" data-name="Tiramisu Lava" data-price="12">
-        <div class="product-image placeholder">Tiramisu</div>
-        <div class="product-info">
-          <h3>Tiramisu Lava</h3>
-          <p>Coffee-kissed cookie with creamy tiramisu-inspired lava.</p>
-          <div class="product-bottom">
-            <span class="price">RM12</span>
-            <button class="add-to-cart">Add</button>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </main>
-
   <!-- FLOATING CART -->
-  <button class="floating-cart" id="floatingCartBtn">
-    <span>View Cart</span>
-    <strong id="floatingCartCount">0</strong>
+  <button class="floating-cart" id="openCartBtn">
+    <span class="cart-icon">🛒</span>
+    <span id="cartQty">0 Gookies</span>
+    <span id="cartTotal">RM0</span>
   </button>
 
-  <!-- CART DRAWER OVERLAY -->
-  <div class="cart-overlay" id="cartOverlay"></div>
-
-  <!-- CART DRAWER -->
-  <aside class="cart-drawer" id="cartDrawer">
-
-    <div class="drawer-header">
-      <div>
-        <p class="eyebrow">Your Order</p>
-        <h2>Cart</h2>
-      </div>
-      <button class="close-drawer" id="closeCartBtn">×</button>
+  <!-- MENU SECTION PLACEHOLDER -->
+  <section class="menu-section" id="menu">
+    <div class="section-deco">
+      <span></span>
+      ★ ★ ★
+      <span></span>
     </div>
 
-    <div class="cart-items" id="cartItems">
-      <p class="empty-cart">Your cart is still empty.</p>
-    </div>
+    <h2>Our Signature Gookies</h2>
+    <p class="section-subtitle">
+      Choose your chunky wonders. Combo discounts will be applied automatically.
+    </p>
+  </section>
 
-    <!-- CUSTOMER FORM PLACEHOLDER -->
-    <form class="customer-form" id="customerForm">
-      <h3>Customer Details</h3>
-
-      <label>
-        Name
-        <input type="text" id="customerName" placeholder="Your name" />
-      </label>
-
-      <label>
-        Phone Number
-        <input type="tel" id="customerPhone" placeholder="01X-XXXXXXX" />
-      </label>
-
-      <label>
-        Order Method
-        <select id="orderMethod">
-          <option value="pickup">Pickup</option>
-          <option value="delivery">Delivery</option>
-        </select>
-      </label>
-
-     <label id="addressLabel">
-  Delivery Address / Pickup Notes
-  <textarea id="customerAddress" placeholder="Delivery address or pickup notes"></textarea>
-</label>
-
-    <!-- CART SUMMARY -->
-    <div class="cart-summary">
-      <div>
-        <span>Subtotal</span>
-        <strong id="subtotal">RM0</strong>
-      </div>
-
-      <div>
-        <span>Combo Discount</span>
-        <strong id="discount">- RM0</strong>
-      </div>
-
-      <div>
-        <span>Delivery Charge</span>
-        <strong id="deliveryCharge">RM0</strong>
-      </div>
-
-      <div class="grand-total">
-        <span>Total</span>
-        <strong id="grandTotal">RM0</strong>
-      </div>
-    </div>
-
-   <div class="drawer-actions">
-  <button class="pay-button" id="payNowBtn">
-    Pay Now
-  </button>
-
-  <button class="checkout-button" id="checkoutBtn">
-    Checkout via WhatsApp
-  </button>
-</div>
-
-  </aside>
-
-<!-- PAYMENT QR POPUP -->
-<div class="qr-popup-overlay" id="qrPopupOverlay"></div>
-
-<div class="qr-popup" id="qrPopup">
-  <button class="close-qr" id="closeQrBtn">×</button>
-
-  <p class="eyebrow">Payment</p>
-  <h2>Scan to Pay</h2>
-
-  <div class="qr-box">
-    <p>QR Code Here</p>
-  </div>
-
-  <p class="qr-note">
-    After payment, please send your receipt via WhatsApp.
-  </p>
-</div>
-  
   <script src="script.js"></script>
 </body>
 </html>
