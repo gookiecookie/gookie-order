@@ -1,20 +1,21 @@
-/* ================================
-   GOOKIE ORDER PAGE SCRIPT
+/* ===============================
+   GOOKIE ORDER PAGE
+   script.js
 ================================ */
 
 const cart = [];
 
-const addButtons = document.querySelectorAll(".add-to-cart");
-const cartCount = document.getElementById("cartCount");
-const floatingCartCount = document.getElementById("floatingCartCount");
-const cartItems = document.getElementById("cartItems");
+const addButtons = document.querySelectorAll(".add-btn");
+const floatingQty = document.getElementById("floatingQty");
+const floatingTotal = document.getElementById("floatingTotal");
 
 const openCartBtn = document.getElementById("openCartBtn");
-const floatingCartBtn = document.getElementById("floatingCartBtn");
 const closeCartBtn = document.getElementById("closeCartBtn");
 const cartDrawer = document.getElementById("cartDrawer");
 const cartOverlay = document.getElementById("cartOverlay");
+const cartItems = document.getElementById("cartItems");
 
+const comboMessage = document.getElementById("comboMessage");
 const subtotalEl = document.getElementById("subtotal");
 const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
@@ -22,16 +23,10 @@ const grandTotalEl = document.getElementById("grandTotal");
 
 const orderMethod = document.getElementById("orderMethod");
 const checkoutBtn = document.getElementById("checkoutBtn");
-const addressLabel = document.getElementById("addressLabel");
 
-const qrPopup = document.getElementById("qrPopup");
-const qrPopupOverlay = document.getElementById("qrPopupOverlay");
-const closeQrBtn = document.getElementById("closeQrBtn");
-const payNowBtn = document.getElementById("payNowBtn");
-
-/* ================================
-   CART DRAWER
-================================ */
+function formatRM(amount) {
+  return `RM${amount.toFixed(2).replace(".00", "")}`;
+}
 
 function openCart() {
   cartDrawer.classList.add("active");
@@ -44,35 +39,8 @@ function closeCart() {
 }
 
 openCartBtn.addEventListener("click", openCart);
-floatingCartBtn.addEventListener("click", openCart);
 closeCartBtn.addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
-
-function openQrPopup() {
-  qrPopup.classList.add("active");
-  qrPopupOverlay.classList.add("active");
-}
-
-function closeQrPopup() {
-  qrPopup.classList.remove("active");
-  qrPopupOverlay.classList.remove("active");
-}
-
-payNowBtn.addEventListener("click", () => {
-  if (cart.length === 0) {
-    alert("Your cart is empty.");
-    return;
-  }
-
-  openQrPopup();
-});
-
-closeQrBtn.addEventListener("click", closeQrPopup);
-qrPopupOverlay.addEventListener("click", closeQrPopup);
-
-/* ================================
-   ADD TO CART
-================================ */
 
 addButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -86,7 +54,6 @@ addButtons.forEach((button) => {
     };
 
     addToCart(product);
-    openCart();
   });
 });
 
@@ -102,18 +69,17 @@ function addToCart(product) {
   renderCart();
 }
 
-/* ================================
-   CART ACTIONS
-================================ */
-
-function increaseQuantity(id) {
+function increaseQty(id) {
   const item = cart.find((product) => product.id === id);
-  if (item) item.quantity += 1;
+
+  if (item) {
+    item.quantity += 1;
+  }
 
   renderCart();
 }
 
-function decreaseQuantity(id) {
+function decreaseQty(id) {
   const item = cart.find((product) => product.id === id);
 
   if (!item) return;
@@ -138,23 +104,17 @@ function removeItem(id) {
   renderCart();
 }
 
-/* ================================
-   CALCULATION
-================================ */
-
-function getTotalQuantity() {
-  return cart.reduce((total, item) => total + item.quantity, 0);
+function getTotalQty() {
+  return cart.reduce((sum, item) => sum + item.quantity, 0);
 }
 
 function getSubtotal() {
-  return cart.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
+  return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
-function getComboDiscount(totalQuantity) {
-  if (totalQuantity >= 6) return 8;
-  if (totalQuantity >= 4) return 5;
+function getComboDiscount(totalQty) {
+  if (totalQty >= 6) return 8;
+  if (totalQty >= 4) return 5;
   return 0;
 }
 
@@ -162,79 +122,64 @@ function getDeliveryCharge() {
   return orderMethod.value === "delivery" ? 8 : 0;
 }
 
-function formatRM(amount) {
-  return `RM${amount.toFixed(2)}`;
+function updateComboMessage(totalQty, discount) {
+  if (totalQty >= 6) {
+    comboMessage.textContent = "🎉 Combo 6 applied. You saved RM8!";
+  } else if (totalQty >= 4) {
+    comboMessage.textContent = "🎉 Combo 4 applied. You saved RM5!";
+  } else {
+    const remaining = 4 - totalQty;
+    comboMessage.textContent = `Add ${remaining} more Gookie${remaining > 1 ? "s" : ""} to unlock RM5 savings.`;
+  }
 }
 
-/* ================================
-   RENDER CART
-================================ */
-
 function renderCart() {
-  const totalQuantity = getTotalQuantity();
+  const totalQty = getTotalQty();
   const subtotal = getSubtotal();
-  const discount = getComboDiscount(totalQuantity);
+  const discount = getComboDiscount(totalQty);
   const deliveryCharge = getDeliveryCharge();
   const grandTotal = subtotal - discount + deliveryCharge;
 
-  cartCount.textContent = totalQuantity;
-  floatingCartCount.textContent = totalQuantity;
+  floatingQty.textContent = `${totalQty} ${totalQty === 1 ? "Gookie" : "Gookies"}`;
+  floatingTotal.textContent = formatRM(grandTotal);
 
   subtotalEl.textContent = formatRM(subtotal);
-  discountEl.textContent = `- ${formatRM(discount)}`;
+  discountEl.textContent = `-${formatRM(discount)}`;
   deliveryChargeEl.textContent = formatRM(deliveryCharge);
   grandTotalEl.textContent = formatRM(grandTotal);
 
+  updateComboMessage(totalQty, discount);
+
   if (cart.length === 0) {
-    cartItems.innerHTML = `<p class="empty-cart">Your cart is still empty.</p>`;
+    cartItems.innerHTML = `
+      <p class="empty-cart">Your cart is still empty.</p>
+    `;
     return;
   }
 
   cartItems.innerHTML = cart
     .map((item) => {
+      const itemTotal = item.price * item.quantity;
+
       return `
         <div class="cart-item">
           <div>
             <h4>${item.name}</h4>
-            <p>${formatRM(item.price)} each</p>
+            <p>${item.quantity} × ${formatRM(item.price)} = ${formatRM(itemTotal)}</p>
           </div>
 
-          <div class="cart-qty">
-            <button class="qty-btn" onclick="decreaseQuantity('${item.id}')">−</button>
+          <div class="qty-control">
+            <button onclick="decreaseQty('${item.id}')">−</button>
             <strong>${item.quantity}</strong>
-            <button class="qty-btn" onclick="increaseQuantity('${item.id}')">+</button>
+            <button onclick="increaseQty('${item.id}')">+</button>
           </div>
-
-          <button class="remove-btn" onclick="removeItem('${item.id}')">
-            Remove
-          </button>
         </div>
       `;
     })
     .join("");
 }
 
-function updateOrderMethodUI() {
-  if (orderMethod.value === "delivery") {
-    addressLabel.innerHTML = `
-      Delivery Address
-      <textarea id="customerAddress" placeholder="Enter your full delivery address"></textarea>
-    `;
-  } else {
-    addressLabel.innerHTML = `
-      Pickup Notes
-      <textarea id="customerAddress" placeholder="Preferred pickup time or notes"></textarea>
-    `;
-  }
-
-  renderCart();
-}
-
-orderMethod.addEventListener("change", updateOrderMethodUI);
-
-/* ================================
-   WHATSAPP CHECKOUT
-================================ */
+orderMethod.addEventListener("change", renderCart);
 
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
@@ -244,7 +189,8 @@ checkoutBtn.addEventListener("click", () => {
 
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
-  const address = document.getElementById("customerAddress").value.trim();
+  const date = document.getElementById("pickupDate").value.trim();
+  const notes = document.getElementById("customerNotes").value.trim();
   const method = orderMethod.value;
 
   if (!name || !phone) {
@@ -252,14 +198,9 @@ checkoutBtn.addEventListener("click", () => {
     return;
   }
 
-  if (method === "delivery" && !address) {
-    alert("Please fill in your delivery address.");
-    return;
-  }
-
-  const totalQuantity = getTotalQuantity();
+  const totalQty = getTotalQty();
   const subtotal = getSubtotal();
-  const discount = getComboDiscount(totalQuantity);
+  const discount = getComboDiscount(totalQty);
   const deliveryCharge = getDeliveryCharge();
   const grandTotal = subtotal - discount + deliveryCharge;
 
@@ -275,7 +216,8 @@ checkoutBtn.addEventListener("click", () => {
     `Name: ${name}%0A` +
     `Phone: ${phone}%0A` +
     `Method: ${method}%0A` +
-    `Address / Notes: ${address || "-"}%0A%0A` +
+    `Date/Time: ${date || "-"}%0A` +
+    `Notes/Address: ${notes || "-"}%0A%0A` +
     `*Order*%0A` +
     `${orderList}%0A%0A` +
     `Subtotal: ${formatRM(subtotal)}%0A` +
@@ -289,5 +231,4 @@ checkoutBtn.addEventListener("click", () => {
   window.open(whatsappURL, "_blank");
 });
 
-/* Initial render */
-updateOrderMethodUI();
+renderCart();
