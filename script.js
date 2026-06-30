@@ -239,7 +239,24 @@ payNowBtn.addEventListener("click", () => {
     `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
     `*Total: ${formatRM(grandTotal)}*`;
 
-  window.open(`https://wa.me/60102810487?text=${message}`, "_blank");
+  paymentTotal.textContent = formatRM(grandTotal);
+
+paymentOverlay.classList.add("active");
+paymentPopup.classList.add("active");
+});
+
+closePaymentBtn.addEventListener("click", () => {
+
+    paymentPopup.classList.remove("active");
+    paymentOverlay.classList.remove("active");
+
+});
+
+paymentOverlay.addEventListener("click", () => {
+
+    paymentPopup.classList.remove("active");
+    paymentOverlay.classList.remove("active");
+
 });
 
 setOrderMethod("pickup");
