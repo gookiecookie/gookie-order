@@ -28,6 +28,8 @@ const deliveryAddress = document.getElementById("deliveryAddress");
 
 let selectedMethod = "pickup";
 
+let savedWhatsappURL = "";
+
 function formatRM(amount) {
   return `RM${amount.toFixed(2).replace(".00", "")}`;
 }
@@ -239,11 +241,11 @@ payNowBtn.addEventListener("click", () => {
     `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
     `*Total: ${formatRM(grandTotal)}*`;
 
-  paymentTotal.textContent = formatRM(grandTotal);
+  savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
+paymentTotal.textContent = formatRM(grandTotal);
 paymentOverlay.classList.add("active");
 paymentPopup.classList.add("active");
-});
 
 closePaymentBtn.addEventListener("click", () => {
 
