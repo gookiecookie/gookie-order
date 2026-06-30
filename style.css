@@ -30,7 +30,7 @@ html {
 body {
   background: var(--cream);
   color: var(--brown);
-  font-family: Arial, Helvetica, Poppins;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
   padding-bottom: 110px;
 }
@@ -445,7 +445,7 @@ a {
 
 .cart-drawer h2 {
   margin-top: 8px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Poppins", serif;
   font-size: 48px;
   line-height: 1;
   color: var(--brown);
