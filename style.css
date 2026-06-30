@@ -668,3 +668,20 @@ a {
     padding: 38px 22px 24px;
   }
 }
+ /* MOBILE FLOATING CART FIX */
+@media (max-width: 760px) {
+  .floating-cart {
+    position: fixed !important;
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 18px !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    z-index: 999 !important;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
+}
