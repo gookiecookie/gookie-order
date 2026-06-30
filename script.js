@@ -25,6 +25,7 @@ const deliveryBtn = document.getElementById("deliveryBtn");
 const pickupDate = document.getElementById("pickupDate");
 const shippingMessage = document.getElementById("shippingMessage");
 const deliveryAddress = document.getElementById("deliveryAddress");
+const proofCheck = document.getElementById("proofCheck");
 
 let selectedMethod = "pickup";
 let savedWhatsappURL = "";
