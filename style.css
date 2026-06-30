@@ -560,6 +560,20 @@ a {
 @media (max-width: 760px) {
   .promo-bar {
     font-size: 14px;
+    .floating-cart {
+    position: fixed;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    z-index: 60;
+  }
+
+  body {
+    padding-bottom: 95px;
+  }
   }
 
   .site-header {
