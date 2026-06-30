@@ -560,7 +560,7 @@ a {
 @media (max-width: 760px) {
   .promo-bar {
     font-size: 14px;
-    .floating-cart {
+   .floating-cart {
     position: fixed;
     left: 18px;
     right: 18px;
