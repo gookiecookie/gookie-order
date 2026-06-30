@@ -245,7 +245,7 @@ payNowBtn.addEventListener("click", () => {
 paymentTotal.textContent = formatRM(grandTotal);
 paymentOverlay.classList.add("active");
 paymentPopup.classList.add("active");
-
+});
 closePaymentBtn.addEventListener("click", () => {
 
     paymentPopup.classList.remove("active");
