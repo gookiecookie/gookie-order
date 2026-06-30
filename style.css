@@ -419,7 +419,6 @@ body {
 }
 
 .qty {
-  display:flex;
   align-items:center;
   gap:8px;
   padding:5px;
