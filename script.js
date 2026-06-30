@@ -260,10 +260,10 @@ paymentOverlay.addEventListener("click", () => {
 
 });
 
-setOrderMethod("pickup");
-
-                           paidBtn.addEventListener("click", () => {
+paidBtn.addEventListener("click", () => {
   if (savedWhatsappURL) {
     window.open(savedWhatsappURL, "_blank");
   }
 });
+
+setOrderMethod("pickup");
