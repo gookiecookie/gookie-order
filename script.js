@@ -183,7 +183,7 @@ function renderCart() {
   `).join("");
 }
 
-checkoutBtn.addEventListener("click", () => {
+payNowBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     alert("Your cart is empty.");
     return;
