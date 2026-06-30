@@ -413,7 +413,7 @@ body {
     transform:scale(1.07) rotate(-2deg);
 }
 .price {
-  color:var(--primary);
+  color:var(--primary-dark);
   font-weight:500;
   font-size:22px
 }
