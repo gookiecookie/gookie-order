@@ -431,17 +431,26 @@ body {
     border-radius:999px;
 }
 
-.qty button,.mini-controls button {
-  width:34px;
-  height:34px;
-  border:none;
-  background:var(--primary);
-  color:white;
-  border-radius:50%;
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s ease
+.qty button{
+
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#BB191A;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    flex-shrink:0;
 }
 
 .qty button:hover,.mini-controls button:hover {
