@@ -5,7 +5,7 @@
 
 const cart = [];
 
-const addButtons = document.querySelectorAll(".add-btn");
+const menuCards = document.querySelectorAll(".product-card");
 const floatingQty = document.getElementById("floatingQty");
 const floatingTotal = document.getElementById("floatingTotal");
 
@@ -42,19 +42,39 @@ openCartBtn.addEventListener("click", openCart);
 closeCartBtn.addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
-addButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".product-card");
+menuCards.forEach((card) => {
+
+  const plus = card.querySelector(".menu-plus");
+  const minus = card.querySelector(".menu-minus");
+  const count = card.querySelector(".menu-count");
+
+  plus.addEventListener("click", () => {
 
     const product = {
       id: card.dataset.id,
       name: card.dataset.name,
       price: Number(card.dataset.price),
-      quantity: 1,
+      quantity: 1
     };
 
     addToCart(product);
+
+    const item = cart.find(p => p.id === product.id);
+
+    count.textContent = item.quantity;
+
   });
+
+  minus.addEventListener("click", () => {
+
+    decreaseQty(card.dataset.id);
+
+    const item = cart.find(p => p.id === card.dataset.id);
+
+    count.textContent = item ? item.quantity : 0;
+
+  });
+
 });
 
 function addToCart(product) {
@@ -155,6 +175,16 @@ function renderCart() {
       <p class="empty-cart">Your cart is still empty.</p>
     `;
     return;
+
+menuCards.forEach((card) => {
+
+  const count = card.querySelector(".menu-count");
+
+  const item = cart.find(p => p.id === card.dataset.id);
+
+  count.textContent = item ? item.quantity : 0;
+
+});
   }
 
   cartItems.innerHTML = cart
