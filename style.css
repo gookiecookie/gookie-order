@@ -1,12 +1,13 @@
 id="swv94t"
 :root {
   --red: #bb191a;
-  --cream: #fff8ef;
-  --soft-cream: #f7eadb;
+  --cream: #fff3e4;
+  --soft-cream: #ffe3c7;
+  --blush: #f8d8c7;
   --dark: #241816;
-  --muted: #7c6861;
+  --muted: #82665d;
   --white: #ffffff;
-  --border: rgba(187, 25, 26, 0.18);
+  --border: rgba(187, 25, 26, 0.16);
   --shadow: 0 18px 45px rgba(36, 24, 22, 0.12);
   --radius: 24px;
 }
@@ -123,8 +124,9 @@ a {
   text-align: center;
   padding: 80px 6%;
   background:
-    radial-gradient(circle at top left, rgba(187, 25, 26, 0.16), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(187, 25, 26, 0.1), transparent 38%);
+    radial-gradient(circle at 20% 20%, rgba(187, 25, 26, 0.14), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(248, 216, 199, 0.75), transparent 34%),
+    var(--cream);
 }
 
 .eyebrow {
@@ -207,7 +209,9 @@ a {
   height: 170px;
   display: grid;
   place-items: center;
-  background: var(--soft-cream);
+  background:
+    radial-gradient(circle, #fffaf4 0 38%, transparent 39%),
+    linear-gradient(135deg, var(--soft-cream), var(--blush));
   color: var(--red);
   font-weight: 900;
   font-size: 24px;
