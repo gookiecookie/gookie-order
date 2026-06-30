@@ -329,3 +329,4 @@ deliveryBtn.addEventListener("click", () => setOrderMethod("delivery"));
 
 // Initial state bila page mula dibuka
 setOrderMethod("pickup");
+renderCart();
