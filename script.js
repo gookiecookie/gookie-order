@@ -28,7 +28,7 @@ function renderProducts(){
     <article class="product-card">
       ${p.badge ? `<div class="badge">${p.badge}</div>` : ""}
       <div class="image-wrap">
-        <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/images/logo.png'">
+        <img src="${p.image}" alt="${p.name}" onerror="this.src='logo.png'">
       </div>
       <div class="product-body">
         <h3>${p.name}</h3>
