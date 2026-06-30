@@ -782,11 +782,19 @@ transition:.25s;
 }
 
 .method-btn.active{
-
 background:var(--red);
-
 color:white;
-
 border-color:var(--red);
+}
+
+.shipping-message{
+display:none;
+padding:16px;
+background:#fff8f2;
+border-radius:18px;
+font-size:16px;
+font-weight:700;
+color:#6f5b4d;
+margin-bottom:14px;
 
 }
