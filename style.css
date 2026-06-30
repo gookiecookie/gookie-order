@@ -33,7 +33,7 @@ html {
 body {
   margin:0;
   min-height:100vh;
-  font-family:"DM Sans",system-ui,sans-serif;
+  font-family:"Poppins",system-ui,sans-serif;
   color:var(--text);
   background:radial-gradient(circle at 12% 10%,rgba(187,25,26,.07),transparent 26%),linear-gradient(180deg,#fffaf4 0%,var(--cream) 55%,#fffdf9 100%);
   padding-bottom:112px
@@ -154,7 +154,7 @@ body {
   border-radius:var(--radius-lg);
   overflow:hidden;
   box-shadow:var(--shadow);
-  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.82) 38%,rgba(187,25,26,.20) 100%),url("assets/images/hero.png"),url("header.png");
+  background:linear-gradient(90deg,rgba(187,25,26,.94) 0%,rgba(187,25,26,.82) 38%,rgba(187,25,26,.20) 100%),url("hero.png"),url("header.png");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -190,7 +190,7 @@ body {
 }
 
 .hero h1,.section-title h2,.gift-card h2 {
-  font-family:"Playfair Display",serif
+  font-family:"Poppins",serif
 }
 
 .hero h1 {
