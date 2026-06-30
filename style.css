@@ -388,6 +388,23 @@ body {
   gap:12px
 }
 
+.card{
+    transition:.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 60px rgba(0,0,0,.15);
+}
+
+.card img{
+    transition:.35s ease;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
 .price {
   color:var(--primary);
   font-weight:900;
