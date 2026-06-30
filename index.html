@@ -217,45 +217,31 @@
     <div class="cart-items" id="cartItems"></div>
 
     <form class="checkout-form">
-<h3 class="form-title">
-    Your Details:
-</h3>
-      <input type="text" id="customerName" placeholder="Name" />
-      <input type="tel" id="customerPhone" placeholder="Phone number" />
+  <h3 class="form-title">Your Details:</h3>
 
-      <div class="delivery-toggle">
+  <input type="text" id="customerName" placeholder="Name" />
+  <input type="tel" id="customerPhone" placeholder="Phone number" />
 
-    <button
-        type="button"
-        class="method-btn active"
-        id="pickupBtn">
-
-        Self Pickup
-
+  <div class="delivery-toggle">
+    <button type="button" class="method-btn active" id="pickupBtn">
+      Self Pickup
     </button>
 
-    <button
-        type="button"
-        class="method-btn"
-        id="deliveryBtn">
-
-        Delivery
-
+    <button type="button" class="method-btn" id="deliveryBtn">
+      Delivery
     </button>
+  </div>
 
-</div>
+  <input type="text" id="pickupDate" placeholder="Pickup date & time" />
 
-      <input type="text" id="pickupDate" readonly placeholder="Pickup date & time" />
-    <div
-id="shippingMessage"
-class="shipping-message">
+  <div id="shippingMessage" class="shipping-message">
+    Gookies will be shipped within 3 business days.
+  </div>
 
-Gookies will be shipped within 3 working days.
+  <textarea id="deliveryAddress" class="hidden-field" placeholder="Delivery address"></textarea>
 
-</div>
-      <textarea id="customerNotes" placeholder="Notes / delivery address"></textarea>
-    </form>
-
+  <textarea id="customerNotes" placeholder="Notes"></textarea>
+</form>
     <div class="summary">
       <div>
         <span>Subtotal</span>
