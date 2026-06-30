@@ -264,3 +264,29 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 renderCart();
+
+const pickupBtn=document.getElementById("pickupBtn");
+const deliveryBtn=document.getElementById("deliveryBtn");
+const pickupDate=document.getElementById("pickupDate");
+const shippingMessage=document.getElementById("shippingMessage");
+
+pickupBtn.onclick=()=>{
+pickupBtn.classList.add("active");
+deliveryBtn.classList.remove("active");
+pickupDate.style.display="block";
+pickupDate.readOnly=false;
+shippingMessage.style.display="none";
+renderCart();
+
+}
+
+deliveryBtn.onclick=()=>{
+deliveryBtn.classList.add("active");
+pickupBtn.classList.remove("active");
+pickupDate.style.display="none";
+pickupDate.readOnly=true;
+shippingMessage.style.display="block";
+
+renderCart();
+
+}
