@@ -47,6 +47,19 @@ floatingCartBtn.addEventListener("click", openCart);
 closeCartBtn.addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
+function openQrPopup() {
+  qrPopup.classList.add("active");
+  qrPopupOverlay.classList.add("active");
+}
+
+function closeQrPopup() {
+  qrPopup.classList.remove("active");
+  qrPopupOverlay.classList.remove("active");
+}
+
+closeQrBtn.addEventListener("click", closeQrPopup);
+qrPopupOverlay.addEventListener("click", closeQrPopup);
+
 /* ================================
    ADD TO CART
 ================================ */
