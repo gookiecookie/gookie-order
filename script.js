@@ -171,7 +171,7 @@ function setOrderMethod(method) {
     shippingMessage.style.display = "block";
   }
 
-  setOrderMethod("pickup");
+  renderCart();
 }
 
 pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
@@ -323,3 +323,9 @@ shippingMessage.style.display="block";
 renderCart();
 
 }
+
+pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
+deliveryBtn.addEventListener("click", () => setOrderMethod("delivery"));
+
+// Initial state bila page mula dibuka
+setOrderMethod("pickup");
