@@ -1,14 +1,8 @@
-/* ===============================
-   GOOKIE ORDER PAGE
-   script.js
-================================ */
-
 const cart = [];
-
 const menuCards = document.querySelectorAll(".product-card");
+
 const floatingQty = document.getElementById("floatingQty");
 const floatingTotal = document.getElementById("floatingTotal");
-
 const openCartBtn = document.getElementById("openCartBtn");
 const closeCartBtn = document.getElementById("closeCartBtn");
 const cartDrawer = document.getElementById("cartDrawer");
@@ -50,87 +44,50 @@ openCartBtn.addEventListener("click", openCart);
 closeCartBtn.addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
-menuCards.forEach((card) => {
-
-  const plus = card.querySelector(".menu-plus");
-  const minus = card.querySelector(".menu-minus");
-  const count = card.querySelector(".menu-count");
-
-  plus.addEventListener("click", () => {
-
-    const product = {
-      id: card.dataset.id,
-      name: card.dataset.name,
-      price: Number(card.dataset.price),
-      quantity: 1
-    };
-
-    addToCart(product);
-
-    const item = cart.find(p => p.id === product.id);
-
-    count.textContent = item.quantity;
-
-  });
-
-  minus.addEventListener("click", () => {
-
-    decreaseQty(card.dataset.id);
-
-    const item = cart.find(p => p.id === card.dataset.id);
-
-    count.textContent = item ? item.quantity : 0;
-
-  });
-
-});
-
 function addToCart(product) {
   const existingItem = cart.find((item) => item.id === product.id);
-
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    cart.push(product);
-  }
-
+  if (existingItem) existingItem.quantity += 1;
+  else cart.push(product);
   renderCart();
 }
 
 function increaseQty(id) {
   const item = cart.find((product) => product.id === id);
-
-  if (item) {
-    item.quantity += 1;
-  }
-
+  if (item) item.quantity += 1;
   renderCart();
 }
 
 function decreaseQty(id) {
   const item = cart.find((product) => product.id === id);
-
   if (!item) return;
-
   item.quantity -= 1;
-
-  if (item.quantity <= 0) {
-    removeItem(id);
-    return;
-  }
-
+  if (item.quantity <= 0) removeItem(id);
   renderCart();
 }
 
 function removeItem(id) {
   const index = cart.findIndex((product) => product.id === id);
-
-  if (index !== -1) {
-    cart.splice(index, 1);
-  }
-
+  if (index !== -1) cart.splice(index, 1);
   renderCart();
 }
+
+menuCards.forEach((card) => {
+  const plus = card.querySelector(".menu-plus");
+  const minus = card.querySelector(".menu-minus");
+
+  plus.addEventListener("click", () => {
+    addToCart({
+      id: card.dataset.id,
+      name: card.dataset.name,
+      price: Number(card.dataset.price),
+      quantity: 1,
+    });
+  });
+
+  minus.addEventListener("click", () => {
+    decreaseQty(card.dataset.id);
+  });
+});
 
 function getTotalQty() {
   return cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -156,16 +113,12 @@ function setOrderMethod(method) {
   if (method === "pickup") {
     pickupBtn.classList.add("active");
     deliveryBtn.classList.remove("active");
-
     pickupDate.style.display = "block";
     deliveryAddress.style.display = "none";
     shippingMessage.style.display = "none";
-  }
-
-  if (method === "delivery") {
+  } else {
     deliveryBtn.classList.add("active");
     pickupBtn.classList.remove("active");
-
     pickupDate.style.display = "none";
     deliveryAddress.style.display = "block";
     shippingMessage.style.display = "block";
@@ -177,15 +130,18 @@ function setOrderMethod(method) {
 pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
 deliveryBtn.addEventListener("click", () => setOrderMethod("delivery"));
 
-function updateComboMessage(totalQty, discount) {
-  if (totalQty >= 6) {
-    comboMessage.textContent = "🎉 Combo 6 applied. You saved RM8!";
-  } else if (totalQty >= 4) {
-    comboMessage.textContent = "🎉 Combo 4 applied. You saved RM5!";
-  } else {
-    const remaining = 4 - totalQty;
-    comboMessage.textContent = `Add ${remaining} more Gookie${remaining > 1 ? "s" : ""} to unlock RM5 savings.`;
-  }
+function updateComboMessage(totalQty) {
+  if (totalQty >= 6) comboMessage.textContent = "🎉 Combo 6 applied. You saved RM8!";
+  else if (totalQty >= 4) comboMessage.textContent = "🎉 Combo 4 applied. You saved RM5!";
+  else comboMessage.textContent = `Add ${4 - totalQty} more Gookies to unlock RM5 savings.`;
+}
+
+function syncMenuCounts() {
+  menuCards.forEach((card) => {
+    const count = card.querySelector(".menu-count");
+    const item = cart.find((p) => p.id === card.dataset.id);
+    count.textContent = item ? item.quantity : 0;
+  });
 }
 
 function renderCart() {
@@ -203,45 +159,28 @@ function renderCart() {
   deliveryChargeEl.textContent = formatRM(deliveryCharge);
   grandTotalEl.textContent = formatRM(grandTotal);
 
-  updateComboMessage(totalQty, discount);
+  updateComboMessage(totalQty);
+  syncMenuCounts();
 
   if (cart.length === 0) {
-    cartItems.innerHTML = `
-      <p class="empty-cart">Your cart is still empty.</p>
-    `;
+    cartItems.innerHTML = `<p class="empty-cart">Your cart is still empty.</p>`;
     return;
-
-menuCards.forEach((card) => {
-
-  const count = card.querySelector(".menu-count");
-
-  const item = cart.find(p => p.id === card.dataset.id);
-
-  count.textContent = item ? item.quantity : 0;
-
-});
   }
 
-  cartItems.innerHTML = cart
-    .map((item) => {
-      const itemTotal = item.price * item.quantity;
+  cartItems.innerHTML = cart.map((item) => `
+    <div class="cart-item">
+      <div>
+        <h4>${item.name}</h4>
+        <p>${item.quantity} × ${formatRM(item.price)} = ${formatRM(item.price * item.quantity)}</p>
+      </div>
 
-      return `
-        <div class="cart-item">
-          <div>
-            <h4>${item.name}</h4>
-            <p>${item.quantity} × ${formatRM(item.price)} = ${formatRM(itemTotal)}</p>
-          </div>
-
-          <div class="qty-control">
-            <button onclick="decreaseQty('${item.id}')">−</button>
-            <strong>${item.quantity}</strong>
-            <button onclick="increaseQty('${item.id}')">+</button>
-          </div>
-        </div>
-      `;
-    })
-    .join("");
+      <div class="qty-control">
+        <button onclick="decreaseQty('${item.id}')">−</button>
+        <strong>${item.quantity}</strong>
+        <button onclick="increaseQty('${item.id}')">+</button>
+      </div>
+    </div>
+  `).join("");
 }
 
 checkoutBtn.addEventListener("click", () => {
@@ -252,13 +191,22 @@ checkoutBtn.addEventListener("click", () => {
 
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
-  const date = document.getElementById("pickupDate").value.trim();
+  const date = pickupDate.value.trim();
   const notes = document.getElementById("customerNotes").value.trim();
-  const method = selectedMethod;
-const deliveryAddressValue = deliveryAddress.value.trim();
+  const deliveryAddressValue = deliveryAddress.value.trim();
 
   if (!name || !phone) {
     alert("Please fill in your name and phone number.");
+    return;
+  }
+
+  if (selectedMethod === "pickup" && !date) {
+    alert("Please fill in your pickup date and time.");
+    return;
+  }
+
+  if (selectedMethod === "delivery" && !deliveryAddressValue) {
+    alert("Please fill in your delivery address.");
     return;
   }
 
@@ -268,65 +216,26 @@ const deliveryAddressValue = deliveryAddress.value.trim();
   const deliveryCharge = getDeliveryCharge();
   const grandTotal = subtotal - discount + deliveryCharge;
 
-  const orderList = cart
-    .map((item) => {
-      return `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`;
-    })
-    .join("%0A");
+  const orderList = cart.map((item) =>
+    `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`
+  ).join("%0A");
 
   const message =
     `Hi Gookie! I would like to place an order.%0A%0A` +
     `*Customer Details*%0A` +
     `Name: ${name}%0A` +
     `Phone: ${phone}%0A` +
-    `Method: ${method}%0A` +
-    `Date/Time: ${date || "-"}%0A` +
-    `Delivery Address: ${notes || "-"}%0A` +
-`Delivery Address: ${deliveryAddressValue || "-"}%0A%0A` +
-    `*Order*%0A` +
-    `${orderList}%0A%0A` +
+    `Method: ${selectedMethod}%0A` +
+    `Pickup Date/Time: ${selectedMethod === "pickup" ? date : "-"}%0A` +
+    `Delivery Address: ${selectedMethod === "delivery" ? deliveryAddressValue : "-"}%0A` +
+    `Notes: ${notes || "-"}%0A%0A` +
+    `*Order*%0A${orderList}%0A%0A` +
     `Subtotal: ${formatRM(subtotal)}%0A` +
     `Combo Discount: -${formatRM(discount)}%0A` +
     `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
     `*Total: ${formatRM(grandTotal)}*`;
 
-  const whatsappNumber = "60102810487";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-  window.open(whatsappURL, "_blank");
+  window.open(`https://wa.me/60102810487?text=${message}`, "_blank");
 });
 
-renderCart();
-
-const pickupBtn=document.getElementById("pickupBtn");
-const deliveryBtn=document.getElementById("deliveryBtn");
-const pickupDate=document.getElementById("pickupDate");
-const shippingMessage=document.getElementById("shippingMessage");
-
-pickupBtn.onclick=()=>{
-pickupBtn.classList.add("active");
-deliveryBtn.classList.remove("active");
-pickupDate.style.display="block";
-pickupDate.readOnly=false;
-shippingMessage.style.display="none";
-renderCart();
-
-}
-
-deliveryBtn.onclick=()=>{
-deliveryBtn.classList.add("active");
-pickupBtn.classList.remove("active");
-pickupDate.style.display="none";
-pickupDate.readOnly=true;
-shippingMessage.style.display="block";
-
-renderCart();
-
-}
-
-pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
-deliveryBtn.addEventListener("click", () => setOrderMethod("delivery"));
-
-// Initial state bila page mula dibuka
 setOrderMethod("pickup");
-renderCart();
