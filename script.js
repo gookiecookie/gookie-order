@@ -31,11 +31,13 @@ function formatRM(amount) {
 function openCart() {
   cartDrawer.classList.add("active");
   cartOverlay.classList.add("active");
+  document.body.classList.add("cart-open");
 }
 
 function closeCart() {
   cartDrawer.classList.remove("active");
   cartOverlay.classList.remove("active");
+  document.body.classList.remove("cart-open");
 }
 
 openCartBtn.addEventListener("click", openCart);
