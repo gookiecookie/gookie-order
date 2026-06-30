@@ -356,6 +356,35 @@ a {
   border-radius: 50%;
   font-size: 28px;
   font-weight: 900;
+.menu-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px;
+}
+
+.menu-qty button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--red);
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.menu-count {
+  min-width: 24px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--brown);
+}
 }
 
 /* CART OVERLAY */
