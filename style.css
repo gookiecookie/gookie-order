@@ -578,3 +578,78 @@ a {
     padding: 9px 14px;
   }
 }
+ /* QR PAYMENT POPUP */
+.qr-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: rgba(36, 24, 22, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.qr-popup-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.qr-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  width: min(360px, calc(100% - 32px));
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transform: translate(-50%, -50%) scale(0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.qr-popup.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.close-qr {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  background: var(--white);
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.qr-popup h2 {
+  color: var(--red);
+  font-size: 34px;
+  margin-bottom: 16px;
+}
+
+.qr-box {
+  width: 220px;
+  height: 220px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  background: var(--white);
+  border: 2px dashed var(--red);
+  border-radius: 20px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.qr-note {
+  color: var(--muted);
+  font-size: 14px;
+}
