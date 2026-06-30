@@ -129,3 +129,48 @@ overlay.addEventListener("click", () => {
   cartDrawer.classList.remove("open");
   overlay.classList.remove("show");
 });
+
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+checkoutBtn.addEventListener("click", () => {
+  let count = 0;
+  let subtotal = 0;
+  let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
+
+  products.forEach(p => {
+    const qty = cart[p.id] || 0;
+
+    if (qty > 0) {
+      count += qty;
+      subtotal += qty * p.price;
+      message += `%0A${qty}x ${p.name} - ${money(qty * p.price)}`;
+    }
+  });
+
+  if (count === 0) {
+    alert("Please add at least 1 cookie first.");
+    return;
+  }
+
+  let discount = 0;
+  if (count >= 6) discount = 8;
+  else if (count >= 4) discount = 5;
+
+  const total = subtotal - discount;
+
+  const name = document.getElementById("customerName").value;
+  const type = document.getElementById("orderType").value;
+  const date = document.getElementById("orderDate").value;
+  const note = document.getElementById("orderNote").value;
+
+  message += `%0A%0ASubtotal: ${money(subtotal)}`;
+  message += `%0ACombo Discount: -${money(discount)}`;
+  message += `%0ATotal: ${money(total)}`;
+
+  message += `%0A%0AName: ${encodeURIComponent(name)}`;
+  message += `%0AOrder Type: ${encodeURIComponent(type)}`;
+  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
+  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+});
