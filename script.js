@@ -27,6 +27,7 @@ const addressLabel = document.getElementById("addressLabel");
 const qrPopup = document.getElementById("qrPopup");
 const qrPopupOverlay = document.getElementById("qrPopupOverlay");
 const closeQrBtn = document.getElementById("closeQrBtn");
+const payNowBtn = document.getElementById("payNowBtn");
 
 /* ================================
    CART DRAWER
@@ -56,6 +57,15 @@ function closeQrPopup() {
   qrPopup.classList.remove("active");
   qrPopupOverlay.classList.remove("active");
 }
+
+payNowBtn.addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  openQrPopup();
+});
 
 closeQrBtn.addEventListener("click", closeQrPopup);
 qrPopupOverlay.addEventListener("click", closeQrPopup);
