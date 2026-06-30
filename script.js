@@ -27,7 +27,6 @@ const shippingMessage = document.getElementById("shippingMessage");
 const deliveryAddress = document.getElementById("deliveryAddress");
 
 let selectedMethod = "pickup";
-
 let savedWhatsappURL = "";
 
 function formatRM(amount) {
