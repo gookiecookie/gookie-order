@@ -22,6 +22,7 @@ const grandTotalEl = document.getElementById("grandTotal");
 
 const orderMethod = document.getElementById("orderMethod");
 const checkoutBtn = document.getElementById("checkoutBtn");
+const addressLabel = document.getElementById("addressLabel");
 
 /* ================================
    CART DRAWER
@@ -186,7 +187,23 @@ function renderCart() {
     .join("");
 }
 
-orderMethod.addEventListener("change", renderCart);
+function updateOrderMethodUI() {
+  if (orderMethod.value === "delivery") {
+    addressLabel.innerHTML = `
+      Delivery Address
+      <textarea id="customerAddress" placeholder="Enter your full delivery address"></textarea>
+    `;
+  } else {
+    addressLabel.innerHTML = `
+      Pickup Notes
+      <textarea id="customerAddress" placeholder="Preferred pickup time or notes"></textarea>
+    `;
+  }
+
+  renderCart();
+}
+
+orderMethod.addEventListener("change", updateOrderMethodUI);
 
 /* ================================
    WHATSAPP CHECKOUT
@@ -246,4 +263,4 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 /* Initial render */
-renderCart();
+updateOrderMethodUI();
