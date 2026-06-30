@@ -202,17 +202,22 @@ a {
 
 /* FLOATING CART */
 .floating-cart {
-  position: sticky;
+  position: fixed;
+  left: 50%;
   bottom: 22px;
-  z-index: 30;
+  transform: translateX(-50%);
+  z-index: 999;
+
   width: 540px;
   max-width: calc(100% - 36px);
   height: 74px;
-  margin: -38px auto 0;
+  margin: 0;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   gap: 18px;
+
   background: linear-gradient(180deg, #d71920, var(--red));
   color: white;
   border-radius: 999px;
