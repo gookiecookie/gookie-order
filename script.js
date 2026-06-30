@@ -281,7 +281,7 @@ const deliveryAddressValue = deliveryAddress.value.trim();
     `Phone: ${phone}%0A` +
     `Method: ${method}%0A` +
     `Date/Time: ${date || "-"}%0A` +
-    `Notes: ${notes || "-"}%0A` +
+    `Delivery Address: ${notes || "-"}%0A` +
 `Delivery Address: ${deliveryAddressValue || "-"}%0A%0A` +
     `*Order*%0A` +
     `${orderList}%0A%0A` +
