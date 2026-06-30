@@ -418,13 +418,17 @@ body {
   font-size:22px
 }
 
-.qty {
-  align-items:center;
-  gap:8px;
-  padding:5px;
-  border-radius:var(--radius-pill);
-  background:var(--cream);
-  border:1px solid rgba(187,25,26,.08)
+.qty{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    width:fit-content;
+    margin-left:auto;
+    padding:6px 10px;
+    background:#fff8f2;
+    border:1px solid #f2d9c9;
+    border-radius:999px;
 }
 
 .qty button,.mini-controls button {
