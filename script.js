@@ -1,176 +1,249 @@
-const WHATSAPP_NUMBER = "60102810487";
+/* ================================
+   GOOKIE ORDER PAGE SCRIPT
+================================ */
 
-const products = [
-  { id:"classic", name:"Classic Choc Chip", price:8, image:"classic choc chip.png", desc:"Golden vanilla cookie loaded with chocolate chips." },
-  { id:"dark", name:"Dark Seasalt", price:8, image:"dark seasalt.png", desc:"Rich cocoa cookie with sea salt flakes." },
-  { id:"red", name:"Red Velvet", price:9, image:"red velvet.png", desc:"Velvety cocoa cookie with creamy chocolate notes." },
-  { id:"matcha", name:"Matchadamia", price:10, image:"matchadamia.png", desc:"Matcha cookie with macadamia and chocolate." },
-  { id:"smores", name:"Smores", price:10, image:"smores.png", desc:"Classic cookie with toasted marshmallow." },
-  { id:"berry", name:"White Berry", price:10, image:"white berry.png", desc:"Berry chocolate cookie with a tangy twist." },
-  { id:"biscoff", name:"Biscoff Lava", price:11, image:"biscoff lava.png", desc:"Biscoff cookie butter lava centre." },
-  { id:"choco", name:"Choco Lava", price:11, image:"choco lava.png", desc:"Molten chocolate lava centre." },
-  { id:"tiramisu", name:"Tiramisu Lava", price:11, image:"tiramisu lava.png", desc:"Coffee-kissed tiramisu inspired cookie." }
-];
+const cart = [];
 
-const cart = {};
+const addButtons = document.querySelectorAll(".add-to-cart");
+const cartCount = document.getElementById("cartCount");
+const floatingCartCount = document.getElementById("floatingCartCount");
+const cartItems = document.getElementById("cartItems");
 
-const grid = document.getElementById("productGrid");
-
-function money(n) {
-  return "RM" + n;
-}
-
-function renderProducts() {
-  grid.innerHTML = products.map(p => `
-    <article class="card">
-      <div class="card-img-wrap">
-        <img src="${p.image}" alt="${p.name}">
-      </div>
-
-      <div class="card-body">
-        <h3>${p.name}</h3>
-        <p>${p.desc}</p>
-
-        <div class="card-footer">
-          <div class="price">${money(p.price)}</div>
-
-          <div class="qty">
-            <button onclick="changeQty('${p.id}', -1)">−</button>
-            <span id="qty-${p.id}">0</span>
-            <button onclick="changeQty('${p.id}', 1)">+</button>
-          </div>
-        </div>
-      </div>
-    </article>
-  `).join("");
-}
-
-function changeQty(id, amount) {
-  cart[id] = (cart[id] || 0) + amount;
-
-  if (cart[id] < 0) cart[id] = 0;
-
-  updateCart();
-}
-
-function updateCart() {
-  let count = 0;
-  let subtotal = 0;
-  let cartHTML = "";
-
-  products.forEach(p => {
-    const qty = cart[p.id] || 0;
-    count += qty;
-    subtotal += qty * p.price;
-
-    const qtyEl = document.getElementById("qty-" + p.id);
-    if (qtyEl) qtyEl.innerText = qty;
-
-    if (qty > 0) {
-      cartHTML += `
-        <div class="cart-row">
-          <div>
-            <strong>${p.name}</strong><br>
-            <small>${qty} × ${money(p.price)}</small>
-          </div>
-          <div class="mini-controls">
-            <button onclick="changeQty('${p.id}', -1)">−</button>
-            <strong>${qty}</strong>
-            <button onclick="changeQty('${p.id}', 1)">+</button>
-          </div>
-        </div>
-      `;
-    }
-  });
-
-  let discount = 0;
-  if (count >= 6) discount = 8;
-  else if (count >= 4) discount = 5;
-
-  const total = subtotal - discount;
-
-  document.getElementById("cartCount").innerText = count + " cookies";
-  document.getElementById("cartTotal").innerText = money(total);
-
-  document.getElementById("cartItems").innerHTML =
-    cartHTML || `<p style="text-align:center;color:#74665E;">Your cart is empty.</p>`;
-
-  document.getElementById("subtotal").innerText = money(subtotal);
-  document.getElementById("discount").innerText = "-" + money(discount);
-  document.getElementById("grandTotal").innerText = money(total);
-
-  let comboText = "Add 4 cookies to save RM5.";
-  if (count >= 6) comboText = "🎉 Combo 6 applied. You saved RM8!";
-  else if (count >= 4) comboText = "🎉 Combo 4 applied. You saved RM5!";
-  else if (count > 0) comboText = `Add ${4 - count} more cookie(s) to save RM5.`;
-
-  document.getElementById("comboMessage").innerText = comboText;
-}
-
-renderProducts();
-updateCart();
-
-const openCartBtn = document.getElementById("openCart");
-const closeCartBtn = document.getElementById("closeCart");
+const openCartBtn = document.getElementById("openCartBtn");
+const floatingCartBtn = document.getElementById("floatingCartBtn");
+const closeCartBtn = document.getElementById("closeCartBtn");
 const cartDrawer = document.getElementById("cartDrawer");
-const overlay = document.getElementById("overlay");
+const cartOverlay = document.getElementById("cartOverlay");
 
-openCartBtn.addEventListener("click", () => {
-  cartDrawer.classList.add("open");
-  overlay.classList.add("show");
-});
+const subtotalEl = document.getElementById("subtotal");
+const discountEl = document.getElementById("discount");
+const deliveryChargeEl = document.getElementById("deliveryCharge");
+const grandTotalEl = document.getElementById("grandTotal");
 
-closeCartBtn.addEventListener("click", () => {
-  cartDrawer.classList.remove("open");
-  overlay.classList.remove("show");
-});
-
-overlay.addEventListener("click", () => {
-  cartDrawer.classList.remove("open");
-  overlay.classList.remove("show");
-});
-
+const orderMethod = document.getElementById("orderMethod");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
-checkoutBtn.addEventListener("click", () => {
-  let count = 0;
-  let subtotal = 0;
-  let message = "Hi Gookie! 🍪%0A%0AI want to order:%0A";
+/* ================================
+   CART DRAWER
+================================ */
 
-  products.forEach(p => {
-    const qty = cart[p.id] || 0;
+function openCart() {
+  cartDrawer.classList.add("active");
+  cartOverlay.classList.add("active");
+}
 
-    if (qty > 0) {
-      count += qty;
-      subtotal += qty * p.price;
-      message += `%0A${qty}x ${p.name} - ${money(qty * p.price)}`;
-    }
+function closeCart() {
+  cartDrawer.classList.remove("active");
+  cartOverlay.classList.remove("active");
+}
+
+openCartBtn.addEventListener("click", openCart);
+floatingCartBtn.addEventListener("click", openCart);
+closeCartBtn.addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+
+/* ================================
+   ADD TO CART
+================================ */
+
+addButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const card = button.closest(".product-card");
+
+    const product = {
+      id: card.dataset.id,
+      name: card.dataset.name,
+      price: Number(card.dataset.price),
+      quantity: 1,
+    };
+
+    addToCart(product);
+    openCart();
   });
+});
 
-  if (count === 0) {
-    alert("Please add at least 1 cookie first.");
+function addToCart(product) {
+  const existingItem = cart.find((item) => item.id === product.id);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push(product);
+  }
+
+  renderCart();
+}
+
+/* ================================
+   CART ACTIONS
+================================ */
+
+function increaseQuantity(id) {
+  const item = cart.find((product) => product.id === id);
+  if (item) item.quantity += 1;
+
+  renderCart();
+}
+
+function decreaseQuantity(id) {
+  const item = cart.find((product) => product.id === id);
+
+  if (!item) return;
+
+  item.quantity -= 1;
+
+  if (item.quantity <= 0) {
+    removeItem(id);
     return;
   }
 
-  let discount = 0;
-  if (count >= 6) discount = 8;
-  else if (count >= 4) discount = 5;
+  renderCart();
+}
 
-  const total = subtotal - discount;
+function removeItem(id) {
+  const index = cart.findIndex((product) => product.id === id);
 
-  const name = document.getElementById("customerName").value;
-  const type = document.getElementById("orderType").value;
-  const date = document.getElementById("orderDate").value;
-  const note = document.getElementById("orderNote").value;
+  if (index !== -1) {
+    cart.splice(index, 1);
+  }
 
-  message += `%0A%0ASubtotal: ${money(subtotal)}`;
-  message += `%0ACombo Discount: -${money(discount)}`;
-  message += `%0ATotal: ${money(total)}`;
+  renderCart();
+}
 
-  message += `%0A%0AName: ${encodeURIComponent(name)}`;
-  message += `%0AOrder Type: ${encodeURIComponent(type)}`;
-  message += `%0APreferred Date/Time: ${encodeURIComponent(date)}`;
-  message += `%0ANotes/Address: ${encodeURIComponent(note)}`;
+/* ================================
+   CALCULATION
+================================ */
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+function getTotalQuantity() {
+  return cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+function getSubtotal() {
+  return cart.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+}
+
+function getComboDiscount(totalQuantity) {
+  if (totalQuantity >= 6) return 8;
+  if (totalQuantity >= 4) return 5;
+  return 0;
+}
+
+function getDeliveryCharge() {
+  return orderMethod.value === "delivery" ? 8 : 0;
+}
+
+function formatRM(amount) {
+  return `RM${amount.toFixed(2)}`;
+}
+
+/* ================================
+   RENDER CART
+================================ */
+
+function renderCart() {
+  const totalQuantity = getTotalQuantity();
+  const subtotal = getSubtotal();
+  const discount = getComboDiscount(totalQuantity);
+  const deliveryCharge = getDeliveryCharge();
+  const grandTotal = subtotal - discount + deliveryCharge;
+
+  cartCount.textContent = totalQuantity;
+  floatingCartCount.textContent = totalQuantity;
+
+  subtotalEl.textContent = formatRM(subtotal);
+  discountEl.textContent = `- ${formatRM(discount)}`;
+  deliveryChargeEl.textContent = formatRM(deliveryCharge);
+  grandTotalEl.textContent = formatRM(grandTotal);
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = `<p class="empty-cart">Your cart is still empty.</p>`;
+    return;
+  }
+
+  cartItems.innerHTML = cart
+    .map((item) => {
+      return `
+        <div class="cart-item">
+          <div>
+            <h4>${item.name}</h4>
+            <p>${formatRM(item.price)} each</p>
+          </div>
+
+          <div class="cart-qty">
+            <button class="qty-btn" onclick="decreaseQuantity('${item.id}')">−</button>
+            <strong>${item.quantity}</strong>
+            <button class="qty-btn" onclick="increaseQuantity('${item.id}')">+</button>
+          </div>
+
+          <button class="remove-btn" onclick="removeItem('${item.id}')">
+            Remove
+          </button>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+orderMethod.addEventListener("change", renderCart);
+
+/* ================================
+   WHATSAPP CHECKOUT
+================================ */
+
+checkoutBtn.addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+  const method = orderMethod.value;
+
+  if (!name || !phone) {
+    alert("Please fill in your name and phone number.");
+    return;
+  }
+
+  if (method === "delivery" && !address) {
+    alert("Please fill in your delivery address.");
+    return;
+  }
+
+  const totalQuantity = getTotalQuantity();
+  const subtotal = getSubtotal();
+  const discount = getComboDiscount(totalQuantity);
+  const deliveryCharge = getDeliveryCharge();
+  const grandTotal = subtotal - discount + deliveryCharge;
+
+  const orderList = cart
+    .map((item) => {
+      return `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`;
+    })
+    .join("%0A");
+
+  const message =
+    `Hi Gookie! I would like to place an order.%0A%0A` +
+    `*Customer Details*%0A` +
+    `Name: ${name}%0A` +
+    `Phone: ${phone}%0A` +
+    `Method: ${method}%0A` +
+    `Address / Notes: ${address || "-"}%0A%0A` +
+    `*Order*%0A` +
+    `${orderList}%0A%0A` +
+    `Subtotal: ${formatRM(subtotal)}%0A` +
+    `Combo Discount: -${formatRM(discount)}%0A` +
+    `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
+    `*Total: ${formatRM(grandTotal)}*`;
+
+  const whatsappNumber = "60102810487";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+  window.open(whatsappURL, "_blank");
 });
+
+/* Initial render */
+renderCart();
