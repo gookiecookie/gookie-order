@@ -771,3 +771,21 @@ body {
   font-size:15px}#cartTotal{min-width:54px;
   font-size:16px}.pill-divider{height:26px}.gift-card{padding:32px 24px}
 }
+
+.cart-items{
+  max-height:220px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+
+.cart-row{
+  min-height:74px;
+}
+
+.customer-form{
+  margin-top:18px;
+}
+
+.checkout-btn{
+  margin-bottom:8px;
+}
