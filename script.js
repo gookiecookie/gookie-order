@@ -171,7 +171,7 @@ function setOrderMethod(method) {
     shippingMessage.style.display = "block";
   }
 
-  renderCart();
+  setOrderMethod("pickup");
 }
 
 pickupBtn.addEventListener("click", () => setOrderMethod("pickup"));
@@ -320,6 +320,6 @@ pickupDate.style.display="none";
 pickupDate.readOnly=true;
 shippingMessage.style.display="block";
 
-setOrderMethod("pickup");
+renderCart();
 
 }
