@@ -78,3 +78,23 @@ function updateCart() {
 
 renderProducts();
 updateCart();
+
+const openCartBtn = document.getElementById("openCart");
+const closeCartBtn = document.getElementById("closeCart");
+const cartDrawer = document.getElementById("cartDrawer");
+const overlay = document.getElementById("overlay");
+
+openCartBtn.addEventListener("click", () => {
+  cartDrawer.classList.add("open");
+  overlay.classList.add("show");
+});
+
+closeCartBtn.addEventListener("click", () => {
+  cartDrawer.classList.remove("open");
+  overlay.classList.remove("show");
+});
+
+overlay.addEventListener("click", () => {
+  cartDrawer.classList.remove("open");
+  overlay.classList.remove("show");
+});
