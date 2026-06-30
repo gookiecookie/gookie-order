@@ -223,10 +223,27 @@
       <input type="text" id="customerName" placeholder="Name" />
       <input type="tel" id="customerPhone" placeholder="Phone number" />
 
-      <select id="orderMethod">
-        <option value="pickup">Self Pickup</option>
-        <option value="delivery">Delivery</option>
-      </select>
+      <div class="delivery-toggle">
+
+    <button
+        type="button"
+        class="method-btn active"
+        id="pickupBtn">
+
+        Self Pickup
+
+    </button>
+
+    <button
+        type="button"
+        class="method-btn"
+        id="deliveryBtn">
+
+        Delivery
+
+    </button>
+
+</div>
 
       <input type="text" id="pickupDate" placeholder="Pickup / delivery date & time" />
       <textarea id="customerNotes" placeholder="Notes / delivery address"></textarea>
