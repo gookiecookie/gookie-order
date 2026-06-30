@@ -834,3 +834,179 @@ margin-bottom:14px;
   color: white;
   border-color: var(--red);
 }
+
+/* ==========================
+   PAYMENT POPUP
+========================== */
+
+.payment-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:998;
+}
+
+.payment-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(.95);
+
+    width:420px;
+    max-width:calc(100% - 32px);
+
+    background:#FFF9F3;
+    border-radius:28px;
+
+    padding:34px;
+
+    text-align:center;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.22);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:999;
+}
+
+.payment-popup.active,
+.payment-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.payment-popup.active{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.close-payment{
+    position:absolute;
+    top:18px;
+    right:18px;
+
+    width:44px;
+    height:44px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#F7EFE8;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+.payment-label{
+
+    letter-spacing:4px;
+    font-size:12px;
+
+    color:#777;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.payment-popup h2{
+
+    margin:0;
+
+    font-size:20px;
+
+}
+
+#paymentTotal{
+
+    display:block;
+
+    font-size:52px;
+
+    color:#BB191A;
+
+    margin:18px 0 24px;
+
+    font-weight:900;
+
+}
+
+.qr-frame{
+
+    background:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:2px solid #f2e5da;
+
+}
+
+.qr-frame img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.payment-note{
+
+    margin:22px 0;
+
+    padding:18px;
+
+    background:#FFF;
+
+    border:1px dashed #d9b5a3;
+
+    border-radius:16px;
+
+    text-align:left;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+.paid-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#BB191A;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.paid-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 14px 30px rgba(187,25,26,.35);
+
+}
