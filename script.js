@@ -30,6 +30,14 @@ const proofCheck = document.getElementById("proofCheck");
 let selectedMethod = "pickup";
 let savedWhatsappURL = "";
 
+proofCheck.checked = false;
+
+proofCheck.addEventListener("change", () => {
+
+    paidBtn.disabled = !proofCheck.checked;
+
+});
+
 function formatRM(amount) {
   return `RM${amount.toFixed(2).replace(".00", "")}`;
 }
@@ -244,6 +252,10 @@ payNowBtn.addEventListener("click", () => {
   savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
 paymentTotal.textContent = formatRM(grandTotal);
+
+proofCheck.checked = false;
+paidBtn.disabled = true;
+
 paymentOverlay.classList.add("active");
 paymentPopup.classList.add("active");
 });
