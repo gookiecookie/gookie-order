@@ -269,6 +269,30 @@
 </button>
   </aside>
 
+<!-- PAYMENT POPUP -->
+<div class="payment-overlay" id="paymentOverlay"></div>
+
+<div class="payment-popup" id="paymentPopup">
+  <button class="close-payment" id="closePaymentBtn">×</button>
+
+  <p class="payment-label">GOOKIE PAYMENT</p>
+  <h2>Total Payment</h2>
+  <strong id="paymentTotal">RM0</strong>
+
+  <div class="qr-frame">
+    <img src="qrcode.png" alt="DuitNow QR Code" />
+  </div>
+
+  <div class="payment-note">
+    <p>📌 Please make payment before continuing.</p>
+    <p>✅ Save your payment proof and attach it in WhatsApp.</p>
+  </div>
+
+  <button class="paid-btn" id="paidBtn">
+    I’ve Made Payment — Proceed to WhatsApp
+  </button>
+</div>
+
   <script src="script.js"></script>
 </body>
 </html>
