@@ -423,7 +423,7 @@ body {
     align-items:center;
     justify-content:center;
     gap:12px;
-    width:fit-content;
+    width:100px;
     margin-left:auto;
     padding:6px 10px;
     background:#fff8f2;
