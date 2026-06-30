@@ -534,6 +534,13 @@ a {
   resize: vertical;
 }
 
+.form-title{
+    margin:20px 0 14px;
+    font-size:20px;
+    font-weight:800;
+    color:var(--brown);
+}
+
 /* SUMMARY */
 .summary {
   margin-top: 22px;
