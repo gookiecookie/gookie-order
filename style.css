@@ -445,7 +445,7 @@ a {
 
 .cart-drawer h2 {
   margin-top: 8px;
-  font-family: Poppins, "Poppins", serif;
+  font-family: Poppins, "Poppins", poppins;
   font-size: 48px;
   line-height: 1;
   color: var(--brown);
