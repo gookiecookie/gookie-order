@@ -15,7 +15,11 @@ const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
 const payNowBtn = document.getElementById("payNowBtn");
-
+const paymentPopup = document.getElementById("paymentPopup");
+const paymentOverlay = document.getElementById("paymentOverlay");
+const paymentTotal = document.getElementById("paymentTotal");
+const paidBtn = document.getElementById("paidBtn");
+const closePaymentBtn = document.getElementById("closePaymentBtn");
 const pickupBtn = document.getElementById("pickupBtn");
 const deliveryBtn = document.getElementById("deliveryBtn");
 const pickupDate = document.getElementById("pickupDate");
