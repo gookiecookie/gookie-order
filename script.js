@@ -279,4 +279,8 @@ paidBtn.addEventListener("click", () => {
   }
 });
 
+proofCheck.addEventListener("change", () => {
+  paidBtn.disabled = !proofCheck.checked;
+});
+
 setOrderMethod("pickup");
