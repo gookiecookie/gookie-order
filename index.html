@@ -275,28 +275,42 @@
 <div class="payment-popup" id="paymentPopup">
   <button class="close-payment" id="closePaymentBtn">×</button>
 
-  <p class="payment-label">GOOKIE PAYMENT</p>
-  <h2>Total Payment</h2>
-  <strong id="paymentTotal">RM0</strong>
+  <div class="payment-steps">
+    <div class="step done">✓<span>Order</span></div>
+    <div class="step done">✓<span>Details</span></div>
+    <div class="step active">3<span>Payment</span></div>
+    <div class="step">4<span>Complete</span></div>
+  </div>
+
+  <p class="payment-label">✨ GOOKIE PAYMENT ✨</p>
+  <p class="payment-subtitle">Please make payment to complete your order.</p>
+
+  <div class="payment-total-box">
+    <span>Total Amount</span>
+    <strong id="paymentTotal">RM0</strong>
+  </div>
 
   <div class="qr-frame">
     <img src="qrcode.png" alt="DuitNow QR Code" />
   </div>
 
   <div class="payment-note">
-    <p>📌 Please make payment before continuing.</p>
-    <p>✅ Save your payment proof and attach it in WhatsApp.</p>
+    <p><strong>📌 Please make payment before continuing.</strong></p>
+    <p>Your order is not confirmed until payment is received.</p>
   </div>
 
-<div class="payment-confirm">
-    <label>
-        <input type="checkbox" id="proofCheck">
-        I have saved my payment proof.
-    </label>
-</div>
+  <label class="payment-confirm">
+    <input type="checkbox" id="proofCheck" />
+    <span>I have saved my payment proof.</span>
+  </label>
 
-  <button class="paid-btn" id="paidBtn">
-    I’ve Made Payment — Proceed to WhatsApp
+  <div class="proof-reminder">
+    📌 Please attach your payment proof in WhatsApp after clicking
+    <strong>“Continue to WhatsApp”.</strong>
+  </div>
+
+  <button class="paid-btn" id="paidBtn" disabled>
+    Continue to WhatsApp →
   </button>
 </div>
 
