@@ -72,7 +72,7 @@ body{
   min-height:430px;
   background:
     linear-gradient(135deg, rgba(187,25,26,.92), rgba(149,17,18,.95)),
-    url("assets/images/classic choc chip.png");
+    url("header.png");
   background-size:cover;
   background-position:center;
   color:white;
