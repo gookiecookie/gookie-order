@@ -56,6 +56,7 @@ function changeQty(id, amount) {
 function updateCart() {
   let count = 0;
   let subtotal = 0;
+  let cartHTML = "";
 
   products.forEach(p => {
     const qty = cart[p.id] || 0;
@@ -64,6 +65,22 @@ function updateCart() {
 
     const qtyEl = document.getElementById("qty-" + p.id);
     if (qtyEl) qtyEl.innerText = qty;
+
+    if (qty > 0) {
+      cartHTML += `
+        <div class="cart-row">
+          <div>
+            <strong>${p.name}</strong><br>
+            <small>${qty} × ${money(p.price)}</small>
+          </div>
+          <div class="mini-controls">
+            <button onclick="changeQty('${p.id}', -1)">−</button>
+            <strong>${qty}</strong>
+            <button onclick="changeQty('${p.id}', 1)">+</button>
+          </div>
+        </div>
+      `;
+    }
   });
 
   let discount = 0;
@@ -74,6 +91,20 @@ function updateCart() {
 
   document.getElementById("cartCount").innerText = count + " cookies";
   document.getElementById("cartTotal").innerText = money(total);
+
+  document.getElementById("cartItems").innerHTML =
+    cartHTML || `<p style="text-align:center;color:#74665E;">Your cart is empty.</p>`;
+
+  document.getElementById("subtotal").innerText = money(subtotal);
+  document.getElementById("discount").innerText = "-" + money(discount);
+  document.getElementById("grandTotal").innerText = money(total);
+
+  let comboText = "Add 4 cookies to save RM5.";
+  if (count >= 6) comboText = "🎉 Combo 6 applied. You saved RM8!";
+  else if (count >= 4) comboText = "🎉 Combo 4 applied. You saved RM5!";
+  else if (count > 0) comboText = `Add ${4 - count} more cookie(s) to save RM5.`;
+
+  document.getElementById("comboMessage").innerText = comboText;
 }
 
 renderProducts();
