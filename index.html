@@ -3,105 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gookie Order</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>GOOKIE ORDER V3.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="topbar">✨ Freshly baked chunky cookies · Combo discounts auto-applied ✨</div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo-wrap" aria-label="Gookie home">
-        <img src="logo.png" alt="Gookie's Cookies" class="site-logo">
-      </a>
-
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#">HOME</a>
-        <a href="#menu">MENU</a>
-        <a href="#menu">GIFTS</a>
-        <a href="#gifts">CONTACT</a>
-      </nav>
-
-      <a href="#menu" class="header-cta">Order Now</a>
+  <!-- TOP MOVING BAR -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order via WhatsApp</span>
+      <span>Save your payment receipt</span>
+      <span>🍪 Soft chunky cookies</span>
+      <span>Less sweet, still dangerous</span>
+      <span>Order via WhatsApp</span>
+      <span>Save your payment receipt</span>
     </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-mark">G</div>
+      <div>
+        <p class="eyebrow">GOOKIE ORDER V3.0</p>
+        <h1>Gookie’s Cookies</h1>
+      </div>
+    </div>
+
+    <button class="cart-button" id="openCartBtn" type="button">
+      Cart <span id="cartCount">0</span>
+    </button>
   </header>
 
-  <section class="hero">
-    <div class="hero-card">
-      <div class="hero-content">
-        <p class="eyebrow">Hello cookie hunter!</p>
-        <h1>Welcome to<br>Your Chunky Wonder.</h1>
-        <div class="hero-line"><span></span><i></i></div>
-        <p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p>
-        <a href="#menu" class="hero-btn">Start Ordering</a>
+  <!-- HERO SECTION -->
+  <section class="hero section-pad">
+    <div class="hero__content">
+      <p class="eyebrow">Well, hello there cookie hunter</p>
+      <h2>Pick your chunky wonders.</h2>
+      <p>
+        Choose your cookies, fill in your details, complete payment, then send your order to Gookie through WhatsApp.
+      </p>
+      <div class="hero__actions">
+        <a href="#menu" class="primary-link">Start Order</a>
+        <a href="#customerDetails" class="secondary-link">Customer Details</a>
       </div>
     </div>
   </section>
 
-  <main id="menu" class="menu-section">
-    <div class="section-title">
-      <div class="star-line"><span></span><b>★ ★ ★</b><span></span></div>
-      <h2>Our Signature Gookies</h2>
-      <p>Freshly baked daily · Combo 4 save RM5 · Combo 6 save RM8</p>
+  <!-- CUSTOMER DETAILS SECTION -->
+  <section class="customer-section section-pad" id="customerDetails">
+    <div class="section-heading">
+      <p class="eyebrow">Step 1</p>
+      <h2>Customer Details</h2>
+      <p>Fill in your details so your WhatsApp order is complete and easy for us to confirm.</p>
     </div>
-    <div id="productGrid" class="product-grid"></div>
+
+    <form class="customer-form" id="customerForm">
+      <label>
+        Full Name
+        <input type="text" id="customerName" placeholder="Example: Mira" required>
+      </label>
+
+      <label>
+        Phone Number
+        <input type="tel" id="customerPhone" placeholder="Example: 0123456789" required>
+      </label>
+
+      <label>
+        Order Method
+        <select id="orderMethod" required>
+          <option value="Self Pickup">Self Pickup</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Postage">Postage</option>
+        </select>
+      </label>
+
+      <label>
+        Preferred Date
+        <input type="date" id="orderDate">
+      </label>
+
+      <label>
+        Preferred Time
+        <input type="time" id="orderTime">
+      </label>
+
+      <label class="full-span">
+        Delivery Address / Pickup Note
+        <textarea id="customerAddress" rows="3" placeholder="Delivery/postage address or pickup note"></textarea>
+      </label>
+
+      <label class="full-span">
+        Order Notes
+        <textarea id="customerNotes" rows="3" placeholder="Example: birthday note, less topping, delivery instruction, etc."></textarea>
+      </label>
+    </form>
+  </section>
+
+  <!-- MENU SECTION -->
+  <main class="menu-section section-pad" id="menu">
+    <div class="section-heading">
+      <p class="eyebrow">Step 2</p>
+      <h2>Choose Your Cookies</h2>
+      <p>Single price: RM7.90. Combo discount is applied automatically: Buy 4 save more, Buy 6 save even more.</p>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
   </main>
 
-  <section id="gifts" class="gifts-section">
-    <div class="gift-card">
-      <p class="eyebrow">Gifts</p>
-      <h2>Send a box of happiness.</h2>
-      <p>Perfect for birthdays, thank-you gifts, office treats, or “I survived today” moments.</p>
-      <a href="#menu" class="gift-btn">Build a Gift Box</a>
-    </div>
-  </section>
-
-  <button class="cart-pill" id="openCart" aria-label="Open cart">
-    <span class="cart-icon">🛒</span>
-    <span class="pill-divider"></span>
-    <span id="cartCount">0 Gookies</span>
-    <span class="pill-divider"></span>
-    <strong id="cartTotal">RM0</strong>
-  </button>
-
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
-    <div class="cart-header">
+  <!-- CART DRAWER -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__header">
       <div>
-        <p class="eyebrow">Checkout</p>
-        <h3>Your Gookies</h3>
+        <p class="eyebrow">Your Order</p>
+        <h2>Cart</h2>
       </div>
-      <button id="closeCart" class="close-cart" aria-label="Close cart">×</button>
+      <button class="icon-button" id="closeCartBtn" type="button" aria-label="Close cart">×</button>
     </div>
 
-    <div id="comboMessage" class="combo-box">Add 4 Gookies to save RM5.</div>
-    <div class="combo-progress"><div id="comboProgressFill"></div></div>
-    <div id="cartItems" class="cart-items"></div>
-
-    <div class="customer-form">
-      <input id="customerName" placeholder="Name">
-      <input id="customerPhone" placeholder="Phone number">
-      <select id="orderType">
-        <option value="Pickup">Pickup</option>
-        <option value="Delivery">Delivery</option>
-      </select>
-      <input id="orderDate" placeholder="Preferred date & time">
-      <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
-    </div>
+    <div class="cart-items" id="cartItems"></div>
 
     <div class="cart-summary">
-      <div><span>Subtotal</span><strong id="subtotal">RM0</strong></div>
-      <div><span>Combo Discount</span><strong id="discount">-RM0</strong></div>
-      <div class="grand"><span>Total</span><strong id="grandTotal">RM0</strong></div>
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotalText">RM0.00</strong>
+      </div>
+      <div class="summary-row discount-row">
+        <span>Combo Discount</span>
+        <strong id="discountText">- RM0.00</strong>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <strong id="totalText">RM0.00</strong>
+      </div>
+      <p class="combo-note" id="comboNote">Add 4 or 6 cookies to unlock combo pricing.</p>
     </div>
 
-    <button id="checkoutBtn" class="checkout-btn">Checkout via WhatsApp</button>
+    <div class="cart-actions">
+      <button class="pay-button" id="payNowBtn" type="button">Pay Now</button>
+      <button class="whatsapp-button" id="whatsappBtn" type="button">Place Order on WhatsApp</button>
+      <button class="clear-button" id="clearCartBtn" type="button">Clear Cart</button>
+    </div>
   </aside>
 
   <div class="overlay" id="overlay"></div>
-  <div id="toast" class="toast">Added to cart 🍪</div>
+
+  <!-- QR PAYMENT POPUP -->
+  <div class="qr-modal" id="qrModal" aria-hidden="true">
+    <div class="qr-modal__card">
+      <button class="icon-button qr-close" id="closeQrBtn" type="button" aria-label="Close payment popup">×</button>
+      <p class="eyebrow">Secure Payment</p>
+      <h2>Scan to Pay</h2>
+      <div class="qr-box">
+        <img src="qrcode.png" alt="Gookie payment QR code">
+      </div>
+      <p class="qr-reminder">
+        Please keep your payment receipt until your order is confirmed. After payment, tap “I've Paid” to send your order via WhatsApp.
+      </p>
+      <button class="whatsapp-button" id="paidWhatsappBtn" type="button">I've Paid</button>
+    </div>
+  </div>
+
+  <!-- FLOATING CART BUTTON MOBILE -->
+  <button class="floating-cart" id="floatingCartBtn" type="button">
+    View Cart <span id="floatingCartCount">0</span>
+  </button>
+
+  <script src="script.js"></script>
 </body>
 </html>
