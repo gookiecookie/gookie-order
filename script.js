@@ -24,6 +24,10 @@ const orderMethod = document.getElementById("orderMethod");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const addressLabel = document.getElementById("addressLabel");
 
+const qrPopup = document.getElementById("qrPopup");
+const qrPopupOverlay = document.getElementById("qrPopupOverlay");
+const closeQrBtn = document.getElementById("closeQrBtn");
+
 /* ================================
    CART DRAWER
 ================================ */
