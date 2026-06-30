@@ -32,6 +32,7 @@ body {
   color: var(--brown);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
+  padding-bottom: 110px;
 }
 
 button,
