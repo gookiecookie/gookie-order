@@ -703,3 +703,31 @@ a {
     padding: 38px 22px 24px;
   }
 }
+
+.menu-qty {
+  display: grid;
+  grid-template-columns: 38px 32px 38px;
+  align-items: center;
+  background: var(--red);
+  border-radius: 999px;
+  padding: 5px;
+  gap: 0;
+}
+
+.menu-qty button {
+  width: 38px;
+  height: 38px;
+  background: white;
+  color: var(--red);
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.menu-count {
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  text-align: center;
+}
