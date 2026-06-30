@@ -412,6 +412,15 @@ body {
 .card:hover .card-img img{
     transform:scale(1.07) rotate(-2deg);
 }
+
+.card-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:auto;
+    padding-top:16px;
+}
+
 .price {
   color:var(--primary-dark);
   font-weight:500;
