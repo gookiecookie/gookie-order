@@ -1,76 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gookie Order</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gookie's Cookies | Order</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-  <div class="topbar">Freshly baked chunky cookies · Combo discounts auto-applied</div>
 
-  <header class="nav">
-    <img src="assets/images/logo.png" alt="Gookie's Cookies" class="logo">
-    <a href="#menu" class="nav-btn">Order Now</a>
-  </header>
+<!-- ================= HEADER ================= -->
 
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">Gookie’s Cookies</p>
-      <h1>Chunky cookies, made to impress.</h1>
-      <p class="hero-text">Pick your favourites, unlock combo savings, then checkout via WhatsApp.</p>
-      <a href="#menu" class="hero-cta">Start Ordering</a>
-    </div>
-  </section>
+<header class="header">
 
-  <main id="menu" class="menu-section">
-    <div class="section-head">
-      <p class="eyebrow">Menu</p>
-      <h2>10 Signature Gookies</h2>
-      <p>Combo 4 save RM5 · Combo 6 save RM8</p>
-    </div>
-    <div id="productGrid" class="product-grid"></div>
-  </main>
+<div class="logo">
 
-  <button class="cart-pill" id="openCart">
-    <span class="cart-icon">🛒</span>
-    <span id="cartCount">0 cookies</span>
-    <strong id="cartTotal">RM0</strong>
-  </button>
+<img src="assets/images/logo.png" alt="Gookie Logo">
 
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <h3>Your Order</h3>
-      <button id="closeCart" aria-label="Close cart">×</button>
-    </div>
+</div>
 
-    <div id="comboMessage" class="combo-box">Add 4 cookies to save RM5.</div>
-    <div id="cartItems" class="cart-items"></div>
+</header>
 
-    <div class="customer-form">
-      <input id="customerName" placeholder="Name">
-      <select id="orderType">
-        <option value="Pickup">Pickup</option>
-        <option value="Delivery">Delivery</option>
-      </select>
-      <input id="orderDate" placeholder="Preferred date & time">
-      <textarea id="orderNote" placeholder="Notes / delivery address"></textarea>
-    </div>
+<!-- ================= HERO ================= -->
 
-    <div class="cart-summary">
-      <div><span>Subtotal</span><strong id="subtotal">RM0</strong></div>
-      <div><span>Combo Discount</span><strong id="discount">-RM0</strong></div>
-      <div class="grand"><span>Total</span><strong id="grandTotal">RM0</strong></div>
-    </div>
+<section class="hero">
 
-    <button id="checkoutBtn" class="checkout-btn">Checkout via WhatsApp</button>
-  </aside>
+<h1>
 
-  <div class="overlay" id="overlay"></div>
-  <div id="toast" class="toast">Added to cart</div>
+Freshly Baked<br>
+
+<span>Chunky Cookies</span>
+
+</h1>
+
+<p>
+
+Crafted with premium ingredients and baked to perfection.
+
+</p>
+
+<a href="#products" class="hero-btn">
+
+Start Ordering
+
+</a>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+
+<section id="products" class="products">
+
+<h2>
+
+10 Signature Cookies
+
+</h2>
+
+<div class="product-grid">
+
+<!-- Card 1 -->
+
+<div class="card">
+
+<img src="assets/images/classic choc chip.png">
+
+<h3>The OG</h3>
+
+<p>The one that started it all.</p>
+
+<h4>RM8</h4>
+
+<div class="qty">
+
+<button>-</button>
+
+<span>0</span>
+
+<button>+</button>
+
+</div>
+
+</div>
+
+<!-- Card 2 -->
+
+<div class="card">
+
+<img src="assets/images/dark seasalt.png">
+
+<h3>Dark Seasalt</h3>
+
+<p>Rich dark cocoa with sea salt flakes.</p>
+
+<h4>RM8</h4>
+
+<div class="qty">
+
+<button>-</button>
+
+<span>0</span>
+
+<button>+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CART ================= -->
+
+<div class="floating-cart">
+
+🛒
+
+<span>0 Items</span>
+
+<strong>RM0.00</strong>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
