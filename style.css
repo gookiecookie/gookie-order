@@ -380,16 +380,14 @@ body {
   line-height:1.45
 }
 
-.card-bottom {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:auto;
-  gap:12px
-}
-
 .card{
-    transition:.35s ease;
+    position:relative;
+    background:#fff;
+    border-radius:26px;
+    overflow:hidden;
+    transition:.35s;
+    border:1px solid rgba(0,0,0,.05);
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
 }
 
 .card:hover{
@@ -397,14 +395,23 @@ body {
     box-shadow:0 30px 60px rgba(0,0,0,.15);
 }
 
-.card img{
-    transition:.35s ease;
+.card-img{
+    background:#F7EEDF;
+    padding:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.card:hover img{
-    transform:scale(1.05);
+.card-img img{
+    width:100%;
+    max-width:240px;
+    transition:.4s;
 }
 
+.card:hover .card-img img{
+    transform:scale(1.07) rotate(-2deg);
+}
 .price {
   color:var(--primary);
   font-weight:900;
