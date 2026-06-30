@@ -21,7 +21,12 @@ const overlay = document.getElementById("overlay");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const toast = document.getElementById("toast");
 
-function money(n)return "RM" + Number(n).toFixed(2);
+function money(n){
+    return new Intl.NumberFormat("en-MY", {
+        style: "currency",
+        currency: "MYR",
+        minimumFractionDigits: 2
+    }).format(n);
 }
 
 function renderProducts(){
