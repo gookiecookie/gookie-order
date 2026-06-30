@@ -1010,3 +1010,34 @@ margin-bottom:14px;
     box-shadow:0 14px 30px rgba(187,25,26,.35);
 
 }
+
+.payment-confirm{
+    margin:20px 0;
+    font-size:15px;
+    color:#5a4037;
+}
+
+.payment-confirm label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.payment-confirm input{
+    width:18px;
+    height:18px;
+    accent-color:#bb191a;
+}
+
+.payment-btn:disabled{
+    background:#cfcfcf;
+    color:#777;
+    cursor:not-allowed;
+    box-shadow:none;
+}
+
+.payment-btn:not(:disabled){
+    background:var(--red);
+    color:#fff;
+}
