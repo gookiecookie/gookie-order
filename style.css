@@ -798,3 +798,39 @@ color:#6f5b4d;
 margin-bottom:14px;
 
 }
+
+.hidden-field {
+  display: none;
+}
+
+.shipping-message {
+  display: none;
+  padding: 16px;
+  background: #fff8f2;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #6f5b4d;
+}
+
+.delivery-toggle {
+  display: flex;
+  gap: 16px;
+}
+
+.method-btn {
+  flex: 1;
+  height: 62px;
+  border-radius: 999px;
+  background: #fff7ef;
+  border: 2px solid #eadfd4;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--brown);
+}
+
+.method-btn.active {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
