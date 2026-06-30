@@ -749,3 +749,44 @@ body.cart-open .floating-cart {
 .floating-cart {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+.delivery-toggle{
+
+display:flex;
+gap:16px;
+margin-top:6px;
+margin-bottom:16px;
+
+}
+
+.method-btn{
+
+flex:1;
+
+height:62px;
+
+border-radius:999px;
+
+background:#fff7ef;
+
+border:2px solid #eadfd4;
+
+font-size:18px;
+
+font-weight:800;
+
+color:var(--brown);
+
+transition:.25s;
+
+}
+
+.method-btn.active{
+
+background:var(--red);
+
+color:white;
+
+border-color:var(--red);
+
+}
