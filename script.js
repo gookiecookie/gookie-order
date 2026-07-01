@@ -14,6 +14,7 @@ const subtotalEl = document.getElementById("subtotal");
 const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
 
 // ===== Generate Order ID =====
 const now = new Date();
