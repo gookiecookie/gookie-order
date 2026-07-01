@@ -14,6 +14,20 @@ const subtotalEl = document.getElementById("subtotal");
 const discountEl = document.getElementById("discount");
 const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
+
+// ===== Generate Order ID =====
+const now = new Date();
+
+const yy = String(now.getFullYear()).slice(-2);
+const mm = String(now.getMonth() + 1).padStart(2, "0");
+const dd = String(now.getDate()).padStart(2, "0");
+
+const hh = String(now.getHours()).padStart(2, "0");
+const min = String(now.getMinutes()).padStart(2, "0");
+const sec = String(now.getSeconds()).padStart(2, "0");
+
+const orderID = `GK${yy}${mm}${dd}${hh}${min}${sec}`;
+
 const payNowBtn = document.getElementById("payNowBtn");
 const paymentPopup = document.getElementById("paymentPopup");
 const paymentOverlay = document.getElementById("paymentOverlay");
