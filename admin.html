@@ -161,6 +161,13 @@
       return sum + Number(order.total || 0);
     }, 0);
 
+const averageOrder = todayOrders.length
+  ? totalSales / todayOrders.length
+  : 0;
+
+const pickupCount = todayOrders.filter(order => order.method === "pickup").length;
+const deliveryCount = todayOrders.filter(order => order.method === "delivery").length;
+    
     const cookiesSold = todayOrders.reduce((sum, order) => {
       const items = String(order.items || "").split(",");
       let count = 0;
@@ -176,7 +183,8 @@
     document.getElementById("todaySales").textContent = `RM${totalSales.toFixed(2)}`;
     document.getElementById("todayOrders").textContent = todayOrders.length;
     document.getElementById("cookiesSold").textContent = cookiesSold;
-
+    document.getElementById("averageOrder").textContent = `RM${averageOrder.toFixed(2)}`;
+    document.getElementById("methodCount").textContent = `${pickupCount} / ${deliveryCount}`;
     const latestOrders = orders.slice(-5).reverse();
 
     document.getElementById("latestOrders").innerHTML = latestOrders.map(order => {
