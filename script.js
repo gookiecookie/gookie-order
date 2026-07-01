@@ -261,7 +261,9 @@ payNowBtn.addEventListener("click", () => {
     `Subtotal: ${formatRM(subtotal)}%0A` +
     `Combo Discount: -${formatRM(discount)}%0A` +
     `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
-    `*Total: ${formatRM(grandTotal)}*`;
+    `*Total: ${formatRM(grandTotal)}*`
+    `🧾 Order ID: ${orderID}%0A` +
+    `Status: ✅ PAID%0A%0A` +;
 
   savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
