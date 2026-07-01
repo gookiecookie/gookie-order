@@ -349,10 +349,19 @@ async function sendOrderToSheet() {
   });
 }
 
-paidBtn.addEventListener("click", () => {
+paidBtn.addEventListener("click", async () => {
+  paidBtn.disabled = true;
+  paidBtn.textContent = "Saving order...";
+
+  await sendOrderToSheet();
+
+  paidBtn.textContent = "Opening WhatsApp...";
+
   if (savedWhatsappURL) {
     window.open(savedWhatsappURL, "_blank");
   }
+
+  paidBtn.textContent = "Continue to WhatsApp →";
 });
 
 proofCheck.addEventListener("change", () => {
