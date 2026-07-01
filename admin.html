@@ -336,7 +336,8 @@
 
       const response = await fetch(SHEET_URL);
       const orders = await response.json();
-
+window.gookieOrders = orders;
+      
       const todayOrders = orders.filter(order => isToday(order.timestamp));
 
       const totalSales = todayOrders.reduce((sum, order) => {
@@ -424,6 +425,17 @@
     }
 
     function renderLatestOrders(orders) {
+      const keyword = document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
+
+if (keyword) {
+  orders = orders.filter(order => {
+    return (
+      String(order.orderID || "").toLowerCase().includes(keyword) ||
+      String(order.name || "").toLowerCase().includes(keyword) ||
+      String(order.phone || "").toLowerCase().includes(keyword)
+    );
+  });
+}
       const latest = orders.slice(-8).reverse();
       const container = document.getElementById("latestOrders");
 
