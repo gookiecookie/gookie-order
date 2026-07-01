@@ -322,14 +322,17 @@ async function sendOrderToSheet() {
     paymentStatus: "PAID"
   };
 
-  await fetch(GOOGLE_SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(orderData)
-  });
+const response = await fetch(GOOGLE_SCRIPT_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(orderData)
+});
+
+const result = await response.json();
+
+savedOrderID = result.orderID;
 }
 
 paidBtn.addEventListener("click", async () => {
