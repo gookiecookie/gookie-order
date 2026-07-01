@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Gookie Admin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gookie Admin Dashboard</title>
 </head>
+
 <body>
-  <h1>Gookie Admin Dashboard</h1>
-  <p>Dashboard loading...</p>
+  <h1>🍪 Gookie Admin</h1>
+
+  <section>
+    <h2>Today</h2>
+
+    <div>
+      <p>Total Sales</p>
+      <strong id="todaySales">RM0</strong>
+    </div>
+
+    <div>
+      <p>Orders</p>
+      <strong id="todayOrders">0</strong>
+    </div>
+
+    <div>
+      <p>Cookies Sold</p>
+      <strong id="cookiesSold">0</strong>
+    </div>
+  </section>
+
+  <section>
+    <h2>Latest Orders</h2>
+    <div id="latestOrders">
+      Loading orders...
+    </div>
+  </section>
 </body>
 </html>
