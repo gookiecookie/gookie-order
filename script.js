@@ -318,26 +318,19 @@ savedOrderID = result.orderID;
 
 }
 
-paidBtn.addEventListener("click", async () => {
+paidBtn.addEventListener("click", () => {
   paidBtn.disabled = true;
-  paidBtn.textContent = "Saving order...";
-
-  await sendOrderToSheet();
-
-  const updatedMessage = savedWhatsappURL.replace(
-    "Order ID: PENDING",
-    `Order ID: ${savedOrderID}`
-  );
-
-  savedWhatsappURL = updatedMessage;
-
   paidBtn.textContent = "Opening WhatsApp...";
 
   if (savedWhatsappURL) {
     window.open(savedWhatsappURL, "_blank");
   }
 
-  paidBtn.textContent = "Continue to WhatsApp →";
+  sendOrderToSheet();
+
+  setTimeout(() => {
+    paidBtn.textContent = "Continue to WhatsApp →";
+  }, 1500);
 });
 proofCheck.addEventListener("change", () => {
   paidBtn.disabled = !proofCheck.checked;
