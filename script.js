@@ -248,22 +248,27 @@ payNowBtn.addEventListener("click", () => {
     `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`
   ).join("%0A");
 
-  const message =
-    `Hi Gookie! I would like to place an order.%0A%0A` +
-    `*Customer Details*%0A` +
-    `Name: ${name}%0A` +
-    `Phone: ${phone}%0A` +
-    `Method: ${selectedMethod}%0A` +
-    `Pickup Date/Time: ${selectedMethod === "pickup" ? date : "-"}%0A` +
-    `Delivery Address: ${selectedMethod === "delivery" ? deliveryAddressValue : "-"}%0A` +
-    `Notes: ${notes || "-"}%0A%0A` +
-    `*Order*%0A${orderList}%0A%0A` +
-    `Subtotal: ${formatRM(subtotal)}%0A` +
-    `Combo Discount: -${formatRM(discount)}%0A` +
-    `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
-    `*Total: ${formatRM(grandTotal)}*`
-    `🧾 Order ID: ${orderID}%0A` +
-    `Status: ✅ PAID%0A%0A` +
+ const message =
+  `Hi Gookie! I would like to place an order.%0A%0A` +
+
+  `*Customer Details*%0A` +
+  `Name: ${name}%0A` +
+  `Phone: ${phone}%0A` +
+  `Method: ${selectedMethod}%0A` +
+  `Pickup Date/Time: ${selectedMethod === "pickup" ? date : "-"}%0A` +
+  `Delivery Address: ${selectedMethod === "delivery" ? deliveryAddressValue : "-"}%0A` +
+  `Notes: ${notes || "-"}%0A%0A` +
+
+  `*Order*%0A` +
+  `${orderList}%0A%0A` +
+
+  `Subtotal: ${formatRM(subtotal)}%0A` +
+  `Combo Discount: -${formatRM(discount)}%0A` +
+  `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
+  `*Total: ${formatRM(grandTotal)}*%0A%0A` +
+
+  `🧾 Order ID: ${orderID}%0A` +
+  `Status: ✅ PAID%0A%0A`;
 
   savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
