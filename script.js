@@ -309,12 +309,14 @@ async function sendOrderToSheet() {
     paymentStatus: "PAID"
   };
 
-const response = const result = await response.json();
-savedOrderID = result.orderID;
-
-const result = await response.json();
-
-savedOrderID = result.orderID;
+fetch(GOOGLE_SCRIPT_URL, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain"
+  },
+  body: JSON.stringify(orderData)
+});
 
 }
 
