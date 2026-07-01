@@ -309,13 +309,8 @@ async function sendOrderToSheet() {
     paymentStatus: "PAID"
   };
 
-const response = await fetch(GOOGLE_SCRIPT_URL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(orderData)
-});
+const response = const result = await response.json();
+savedOrderID = result.orderID;
 
 const result = await response.json();
 
