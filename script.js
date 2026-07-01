@@ -16,19 +16,6 @@ const deliveryChargeEl = document.getElementById("deliveryCharge");
 const grandTotalEl = document.getElementById("grandTotal");
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
 
-// ===== Generate Order ID =====
-const now = new Date();
-
-const yy = String(now.getFullYear()).slice(-2);
-const mm = String(now.getMonth() + 1).padStart(2, "0");
-const dd = String(now.getDate()).padStart(2, "0");
-
-const hh = String(now.getHours()).padStart(2, "0");
-const min = String(now.getMinutes()).padStart(2, "0");
-const sec = String(now.getSeconds()).padStart(2, "0");
-
-const orderID = `GK${yy}${mm}${dd}${hh}${min}${sec}`;
-
 const payNowBtn = document.getElementById("payNowBtn");
 const paymentPopup = document.getElementById("paymentPopup");
 const paymentOverlay = document.getElementById("paymentOverlay");
@@ -44,14 +31,9 @@ const proofCheck = document.getElementById("proofCheck");
 
 let selectedMethod = "pickup";
 let savedWhatsappURL = "";
+let savedOrderID = "";
 
 proofCheck.checked = false;
-
-proofCheck.addEventListener("change", () => {
-
-    paidBtn.disabled = !proofCheck.checked;
-
-});
 
 function formatRM(amount) {
   return `RM${amount.toFixed(2).replace(".00", "")}`;
@@ -256,6 +238,7 @@ const min = String(now.getMinutes()).padStart(2, "0");
 const sec = String(now.getSeconds()).padStart(2, "0");
 
 const orderID = `GK${yy}${mm}${dd}${hh}${min}${sec}`;
+    savedOrderID = orderID;
     
   const orderList = cart.map((item) =>
     `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`
@@ -324,7 +307,7 @@ async function sendOrderToSheet() {
     .join(", ");
 
   const orderData = {
-    orderID: "PENDING",
+    orderID: "savedOrderID",
     name: name,
     phone: phone,
     method: selectedMethod,
