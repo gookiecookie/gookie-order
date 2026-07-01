@@ -256,7 +256,17 @@
     </div>
 
     <section class="section">
-      <h2>Latest Orders</h2>
+  <div class="section-top">
+    <h2>Latest Orders</h2>
+
+    <input
+      type="text"
+      id="orderSearch"
+      class="search-input"
+      placeholder="Search order ID, name, phone..."
+      oninput="renderLatestOrders(window.gookieOrders)"
+    />
+  </div>
       <div id="latestOrders">
         <div class="empty">Loading orders...</div>
       </div>
