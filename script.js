@@ -307,7 +307,7 @@ async function sendOrderToSheet() {
     .join(", ");
 
   const orderData = {
-    orderID: "savedOrderID",
+    orderID: savedOrderID,
     name: name,
     phone: phone,
     method: selectedMethod,
