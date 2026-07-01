@@ -250,7 +250,7 @@ payNowBtn.addEventListener("click", () => {
   `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
   `*Total: ${formatRM(grandTotal)}*%0A%0A` +
 
-  `🧾 Order ID: ${orderID}%0A` +
+  `🧾 Order ID: PENDING%0A` +
 `Status: ✅ PAID%0A`;
   savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
