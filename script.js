@@ -243,7 +243,19 @@ payNowBtn.addEventListener("click", () => {
   const discount = getComboDiscount(totalQty);
   const deliveryCharge = getDeliveryCharge();
   const grandTotal = subtotal - discount + deliveryCharge;
+// ===== Generate Order ID =====
+const now = new Date();
 
+const yy = String(now.getFullYear()).slice(-2);
+const mm = String(now.getMonth() + 1).padStart(2, "0");
+const dd = String(now.getDate()).padStart(2, "0");
+
+const hh = String(now.getHours()).padStart(2, "0");
+const min = String(now.getMinutes()).padStart(2, "0");
+const sec = String(now.getSeconds()).padStart(2, "0");
+
+const orderID = `GK${yy}${mm}${dd}${hh}${min}${sec}`;
+    
   const orderList = cart.map((item) =>
     `- ${item.name} x ${item.quantity} = ${formatRM(item.price * item.quantity)}`
   ).join("%0A");
@@ -267,7 +279,8 @@ payNowBtn.addEventListener("click", () => {
   `Delivery Charge: ${formatRM(deliveryCharge)}%0A` +
   `*Total: ${formatRM(grandTotal)}*%0A%0A` +
 
-  `Status: ✅ PAID%0A`;
+  `🧾 Order ID: ${orderID}%0A` +
+`Status: ✅ PAID%0A`;
   savedWhatsappURL = `https://wa.me/60102810487?text=${message}`;
 
 paymentTotal.textContent = formatRM(grandTotal);
