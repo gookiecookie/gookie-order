@@ -333,6 +333,13 @@ paidBtn.addEventListener("click", async () => {
 
   await sendOrderToSheet();
 
+  const updatedMessage = savedWhatsappURL.replace(
+    "Order ID: PENDING",
+    `Order ID: ${savedOrderID}`
+  );
+
+  savedWhatsappURL = updatedMessage;
+
   paidBtn.textContent = "Opening WhatsApp...";
 
   if (savedWhatsappURL) {
@@ -341,7 +348,6 @@ paidBtn.addEventListener("click", async () => {
 
   paidBtn.textContent = "Continue to WhatsApp →";
 });
-
 proofCheck.addEventListener("change", () => {
   paidBtn.disabled = !proofCheck.checked;
 });
