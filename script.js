@@ -270,10 +270,8 @@ closePaymentBtn.addEventListener("click", () => {
 });
 
 paymentOverlay.addEventListener("click", () => {
-
-    paymentPopup.classList.remove("active");
-    paymentOverlay.classList.remove("active");
-
+  paymentPopup.classList.remove("active");
+  paymentOverlay.classList.remove("active");
 });
 
 async function sendOrderToSheet() {
