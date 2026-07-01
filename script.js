@@ -320,6 +320,11 @@ const response = await fetch(GOOGLE_SCRIPT_URL, {
 const result = await response.json();
 
 savedOrderID = result.orderID;
+
+
+const result = await response.json();
+
+savedOrderID = result.orderID;
 }
 
 paidBtn.addEventListener("click", async () => {
