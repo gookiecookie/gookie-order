@@ -306,6 +306,49 @@ paymentOverlay.addEventListener("click", () => {
 
 });
 
+async function sendOrderToSheet() {
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const pickupDateValue = pickupDate.value.trim();
+  const notes = document.getElementById("customerNotes").value.trim();
+  const deliveryAddressValue = deliveryAddress.value.trim();
+
+  const totalQty = getTotalQty();
+  const subtotal = getSubtotal();
+  const discount = getComboDiscount(totalQty);
+  const deliveryCharge = getDeliveryCharge();
+  const grandTotal = subtotal - discount + deliveryCharge;
+
+  const itemsText = cart
+    .map((item) => `${item.name} x ${item.quantity}`)
+    .join(", ");
+
+  const orderData = {
+    orderID: "PENDING",
+    name: name,
+    phone: phone,
+    method: selectedMethod,
+    pickupDate: selectedMethod === "pickup" ? pickupDateValue : "",
+    deliveryAddress: selectedMethod === "delivery" ? deliveryAddressValue : "",
+    notes: notes,
+    items: itemsText,
+    subtotal: subtotal,
+    discount: discount,
+    deliveryCharge: deliveryCharge,
+    total: grandTotal,
+    paymentStatus: "PAID"
+  };
+
+  await fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(orderData)
+  });
+}
+
 paidBtn.addEventListener("click", () => {
   if (savedWhatsappURL) {
     window.open(savedWhatsappURL, "_blank");
