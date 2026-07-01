@@ -3,205 +3,418 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Gookie Admin Dashboard</title>
 
   <style>
-  :root {
-    --red: #bb191a;
-    --cream: #fff6ed;
-    --white: #ffffff;
-    --brown: #4b3027;
-    --muted: #7d6b63;
-    --line: #eadcd0;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background: var(--cream);
-    color: var(--brown);
-    padding: 28px;
-  }
-
-  h1 {
-    font-family: Georgia, serif;
-    font-size: 44px;
-    color: var(--red);
-    margin-bottom: 28px;
-  }
-
-  section {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    padding: 24px;
-    margin-bottom: 24px;
-    box-shadow: 0 14px 34px rgba(75, 48, 39, 0.1);
-  }
-
-  h2 {
-    margin-bottom: 18px;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .stat-card {
-    background: var(--cream);
-    border-radius: 22px;
-    padding: 22px;
-  }
-
-  .stat-card p {
-    color: var(--muted);
-    font-weight: 700;
-  }
-
-  .stat-card strong {
-    display: block;
-    margin-top: 10px;
-    font-size: 34px;
-    color: var(--red);
-  }
-
-  #latestOrders {
-    display: grid;
-    gap: 12px;
-  }
-
-  .order-card {
-    background: var(--cream);
-    border-radius: 18px;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  @media (max-width: 760px) {
-    body {
-      padding: 18px;
+    :root {
+      --red: #bb191a;
+      --cream: #fff6ed;
+      --white: #ffffff;
+      --brown: #4b3027;
+      --muted: #7d6b63;
+      --line: #eadcd0;
+      --soft: #fff0e3;
     }
 
-    .stats-grid {
-      grid-template-columns: 1fr;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      padding: 28px;
+    }
+
+    .admin-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
     }
 
     h1 {
-      font-size: 36px;
+      font-family: Georgia, serif;
+      font-size: 46px;
+      color: var(--red);
     }
-  }
-</style>
-  
+
+    .refresh-btn {
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .section {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 14px 34px rgba(75, 48, 39, 0.1);
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--soft);
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 120px;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 30px;
+      color: var(--red);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-row,
+    .order-card {
+      background: var(--soft);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .mini-row strong,
+    .order-card strong {
+      color: var(--brown);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .order-status {
+      color: var(--red);
+      font-weight: 900;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    #latestOrders {
+      display: grid;
+      gap: 12px;
+    }
+
+    .order-price {
+      color: var(--red);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 18px;
+      background: var(--soft);
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .admin-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .order-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>🍪 Gookie Admin</h1>
+  <div class="admin-wrap">
 
-  <section>
-    <h2>Today</h2>
+    <header class="admin-header">
+      <div>
+        <h1>🍪 Gookie Admin</h1>
+        <p class="muted" id="lastUpdated">Loading dashboard...</p>
+      </div>
 
-    <div class="stats-grid">
-  <div class="stat-card">
-    <p>Total Sales</p>
-    <strong id="todaySales">RM0</strong>
-  </div>
+      <button class="refresh-btn" onclick="loadDashboard()">
+        Refresh
+      </button>
+    </header>
 
-  <div class="stat-card">
-    <p>Orders</p>
-    <strong id="todayOrders">0</strong>
-  </div>
+    <section class="section">
+      <h2>Today</h2>
 
-  <div class="stat-card">
-    <p>Cookies Sold</p>
-    <strong id="cookiesSold">0</strong>
-  </div>
-</div>
-  </section>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p>Total Sales</p>
+          <strong id="todaySales">RM0</strong>
+        </div>
 
-<div class="stat-card">
-  <p>Average Order</p>
-  <strong id="averageOrder">RM0</strong>
-</div>
+        <div class="stat-card">
+          <p>Orders</p>
+          <strong id="todayOrders">0</strong>
+        </div>
 
-<div class="stat-card">
-  <p>Pickup / Delivery</p>
-  <strong id="methodCount">0 / 0</strong>
-</div>
-  
-  <section>
-    <h2>Latest Orders</h2>
-    <div id="latestOrders">
-      Loading orders...
+        <div class="stat-card">
+          <p>Cookies Sold</p>
+          <strong id="cookiesSold">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <p>Average Order</p>
+          <strong id="averageOrder">RM0</strong>
+        </div>
+
+        <div class="stat-card">
+          <p>Pickup / Delivery</p>
+          <strong id="methodCount">0 / 0</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="dashboard-grid">
+
+      <section class="section">
+        <h2>🔥 Top Selling Today</h2>
+        <div class="mini-list" id="topSelling">
+          <div class="empty">Loading best sellers...</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>🚚 Order Method</h2>
+        <div class="mini-list" id="methodBreakdown">
+          <div class="empty">Loading methods...</div>
+        </div>
+      </section>
+
     </div>
-  </section>
+
+    <section class="section">
+      <h2>Latest Orders</h2>
+      <div id="latestOrders">
+        <div class="empty">Loading orders...</div>
+      </div>
+    </section>
+
+  </div>
 
   <script>
-  const SHEET_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
 
-  async function loadDashboard() {
-    const response = await fetch(SHEET_URL);
-    const orders = await response.json();
+    function money(amount) {
+      return `RM${Number(amount || 0).toFixed(2)}`;
+    }
 
-    const today = new Date().toDateString();
+    function isToday(dateValue) {
+      return new Date(dateValue).toDateString() === new Date().toDateString();
+    }
 
-    const todayOrders = orders.filter(order => {
-      return new Date(order.timestamp).toDateString() === today;
-    });
+    function parseItems(itemsText) {
+      const result = [];
 
-    const totalSales = todayOrders.reduce((sum, order) => {
-      return sum + Number(order.total || 0);
-    }, 0);
+      String(itemsText || "")
+        .split(",")
+        .map(item => item.trim())
+        .filter(Boolean)
+        .forEach(item => {
+          const match = item.match(/(.+)\s+x\s+(\d+)/i);
 
-const averageOrder = todayOrders.length
-  ? totalSales / todayOrders.length
-  : 0;
+          if (match) {
+            result.push({
+              name: match[1].trim(),
+              qty: Number(match[2])
+            });
+          }
+        });
 
-const pickupCount = todayOrders.filter(order => order.method === "pickup").length;
-const deliveryCount = todayOrders.filter(order => order.method === "delivery").length;
-    
-    const cookiesSold = todayOrders.reduce((sum, order) => {
-      const items = String(order.items || "").split(",");
-      let count = 0;
+      return result;
+    }
 
-      items.forEach(item => {
-        const match = item.match(/x\s*(\d+)/i);
-        if (match) count += Number(match[1]);
+    async function loadDashboard() {
+      document.getElementById("lastUpdated").textContent = "Refreshing...";
+
+      const response = await fetch(SHEET_URL);
+      const orders = await response.json();
+
+      const todayOrders = orders.filter(order => isToday(order.timestamp));
+
+      const totalSales = todayOrders.reduce((sum, order) => {
+        return sum + Number(order.total || 0);
+      }, 0);
+
+      const cookiesSold = todayOrders.reduce((sum, order) => {
+        return sum + parseItems(order.items)
+          .reduce((itemSum, item) => itemSum + item.qty, 0);
+      }, 0);
+
+      const averageOrder = todayOrders.length
+        ? totalSales / todayOrders.length
+        : 0;
+
+      const pickupCount = todayOrders.filter(order => order.method === "pickup").length;
+      const deliveryCount = todayOrders.filter(order => order.method === "delivery").length;
+
+      document.getElementById("todaySales").textContent = money(totalSales);
+      document.getElementById("todayOrders").textContent = todayOrders.length;
+      document.getElementById("cookiesSold").textContent = cookiesSold;
+      document.getElementById("averageOrder").textContent = money(averageOrder);
+      document.getElementById("methodCount").textContent = `${pickupCount} / ${deliveryCount}`;
+
+      renderTopSelling(todayOrders);
+      renderMethodBreakdown(pickupCount, deliveryCount);
+      renderLatestOrders(orders);
+
+      document.getElementById("lastUpdated").textContent =
+        `Last updated: ${new Date().toLocaleString()}`;
+    }
+
+    function renderTopSelling(todayOrders) {
+      const totals = {};
+
+      todayOrders.forEach(order => {
+        parseItems(order.items).forEach(item => {
+          totals[item.name] = (totals[item.name] || 0) + item.qty;
+        });
       });
 
-      return sum + count;
-    }, 0);
+      const sorted = Object.entries(totals)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
 
-    document.getElementById("todaySales").textContent = `RM${totalSales.toFixed(2)}`;
-    document.getElementById("todayOrders").textContent = todayOrders.length;
-    document.getElementById("cookiesSold").textContent = cookiesSold;
-    document.getElementById("averageOrder").textContent = `RM${averageOrder.toFixed(2)}`;
-    document.getElementById("methodCount").textContent = `${pickupCount} / ${deliveryCount}`;
-    const latestOrders = orders.slice(-5).reverse();
+      const container = document.getElementById("topSelling");
 
-    document.getElementById("latestOrders").innerHTML = latestOrders.map(order => {
-      return `
-        <div class="order-card">
-          <div>
-            <strong>${order.orderID}</strong>
-            <p>${order.name} • ${order.method}</p>
+      if (sorted.length === 0) {
+        container.innerHTML = `<div class="empty">No cookies sold today yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = sorted.map(([name, qty], index) => {
+        const medal = ["🥇", "🥈", "🥉"][index] || "🍪";
+
+        return `
+          <div class="mini-row">
+            <div>
+              <strong>${medal} ${name}</strong>
+              <p class="muted">${qty} sold</p>
+            </div>
           </div>
-          <strong>RM${Number(order.total || 0).toFixed(2)}</strong>
+        `;
+      }).join("");
+    }
+
+    function renderMethodBreakdown(pickup, delivery) {
+      document.getElementById("methodBreakdown").innerHTML = `
+        <div class="mini-row">
+          <div>
+            <strong>🏠 Pickup</strong>
+            <p class="muted">Self collect orders</p>
+          </div>
+          <strong>${pickup}</strong>
+        </div>
+
+        <div class="mini-row">
+          <div>
+            <strong>🚚 Delivery</strong>
+            <p class="muted">Delivery orders</p>
+          </div>
+          <strong>${delivery}</strong>
         </div>
       `;
-    }).join("");
-  }
+    }
 
-  loadDashboard();
-</script>
-  
+    function renderLatestOrders(orders) {
+      const latest = orders.slice(-8).reverse();
+      const container = document.getElementById("latestOrders");
+
+      if (latest.length === 0) {
+        container.innerHTML = `<div class="empty">No orders yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = latest.map(order => {
+        return `
+          <div class="order-card">
+            <div>
+              <strong>${order.orderID || "NO ID"}</strong>
+              <p class="muted">${order.name || "-"} • ${order.method || "-"}</p>
+              <p class="order-status">✅ ${order.paymentStatus || "PAID"}</p>
+            </div>
+
+            <div class="order-price">
+              ${money(order.total)}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    loadDashboard();
+  </script>
 </body>
 </html>
