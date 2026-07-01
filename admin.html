@@ -4,6 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gookie Admin Dashboard</title>
+
+  <style>
+  :root {
+    --red: #bb191a;
+    --cream: #fff6ed;
+    --white: #ffffff;
+    --brown: #4b3027;
+    --muted: #7d6b63;
+    --line: #eadcd0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    padding: 28px;
+  }
+
+  h1 {
+    font-family: Georgia, serif;
+    font-size: 44px;
+    color: var(--red);
+    margin-bottom: 28px;
+  }
+
+  section {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 14px 34px rgba(75, 48, 39, 0.1);
+  }
+
+  h2 {
+    margin-bottom: 18px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .stat-card {
+    background: var(--cream);
+    border-radius: 22px;
+    padding: 22px;
+  }
+
+  .stat-card p {
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .stat-card strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 34px;
+    color: var(--red);
+  }
+
+  #latestOrders {
+    display: grid;
+    gap: 12px;
+  }
+
+  .order-card {
+    background: var(--cream);
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  @media (max-width: 760px) {
+    body {
+      padding: 18px;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+  }
+</style>
+  
 </head>
 
 <body>
