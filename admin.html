@@ -133,5 +133,57 @@
       Loading orders...
     </div>
   </section>
+
+  <script>
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
+
+  async function loadDashboard() {
+    const response = await fetch(SHEET_URL);
+    const orders = await response.json();
+
+    const today = new Date().toDateString();
+
+    const todayOrders = orders.filter(order => {
+      return new Date(order.timestamp).toDateString() === today;
+    });
+
+    const totalSales = todayOrders.reduce((sum, order) => {
+      return sum + Number(order.total || 0);
+    }, 0);
+
+    const cookiesSold = todayOrders.reduce((sum, order) => {
+      const items = String(order.items || "").split(",");
+      let count = 0;
+
+      items.forEach(item => {
+        const match = item.match(/x\s*(\d+)/i);
+        if (match) count += Number(match[1]);
+      });
+
+      return sum + count;
+    }, 0);
+
+    document.getElementById("todaySales").textContent = `RM${totalSales.toFixed(2)}`;
+    document.getElementById("todayOrders").textContent = todayOrders.length;
+    document.getElementById("cookiesSold").textContent = cookiesSold;
+
+    const latestOrders = orders.slice(-5).reverse();
+
+    document.getElementById("latestOrders").innerHTML = latestOrders.map(order => {
+      return `
+        <div class="order-card">
+          <div>
+            <strong>${order.orderID}</strong>
+            <p>${order.name} • ${order.method}</p>
+          </div>
+          <strong>RM${Number(order.total || 0).toFixed(2)}</strong>
+        </div>
+      `;
+    }).join("");
+  }
+
+  loadDashboard();
+</script>
+  
 </body>
 </html>
