@@ -370,7 +370,7 @@
 
   <script>
     const SHEET_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
-
+let currentFilter = "today";
     function money(amount) {
       return `RM${Number(amount || 0).toFixed(2)}`;
     }
@@ -400,6 +400,19 @@
       return result;
     }
 
+function setOrderFilter(filter, button) {
+
+  currentFilter = filter;
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  renderLatestOrders(window.gookieOrders);
+}
+    
     async function loadDashboard() {
       document.getElementById("lastUpdated").textContent = "Refreshing...";
 
