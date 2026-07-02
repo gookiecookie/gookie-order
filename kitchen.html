@@ -208,23 +208,40 @@ async function loadKitchen() {
 
   console.log("Kitchen orders:", orders);
 
-  document.getElementById("verifyCount").textContent =
-    `${getWorkflowCount(orders, "NEW")} waiting`;
-
-  document.getElementById("bakeCount").textContent =
-    `${getWorkflowCount(orders, "READY_TO_BAKE")} orders`;
-
-  document.getElementById("packCount").textContent =
-    `${getWorkflowCount(orders, "READY_TO_PACK")} orders`;
-
-  document.getElementById("shipCount").textContent =
-    `${getWorkflowCount(orders, "READY_TO_SHIP")} orders`;
+  renderKitchenBoard(orders);
 }
     
 function getWorkflowCount(orders, workflow) {
   return orders.filter(order => order.workflow === workflow).length;
 }
 
+function renderKitchenBoard(orders) {
+  renderTaskList("verifyList", orders, "NEW", "Verify", "READY_TO_BAKE");
+  renderTaskList("bakeList", orders, "READY_TO_BAKE", "Start Baking", "BAKING");
+  renderTaskList("coolingList", orders, "COOLING", "Ready to Pack", "READY_TO_PACK");
+  renderTaskList("packList", orders, "READY_TO_PACK", "Packed", "READY_TO_SHIP");
+  renderTaskList("shipList", orders, "READY_TO_SHIP", "Completed", "COMPLETED");
+}
+
+function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow) {
+  const container = document.getElementById(containerId);
+  const list = orders.filter(order => order.workflow === workflow);
+
+  if (list.length === 0) {
+    container.innerHTML = `<p class="empty">No tasks here.</p>`;
+    return;
+  }
+
+  container.innerHTML = list.map(order => `
+    <div class="task-card">
+      <strong>${order.orderID || "NO ID"}</strong>
+      <p>${order.name || "-"} • ${order.method || "-"}</p>
+      <p>${order.items || ""}</p>
+      <button onclick="moveOrder('${order.orderID}', '${nextWorkflow}')">${buttonText}</button>
+    </div>
+  `).join("");
+}
+    
 function verifyFirstOrder() {
   const order = kitchenOrders.find(order => order.workflow === "NEW");
 
