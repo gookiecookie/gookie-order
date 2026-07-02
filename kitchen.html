@@ -313,6 +313,10 @@ function renderKitchenBoard(orders) {
   renderTaskList("shipList", orders, "READY_TO_SHIP", "Completed", "COMPLETED");
 }
 
+function refreshKitchenUI() {
+  renderKitchenBoard(kitchenOrders);
+}
+
 function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow) {
   const container = document.getElementById(containerId);
   const list = orders.filter(order =>
