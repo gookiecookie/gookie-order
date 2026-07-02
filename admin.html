@@ -436,29 +436,7 @@ document.getElementById("averageOrder").textContent = money(filteredAverage);
 window.gookieOrders = orders;
       
       const todayOrders = orders.filter(order => isToday(order.timestamp));
-
-      const totalSales = todayOrders.reduce((sum, order) => {
-        return sum + Number(order.total || 0);
-      }, 0);
-
-      const cookiesSold = todayOrders.reduce((sum, order) => {
-        return sum + parseItems(order.items)
-          .reduce((itemSum, item) => itemSum + item.qty, 0);
-      }, 0);
-
-      const averageOrder = todayOrders.length
-        ? totalSales / todayOrders.length
-        : 0;
-
-      const pickupCount = todayOrders.filter(order => order.method === "pickup").length;
-      const deliveryCount = todayOrders.filter(order => order.method === "delivery").length;
-
-      document.getElementById("todaySales").textContent = money(totalSales);
-      document.getElementById("todayOrders").textContent = todayOrders.length;
-      document.getElementById("cookiesSold").textContent = cookiesSold;
-      document.getElementById("averageOrder").textContent = money(averageOrder);
-      document.getElementById("methodCount").textContent = `${pickupCount} / ${deliveryCount}`;
-
+      updateStats(todayOrders);
       renderTopSelling(todayOrders);
       renderMethodBreakdown(pickupCount, deliveryCount);
       renderLatestOrders(orders);
@@ -467,6 +445,34 @@ window.gookieOrders = orders;
         `Last updated: ${new Date().toLocaleString()}`;
     }
 
+function updateStats(orders) {
+  const totalSales = orders.reduce((sum, order) => {
+    return sum + Number(order.total || 0);
+  }, 0);
+
+  const cookiesSold = orders.reduce((sum, order) => {
+    return sum + parseItems(order.items)
+      .reduce((itemSum, item) => itemSum + item.qty, 0);
+  }, 0);
+
+  const averageOrder = orders.length
+    ? totalSales / orders.length
+    : 0;
+
+  const pickupCount =
+    orders.filter(order => order.method === "pickup").length;
+
+  const deliveryCount =
+    orders.filter(order => order.method === "delivery").length;
+
+  document.getElementById("todaySales").textContent = money(totalSales);
+  document.getElementById("todayOrders").textContent = orders.length;
+  document.getElementById("cookiesSold").textContent = cookiesSold;
+  document.getElementById("averageOrder").textContent = money(averageOrder);
+  document.getElementById("methodCount").textContent =
+    `${pickupCount} / ${deliveryCount}`;
+}
+    
     function renderTopSelling(todayOrders) {
       const totals = {};
 
