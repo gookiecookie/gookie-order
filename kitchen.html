@@ -140,6 +140,72 @@
       grid-column: 1 / -1;
     }
   }
+
+.compact-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.task-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 100;
+}
+
+.task-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.task-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(520px, calc(100% - 32px));
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--cream);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.25);
+  transform: translate(-50%, -50%) scale(.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 101;
+}
+
+.task-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.close-modal-btn {
+  float: right;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: var(--brown);
+  font-size: 24px;
+}
+
+.modal-line {
+  margin: 10px 0;
+}
+
+.modal-line strong {
+  color: var(--red);
+}
+  
 </style>
 </head>
 
