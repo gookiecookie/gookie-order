@@ -646,6 +646,8 @@ function closeOrderModal() {
   document.getElementById("orderModalOverlay").classList.remove("active");
   document.getElementById("orderModal").classList.remove("active");
 }
+
+document.getElementById("orderModalOverlay").addEventListener("click", closeOrderModal);
     
 function renderLatestOrders(orders) {
   const keyword =
