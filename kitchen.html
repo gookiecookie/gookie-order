@@ -50,39 +50,65 @@
     margin-top: 8px;
   }
 
-  .task-grid {
-    display: grid;
-    gap: 16px;
+  .task-board {
+  display: grid;
+  gap: 18px;
+}
+
+.task-column {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 12px 28px rgba(75, 48, 39, 0.08);
+}
+
+.task-column h2 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.task-list {
+  display: grid;
+  gap: 12px;
+}
+
+.task-card {
+  background: var(--soft);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.task-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.task-card p {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.empty {
+  color: var(--muted);
+  background: var(--soft);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.notes textarea {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 980px) {
+  .task-board {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .card {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 20px;
-    box-shadow: 0 12px 28px rgba(75, 48, 39, 0.08);
+  .notes {
+    grid-column: 1 / -1;
   }
-
-  .card h2 {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-
-  .card p {
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-
-  .task-count {
-    display: inline-block;
-    margin-bottom: 14px;
-    background: var(--soft);
-    color: var(--red);
-    border-radius: 999px;
-    padding: 8px 14px;
-    font-weight: 900;
-  }
-
+}
   button {
     background: var(--red);
     color: white;
