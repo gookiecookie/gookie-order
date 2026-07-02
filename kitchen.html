@@ -241,6 +241,39 @@ function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow)
     </div>
   `).join("");
 }
+
+function moveOrder(orderID, nextWorkflow) {
+  const order = kitchenOrders.find(order => order.orderID === orderID);
+
+  if (!order) {
+    alert("Order not found.");
+    return;
+  }
+
+  let paymentStatus = order.paymentStatus || "PENDING";
+
+  if (nextWorkflow === "READY_TO_BAKE") {
+    paymentStatus = "VERIFIED";
+  }
+
+  fetch(SHEET_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: JSON.stringify({
+      action: "updateStatus",
+      orderID: orderID,
+      paymentStatus: paymentStatus,
+      workflow: nextWorkflow
+    })
+  });
+
+  alert(`${orderID} moved to ${nextWorkflow}.`);
+
+  setTimeout(loadKitchen, 1000);
+}
     
 function verifyFirstOrder() {
   const order = kitchenOrders.find(order => order.workflow === "NEW");
