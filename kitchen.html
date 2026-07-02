@@ -6,35 +6,115 @@
 
   <title>Gookie Kitchen</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff6ed;
-      color: #4b3027;
-      padding: 20px;
+<style>
+  :root {
+    --red: #bb191a;
+    --cream: #fff6ed;
+    --white: #ffffff;
+    --brown: #4b3027;
+    --muted: #7d6b63;
+    --line: #eadcd0;
+    --soft: #fff0e3;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    padding: 20px;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    color: var(--red);
+    font-family: Georgia, serif;
+    font-size: 42px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .task-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 12px 28px rgba(75, 48, 39, 0.08);
+  }
+
+  .card h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .task-count {
+    display: inline-block;
+    margin-bottom: 14px;
+    background: var(--soft);
+    color: var(--red);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 900;
+  }
+
+  button {
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 1px solid var(--line);
+    background: var(--soft);
+    border-radius: 18px;
+    padding: 14px;
+    font: inherit;
+    color: var(--brown);
+    outline: none;
+  }
+
+  @media (min-width: 760px) {
+    .task-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    h1 {
-      color: #bb191a;
-      font-family: Georgia, serif;
+    .card.notes {
+      grid-column: 1 / -1;
     }
-
-    .card {
-      background: white;
-      border-radius: 22px;
-      padding: 20px;
-      margin-bottom: 18px;
-    }
-
-    button {
-      background: #bb191a;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-weight: 800;
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
