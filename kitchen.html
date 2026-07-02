@@ -193,6 +193,34 @@ async function loadKitchen() {
 function getWorkflowCount(orders, workflow) {
   return orders.filter(order => order.workflow === workflow).length;
 }
+
+function verifyFirstOrder() {
+  const order = kitchenOrders.find(order => order.workflow === "NEW");
+
+  if (!order) {
+    alert("No orders waiting for payment verification.");
+    return;
+  }
+
+  fetch(SHEET_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: JSON.stringify({
+      action: "updateStatus",
+      orderID: order.orderID,
+      paymentStatus: "VERIFIED",
+      workflow: "READY_TO_BAKE"
+    })
+  });
+
+  alert(`${order.orderID} marked as payment verified.`);
+
+  setTimeout(loadKitchen, 1000);
+}
+    
   loadKitchen();
 </script>
   
