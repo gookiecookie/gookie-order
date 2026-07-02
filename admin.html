@@ -529,47 +529,53 @@ function updateStats(orders) {
     </div>
   `;
 }
-    function renderLatestOrders(orders) {
-      const keyword = document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
+function renderLatestOrders(orders) {
+  const keyword =
+    document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
 
-if (keyword) {
-  orders = orders.filter(order => {
-    return (
-      String(order.orderID || "").toLowerCase().includes(keyword) ||
-      String(order.name || "").toLowerCase().includes(keyword) ||
-      String(order.phone || "").toLowerCase().includes(keyword)
-    );
-  });
+  if (keyword) {
+    orders = orders.filter(order => {
+      return (
+        String(order.orderID || "").toLowerCase().includes(keyword) ||
+        String(order.name || "").toLowerCase().includes(keyword) ||
+        String(order.phone || "").toLowerCase().includes(keyword)
+      );
+    });
+  }
+
+  if (currentFilter === "today") {
+    orders = orders.filter(order => isToday(order.timestamp));
+  }
+
+  const latest = orders.slice(-8).reverse();
+  const container = document.getElementById("latestOrders");
+
+  if (latest.length === 0) {
+    container.innerHTML = `<div class="empty">No orders yet.</div>`;
+    return;
+  }
+
+  container.innerHTML = latest.map(order => {
+    const items = parseItems(order.items);
+    const cookieCount = items.reduce((sum, item) => sum + item.qty, 0);
+    const methodIcon = order.method === "delivery" ? "🚚" : "🏠";
+
+    return `
+      <div class="order-card">
+        <div>
+          <p class="order-status">🟢 ${order.paymentStatus || "PAID"}</p>
+          <strong>${order.orderID || "NO ID"}</strong>
+          <p class="muted">👤 ${order.name || "-"} • ${methodIcon} ${order.method || "-"}</p>
+          <p class="muted">🍪 ${cookieCount} cookies</p>
+        </div>
+
+        <div class="order-price">
+          ${money(order.total)}
+        </div>
+      </div>
+    `;
+  }).join("");
 }
-
-if (currentFilter === "today") {
-  orders = orders.filter(order => isToday(order.timestamp));
-}
-      
-      const latest = orders.slice(-8).reverse();
-      const container = document.getElementById("latestOrders");
-
-      if (latest.length === 0) {
-        container.innerHTML = `<div class="empty">No orders yet.</div>`;
-        return;
-      }
-
-      container.innerHTML = latest.map(order => {
-        return `
-          <div class="order-card">
-            <div>
-              <strong>${order.orderID || "NO ID"}</strong>
-              <p class="muted">${order.name || "-"} • ${order.method || "-"}</p>
-              <p class="order-status">✅ ${order.paymentStatus || "PAID"}</p>
-            </div>
-
-            <div class="order-price">
-              ${money(order.total)}
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
 
     loadDashboard();
   </script>
