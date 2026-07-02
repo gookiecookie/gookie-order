@@ -178,13 +178,13 @@ async function loadKitchen() {
     `${getWorkflowCount(orders, "NEW")} waiting`;
 
   document.getElementById("bakeCount").textContent =
-    `${getWorkflowCount(orders, "READY TO BAKE")} cookies`;
+    `${getWorkflowCount(orders, "READY_TO_BAKE")} orders`;
 
   document.getElementById("packCount").textContent =
-    `${getWorkflowCount(orders, "READY TO PACK")} orders`;
+    `${getWorkflowCount(orders, "READY_TO_PACK")} orders`;
 
   document.getElementById("shipCount").textContent =
-    `${getWorkflowCount(orders, "READY TO SHIP")} orders`;
+    `${getWorkflowCount(orders, "READY_TO_SHIP")} orders`;
 }
     
 function getWorkflowCount(orders, workflow) {
