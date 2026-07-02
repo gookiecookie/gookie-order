@@ -411,6 +411,12 @@ function setOrderFilter(filter, button) {
   button.classList.add("active");
 
   renderLatestOrders(window.gookieOrders);
+  const filteredOrders =
+  currentFilter === "today"
+    ? window.gookieOrders.filter(order => isToday(order.timestamp))
+    : window.gookieOrders;
+
+renderTopSelling(filteredOrders);
 }
     
     async function loadDashboard() {
