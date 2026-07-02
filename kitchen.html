@@ -315,7 +315,9 @@ function renderKitchenBoard(orders) {
 
 function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow) {
   const container = document.getElementById(containerId);
-  const list = orders.filter(order => order.workflow === workflow);
+  const list = orders.filter(order =>
+  String(order.workflow || "").trim().toUpperCase() === workflow
+);
 
   if (list.length === 0) {
     container.innerHTML = `<p class="empty">No tasks here.</p>`;
