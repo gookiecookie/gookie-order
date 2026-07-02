@@ -168,13 +168,28 @@
   <script>
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbxix-lKdXmQpFcSz4-H1EQoKzqx6MA6589jcVrH7A0KaEN7ErY9dfLZCL68R1Qt0MG-/exec";
 
-  async function loadKitchen() {
-    const response = await fetch(SHEET_URL);
-    const orders = await response.json();
+async function loadKitchen() {
+  const response = await fetch(SHEET_URL);
+  const orders = await response.json();
 
-    console.log("Kitchen orders:", orders);
-  }
+  console.log("Kitchen orders:", orders);
 
+  document.getElementById("verifyCount").textContent =
+    `${getWorkflowCount(orders, "NEW")} waiting`;
+
+  document.getElementById("bakeCount").textContent =
+    `${getWorkflowCount(orders, "READY TO BAKE")} cookies`;
+
+  document.getElementById("packCount").textContent =
+    `${getWorkflowCount(orders, "READY TO PACK")} orders`;
+
+  document.getElementById("shipCount").textContent =
+    `${getWorkflowCount(orders, "READY TO SHIP")} orders`;
+}
+    
+function getWorkflowCount(orders, workflow) {
+  return orders.filter(order => order.workflow === workflow).length;
+}
   loadKitchen();
 </script>
   
