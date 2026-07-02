@@ -233,13 +233,17 @@ function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow)
   }
 
   container.innerHTML = list.map(order => `
-    <div class="task-card">
+  <div class="task-card compact-card">
+    <div>
       <strong>${order.orderID || "NO ID"}</strong>
-      <p>${order.name || "-"} • ${order.method || "-"}</p>
-      <p>${order.items || ""}</p>
-      <button onclick="moveOrder('${order.orderID}', '${nextWorkflow}')">${buttonText}</button>
+      <p>${order.name || "-"} • ${money(order.total)}</p>
     </div>
-  `).join("");
+
+    <button onclick="openTaskModal('${order.orderID}', '${buttonText}', '${nextWorkflow}')">
+      Open
+    </button>
+  </div>
+`).join("");
 }
 
 function moveOrder(orderID, nextWorkflow) {
