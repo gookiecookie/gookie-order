@@ -569,9 +569,10 @@ function renderLatestOrders(orders) {
           <p class="muted">🍪 ${cookieCount} cookies</p>
         </div>
 
-        <div class="order-price">
-          ${money(order.total)}
-        </div>
+       <div class="order-price">
+  ${money(order.total)}
+  <button class="open-order-btn">Open →</button>
+</div>
       </div>
     `;
   }).join("");
