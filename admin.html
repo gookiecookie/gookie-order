@@ -438,7 +438,7 @@ window.gookieOrders = orders;
       const todayOrders = orders.filter(order => isToday(order.timestamp));
       updateStats(todayOrders);
       renderTopSelling(todayOrders);
-      renderMethodBreakdown(pickupCount, deliveryCount);
+      renderMethodBreakdown(todayOrders);
       renderLatestOrders(orders);
 
       document.getElementById("lastUpdated").textContent =
@@ -507,26 +507,28 @@ function updateStats(orders) {
       }).join("");
     }
 
-    function renderMethodBreakdown(pickup, delivery) {
-      document.getElementById("methodBreakdown").innerHTML = `
-        <div class="mini-row">
-          <div>
-            <strong>🏠 Pickup</strong>
-            <p class="muted">Self collect orders</p>
-          </div>
-          <strong>${pickup}</strong>
-        </div>
+    function renderMethodBreakdown(orders) {
+  const pickup = orders.filter(order => order.method === "pickup").length;
+  const delivery = orders.filter(order => order.method === "delivery").length;
 
-        <div class="mini-row">
-          <div>
-            <strong>🚚 Delivery</strong>
-            <p class="muted">Delivery orders</p>
-          </div>
-          <strong>${delivery}</strong>
-        </div>
-      `;
-    }
+  document.getElementById("methodBreakdown").innerHTML = `
+    <div class="mini-row">
+      <div>
+        <strong>🏠 Pickup</strong>
+        <p class="muted">Self collect orders</p>
+      </div>
+      <strong>${pickup}</strong>
+    </div>
 
+    <div class="mini-row">
+      <div>
+        <strong>🚚 Delivery</strong>
+        <p class="muted">Delivery orders</p>
+      </div>
+      <strong>${delivery}</strong>
+    </div>
+  `;
+}
     function renderLatestOrders(orders) {
       const keyword = document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
 
