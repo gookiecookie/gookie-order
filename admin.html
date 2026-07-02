@@ -518,6 +518,11 @@ if (keyword) {
     );
   });
 }
+
+if (currentFilter === "today") {
+  orders = orders.filter(order => isToday(order.timestamp));
+}
+      
       const latest = orders.slice(-8).reverse();
       const container = document.getElementById("latestOrders");
 
