@@ -607,6 +607,46 @@ function updateStats(orders) {
     </div>
   `;
 }
+
+function openOrderModal(orderID) {
+  const order = window.gookieOrders.find(item => item.orderID === orderID);
+
+  if (!order) return;
+
+  const items = parseItems(order.items);
+
+  document.getElementById("orderModalContent").innerHTML = `
+    <h2>${order.orderID}</h2>
+
+    <p class="modal-line"><strong>Status:</strong> ✅ ${order.paymentStatus || "PAID"}</p>
+    <p class="modal-line"><strong>Name:</strong> ${order.name || "-"}</p>
+    <p class="modal-line"><strong>Phone:</strong> ${order.phone || "-"}</p>
+    <p class="modal-line"><strong>Method:</strong> ${order.method || "-"}</p>
+    <p class="modal-line"><strong>Pickup:</strong> ${order.pickupDate || "-"}</p>
+    <p class="modal-line"><strong>Address:</strong> ${order.deliveryAddress || "-"}</p>
+
+    <hr>
+
+    <h3>Order Items</h3>
+    ${items.map(item => `
+      <p class="modal-line">🍪 ${item.name} × ${item.qty}</p>
+    `).join("")}
+
+    <hr>
+
+    <p class="modal-line"><strong>Total:</strong> ${money(order.total)}</p>
+    <p class="modal-line"><strong>Notes:</strong> ${order.notes || "-"}</p>
+  `;
+
+  document.getElementById("orderModalOverlay").classList.add("active");
+  document.getElementById("orderModal").classList.add("active");
+}
+
+function closeOrderModal() {
+  document.getElementById("orderModalOverlay").classList.remove("active");
+  document.getElementById("orderModal").classList.remove("active");
+}
+    
 function renderLatestOrders(orders) {
   const keyword =
     document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
