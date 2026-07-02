@@ -338,7 +338,7 @@ function renderTaskList(containerId, orders, workflow, buttonText, nextWorkflow)
 `).join("");
 }
 
-function moveOrder(orderID, nextWorkflow) {
+async function moveOrder(orderID, nextWorkflow) {
   const order = kitchenOrders.find(order => order.orderID === orderID);
 
   if (!order) {
@@ -351,6 +351,12 @@ function moveOrder(orderID, nextWorkflow) {
   if (nextWorkflow === "READY_TO_BAKE") {
     paymentStatus = "VERIFIED";
   }
+
+  order.paymentStatus = paymentStatus;
+  order.workflow = nextWorkflow;
+
+  renderKitchenBoard(kitchenOrders);
+  closeTaskModal();
 
   fetch(SHEET_URL, {
     method: "POST",
@@ -365,14 +371,7 @@ function moveOrder(orderID, nextWorkflow) {
       workflow: nextWorkflow
     })
   });
-
-  alert(`${orderID} moved to ${nextWorkflow}.`);
-
-  closeTaskModal();
-  
-  setTimeout(loadKitchen, 1000);
 }
-
 function money(amount) {
   return `RM${Number(amount || 0).toFixed(2)}`;
 }
