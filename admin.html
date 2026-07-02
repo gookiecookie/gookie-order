@@ -650,6 +650,7 @@ function closeOrderModal() {
 document.getElementById("orderModalOverlay").addEventListener("click", closeOrderModal);
     
 function renderLatestOrders(orders) {
+  orders = orders || [];
   const keyword =
     document.getElementById("orderSearch")?.value.toLowerCase().trim() || "";
 
