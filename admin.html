@@ -251,6 +251,27 @@
     width: 100%;
   }
 }
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--brown);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
     
   </style>
 </head>
@@ -322,6 +343,16 @@
   <div class="section-top">
     <h2>Latest Orders</h2>
 
+<div class="filter-buttons">
+  <button class="filter-btn active" onclick="setOrderFilter('today', this)">
+    Today
+  </button>
+
+  <button class="filter-btn" onclick="setOrderFilter('all', this)">
+    All
+  </button>
+</div>
+    
     <input
       type="text"
       id="orderSearch"
