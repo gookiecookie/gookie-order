@@ -349,33 +349,8 @@ function moveOrder(orderID, nextWorkflow) {
 
   alert(`${orderID} moved to ${nextWorkflow}.`);
 
-  setTimeout(loadKitchen, 1000);
-}
-    
-function verifyFirstOrder() {
-  const order = kitchenOrders.find(order => order.workflow === "NEW");
-
-  if (!order) {
-    alert("No orders waiting for payment verification.");
-    return;
-  }
-
-  fetch(SHEET_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: JSON.stringify({
-      action: "updateStatus",
-      orderID: order.orderID,
-      paymentStatus: "VERIFIED",
-      workflow: "READY_TO_BAKE"
-    })
-  });
-
-  alert(`${order.orderID} marked as payment verified.`);
-
+  closeTaskModal();
+  
   setTimeout(loadKitchen, 1000);
 }
 
@@ -427,7 +402,22 @@ function openTaskModal(orderID, buttonText, nextWorkflow) {
   document.getElementById("taskModal")
     .classList.add("active");
 
-}    
+}   
+
+function closeTaskModal(){
+
+  document.getElementById("taskModalOverlay")
+    .classList.remove("active");
+
+  document.getElementById("taskModal")
+    .classList.remove("active");
+
+}
+
+document
+  .getElementById("taskModalOverlay")
+  .addEventListener("click", closeTaskModal);
+    
   loadKitchen();
 </script>
   
