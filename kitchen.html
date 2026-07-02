@@ -381,37 +381,67 @@ function openTaskModal(orderID, buttonText, nextWorkflow) {
 
   if (!order) return;
 
-  document.getElementById("taskModalContent").innerHTML = `
-    <h2>${order.orderID}</h2>
+document.getElementById("taskModalContent").innerHTML = `
+  <h2>🍪 ${order.orderID}</h2>
 
-    <p class="modal-line"><strong>Customer</strong><br>${order.name}</p>
+  <p class="modal-line">
+    <strong>Customer</strong><br>
+    ${order.name}
+  </p>
 
-    <p class="modal-line"><strong>Phone</strong><br>${order.phone}</p>
+  <p class="modal-line">
+    <strong>Phone</strong><br>
+    ${order.phone}
+  </p>
 
-    <p class="modal-line"><strong>Method</strong><br>${order.method}</p>
+  <p class="modal-line">
+    <strong>${order.method === "delivery" ? "Delivery" : "Pickup"}</strong><br>
+    ${
+      order.method === "delivery"
+        ? (order.deliveryAddress || "-")
+        : (order.pickupDate || "-")
+    }
+  </p>
 
-    <p class="modal-line"><strong>Total</strong><br>${money(order.total)}</p>
+  <hr>
 
-    <hr>
+  <p class="modal-line">
+    <strong>Items</strong>
+  </p>
 
-    <p class="modal-line"><strong>Items</strong></p>
+  <p>${order.items.replaceAll(",", "<br>")}</p>
 
-    <p>${order.items}</p>
+  <hr>
 
-    <hr>
+  <p class="modal-line">
+    <strong>Total</strong><br>
+    ${money(order.total)}
+  </p>
 
-    <p class="modal-line"><strong>Notes</strong></p>
+  <p class="modal-line">
+    <strong>Notes</strong><br>
+    ${order.notes || "-"}
+  </p>
 
-    <p>${order.notes || "-"}</p>
+  <a
+    class="whatsapp-btn"
+    href="https://wa.me/${order.phone}"
+    target="_blank">
+    📱 Open WhatsApp
+  </a>
 
-    <br>
+  <button
+    class="action-btn"
+    onclick="moveOrder('${order.orderID}','${nextWorkflow}')">
 
-    <button
-      onclick="moveOrder('${order.orderID}','${nextWorkflow}')"
-      style="width:100%;">
-      ${buttonText}
-    </button>
-  `;
+    ${
+      nextWorkflow === "READY_TO_BAKE"
+        ? "✅ Verify Payment"
+        : buttonText
+    }
+
+  </button>
+`;
 
   document.getElementById("taskModalOverlay")
     .classList.add("active");
