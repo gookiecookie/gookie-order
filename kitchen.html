@@ -124,43 +124,48 @@
       <p class="subtitle">Work mode for today’s tasks. No sales, no noise — just what needs to be done.</p>
     </header>
 
-    <main class="task-grid">
+   <main class="task-board">
 
-  <div class="card">
-    <span class="task-count" id="verifyCount">0 waiting</span>
+  <section class="task-column">
     <h2>🚨 Verify Payment</h2>
-    <p>Orders waiting for payment confirmation.</p>
-   <button onclick="verifyFirstOrder()">Payment Confirmed</button>
-  </div>
+    <div id="verifyList" class="task-list">
+      <p class="empty">Loading...</p>
+    </div>
+  </section>
 
-  <div class="card">
-    <span class="task-count" id="bakeCount">0 cookies</span>
+  <section class="task-column">
     <h2>🔥 Bake</h2>
-    <p>Cookies that need to be baked today.</p>
-    <button>Start Baking</button>
-  </div>
+    <div id="bakeList" class="task-list">
+      <p class="empty">Loading...</p>
+    </div>
+  </section>
 
-  <div class="card">
-    <span class="task-count" id="packCount">0 orders</span>
+  <section class="task-column">
+    <h2>❄️ Cooling</h2>
+    <div id="coolingList" class="task-list">
+      <p class="empty">Loading...</p>
+    </div>
+  </section>
+
+  <section class="task-column">
     <h2>📦 Pack</h2>
-    <p>Orders ready to pack.</p>
-    <button>Packed</button>
-  </div>
+    <div id="packList" class="task-list">
+      <p class="empty">Loading...</p>
+    </div>
+  </section>
 
-  <div class="card">
-    <span class="task-count" id="shipCount">0 orders</span>
+  <section class="task-column">
     <h2>🚚 Ship / Pickup</h2>
-    <p>Orders ready to hand over.</p>
-    <button>Completed</button>
-  </div>
+    <div id="shipList" class="task-list">
+      <p class="empty">Loading...</p>
+    </div>
+  </section>
 
-  <div class="card notes">
+  <section class="task-column notes">
     <h2>📝 Staff Notes</h2>
-    <p>Leave notes for restock, missing items, or anything Mira needs to know.</p>
     <textarea placeholder="Example: Eggs running low, boxes left 8..."></textarea>
-    <br><br>
     <button>Save Note</button>
-  </div>
+  </section>
 
 </main>
   </div>
