@@ -382,7 +382,52 @@ function verifyFirstOrder() {
 function money(amount) {
   return `RM${Number(amount || 0).toFixed(2)}`;
 }
-    
+
+function openTaskModal(orderID, buttonText, nextWorkflow) {
+
+  const order = kitchenOrders.find(o => o.orderID === orderID);
+
+  if (!order) return;
+
+  document.getElementById("taskModalContent").innerHTML = `
+    <h2>${order.orderID}</h2>
+
+    <p class="modal-line"><strong>Customer</strong><br>${order.name}</p>
+
+    <p class="modal-line"><strong>Phone</strong><br>${order.phone}</p>
+
+    <p class="modal-line"><strong>Method</strong><br>${order.method}</p>
+
+    <p class="modal-line"><strong>Total</strong><br>${money(order.total)}</p>
+
+    <hr>
+
+    <p class="modal-line"><strong>Items</strong></p>
+
+    <p>${order.items}</p>
+
+    <hr>
+
+    <p class="modal-line"><strong>Notes</strong></p>
+
+    <p>${order.notes || "-"}</p>
+
+    <br>
+
+    <button
+      onclick="moveOrder('${order.orderID}','${nextWorkflow}')"
+      style="width:100%;">
+      ${buttonText}
+    </button>
+  `;
+
+  document.getElementById("taskModalOverlay")
+    .classList.add("active");
+
+  document.getElementById("taskModal")
+    .classList.add("active");
+
+}    
   loadKitchen();
 </script>
   
