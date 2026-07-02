@@ -384,18 +384,12 @@ function openTaskModal(orderID, buttonText, nextWorkflow) {
 document.getElementById("taskModalContent").innerHTML = `
   <h2>🍪 ${order.orderID}</h2>
 
-  <p class="modal-line">
-    <strong>Customer</strong><br>
-    ${order.name}
-  </p>
+  <p class="modal-line">👤 ${order.name || "-"}</p>
+  <p class="modal-line">📱 ${order.phone || "-"}</p>
 
   <p class="modal-line">
-    <strong>Phone</strong><br>
-    ${order.phone}
-  </p>
-
-  <p class="modal-line">
-    <strong>${order.method === "delivery" ? "Delivery" : "Pickup"}</strong><br>
+    ${order.method === "delivery" ? "🚚 Delivery" : "🏠 Pickup"}
+    •
     ${
       order.method === "delivery"
         ? (order.deliveryAddress || "-")
@@ -406,22 +400,13 @@ document.getElementById("taskModalContent").innerHTML = `
   <hr>
 
   <p class="modal-line">
-    <strong>Items</strong>
+    🍪 ${String(order.items || "").replaceAll(",", "<br>🍪")}
   </p>
-
-  <p>${order.items.replaceAll(",", "<br>")}</p>
 
   <hr>
 
-  <p class="modal-line">
-    <strong>Total</strong><br>
-    ${money(order.total)}
-  </p>
-
-  <p class="modal-line">
-    <strong>Notes</strong><br>
-    ${order.notes || "-"}
-  </p>
+  <p class="modal-line">💰 <strong>${money(order.total)}</strong></p>
+  <p class="modal-line">📝 ${order.notes || "-"}</p>
 
   <a
     class="whatsapp-btn"
@@ -433,14 +418,13 @@ document.getElementById("taskModalContent").innerHTML = `
   <button
     class="action-btn"
     onclick="moveOrder('${order.orderID}','${nextWorkflow}')">
-
     ${
       nextWorkflow === "READY_TO_BAKE"
         ? "✅ Verify Payment"
         : buttonText
     }
-
   </button>
+`;
 `;
 
   document.getElementById("taskModalOverlay")
