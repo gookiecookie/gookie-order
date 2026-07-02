@@ -305,6 +305,10 @@ function verifyFirstOrder() {
 
   setTimeout(loadKitchen, 1000);
 }
+
+function money(amount) {
+  return `RM${Number(amount || 0).toFixed(2)}`;
+}
     
   loadKitchen();
 </script>
