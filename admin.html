@@ -649,7 +649,11 @@ function renderLatestOrders(orders) {
 
        <div class="order-price">
   ${money(order.total)}
-  <button class="open-order-btn">Open →</button>
+ <button
+  class="open-order-btn"
+  onclick="openOrderModal('${order.orderID}')">
+  Open →
+</button>
 </div>
       </div>
     `;
