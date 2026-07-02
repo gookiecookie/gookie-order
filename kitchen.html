@@ -118,38 +118,49 @@
 </head>
 
 <body>
-  <h1>🍪 Gookie Kitchen</h1>
-  <p>Work mode for today’s tasks.</p>
+  <div class="wrap">
+    <header>
+      <h1>🍪 Gookie Kitchen</h1>
+      <p class="subtitle">Work mode for today’s tasks. No sales, no noise — just what needs to be done.</p>
+    </header>
 
-  <div class="card">
-    <h2>🚨 Verify Payment</h2>
-    <p>Orders waiting for payment confirmation.</p>
-    <button>Payment Confirmed</button>
-  </div>
+    <main class="task-grid">
+      <div class="card">
+        <span class="task-count">0 waiting</span>
+        <h2>🚨 Verify Payment</h2>
+        <p>Orders waiting for payment confirmation.</p>
+        <button>Payment Confirmed</button>
+      </div>
 
-  <div class="card">
-    <h2>🔥 Bake</h2>
-    <p>Cookies that need to be baked today.</p>
-    <button>Start Baking</button>
-  </div>
+      <div class="card">
+        <span class="task-count">0 cookies</span>
+        <h2>🔥 Bake</h2>
+        <p>Cookies that need to be baked today.</p>
+        <button>Start Baking</button>
+      </div>
 
-  <div class="card">
-    <h2>📦 Pack</h2>
-    <p>Orders ready to pack.</p>
-    <button>Packed</button>
-  </div>
+      <div class="card">
+        <span class="task-count">0 orders</span>
+        <h2>📦 Pack</h2>
+        <p>Orders ready to pack.</p>
+        <button>Packed</button>
+      </div>
 
-  <div class="card">
-    <h2>🚚 Ship / Pickup</h2>
-    <p>Orders ready to hand over.</p>
-    <button>Completed</button>
-  </div>
+      <div class="card">
+        <span class="task-count">0 orders</span>
+        <h2>🚚 Ship / Pickup</h2>
+        <p>Orders ready to hand over.</p>
+        <button>Completed</button>
+      </div>
 
-  <div class="card">
-    <h2>📝 Staff Notes</h2>
-    <textarea placeholder="Example: Eggs running low, boxes left 8..." style="width:100%; min-height:120px;"></textarea>
-    <br><br>
-    <button>Save Note</button>
+      <div class="card notes">
+        <h2>📝 Staff Notes</h2>
+        <p>Leave notes for restock, missing items, or anything Mira needs to know.</p>
+        <textarea placeholder="Example: Eggs running low, boxes left 8..."></textarea>
+        <br><br>
+        <button>Save Note</button>
+      </div>
+    </main>
   </div>
 </body>
 </html>
