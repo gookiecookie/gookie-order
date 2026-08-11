@@ -1,1502 +1,1326 @@
 <!doctype html>
 <html lang="en">
- <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#BB191A" />
+
   <title>Gookie — Chunky Wonders</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   />
 
-  <link rel="stylesheet" href="style.css?v=10.0" />
+  <link rel="stylesheet" href="style.css?v=11.0" />
 </head>
-  <body>
-    <button
-      class="page-overlay"
-      id="pageOverlay"
-      type="button"
-      aria-label="Close open panel"
-      hidden
-    ></button>
 
-    <header class="site-header" id="siteHeader">
-      <div class="header-inner">
-        <button
-          class="header-icon-button"
-          id="menuButton"
-          type="button"
-          aria-label="Open menu"
-          aria-controls="menuDrawer"
-          aria-expanded="false"
-        >
-          <span class="hamburger-icon" aria-hidden="true"
-            ><span></span><span></span><span></span
-          ></span>
-        </button>
-        <a class="brand-logo" href="#home" aria-label="Gookie home">
-          <img src="smallgookielogo.png" alt="Gookie" />
-        </a>
-        <span class="malaysia-flag" title="Proudly Baked in Malaysia">
-  🇲🇾
-</span>
-        <button
-          class="header-icon-button cart-button"
-          id="cartButton"
-          type="button"
-          aria-label="Open cart"
-          aria-controls="cartDrawer"
-          aria-expanded="false"
-        >
-          <svg
-            class="cart-icon"
-            viewBox="0 0 32 32"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-            <circle cx="13" cy="26" r="1.8" fill="currentColor"></circle>
-            <circle cx="24" cy="26" r="1.8" fill="currentColor"></circle>
-          </svg>
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
-      </div>
-    </header>
+<body>
 
-   <aside
-  class="drawer drawer-left premium-menu-drawer"
-  id="menuDrawer"
-  aria-hidden="true"
-  aria-label="Main menu"
->
-  <div class="drawer-header premium-menu-header">
-    <div>
-      <p class="drawer-eyebrow">
-        HELLO, COOKIE LOVER <span aria-hidden="true">🍪</span>
-      </p>
-
-      <h2>What’s on the menu?</h2>
-    </div>
-
-    <button
-      class="drawer-close-button"
-      id="menuCloseButton"
-      type="button"
-      aria-label="Close menu"
-    >
-      ×
-    </button>
-  </div>
-
-  <nav class="drawer-nav premium-menu-nav" aria-label="Primary navigation">
-
-    <a
-      class="premium-menu-item premium-menu-item-cookie"
-      href="gookies.html"
-    >
-      <span class="premium-menu-icon" aria-hidden="true">
-        <i class="fa-solid fa-cookie-bite"></i>
-      </span>
-
-      <span class="premium-menu-copy">
-        <strong>MEET THE GOOKIES</strong>
-        <small>Explore every chunky wonder.</small>
-      </span>
-
-      <span class="premium-menu-arrow" aria-hidden="true">
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
-    </a>
-
-
-    <a
-      class="premium-menu-item premium-menu-item-box"
-      href="order.html"
-    >
-      <span class="premium-menu-icon" aria-hidden="true">
-        <i class="fa-solid fa-box-open"></i>
-      </span>
-
-      <span class="premium-menu-copy">
-        <strong>GET YOUR GOOKIES</strong>
-        <small>Build your box or choose a combo.</small>
-      </span>
-
-      <span class="premium-menu-arrow" aria-hidden="true">
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
-    </a>
-
-
-    <a
-      class="premium-menu-item premium-menu-item-goodies"
-      href="goodies.html"
-    >
-      <span class="premium-menu-icon" aria-hidden="true">
-        <i class="fa-solid fa-gift"></i>
-      </span>
-
-      <span class="premium-menu-copy">
-        <strong>GOOKIE’S GOODIES</strong>
-        <small>Wedding, birthdays and gifting.</small>
-      </span>
-
-      <span class="premium-menu-arrow" aria-hidden="true">
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
-    </a>
-
-
-    <a
-      class="premium-menu-item premium-menu-item-about"
-      href="about.html"
-    >
-      <span class="premium-menu-icon" aria-hidden="true">
-        <i class="fa-regular fa-heart"></i>
-      </span>
-
-      <span class="premium-menu-copy">
-        <strong>ABOUT GOOKIE</strong>
-        <small>Our story and cookie philosophy.</small>
-      </span>
-
-      <span class="premium-menu-arrow" aria-hidden="true">
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
-    </a>
-
-  </nav>
-</aside>
-    <aside
-      class="drawer drawer-right"
-      id="cartDrawer"
-      aria-hidden="true"
-      aria-label="Shopping cart"
-    >
-      <div class="drawer-header">
-        <div>
-          <p class="drawer-eyebrow">YOUR GOOKIE ORDER</p>
-          <h2>Cart</h2>
-        </div>
-        <button
-          class="drawer-close-button"
-          id="cartCloseButton"
-          type="button"
-          aria-label="Close cart"
-        >
-          ×
-        </button>
-      </div>
-      <div class="cart-empty-state" id="cartEmptyState">
-        <div class="cookie-placeholder" aria-hidden="true">🍪</div>
-        <h3>Your box is feeling lonely.</h3>
-        <p>Choose Build Your Box or Gookie's Choice to begin.</p>
-      </div>
-      <div class="cart-content" id="cartContent" hidden>
-        <div class="cart-order-summary" id="cartOrderSummary"></div>
-      </div>
-      <div class="cart-drawer-footer">
-        <div class="cart-summary-row">
-          <span>Cookies selected</span><strong id="cartSelectedCount">0</strong>
-        </div>
-        <button
-          class="primary-button"
-          id="checkoutButton"
-          type="button"
-          disabled
-        >
-          CONTINUE
-        </button>
-      </div>
-    </aside>
-
-    <main>
-      <section class="hero-section" id="home">
-        <div class="hero-cookie-area">
-          <div class="hero-shape hero-shape-one"></div>
-          <div class="hero-shape hero-shape-two"></div>
-          <img
-            class="hero-cookie-image"
-            src="hero-cookies.gif"
-            alt="A stack of Gookie chunky cookies"
-          />
-        </div>
-        <div class="hero-content">
-          <p class="section-kicker">HELLO THERE, WELCOME TO</p>
-          <h1><span>GOOKIE'S</span><span>CHUNKY</span><span>WONDERS.</span></h1>
-
-<div class="hero-highlights">
-
-  <div class="hero-highlight">
-    <span>🍪</span>
-    <strong>Baked Fresh</strong>
-  </div>
-
-  <div class="hero-highlight">
-    <span>🤎</span>
-    <strong>Less Sweet</strong>
-  </div>
-
-  <div class="hero-highlight">
-    <span>❤️</span>
-    <strong>Enjoy Longer</strong>
-  </div>
-
-</div>
-
-<div class="hero-actions">
-
- <a class="hero-button hero-button-primary" href="order.html">
-  BUILD YOUR BOX
-</a>
-
-<a class="hero-button hero-button-secondary" href="gookies.html">
-  MEET THE GOOKIES
-</a>
-
-</div>
-        </div>
-      </section>
-
-<!-- =========================================================
-     FRESH BANNER
-========================================================= -->
-
-<!-- =========================================================
-     GOOKIE TRUST BANNER
-========================================================= -->
-
-<section
-  class="gookie-trust-section"
-  aria-label="Why customers love Gookie"
->
-
-  <div class="gookie-trust-banner">
-
-    <div class="gookie-trust-item">
-
-      <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-mitten"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>BAKED FRESH</strong>
-        <span>
-          In small batches<br>
-          for the best taste.
-        </span>
-      </div>
-
-    </div>
-
-
-    <div class="gookie-trust-item">
-
-      <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-cookie-bite"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>QUALITY INGREDIENTS</strong>
-        <span>
-          Real ingredients,<br>
-          real goodness.
-        </span>
-      </div>
-
-    </div>
-
-
-    <div class="gookie-trust-item">
-
-     <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-truck-fast"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>PENINSULAR MALAYSIA DELIVERY</strong>
-        <span>
-          Delivered with care<br>
-          straight to your door.
-        </span>
-      </div>
-
-    </div>
-
-
-    <div class="gookie-trust-item">
-
-     <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-heart"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>MADE WITH LOVE</strong>
-        <span>
-          From our kitchen<br>
-          to your heart.
-        </span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-      
-<section class="meet-section" id="meet-the-gookies">
-        <div class="section-heading">
-          <p class="section-kicker">SAY HELLO TO THE WHOLE CREW</p>
-          <h2 class="meet-title">
-  <span class="meet-title-top">meet the</span>
-  <span class="meet-title-red">
-    GOOKIES
-    <span class="meet-title-heart">♡</span>
-  </span>
-</h2>
-          <p>Every Gookie has its own personality.<br>
-Which one will steal your heart?</p>
-        </div>
-        <div class="marquee-wrapper">
+  <!-- =========================================================
+       PAGE OVERLAY
+  ========================================================== -->
 
   <button
-    class="marquee-arrow marquee-arrow-left"
-    id="marqueePrev"
+    class="page-overlay"
+    id="pageOverlay"
     type="button"
-    aria-label="View previous Gookie"
-  >
-    ‹
-  </button>
+    aria-label="Close open panel"
+    hidden
+  ></button>
 
-  <div class="marquee-shell" id="marqueeShell">
-    <div class="marquee-track" id="marqueeTrack"></div>
-  </div>
 
-  <button
-    class="marquee-arrow marquee-arrow-right"
-    id="marqueeNext"
-    type="button"
-    aria-label="View next Gookie"
-  >
-    ›
-  </button>
+  <!-- =========================================================
+       TOP MARQUEE
+  ========================================================== -->
 
-</div>
-          
-        <p class="marquee-hint"></p>
+  <div class="top-marquee" aria-label="Gookie announcements">
+    <div class="top-marquee-track">
 
-<div class="meet-full-menu">
-  <a href="gookies.html">
-    SEE THE FULL MENU →
-  </a>
-</div>
- 
-      </section>
+      <span>HELLO THERE, WELCOME TO GOOKIE’S CHUNKY WONDERS</span>
+      <span>LESS SWEET</span>
+      <span>BAKED FRESH</span>
+      <span>PENINSULAR MALAYSIA DELIVERY</span>
 
-      <section class="order-builder" id="order-builder">
-        <div class="section-heading order-builder-heading">
-          <p class="section-kicker">NOW FOR THE FUN PART</p>
-          <h2 class="order-title">
-            <span class="order-title-top">GET YOUR</span>
-            <span class="order-title-red">
-              GOOKIES
-              <span class="order-title-heart">♡</span>
-            </span>
-          </h2>
-          <p>Build your dream box, or let Gookie do the choosing.</p>
-        </div>
+      <!-- duplicate for smooth loop -->
+      <span aria-hidden="true">HELLO THERE, WELCOME TO GOOKIE’S CHUNKY WONDERS</span>
+      <span aria-hidden="true">LESS SWEET</span>
+      <span aria-hidden="true">BAKED FRESH</span>
+      <span aria-hidden="true">PENINSULAR MALAYSIA DELIVERY</span>
 
-        <div
-          class="order-builder-tabs"
-          role="tablist"
-          aria-label="Choose your ordering style"
-        >
-          <button
-            class="order-builder-tab is-active"
-            id="showBuildYourBox"
-            type="button"
-            role="tab"
-            aria-selected="true"
-            aria-controls="build-your-box"
-            data-order-tab="build"
-          >
-            BUILD YOUR BOX
-          </button>
-          <button
-            class="order-builder-tab"
-            id="showGookiesChoice"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            aria-controls="gookies-choice"
-            data-order-tab="choice"
-          >
-            GOOKIE'S PICKS
-          </button>
-        </div>
-
-        <div class="order-builder-content">
-          <section class="order-section order-builder-panel" id="build-your-box" data-order-panel="build">
-            <div class="box-size-options" id="buildBoxSizeOptions">
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="4"
-    data-box-name="Treat Box"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="treat-box.png" alt="Treat Box">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>TREAT BOX</strong>
-        <small><b>4 COOKIES</b><span>RM39</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="4"></div>
-
-      <p class="box-accordion-helper">
-        Pick 4 cookies to complete your Treat Box.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="4"
-      >
-        CHOOSE MY GOOKIES
-      </button>
     </div>
-  </article>
-
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="6"
-    data-box-name="Chunky Box"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="chunky-box.png" alt="Chunky Box">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>CHUNKY BOX</strong>
-        <small><b>6 COOKIES</b><span>RM56</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="6"></div>
-
-      <p class="box-accordion-helper">
-        Pick 6 cookies to complete your Chunky Box.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="6"
-      >
-        CHOOSE MY GOOKIES
-      </button>
-    </div>
-  </article>
-
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="12"
-    data-box-name="Cookie Feast"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="cookie-feast.png" alt="Cookie Feast">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>COOKIE FEAST</strong>
-        <small><b>12 COOKIES</b><span>RM108</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="12"></div>
-
-      <p class="box-accordion-helper">
-        Pick 12 cookies to complete your Cookie Feast.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="12"
-      >
-        CHOOSE MY GOOKIES
-      </button>
-    </div>
-  </article>
-</div>
-            <div class="cookie-box-panel build-legacy-panel">
-              <div class="cookie-box-header">
-                <div>
-                  <p class="cookie-box-label">YOUR BOX</p>
-                  <h3 id="buildSelectedBoxName">Choose a box size</h3>
-                </div>
-                <div class="box-counter">
-                  <strong id="buildSelectedCount">0</strong><span>/</span
-                  ><strong id="buildBoxCapacity">0</strong>
-                </div>
-              </div>
-
-              <!-- ==================== BUILD BOX PROGRESS ==================== -->
-              <div
-                class="box-progress"
-                id="buildBoxProgress"
-                role="progressbar"
-                aria-label="Build Your Box progress"
-                aria-valuemin="0"
-                aria-valuemax="0"
-                aria-valuenow="0"
-              >
-                <div class="box-progress-track">
-                  <div class="box-progress-fill" id="buildBoxProgressFill"></div>
-                </div>
-                <span class="box-progress-text" id="buildBoxProgressText">
-                  Choose a box size to begin
-                </span>
-              </div>
-
-              <div class="cookie-box-slots" id="buildCookieSlots"></div>
-              <p class="box-helper-text" id="buildBoxHelper">
-                Choose your box size to start building.
-              </p>
-              <button
-                class="primary-button"
-                id="openFlavourSelector"
-                type="button"
-                disabled
-              >
-                CHOOSE MY GOOKIES
-              </button>
-            </div>
-          </section>
-
-      <section
-  class="order-section order-builder-panel is-hidden"
-  id="gookies-choice"
-  data-order-panel="choice"
->
-  <div class="gookies-picks-intro">
-    <p class="section-kicker">THE EASY, DELICIOUS WAY</p>
-    <p>We'll pick. You enjoy.</p>
-  </div>
-
-  <div class="gookies-picks-grid" id="collectionGrid">
-    <button class="gookies-pick-card" type="button" data-pick-id="first-timer">
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="First-Timer box" />
-        <span class="gookies-pick-badge">START HERE</span>
-      </div>
-      <div class="gookies-pick-copy">
-        <strong>FIRST-TIMER</strong>
-        <span class="gookies-pick-quantity">4 COOKIES</span>
-        <span class="gookies-pick-price">RM36</span>
-      </div>
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-
-    <button class="gookies-pick-card" type="button" data-pick-id="the-classics">
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="The Classics box" />
-      </div>
-      <div class="gookies-pick-copy">
-        <strong>THE CLASSICS</strong>
-        <span class="gookies-pick-quantity">6 COOKIES</span>
-        <span class="gookies-pick-price">RM52</span>
-      </div>
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-
-    <button class="gookies-pick-card" type="button" data-pick-id="surprise-box">
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="Surprise Box" />
-      </div>
-      <div class="gookies-pick-copy">
-        <strong>SURPRISE BOX</strong>
-        <span class="gookies-pick-quantity">6 COOKIES</span>
-        <span class="gookies-pick-price">RM52</span>
-      </div>
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-
-    <button class="gookies-pick-card" type="button" data-pick-id="full-wonder">
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="Full Wonder box" />
-      </div>
-      <div class="gookies-pick-copy">
-        <strong>FULL WONDER</strong>
-        <span class="gookies-pick-quantity">12 COOKIES</span>
-        <span class="gookies-pick-price">RM99</span>
-      </div>
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-  </div>
-</section>
-    </main>
-<!-- =========================================================
-     GOOKIE FOOTER — PRODUCTION
-========================================================= -->
-
-<!-- =========================================================
-     GOOKIE FOOTER — FULL BRAND VERSION
-========================================================= -->
-
-<footer class="site-footer" id="siteFooter">
-
-  <!-- ==================== FOOTER HERO ==================== -->
-
-  <div class="footer-hero">
-
-    <p class="footer-eyebrow">
-      <span aria-hidden="true">—</span>
-      ONE LAST CRUMB...
-      <span aria-hidden="true">—</span>
-    </p>
-
-    <h2>
-      Till next cookie time.
-      <span class="footer-cookie" aria-hidden="true">🍪</span>
-    </h2>
-
-    <p class="footer-message">
-      Keep your box close, and your cravings closer.
-    </p>
-
   </div>
 
 
-  <!-- ==================== MAIN FOOTER ==================== -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
 
-  <div class="footer-main">
+  <header class="site-header" id="siteHeader">
 
-    <!-- BRAND COLUMN -->
-
-    <div class="footer-brand-column">
-
-      <div class="footer-brand">
-
-        <p class="footer-logo">
-          GOOKIE
-        </p>
-      </div>
-      <p class="footer-brand-description">
-        Chunky cookies, baked fresh with less drama and more joy.
-        Made for cookie lovers, by a cookie lover.
-        <span aria-hidden="true">❤️</span>
-      </p>
-
-      <div class="footer-brand-divider"></div>
-
-      <div class="footer-social-section">
-
-        <h3>FOLLOW GOOKIE</h3>
-
-        <div class="footer-socials" aria-label="Gookie social media">
-
-         <a
-  href="https://www.instagram.com/gookie.my?igsh=YWp3aW9xeHplM2Fq&amp;utm_source=qr"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Follow Gookie on Instagram"
->
-  <i class="fa-brands fa-instagram"></i>
-</a>
-
-          <a
-  href="https://www.tiktok.com/@gookie.my?_r=1&amp;_t=ZS-98Ua9Xekk0j"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Follow Gookie on TikTok"
->
-  <i class="fa-brands fa-tiktok"></i>
-</a>
-
-         <a
-  href="https://www.facebook.com/share/1BZJ9mqCJ4/?mibextid=wwXIfr"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Follow Gookie on Facebook"
->
-  <i class="fa-brands fa-facebook-f"></i>
-</a>
-
-          <a
-  href="https://www.threads.com/@gookie.my?igshid=NTc4MTIwNjQ2YQ=="
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Follow Gookie on Threads"
->
-  <i class="fa-brands fa-threads"></i>
-</a>
-         <a
-  href="https://wa.me/60172787879"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Chat with Gookie on WhatsApp"
->
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
-        </div>
-
-      </div>
-
-      <div class="footer-contact-section footer-accordion-group">
-
-        <button
-          class="footer-contact-heading footer-accordion-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="footerConnectPanel"
-        >
-          <span class="footer-heading-icon" aria-hidden="true">
-            <i class="fa-regular fa-envelope"></i>
-          </span>
-          <span class="footer-accordion-label">LET’S CONNECT!</span>
-          <span class="footer-accordion-chevron" aria-hidden="true"></span>
-        </button>
-
-        <div
-          class="footer-contact-panel footer-accordion-panel"
-          id="footerConnectPanel"
-        >
-          <a
-            class="footer-contact-row"
-            href="mailto:heygookie@gmail.com"
-          >
-            <span class="footer-contact-icon" aria-hidden="true">
-              <i class="fa-regular fa-envelope"></i>
-            </span>
-            <span>heygookie@gmail.com</span>
-          </a>
-
-          <p class="footer-contact-row">
-            <span class="footer-contact-icon" aria-hidden="true">
-              <i class="fa-solid fa-location-dot"></i>
-            </span>
-            <span>Ampang, Selangor, Malaysia</span>
-          </p>
-
-          <p class="footer-contact-row footer-mobile-only">
-            <span class="footer-contact-icon" aria-hidden="true">
-              <i class="fa-regular fa-clock"></i>
-            </span>
-            <span>Replies 9am–5pm daily</span>
-          </p>
-
-         <a
-  class="footer-contact-row footer-mobile-only"
-  href="https://wa.me/60172787879"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <span class="footer-contact-icon" aria-hidden="true">
-    <i class="fa-brands fa-whatsapp"></i>
-  </span>
-  <span>DM Us on WhatsApp</span>
-</a>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- HELP COLUMN -->
-
-    <div class="footer-column footer-help-column footer-accordion-group">
+    <div class="header-inner">
 
       <button
-        class="footer-column-heading footer-accordion-toggle"
+        class="header-icon-button"
+        id="menuButton"
         type="button"
+        aria-label="Open menu"
+        aria-controls="menuDrawer"
         aria-expanded="false"
-        aria-controls="footerHelpPanel"
       >
-        <span class="footer-heading-icon" aria-hidden="true">
-          <i class="fa-solid fa-headphones-simple"></i>
+        <span class="hamburger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
         </span>
-        <span class="footer-accordion-label">NEED HELP?</span>
-        <span class="footer-accordion-chevron" aria-hidden="true"></span>
       </button>
 
-      <nav
-        class="footer-link-list footer-accordion-panel"
-        id="footerHelpPanel"
-        aria-label="Help and information"
-      >
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="faq"
-        >
-          FAQ
-        </button>
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="delivery"
-        >
-          Delivery Information
-        </button>
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="storage"
-        >
-          Storage &amp; Reheating
-        </button>
-
-        <button
-          class="footer-allergen-button"
-          type="button"
-          data-footer-modal="allergen"
-        >
-          <span class="footer-allergen-icon" aria-hidden="true">⚠</span>
-          <span>ALLERGEN INFORMATION</span>
-        </button>
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="contact"
-        >
-          Contact Us
-        </button>
-
-      </nav>
-
-    </div>
-
-
-    <!-- LEGAL COLUMN -->
-
-    <div class="footer-column footer-legal-column footer-accordion-group">
-
-      <button
-        class="footer-column-heading footer-accordion-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="footerLegalPanel"
-      >
-        <span class="footer-heading-icon" aria-hidden="true">
-          <i class="fa-regular fa-file-lines"></i>
-        </span>
-        <span class="footer-accordion-label">THE BORING STUFF</span>
-        <span class="footer-accordion-chevron" aria-hidden="true"></span>
-      </button>
-
-      <nav
-        class="footer-link-list footer-accordion-panel"
-        id="footerLegalPanel"
-        aria-label="Legal information"
-      >
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="terms"
-        >
-          Terms &amp; Conditions
-        </button>
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="privacy"
-        >
-          Privacy Policy
-        </button>
-
-        <button
-          class="footer-text-link"
-          type="button"
-          data-footer-modal="refund"
-        >
-          Refund &amp; Replacement Policy
-        </button>
-
-      </nav>
-
-    </div>
-
-
-    <!-- WHATSAPP COLUMN -->
-
-    <div class="footer-whatsapp-column">
-
-      <div class="footer-whatsapp-icon" aria-hidden="true">
-  <i class="fa-brands fa-whatsapp"></i>
-</div>
-
-      <h3>
-        JOIN GOOKIE’S<br>
-        WHATSAPP CHANNEL
-      </h3>
-
-      <p>
-        New flavours, restocks and little cookie surprises —
-        straight to your WhatsApp.
-      </p>
 
       <a
-        class="footer-whatsapp-button"
-        href="https://whatsapp.com/channel/0029VbDaEAOGk1Fy5ZApou1n"
-        target="_blank"
-        rel="noopener noreferrer"
+        class="brand-logo"
+        href="#home"
+        aria-label="Gookie home"
       >
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-        <span>FOLLOW THE CHANNEL</span>
+        <img
+          src="smallgookielogo.png"
+          alt="Gookie"
+        />
+      </a>
+
+
+      <a
+        class="header-icon-button header-shop-button"
+        href="order.html"
+        aria-label="Shop Gookie"
+      >
+        <svg
+          class="cart-icon"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+
+          <circle
+            cx="13"
+            cy="26"
+            r="1.8"
+            fill="currentColor"
+          ></circle>
+
+          <circle
+            cx="24"
+            cy="26"
+            r="1.8"
+            fill="currentColor"
+          ></circle>
+        </svg>
       </a>
 
     </div>
 
-  </div>
+  </header>
 
 
-  <!-- ==================== RED BOTTOM BAR ==================== -->
+  <!-- =========================================================
+       LEFT MENU DRAWER
+  ========================================================== -->
 
-  <div class="footer-red-bar">
-
-    <div class="footer-red-scallop" aria-hidden="true"></div>
-
-    <div class="footer-red-bar-inner">
-
-      <p>
-        © 2026 Gookie Enterprise. All rights reserved.
-      </p>
-
-      <span class="footer-bottom-divider" aria-hidden="true"></span>
-
-      <p class="footer-baked-line">
-        Baked with ♡ in Malaysia.
-      </p>
-
-      <span class="footer-bottom-divider" aria-hidden="true"></span>
-
-      <p class="footer-thank-you">
-        Thank you for supporting us. ♡
-      </p>
-
-    </div>
-
-  </div>
-
-</footer>
-
-<!-- =========================================================
-     FOOTER INFORMATION MODAL
-========================================================= -->
-
-<section
-  class="modal footer-info-modal"
-  id="footerInfoModal"
-  aria-hidden="true"
-  aria-labelledby="footerInfoModalTitle"
->
-  <div
-    class="modal-card footer-info-modal-card"
-    role="dialog"
-    aria-modal="true"
+  <aside
+    class="drawer drawer-left premium-menu-drawer"
+    id="menuDrawer"
+    aria-hidden="true"
+    aria-label="Main menu"
   >
 
-    <div class="footer-info-modal-header">
+    <div class="drawer-header premium-menu-header">
 
       <div>
-        <p
-          class="footer-info-modal-eyebrow"
-          id="footerInfoModalEyebrow"
-        >
-          GOOKIE INFORMATION
+        <p class="drawer-eyebrow">
+          HELLO, COOKIE LOVER 🍪
         </p>
 
-        <h2 id="footerInfoModalTitle">
-          Information
+        <h2>
+          What’s on the menu?
         </h2>
       </div>
 
+
       <button
-        class="modal-close-button"
-        id="footerInfoModalClose"
+        class="drawer-close-button"
+        id="menuCloseButton"
         type="button"
-        aria-label="Close information"
+        aria-label="Close menu"
       >
         ×
       </button>
 
     </div>
 
-    <div
-      class="footer-info-modal-body"
-      id="footerInfoModalBody"
-    >
-      <p>Information will appear here.</p>
-    </div>
 
-  </div>
-</section>
-          
-    <section
-      class="modal"
-      id="cookieModal"
-      aria-hidden="true"
-      aria-label="Cookie details"
+    <nav
+      class="drawer-nav premium-menu-nav"
+      aria-label="Primary navigation"
     >
-      <div class="modal-card cookie-detail-modal">
-        <button
-          class="modal-close-button"
-          id="cookieModalClose"
-          type="button"
-          aria-label="Close cookie details"
+
+      <a
+        class="premium-menu-item"
+        href="gookies.html"
+      >
+        <span
+          class="premium-menu-icon"
+          aria-hidden="true"
         >
-          ×
-        </button>
-        <div class="cookie-detail-image-wrap">
-          <img id="modalCookieImage" src="" alt="" />
-        </div>
-        <div class="cookie-detail-content">
-          <p class="modal-cookie-subtitle" id="modalCookieSubtitle"></p>
-          <h2 id="modalCookieName"></h2>
-          <p id="modalCookieDescription"></p>
-          <button
-            class="primary-button"
-            id="getYourGookiesButton"
-            type="button"
-          >
-            GET YOUR GOOKIES
-          </button>
-        </div>
-      </div>
-    </section>
+          <i class="fa-solid fa-cookie-bite"></i>
+        </span>
+
+        <span class="premium-menu-copy">
+          <strong>MEET THE GOOKIES</strong>
+          <small>Explore every chunky wonder.</small>
+        </span>
+
+        <span
+          class="premium-menu-arrow"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+
+      <a
+        class="premium-menu-item"
+        href="order.html"
+      >
+        <span
+          class="premium-menu-icon"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-box-open"></i>
+        </span>
+
+        <span class="premium-menu-copy">
+          <strong>GET YOUR GOOKIES</strong>
+          <small>Shop boxes, build your own and more.</small>
+        </span>
+
+        <span
+          class="premium-menu-arrow"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+
+      <a
+        class="premium-menu-item"
+        href="goodies.html"
+      >
+        <span
+          class="premium-menu-icon"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-gift"></i>
+        </span>
+
+        <span class="premium-menu-copy">
+          <strong>GOOKIE’S GOODIES</strong>
+          <small>Wedding, birthdays and gifting.</small>
+        </span>
+
+        <span
+          class="premium-menu-arrow"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+
+      <a
+        class="premium-menu-item"
+        href="about.html"
+      >
+        <span
+          class="premium-menu-icon"
+          aria-hidden="true"
+        >
+          <i class="fa-regular fa-heart"></i>
+        </span>
+
+        <span class="premium-menu-copy">
+          <strong>ABOUT GOOKIE</strong>
+          <small>Our story and cookie philosophy.</small>
+        </span>
+
+        <span
+          class="premium-menu-arrow"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main id="home">
+
+
+    <!-- =========================================================
+         HERO CAROUSEL
+    ========================================================== -->
 
     <section
-      class="modal"
-      id="flavourModal"
-      aria-hidden="true"
-      aria-label="Choose your Gookie flavours"
+      class="hero-carousel"
+      aria-label="Gookie featured highlights"
     >
-      <div class="modal-card flavour-selector-modal">
-        <div class="modal-sticky-header">
-          <div>
-            <p class="drawer-eyebrow">BUILD YOUR BOX</p>
-            <h2 id="flavourModalTitle">Choose your Gookies</h2>
+
+      <div
+        class="hero-stage"
+        id="heroStage"
+      >
+
+
+        <!-- SLIDE 1 -->
+
+        <article
+          class="hero-slide is-active"
+          data-hero-slide="0"
+        >
+
+          <div class="hero-slide-inner">
+
+            <div class="hero-copy">
+
+              <p class="eyebrow">
+                MONTHLY GOOKIE
+              </p>
+
+              <h1>
+                Berry Nutty
+              </h1>
+
+              <p class="hero-text">
+                Limited flavour. Here for a good time,
+                not a long time.
+              </p>
+
+              <a
+                class="button button-primary"
+                href="order.html?flavour=monthly-gookie"
+              >
+                GET YOURS
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+
+            <div class="hero-visual hero-visual-monthly">
+
+              <img
+                src="hero-monthly-gookie.png"
+                data-fallback="monthly-wonder.png"
+                alt="Monthly Gookie"
+              />
+
+            </div>
+
           </div>
+
+        </article>
+
+
+        <!-- SLIDE 2 -->
+
+        <article
+          class="hero-slide"
+          data-hero-slide="1"
+          aria-hidden="true"
+        >
+
+          <div class="hero-slide-inner">
+
+            <div class="hero-copy">
+
+              <p class="eyebrow">
+                NEED A BIG BOX?
+              </p>
+
+              <h2>
+                We’ve got you.
+              </h2>
+
+              <p class="hero-text">
+                Box of 12 available for meetings,
+                gifting &amp; celebrations.
+              </p>
+
+              <a
+                class="button button-primary"
+                href="order.html?product=single-flavour&size=12"
+              >
+                SHOP BIG BOX
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+
+            <div class="hero-visual hero-visual-bigbox">
+
+              <img
+                src="hero-big-box.png"
+                data-fallback="cookie-feast.png"
+                alt="Gookie Box of 12"
+              />
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- SLIDE 3 -->
+
+        <article
+          class="hero-slide"
+          data-hero-slide="2"
+          aria-hidden="true"
+        >
+
+          <div class="hero-slide-inner">
+
+            <div class="hero-copy">
+
+              <p class="eyebrow">
+                CELEBRATE WITH GOOKIE!
+              </p>
+
+              <h2>
+                Party Kit available
+              </h2>
+
+              <p class="hero-text">
+                Add a wish card, candle, cake board
+                &amp; sprinkles for extra fun.
+              </p>
+
+              <a
+                class="button button-primary"
+                href="order.html#add-ons"
+              >
+                SEE ADD-ONS
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+
+            <div class="hero-visual hero-visual-party">
+
+              <img
+                src="hero-party-kit.png"
+                data-fallback="chunky-box.png"
+                alt="Gookie Party Kit"
+              />
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- HERO ARROWS -->
+
+        <button
+          class="hero-arrow hero-arrow-left"
+          id="heroPrev"
+          type="button"
+          aria-label="Previous hero slide"
+        >
+          ‹
+        </button>
+
+
+        <button
+          class="hero-arrow hero-arrow-right"
+          id="heroNext"
+          type="button"
+          aria-label="Next hero slide"
+        >
+          ›
+        </button>
+
+
+        <!-- HERO DOTS -->
+
+        <div
+          class="hero-dots"
+          id="heroDots"
+          aria-label="Hero carousel pagination"
+        >
+
           <button
-            class="modal-close-button"
-            id="flavourModalClose"
+            class="hero-dot is-active"
             type="button"
-            aria-label="Close flavour selector"
-          >
-            ×
-          </button>
-        </div>
-        <div class="flavour-box-meter" aria-live="polite">
-          <p class="flavour-meter-label">YOUR GOOKIE BOX</p>
-          <div
-            class="flavour-meter-slots"
-            id="flavourMeterSlots"
-            aria-label="Selected Gookies"
-          ></div>
-          <p class="flavour-meter-count">
-            <strong id="flavourSelectedCount">0</strong>
-            <span> OF </span>
-            <strong id="flavourBoxCapacity">0</strong>
-            <span> SELECTED</span>
-          </p>
-          <p class="flavour-meter-message" id="flavourMeterMessage">
-            Choose your first Gookie.
-          </p>
-        </div>
-        <div class="flavour-name-list" id="flavourNameList"></div>
-        <div class="modal-sticky-footer">
+            data-hero-dot="0"
+            aria-label="Show slide 1"
+          ></button>
+
           <button
-            class="primary-button"
-            id="saveFlavourSelection"
+            class="hero-dot"
             type="button"
-            disabled
-          >
-            COMPLETE YOUR BOX
-          </button>
+            data-hero-dot="1"
+            aria-label="Show slide 2"
+          ></button>
+
+          <button
+            class="hero-dot"
+            type="button"
+            data-hero-dot="2"
+            aria-label="Show slide 3"
+          ></button>
+
         </div>
+
       </div>
+
     </section>
 
 
     <!-- =========================================================
-         CHECKOUT MODAL: CUSTOMER DETAILS & ORDER REVIEW
-         ========================================================= -->
-    <section
-      class="modal"
-      id="checkoutModal"
-      aria-hidden="true"
-      aria-label="Checkout details"
-    >
-      <div class="modal-card checkout-modal-card">
-        <div class="modal-sticky-header">
+         WHAT'S GOOKIN'
+    ========================================================== -->
+
+    <section class="shop-preview-section">
+
+      <div class="section-shell">
+
+
+        <div class="section-heading-row">
+
           <div>
-            <p class="drawer-eyebrow">ALMOST THERE</p>
-            <h2 id="checkoutModalTitle">Your details</h2>
+
+            <p class="eyebrow">
+              FRESH FROM THE MENU
+            </p>
+
+            <h2>
+              What’s Gookin’?
+            </h2>
+
           </div>
-          <button
-            class="modal-close-button"
-            id="checkoutModalClose"
-            type="button"
-            aria-label="Close checkout"
+
+
+          <a
+            class="text-button"
+            href="order.html"
           >
-            ×
-          </button>
+            SHOP ALL
+            <span aria-hidden="true">→</span>
+          </a>
+
         </div>
 
-        <div class="checkout-modal-body">
-          <!-- ==================== CUSTOMER DETAILS FORM ==================== -->
-          <form class="checkout-form" id="customerDetailsForm" novalidate>
-            <div class="checkout-intro">
-              <p class="section-kicker">COURIER DELIVERY</p>
-              <h3>Where should we send your chunky wonders?</h3>
+
+        <div class="shop-preview-grid">
+
+
+          <!-- BEST-SELLER BOX -->
+
+          <a
+            class="product-card"
+            href="order.html?filter=assorted#best-seller"
+          >
+
+            <div class="product-card-image">
+
+              <img
+                src="best-seller-box.png"
+                data-fallback="treat-box.png"
+                alt="Best-Seller Box"
+              />
+
+              <span class="product-badge">
+                BEST SELLER
+              </span>
+
+            </div>
+
+
+            <div class="product-card-copy">
+
+              <h3>
+                Best-Seller Box
+              </h3>
+
               <p>
-                Enter the recipient details exactly as they should appear on
-                the parcel.
+                Our four most-loved Gookies,
+                all in one box.
+              </p>
+
+              <span class="product-link">
+                Shop now →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- THE WHOLE CREW -->
+
+          <a
+            class="product-card"
+            href="order.html?filter=assorted#whole-crew"
+          >
+
+            <div class="product-card-image">
+
+              <img
+                src="whole-crew-box.png"
+                data-fallback="chunky-box.png"
+                alt="The Whole Crew"
+              />
+
+              <span class="product-badge">
+                THE FULL CREW
+              </span>
+
+            </div>
+
+
+            <div class="product-card-copy">
+
+              <h3>
+                The Whole Crew
+              </h3>
+
+              <p>
+                All eight core Gookies.
+                One very happy box.
+              </p>
+
+              <span class="product-link">
+                Shop now →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- BUILD YOUR OWN -->
+
+          <a
+            class="product-card"
+            href="order.html?filter=build"
+          >
+
+            <div class="product-card-image">
+
+              <img
+                src="build-your-own.png"
+                data-fallback="cookie-feast.png"
+                alt="Build Your Own"
+              />
+
+              <span class="product-badge">
+                MAKE IT YOURS
+              </span>
+
+            </div>
+
+
+            <div class="product-card-copy">
+
+              <h3>
+                Build Your Own
+              </h3>
+
+              <p>
+                Pick your favourites and
+                make the box yours.
+              </p>
+
+              <span class="product-link">
+                Start building →
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- PARTY KIT -->
+
+          <a
+            class="product-card"
+            href="order.html#add-ons"
+          >
+
+            <div class="product-card-image">
+
+              <img
+                src="party-kit.png"
+                data-fallback="chunky-box.png"
+                alt="Party Kit"
+              />
+
+              <span class="product-badge">
+                PARTY READY
+              </span>
+
+            </div>
+
+
+            <div class="product-card-copy">
+
+              <h3>
+                Party Kit
+              </h3>
+
+              <p>
+                Everything you need for
+                a little Gookie celebration.
+              </p>
+
+              <span class="product-link">
+                See add-ons →
+              </span>
+
+            </div>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         HOW GOOKIE WORKS
+    ========================================================== -->
+
+    <section class="how-section">
+
+      <div class="section-shell">
+
+        <div class="how-banner">
+
+
+          <div class="how-title">
+
+            <p class="eyebrow">
+              EASY DOES IT
+            </p>
+
+            <h2>
+              How Gookie Works
+            </h2>
+
+          </div>
+
+
+          <div class="how-step">
+
+            <span
+              class="how-icon"
+              aria-hidden="true"
+            >
+              <i class="fa-regular fa-hand-pointer"></i>
+            </span>
+
+            <div>
+              <strong>Pick</strong>
+              <p>
+                Choose your box or build your own.
               </p>
             </div>
 
-            <div class="form-field">
-              <label for="customerName">Full name</label>
-              <input
-                id="customerName"
-                name="customerName"
-                type="text"
-                autocomplete="name"
-                placeholder="e.g. Amar Amirah"
-                required
-              />
-              <small class="form-error" id="customerNameError"></small>
-            </div>
-
-            <div class="form-field">
-              <label for="customerPhone">Phone number</label>
-              <input
-                id="customerPhone"
-                name="customerPhone"
-                type="tel"
-                inputmode="tel"
-                autocomplete="tel"
-                placeholder="e.g. 0123456789"
-                required
-              />
-              <small class="form-help">Malaysia number without spaces is fine.</small>
-              <small class="form-error" id="customerPhoneError"></small>
-            </div>
-
-            <div class="form-field">
-              <label for="deliveryAddress">Full delivery address</label>
-              <textarea
-                id="deliveryAddress"
-                name="deliveryAddress"
-                rows="4"
-                autocomplete="street-address"
-                placeholder="House/unit, street, area, city and state"
-                required
-              ></textarea>
-              <small class="form-error" id="deliveryAddressError"></small>
-            </div>
-
-            <div class="form-field">
-              <label for="deliveryPostcode">Postcode</label>
-              <input
-                id="deliveryPostcode"
-                name="deliveryPostcode"
-                type="text"
-                inputmode="numeric"
-                autocomplete="postal-code"
-                maxlength="5"
-                placeholder="e.g. 68000"
-                required
-              />
-              <small class="form-error" id="deliveryPostcodeError"></small>
-            </div>
-
-            <div class="form-field">
-              <label for="orderNotes">Order notes <span>(optional)</span></label>
-              <textarea
-                id="orderNotes"
-                name="orderNotes"
-                rows="3"
-                placeholder="Gift note, delivery instruction or allergy reminder"
-              ></textarea>
-            </div>
-
-            <button class="primary-button" type="submit">
-              REVIEW MY ORDER
-            </button>
-          </form>
-
-          <!-- ==================== CHECKOUT REVIEW ==================== -->
-          <div class="checkout-review is-hidden" id="checkoutReview">
-            <div class="checkout-intro">
-              <p class="section-kicker">ONE LAST CHECK</p>
-              <h3>Everything looks delicious.</h3>
-              <p>Check the details below before continuing to payment.</p>
-            </div>
-
-            <div class="checkout-review-section">
-              <div class="checkout-review-heading">
-                <h4>Delivery details</h4>
-                <button class="text-button" id="editCustomerDetails" type="button">
-                  EDIT
-                </button>
-              </div>
-              <div class="checkout-details-card" id="checkoutDetailsSummary"></div>
-            </div>
-
-            <div class="checkout-review-section">
-              <div class="checkout-review-heading">
-                <h4>Your Gookies</h4>
-                <span id="checkoutReviewCount"></span>
-              </div>
-              <div class="checkout-order-review" id="checkoutOrderReview"></div>
-            </div>
-
-            <button class="primary-button" id="proceedToPaymentButton" type="button">
-              CONTINUE TO PAYMENT
-            </button>
-            <p class="checkout-next-step-note" id="checkoutNextStepNote" hidden></p>
           </div>
-        </div>
-      </div>
-    </section>
 
 
-    <!-- =========================================================
-         STEP 7: PAYMENT
-         ========================================================= -->
-    <section
-      class="modal"
-      id="paymentModal"
-      aria-hidden="true"
-      aria-label="Pay for your Gookie order"
-    >
-      <div class="modal-card payment-modal-card">
-        <div class="modal-sticky-header">
-          <div>
-            <p class="drawer-eyebrow">PAYMENT</p>
-<h2>Pay for your Gookies</h2>
-          </div>
-          <button
-            class="modal-close-button"
-            id="paymentModalClose"
-            type="button"
-            aria-label="Close payment"
+          <span
+            class="how-arrow"
+            aria-hidden="true"
           >
-            ×
-          </button>
-        </div>
+            →
+          </span>
 
-        <div class="payment-modal-body">
-<div class="payment-total-card">
-  <div class="payment-total-main">
-    <div>
-      <p>AMOUNT TO PAY</p>
-      <strong id="paymentTotal">RM0.00</strong>
-    </div>
 
-    <span class="payment-cookie-icon" aria-hidden="true">🍪</span>
-  </div>
+          <div class="how-step">
 
-  <div class="payment-summary-details">
-    <div class="payment-summary-row">
-      <span>Subtotal</span>
-      <strong id="paymentSubtotal">RM0.00</strong>
-    </div>
+            <span
+              class="how-icon"
+              aria-hidden="true"
+            >
+              <i class="fa-regular fa-credit-card"></i>
+            </span>
 
-    <div class="payment-summary-row">
-      <span>Delivery</span>
-      <strong id="paymentDelivery">RM0.00</strong>
-    </div>
-  </div>
-
-  <span class="payment-box-summary" id="paymentBoxSummary"></span>
-</div>
-
-          <div class="payment-qr-card">
-            <p class="mini-heading">SCAN TO PAY WITH DUITNOW</p>
-            <div class="payment-qr-wrap">
-              <img
-                id="paymentQrImage"
-                src="qrcode.png"
-                alt="Gookie DuitNow QR code"
-              />
-            </div>
-            <p class="payment-qr-help">
-              Open your banking app, scan the QR code and complete the payment.
-            </p>
-          </div>
-
-          <div class="payment-reminder" role="note">
-            <span aria-hidden="true">!</span>
             <div>
-              <strong>Save your payment proof.</strong>
-              <p>You will need to attach it in WhatsApp after continuing.</p>
+              <strong>Pay</strong>
+              <p>
+                Secure your order with DuitNow QR.
+              </p>
             </div>
+
           </div>
 
-          <label class="payment-proof-check" for="paymentProofSaved">
-            <input id="paymentProofSaved" type="checkbox" />
-            <span class="payment-checkmark" aria-hidden="true"></span>
-            <span>I have saved my payment proof</span>
-          </label>
 
-          <button
-            class="primary-button"
-            id="continueToWhatsAppButton"
-            type="button"
-            disabled
+          <span
+            class="how-arrow"
+            aria-hidden="true"
           >
-            CONTINUE TO WHATSAPP
-          </button>
-          <p class="payment-whatsapp-note">
-            WhatsApp will open with your order details ready to send. Attach
-            your saved payment proof before sending the message.
-          </p>
+            →
+          </span>
+
+
+          <div class="how-step">
+
+            <span
+              class="how-icon"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-mitten"></i>
+            </span>
+
+            <div>
+              <strong>Bake Fresh</strong>
+              <p>
+                We bake fresh in small batches.
+              </p>
+            </div>
+
+          </div>
+
+
+          <span
+            class="how-arrow"
+            aria-hidden="true"
+          >
+            →
+          </span>
+
+
+          <div class="how-step">
+
+            <span
+              class="how-icon"
+              aria-hidden="true"
+            >
+              <i class="fa-solid fa-truck-fast"></i>
+            </span>
+
+            <div>
+              <strong>Deliver</strong>
+              <p>
+                Straight to your door, with care.
+              </p>
+            </div>
+
+          </div>
+
+
         </div>
+
       </div>
+
     </section>
 
 
-
     <!-- =========================================================
-         GOOKIE ORDER CREATION LOADER — GIF VERSION
-         Keep gookie-loading.gif in the same folder as index.html.
-         ========================================================= -->
-    <div
-      class="order-creation-loader"
-      id="orderCreationLoader"
-      role="status"
-      aria-live="polite"
-      aria-hidden="true"
-      hidden
+         MEET THE GOOKIES
+    ========================================================== -->
+
+    <section
+      class="meet-section"
+      id="meet-the-gookies"
     >
-      <div class="order-creation-loader-card">
-        <p class="order-creation-kicker">YOUR GOOKIES ARE GETTING READY</p>
+
+
+      <div class="section-shell">
+
+        <div class="section-heading-row meet-heading-row">
+
+          <div>
+
+            <p class="eyebrow">
+              SAY HELLO TO THE WHOLE CREW
+            </p>
+
+            <h2>
+              Meet the Gookies
+            </h2>
+
+            <p class="section-description">
+              Eight chunky wonders,
+              each with their own personality.
+            </p>
+
+          </div>
+
+
+          <a
+            class="text-button"
+            href="gookies.html"
+          >
+            SEE ALL FLAVOURS
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="marquee-wrapper">
+
+
+        <button
+          class="marquee-arrow marquee-arrow-left"
+          id="marqueePrev"
+          type="button"
+          aria-label="View previous Gookie"
+        >
+          ‹
+        </button>
+
 
         <div
-          class="gookie-loader-gif-wrap"
-          id="orderCreationBox"
-          aria-hidden="true"
+          class="marquee-shell"
+          id="marqueeShell"
         >
-          <img
-            class="gookie-loader-gif"
-            id="orderCreationGif"
-            src="gookie-loading.gif"
-            alt=""
-            width="800"
-            height="800"
-          />
+
+          <div
+            class="marquee-track"
+            id="marqueeTrack"
+          ></div>
+
         </div>
 
-        <h2>Creating your order</h2>
-        <p id="orderCreationStatus">Preparing your cookie box...</p>
 
-        <div class="order-creation-progress" aria-hidden="true">
-          <span></span>
-        </div>
-      </div>
-    </div>
+        <button
+          class="marquee-arrow marquee-arrow-right"
+          id="marqueeNext"
+          type="button"
+          aria-label="View next Gookie"
+        >
+          ›
+        </button>
 
-<section
-  class="modal"
-  id="gookiePickModal"
-  aria-hidden="true"
-  aria-label="Gookie's Pick details"
->
-  <div class="modal-card gookie-pick-modal-card">
-    <button
-      class="modal-close-button"
-      id="gookiePickModalClose"
-      type="button"
-      aria-label="Close Gookie's Pick details"
-    >
-      ×
-    </button>
 
-    <div class="gookie-pick-modal-image">
-      <img id="gookiePickModalImage" src="" alt="" />
-    </div>
-
-    <div class="gookie-pick-modal-content">
-      <p class="section-kicker" id="gookiePickModalKicker"></p>
-      <h2 id="gookiePickModalTitle"></h2>
-      <p id="gookiePickModalDescription"></p>
-
-      <div class="gookie-pick-included">
-        <p class="mini-heading">WHAT'S INSIDE</p>
-        <div id="gookiePickModalIncluded"></div>
       </div>
 
-      <div class="gookie-pick-modal-meta">
-        <span id="gookiePickModalQuantity"></span>
-        <strong id="gookiePickModalPrice"></strong>
-      </div>
+
+      <div
+        class="marquee-pagination"
+        id="marqueePagination"
+      ></div>
+
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================================
+       COOKIE DETAILS MODAL
+  ========================================================== -->
+
+  <section
+    class="modal"
+    id="cookieModal"
+    aria-hidden="true"
+    aria-label="Cookie details"
+  >
+
+    <div class="modal-card cookie-detail-modal">
 
       <button
-        class="primary-button"
-        id="addGookiePickToCart"
+        class="modal-close-button"
+        id="cookieModalClose"
         type="button"
+        aria-label="Close cookie details"
       >
-        ADD TO CART
+        ×
       </button>
-    </div>
-  </div>
-</section>
 
-<script src="order-engine.js"></script>
-<script src="script.js?v=10.0"></script>
-        
-  </body>
+
+      <div class="cookie-detail-image-wrap">
+
+        <img
+          id="modalCookieImage"
+          src=""
+          alt=""
+        />
+
+      </div>
+
+
+      <div class="cookie-detail-content">
+
+        <p
+          class="modal-cookie-subtitle"
+          id="modalCookieSubtitle"
+        ></p>
+
+        <h2 id="modalCookieName"></h2>
+
+        <p id="modalCookieDescription"></p>
+
+        <a
+          class="button button-primary cookie-modal-cta"
+          href="order.html"
+        >
+          GET YOUR GOOKIES
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer
+    class="site-footer"
+    id="siteFooter"
+  >
+
+    <div class="footer-hero">
+
+      <p class="footer-eyebrow">
+        — ONE LAST CRUMB... —
+      </p>
+
+      <h2>
+        Till next cookie time.
+      </h2>
+
+      <p class="footer-message">
+        Thanks for stopping by.
+      </p>
+
+    </div>
+
+
+    <div class="footer-main">
+
+
+      <!-- BRAND -->
+
+      <div class="footer-brand-column">
+
+        <p class="footer-logo">
+          GOOKIE
+        </p>
+
+        <p class="footer-brand-description">
+          Less sweet chunky cookies,
+          baked fresh in Malaysia.
+        </p>
+
+
+        <div class="footer-brand-divider"></div>
+
+
+        <div class="footer-social-section">
+
+          <h3>
+            LET’S CONNECT!
+          </h3>
+
+
+          <div class="footer-socials">
+
+            <a
+              href="https://www.instagram.com/gookie.my"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+
+            <a
+              href="https://www.tiktok.com/@gookie.my"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+
+            <a
+              href="https://www.threads.net/@gookie.my"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Threads"
+            >
+              <i class="fa-brands fa-threads"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- HELP -->
+
+      <div class="footer-column">
+
+        <h3 class="footer-column-heading">
+          NEED HELP?
+        </h3>
+
+
+        <div class="footer-link-list">
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="faq"
+          >
+            FAQ
+          </button>
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="delivery"
+          >
+            Delivery Information
+          </button>
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="storage"
+          >
+            Storage &amp; Reheating
+          </button>
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="contact"
+          >
+            Contact Us
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- BORING STUFF -->
+
+      <div class="footer-column">
+
+        <h3 class="footer-column-heading">
+          THE BORING STUFF
+        </h3>
+
+
+        <div class="footer-link-list">
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="terms"
+          >
+            Terms &amp; Conditions
+          </button>
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="privacy"
+          >
+            Privacy Policy
+          </button>
+
+          <button
+            class="footer-text-link"
+            type="button"
+            data-footer-info="refund"
+          >
+            Refund &amp; Replacement
+          </button>
+
+        </div>
+
+
+        <button
+          class="footer-allergen-button"
+          type="button"
+          data-footer-info="allergen"
+        >
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          ALLERGEN INFORMATION
+        </button>
+
+      </div>
+
+
+      <!-- WHATSAPP -->
+
+      <div class="footer-whatsapp-column">
+
+        <div
+          class="footer-whatsapp-icon"
+          aria-hidden="true"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+
+        <h3>
+          SAY HELLO
+        </h3>
+
+        <p>
+          Need help with an order?
+          We reply daily from 9am–5pm.
+        </p>
+
+        <a
+          class="footer-whatsapp-button"
+          href="https://wa.me/60102810487"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          MESSAGE GOOKIE
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-red-bar">
+
+      <div class="footer-red-bar-inner">
+
+        <p>
+          Baked with ❤️ in Malaysia.
+        </p>
+
+        <span
+          class="footer-bottom-divider"
+          aria-hidden="true"
+        ></span>
+
+        <p>
+          ❤️ Thank you for supporting us.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       FOOTER INFORMATION MODAL
+  ========================================================== -->
+
+  <section
+    class="modal footer-info-modal"
+    id="footerInfoModal"
+    aria-hidden="true"
+    aria-label="Gookie information"
+  >
+
+    <div class="modal-card footer-info-modal-card">
+
+      <div class="footer-info-modal-header">
+
+        <div>
+
+          <p
+            class="footer-info-modal-eyebrow"
+            id="footerInfoModalEyebrow"
+          ></p>
+
+          <h2 id="footerInfoModalTitle"></h2>
+
+        </div>
+
+
+        <button
+          class="modal-close-button"
+          id="footerInfoModalClose"
+          type="button"
+          aria-label="Close information"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        class="footer-info-modal-body"
+        id="footerInfoModalBody"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <script src="script.js?v=11.0"></script>
+
+</body>
 </html>
