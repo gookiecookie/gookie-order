@@ -1,0 +1,7296 @@
+/* =========================================================
+   GOOKIE ORDER PAGE
+   FILE: style.css
+   CLEAN VERSION: V2
+
+   Notes:
+   - Existing page design and functionality preserved.
+   - Repeated mobile Hero rules consolidated into one block.
+   - Repeated mobile Meet The Gookies rules consolidated.
+   - Old duplicate Gookie's Picks rules removed.
+   - Mobile Meet The Gookies card shadow removed.
+   - Keep future edits inside the relevant labelled section.
+   ========================================================= */
+
+:root {
+  --gookie-red: #bb191a;
+  --gookie-red-dark: #991214;
+  --cream: #fff1dc;
+  --cream-soft: #fff8ef;
+  --white: #fff;
+  --ink: #171515;
+  --muted: #716860;
+  --line: rgba(23, 21, 21, 0.12);
+  --shadow: 0 24px 70px rgba(67, 24, 18, 0.18);
+  --header-height-mobile: 90px;
+  --header-height-desktop: 100px;
+  --drawer-width: min(88vw, 400px);
+  --transition: 260ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--cream-soft);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.section-kicker,
+.drawer-eyebrow,
+.mini-heading,
+.cookie-box-label {
+  margin: 0;
+  color: var(--gookie-red);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-height-mobile);
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.brand-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.brand-logo img {
+  display: block;
+  width: 140px;
+  height: auto;
+}
+
+.header-icon-button {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+#menuButton {
+  left: 14px;
+}
+
+#cartButton {
+  right: 12px;
+}
+.malaysia-flag{
+  position:absolute;
+  right:66px;
+
+  top:50%;
+  transform:translateY(-50%);
+
+  font-size:16px;
+  line-height:1;
+
+  user-select:none;
+}
+
+.header-icon-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 27px;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.cart-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.cart-count {
+  position: absolute;
+  top: 2px;
+  right: -1px;
+  display: grid;
+  place-items: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  border: 2px solid var(--gookie-red);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--gookie-red);
+  font-size: 0.69rem;
+  font-weight: 800;
+}
+
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  border: 0;
+  background: rgba(17, 9, 9, 0.52);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.page-overlay.is-visible {
+  opacity: 1;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  width: var(--drawer-width);
+  max-width: 100%;
+  padding: 24px;
+  background: var(--cream-soft);
+  box-shadow: var(--shadow);
+  visibility: hidden;
+  transition:
+    transform var(--transition),
+    visibility var(--transition);
+}
+
+.drawer-left {
+  left: 0;
+  transform: translateX(-105%);
+}
+
+.drawer-right {
+  right: 0;
+  transform: translateX(105%);
+}
+
+.drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.drawer-header,
+.modal-sticky-header,
+.cookie-box-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.drawer-header {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer-header h2,
+.modal-sticky-header h2 {
+  margin: 4px 0 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+}
+
+.drawer-close-button,
+.modal-close-button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  padding: 0 0 4px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 0;
+}
+
+
+.drawer-footer {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.drawer-footer p {
+  margin: 4px 0;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: end center;
+  padding: 0;
+  background: rgba(17, 9, 9, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition),
+    visibility var(--transition);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  width: 100%;
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--cream-soft);
+  border-radius: 30px 30px 0 0;
+  transform: translateY(24px);
+  transition: transform var(--transition);
+}
+
+.modal.is-open .modal-card {
+  transform: translateY(0);
+}
+
+.primary-button,
+.secondary-button,
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
+}
+
+.primary-button {
+  width: 100%;
+  border: 0;
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--gookie-red-dark);
+  transform: translateY(-2px);
+}
+
+.primary-button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.hero-section {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+   background: #ffffff;
+}
+
+.hero-cookie-area {
+  position: relative;
+   overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 330px;
+  padding: 40px 20px 16px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,226,193,.65) 0%,
+      rgba(255,245,231,.35) 45%,
+      rgba(255,255,255,0) 75%
+    );
+
+  isolation: isolate;
+}
+
+.hero-cookie-image {
+  position: relative;
+  z-index: 2;
+  width: min(86vw, 560px);
+  filter: drop-shadow(0 24px 18px rgba(73, 31, 12, 0.18));
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hero-shape-one {
+  top: 7%;
+  left: -18%;
+  width: 250px;
+  height: 250px;
+  background: rgba(187, 25, 26, 0.1);
+}
+
+.hero-shape-two {
+  right: -22%;
+  bottom: -10%;
+  width: 310px;
+  height: 310px;
+  border: 2px solid rgba(187, 25, 26, 0.14);
+}
+
+.hero-content {
+  padding: 58px 24px 76px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  margin: 13px 0 24px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.3rem, 15vw, 7rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.hero-content h1 span {
+  display: block;
+}
+
+.hero-content h1 span:not(:first-child) {
+  color: var(--gookie-red);
+}
+
+.hero-description {
+  max-width: 520px;
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+
+.hero-button {
+  gap: 12px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* ========================================
+   HERO HIGHLIGHTS
+======================================== */
+
+.hero-highlights{
+
+    display:flex;
+    justify-content:center;
+    gap:50px;
+
+    margin:24px 0 42px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-highlight{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+
+  min-width:140px;
+}
+
+.hero-highlight span{
+  font-size:28px;
+}
+
+.hero-highlight strong{
+  font-family:"League Spartan",sans-serif;
+  font-size:.9rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.hero-actions .hero-button {
+  min-width: 220px;
+  min-height: 64px;
+  padding: 18px 34px;
+
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.hero-button-primary{
+  background:var(--gookie-red);
+  color:#fff;
+}
+
+.hero-button-secondary{
+  background:#fff;
+  color:var(--ink);
+  border:2px solid rgba(0,0,0,.12);
+}
+
+.section-heading {
+  width: min(100%, 760px);
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 10px 0 14px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.9rem, 12vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.section-heading > p:last-child {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =========================================================
+   GOOKIE TRUST BANNER
+========================================================= */
+
+.gookie-trust-section {
+  padding: 34px 20px 56px;
+  background: var(--white);
+}
+
+.gookie-trust-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 26px 28px;
+
+  border: 1px solid rgba(187, 25, 26, 0.1);
+  border-radius: 28px;
+
+  background: #fff8ef;
+
+  box-shadow:
+    0 14px 36px rgba(55, 26, 12, 0.07);
+}
+
+.gookie-trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  min-width: 0;
+  padding: 5px 24px;
+}
+
+.gookie-trust-item + .gookie-trust-item {
+  border-left: 1px solid rgba(23, 21, 21, 0.11);
+}
+
+.gookie-trust-icon {
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+
+  color: var(--gookie-red);
+
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.gookie-trust-icon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  line-height: 1;
+}
+
+.gookie-trust-item:nth-child(1) .gookie-trust-icon i{
+  font-size:2.15rem;
+}
+
+.gookie-trust-item:nth-child(2) .gookie-trust-icon i{
+  font-size:2.35rem;
+}
+
+.gookie-trust-item:nth-child(3) .gookie-trust-icon i{
+  font-size:2rem;
+}
+
+.gookie-trust-item:nth-child(4) .gookie-trust-icon i{
+  font-size:2rem;
+}
+
+.gookie-trust-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gookie-trust-copy strong {
+  color: var(--ink);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.83rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.015em;
+}
+
+.gookie-trust-copy span {
+  color: var(--muted);
+
+  font-size: 0.79rem;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   GOOKIE TRUST BANNER — TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .gookie-trust-banner {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+  }
+
+  .gookie-trust-item:nth-child(3) {
+    border-left: 0;
+  }
+
+}
+
+
+/* =========================================================
+   GOOKIE TRUST BANNER — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .gookie-trust-section {
+    padding: 20px 16px 38px;
+  }
+
+  .gookie-trust-banner {
+    grid-template-columns: 1fr;
+
+    padding: 10px 20px;
+
+    border-radius: 24px;
+  }
+
+  .gookie-trust-item {
+    justify-content: flex-start;
+
+    padding: 20px 4px;
+  }
+
+  .gookie-trust-item + .gookie-trust-item,
+  .gookie-trust-item:nth-child(3) {
+    border-top: 1px solid rgba(23, 21, 21, 0.1);
+    border-left: 0;
+  }
+
+  .gookie-trust-icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+
+    font-size: 2.2rem;
+  }
+
+  .gookie-trust-copy strong {
+    font-size: 0.8rem;
+  }
+
+  .gookie-trust-copy span {
+    font-size: 0.76rem;
+  }
+
+.gookie-trust-item:nth-child(1) .gookie-trust-icon i{
+  font-size:2rem;
+}
+
+.gookie-trust-item:nth-child(2) .gookie-trust-icon i{
+  font-size:2.15rem;
+}
+
+.gookie-trust-item:nth-child(3) .gookie-trust-icon i{
+  font-size:1.9rem;
+}
+
+.gookie-trust-item:nth-child(4) .gookie-trust-icon i{
+  font-size:1.9rem;
+}
+}
+
+.meet-section {
+  overflow: hidden;
+  padding: 90px 0;
+  background: var(--white);
+}
+
+.marquee-shell {
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  cursor: grab;
+}
+
+.marquee-shell::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  padding: 10px 58px;
+
+  animation: none;
+  transform: none;
+}
+
+.marquee-card {
+  width: min(66vw, 270px);
+  flex: 0 0 auto;
+
+  padding: 0;
+  border: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.marquee-card-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1/1;
+
+  background: transparent;
+}
+
+.marquee-card-image img {
+  width: 96%;
+  height: auto;
+  object-fit: contain;
+
+  filter: drop-shadow(0 18px 20px rgba(0,0,0,.18));
+
+  transition: transform .25s ease;
+}
+
+.marquee-card:hover .marquee-card-image img {
+  transform: translateY(-8px) scale(1.04);
+}
+
+.marquee-card-copy {
+  padding: 10px 8px 0;
+}
+
+.marquee-card-copy strong{
+  font-family:"League Spartan",sans-serif;
+  font-size:1.45rem;
+  font-weight:800;
+}
+
+.marquee-card-copy small{
+  display:block;
+  margin-bottom:8px;
+  color:var(--gookie-red);
+  font-size:.68rem;
+  letter-spacing:.08em;
+}
+
+.marquee-hint {
+  margin: 24px 20px 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+/* ========================================
+   MARQUEE CONTROLS
+======================================== */
+
+.marquee-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.marquee-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  display: grid;
+  place-items: center;
+
+  width: 56px;
+  height: 56px;
+  padding: 0;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  box-shadow: 0 10px 28px rgba(55, 26, 12, 0.14);
+
+  transform: translateY(-50%);
+
+  transition:
+    transform var(--transition),
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.marquee-arrow-left {
+  left: 14px;
+}
+
+.marquee-arrow-right {
+  right: 14px;
+}
+
+.marquee-arrow:hover {
+  background: var(--gookie-red);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.marquee-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+/* ========================================
+   ORDER SECTIONS
+======================================== */
+
+.choice-section,
+.order-section {
+  padding: 90px 20px;
+}
+
+.choice-section {
+  background: var(--cream);
+}
+
+.choice-grid {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+
+.choice-card {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  min-height: 280px;
+  padding: 26px;
+  border: 0;
+  border-radius: 34px;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.choice-card-light {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.choice-card-red {
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+.choice-card-number {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+}
+
+.choice-card-copy {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+}
+
+.choice-card-copy small {
+  margin-bottom: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.choice-card-copy strong {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.2rem, 9vw, 4rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.choice-card-copy > span {
+  margin-top: 12px;
+  opacity: 0.78;
+}
+
+.choice-card-arrow {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  font-size: 2rem;
+}
+
+.order-section {
+  background: var(--cream-soft);
+  scroll-margin-top: 110px;
+}
+
+.box-size-options {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 920px);
+  margin: 0 auto 28px;
+}
+
+.box-size-card {
+  display: block;
+  min-height: 0;
+  padding: 0;
+
+  border: 2px solid transparent;
+  border-radius: 24px;
+
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(55, 26, 12, 0.07);
+}
+
+.box-size-card.is-selected {
+  border-color: var(--gookie-red);
+  background: #fff4e8;
+}
+
+.box-size-number {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--gookie-red);
+  font-family: "League Spartan", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.box-size-card.is-selected .box-size-number {
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+.box-size-card strong,
+.box-size-card small {
+  display: block;
+}
+
+.box-size-card strong {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.2rem;
+}
+
+.box-size-card small {
+  color: var(--muted);
+}
+
+/* ========================================
+   BUILD YOUR BOX ACCORDION
+======================================== */
+
+.box-accordion {
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+.box-accordion-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 22px;
+
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   BOX SIZE PRODUCT IMAGES
+======================================== */
+
+.box-size-image {
+  width: 132px;
+  flex: 0 0 132px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: -14px;
+  margin-bottom: -14px;
+  margin-left: -24px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.box-size-image img {
+  display: block;
+  width: 100%;
+  height: 128px;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 12px 12px rgba(64, 27, 14, 0.16)
+  );
+
+  transition:
+    transform 260ms ease,
+    filter 260ms ease;
+}
+
+.box-size-card:hover .box-size-image img {
+  transform: translateY(-3px) scale(1.035);
+
+  filter: drop-shadow(
+    0 16px 15px rgba(64, 27, 14, 0.2)
+  );
+}
+
+@media (max-width: 480px) {
+  .box-accordion-header {
+    gap: 10px;
+    padding: 18px 16px;
+  }
+
+  .box-size-image {
+    width: 118px;
+    flex-basis: 118px;
+
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-left: -20px;
+  }
+
+  .box-size-image img {
+    height: 112px;
+  }
+
+  .box-accordion-copy strong {
+    font-size: 1.35rem;
+  }
+
+  .box-accordion-copy small {
+    font-size: 0.82rem;
+  }
+}
+
+.box-accordion-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1;
+}
+
+.box-accordion-copy strong {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+.box-accordion-copy small {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.box-accordion-arrow {
+  font-size: 1.6rem;
+  transition: transform .25s ease;
+}
+
+.box-accordion.is-open .box-accordion-arrow {
+  transform: rotate(180deg);
+}
+
+.box-accordion-body {
+  padding: 22px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.box-accordion-body[hidden] {
+  display: none;
+}
+
+.box-accordion-helper{
+    text-align:center;
+    color:var(--muted);
+    margin:18px 0;
+}
+
+.box-accordion-action{
+    width:100%;
+}
+
+.box-mini-slots{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:22px;
+}
+
+/* Feast Box = 4 columns */
+.box-accordion[data-box-size="12"] .box-mini-slots {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.build-legacy-panel {
+  display: none;
+}
+
+.box-mini-slot{
+    aspect-ratio:1;
+    border-radius:18px;
+    background:#FFF7EA;
+    border:2px dashed rgba(187,25,26,.20);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.box-mini-slot img{
+
+    width:74%;
+    object-fit:contain;
+
+}
+
+.box-mini-slot > span {
+  font-size: 2rem;
+  opacity: 0.18;
+  filter: grayscale(1);
+}
+
+.box-mini-slot.has-cookie {
+  border-style: solid;
+  border-color: rgba(187, 25, 26, 0.12);
+  background: var(--white);
+}
+
+.cookie-box-panel {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 24px;
+  border: 2px solid rgba(187, 25, 26, 0.14);
+  border-radius: 30px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    repeating-linear-gradient(
+      45deg,
+      rgba(187, 25, 26, 0.045) 0,
+      rgba(187, 25, 26, 0.045) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  box-shadow: 0 20px 60px rgba(55, 26, 12, 0.08);
+}
+
+.cookie-box-header {
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.cookie-box-header h3 {
+  margin: 4px 0 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.6rem;
+}
+
+.box-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.box-counter strong:first-child {
+  color: #ffcb3d;
+}
+
+/* =========================================================
+   BUILD YOUR BOX PROGRESS BAR
+   ========================================================= */
+
+.box-progress {
+  margin-bottom: 22px;
+}
+
+.box-progress-track {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(23, 21, 21, 0.1);
+}
+
+.box-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gookie-red);
+  transition: width 320ms ease;
+}
+
+.box-progress.is-complete .box-progress-fill {
+  background: var(--ink);
+}
+
+.box-progress-text {
+  display: block;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.box-progress.is-complete .box-progress-text {
+  color: var(--gookie-red);
+}
+
+.cookie-box-slots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.cookie-slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1/1;
+  border: 2px dashed rgba(187, 25, 26, 0.22);
+  border-radius: 24px;
+  background: rgba(255, 241, 220, 0.68);
+  overflow: hidden;
+}
+
+.cookie-slot::before {
+  content: "🍪";
+  opacity: 0.16;
+  filter: grayscale(1);
+  font-size: clamp(2.3rem, 11vw, 4rem);
+}
+
+.cookie-slot.has-cookie::before {
+  display: none;
+}
+
+.cookie-slot img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px rgba(70, 32, 10, 0.18));
+  animation: cookiePop 260ms ease;
+}
+
+.cookie-slot-name {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  left: 7px;
+  overflow: hidden;
+  padding: 5px 7px;
+  border-radius: 999px;
+  background: rgba(23, 21, 21, 0.82);
+  color: var(--white);
+  font-size: 0.53rem;
+  font-weight: 700;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.box-helper-text {
+  margin: 0 0 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@keyframes cookiePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-10deg);
+  }
+
+  75% {
+    transform: scale(1.08) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.collection-grid {
+  display: grid;
+  gap: 16px;
+  width: min(100%, 1050px);
+  margin: 0 auto 34px;
+}
+
+.collection-card {
+  padding: 22px;
+  border: 2px solid transparent;
+  border-radius: 26px;
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.collection-card.is-selected {
+  border-color: var(--gookie-red);
+}
+
+.collection-card strong {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.4rem;
+}
+
+.collection-card span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.gookie-choice-box-size {
+  width: min(100%, 920px);
+  margin: 0 auto 26px;
+}
+
+.mini-heading {
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.cookie-detail-modal {
+  padding: 14px;
+}
+
+.cookie-detail-modal .modal-close-button {
+  margin-left: auto;
+}
+
+.cookie-detail-image-wrap {
+  display: grid;
+  place-items: center;
+  min-height: 310px;
+  margin-top: 4px;
+  border-radius: 26px;
+  background: var(--cream);
+}
+
+.cookie-detail-image-wrap img {
+  width: min(88%, 420px);
+  max-height: 390px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 14px rgba(70, 30, 10, 0.2));
+}
+
+.cookie-detail-content {
+  padding: 14px 4px 4px;
+  text-align: center;
+}
+
+.modal-cookie-subtitle {
+  margin: 0 0 4px;
+  color: var(--gookie-red);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.cookie-detail-content h2 {
+  margin: 0 0 8px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.8rem, 12vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.cookie-detail-content > p:not(.modal-cookie-subtitle) {
+  max-width: 530px;
+  margin: 0 auto 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+
+
+/* =========================================================
+   COOKIE DETAILS POPUP — COMPACT CTA
+========================================================= */
+
+.cookie-detail-content #getYourGookiesButton {
+  min-height: 50px;
+  padding-block: 12px;
+}
+
+.flavour-selector-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-sticky-header,
+.modal-sticky-footer {
+  position: sticky;
+  z-index: 2;
+  padding: 20px;
+  background: var(--cream-soft);
+}
+
+.modal-sticky-header {
+  top: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-sticky-footer {
+  bottom: 0;
+  border-top: 1px solid var(--line);
+}
+
+.flavour-selector-counter {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  padding: 18px 20px 8px;
+  color: var(--muted);
+}
+
+.flavour-selector-counter strong {
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+
+.flavour-name-list {
+  padding: 10px 20px 24px;
+}
+
+.flavour-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.flavour-row-copy strong {
+  display: block;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.15rem;
+}
+
+.flavour-row-copy small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+}
+
+.quantity-button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0 0 3px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cream-soft);
+  color: var(--ink);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.flavour-quantity {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.cart-empty-state {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.cart-empty-state[hidden],
+.cart-content[hidden] {
+  display: none !important;
+}
+
+.cookie-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--cream);
+  font-size: 3rem;
+}
+
+.cart-empty-state h3 {
+  max-width: 250px;
+  margin: 0 0 10px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.7rem;
+}
+
+.cart-empty-state p {
+  max-width: 280px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.cart-content {
+  flex: 1;
+  overflow: auto;
+  padding: 22px 0;
+}
+
+.cart-order-summary {
+  display: grid;
+  gap: 16px;
+}
+
+.cart-order-card {
+  padding: 20px;
+  border-radius: 24px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.cart-order-kicker {
+  margin: 0 0 8px;
+  color: #ffcb3d;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.cart-order-title,
+.cart-order-label {
+  display: block;
+}
+
+.cart-order-title {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.cart-order-label {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cart-order-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.85rem;
+}
+
+.cart-flavour-list {
+  display: grid;
+  gap: 10px;
+}
+
+.cart-flavour-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px;
+  border-radius: 18px;
+  background: var(--white);
+}
+
+.cart-flavour-image {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: var(--cream);
+}
+
+.cart-flavour-image img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+}
+
+.cart-flavour-copy {
+  min-width: 0;
+}
+
+.cart-flavour-copy strong,
+.cart-flavour-copy span {
+  display: block;
+}
+
+.cart-flavour-copy strong {
+  overflow: hidden;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-flavour-copy span {
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.73rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-flavour-quantity {
+  display: grid;
+  place-items: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--gookie-red);
+  font-weight: 800;
+}
+
+.cart-action-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.cart-edit-button,
+.cart-remove-button {
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.cart-edit-button {
+  border: 0;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.cart-remove-button {
+  border: 1px solid rgba(187, 25, 26, 0.22);
+  background: transparent;
+  color: var(--gookie-red);
+}
+
+.cart-drawer-footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    height: var(--header-height-desktop);
+  }
+
+  .brand-logo img {
+    width: 160px;
+  }
+
+  #menuButton {
+    left: 26px;
+  }
+
+  #cartButton {
+    right: 24px;
+  }
+
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    min-height: calc(100vh - var(--header-height-desktop));
+  }
+
+  .hero-cookie-area {
+    min-height: 100%;
+    padding: 60px 30px;
+  }
+
+  .hero-cookie-image {
+    width: min(52vw, 700px);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px clamp(40px, 6vw, 110px);
+    text-align: left;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(4.5rem, 7vw, 7.8rem);
+    margin:10px 0 20px;
+  }
+
+  .hero-description {
+    margin-left: 0;
+  }
+
+  .marquee-card {
+    width: 300px;
+  }
+
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .choice-card {
+    min-height: 390px;
+    padding: 34px;
+  }
+
+  .box-size-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .box-size-card {
+    flex-direction: column;
+    justify-content: center;
+    min-height: 155px;
+    text-align: center;
+  }
+
+  .cookie-box-panel {
+    padding: 36px;
+  }
+
+  .cookie-box-slots {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .modal {
+    place-items: center;
+    padding: 24px;
+  }
+
+  .modal-card {
+    width: min(94vw, 760px);
+    border-radius: 30px;
+  }
+
+  .cookie-detail-modal {
+    padding: 18px;
+  }
+
+  .flavour-selector-modal {
+    width: min(94vw, 720px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   18. INTERACTIVE BUILD-YOUR-BOX SLOTS
+   ========================================================= */
+
+button.cookie-slot {
+  width: 100%;
+  padding: 0;
+  border: 2px dashed rgba(187, 25, 26, 0.22);
+  font: inherit;
+  color: inherit;
+  appearance: none;
+}
+
+.cookie-slot.is-removable {
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.cookie-slot.is-removable:hover,
+.cookie-slot.is-removable:focus-visible {
+  border-color: var(--gookie-red);
+  box-shadow: 0 12px 28px rgba(67, 24, 18, 0.16);
+  transform: translateY(-3px) scale(1.02);
+  outline: none;
+}
+
+.cookie-slot.is-removable:active {
+  transform: scale(0.96);
+}
+
+.cookie-slot-remove {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--gookie-red);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 5px 14px rgba(67, 24, 18, 0.2);
+  transition: transform var(--transition);
+}
+
+.cookie-slot.is-removable:hover .cookie-slot-remove,
+.cookie-slot.is-removable:focus-visible .cookie-slot-remove {
+  transform: rotate(90deg) scale(1.08);
+}
+
+@media (hover: none) {
+  .cookie-slot.is-removable:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+
+/* =========================================================
+   19. BUILD-YOUR-BOX READY STATE
+   ========================================================= */
+
+#openFlavourSelector.is-ready {
+  background: var(--ink);
+  box-shadow: 0 14px 34px rgba(23, 21, 21, 0.22);
+  animation: readyButtonPulse 1.8s ease-in-out infinite;
+}
+
+#openFlavourSelector.is-ready:hover {
+  background: var(--gookie-red-dark);
+}
+
+@keyframes readyButtonPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #openFlavourSelector.is-ready {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   MEET THE GOOKIES — INTERACTIVE CAROUSEL
+   ========================================================= */
+
+.marquee-shell {
+  touch-action: pan-x pan-y;
+  user-select: none;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: none;
+}
+
+.marquee-shell.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.marquee-shell.is-dragging .marquee-card {
+  pointer-events: none;
+}
+
+.marquee-track.is-paused .marquee-card-image img {
+  transform: scale(1.015);
+}
+
+.marquee-card-image img {
+  transition: transform var(--transition);
+}
+
+.marquee-arrow:focus-visible,
+.marquee-card:focus-visible {
+  outline: 3px solid rgba(187, 25, 26, 0.3);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   20. MEET THE GOOKIES — MOBILE CAROUSEL FINAL FIX
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .meet-section {
+    padding: 64px 0 68px;
+  }
+
+  .meet-section .section-heading {
+    margin-bottom: 28px;
+  }
+
+  .marquee-shell {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
+    touch-action: pan-x pan-y;
+  }
+
+  .marquee-track {
+    gap: 12px;
+    padding: 8px 64px 14px;
+  }
+
+  .marquee-card {
+    width: min(56vw, 220px);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .marquee-card-image {
+    aspect-ratio: 1 / 0.92;
+  }
+
+  .marquee-card-image img {
+    width: 82%;
+    height: 82%;
+  }
+
+  .marquee-card-copy {
+    min-height: 78px;
+    padding: 13px 14px 15px;
+  }
+
+  .marquee-card-copy small {
+    margin-bottom: 4px;
+    font-size: 0.58rem;
+    line-height: 1.25;
+    letter-spacing: 0.09em;
+  }
+
+  .marquee-card-copy strong {
+    font-size: 1.05rem;
+    line-height: 1.02;
+  }
+
+  .marquee-arrow {
+    position: absolute;
+    top: 42%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.35rem;
+    transform: translateY(-50%);
+  }
+
+  .marquee-arrow:hover {
+    transform: translateY(-50%);
+  }
+
+  .marquee-arrow:active {
+    transform: translateY(-50%) scale(0.94);
+  }
+
+  .marquee-arrow-left {
+    left: 10px;
+  }
+
+  .marquee-arrow-right {
+    right: 10px;
+  }
+
+  .marquee-hint {
+    max-width: 300px;
+    margin-top: 18px;
+    font-size: 0.78rem;
+  }
+}
+
+.meet-full-menu{
+  margin-top:32px;
+  text-align:center;
+}
+
+.meet-full-menu a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  color:var(--gookie-red);
+
+  font-family:"League Spartan",sans-serif;
+  font-size:.92rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+
+  text-decoration:none;
+  transition:all .25s ease;
+}
+
+.meet-full-menu a:hover{
+  letter-spacing:.12em;
+}
+/* =========================================================
+   CHECKOUT: CUSTOMER DETAILS & ORDER REVIEW
+   ========================================================= */
+
+.checkout-modal-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 94vh;
+}
+
+.checkout-modal-body {
+  overflow-y: auto;
+  padding: 24px 20px 34px;
+}
+
+.checkout-form,
+.checkout-review {
+  width: min(100%, 620px);
+  margin: 0 auto;
+}
+
+.checkout-intro {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.checkout-intro h3 {
+  margin: 8px 0 10px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.checkout-intro > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.form-field {
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.87rem;
+  font-weight: 800;
+}
+
+.form-field label span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field textarea {
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 17px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.form-field input {
+  min-height: 54px;
+  padding: 0 16px;
+}
+
+.form-field textarea {
+  min-height: 104px;
+  padding: 15px 16px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--gookie-red);
+  box-shadow: 0 0 0 4px rgba(187, 25, 26, 0.1);
+}
+
+.form-field.has-error input,
+.form-field.has-error textarea {
+  border-color: var(--gookie-red);
+  background: #fff8f8;
+}
+
+.form-help,
+.form-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.form-help {
+  color: var(--muted);
+}
+
+.form-error {
+  min-height: 0;
+  color: var(--gookie-red);
+  font-weight: 700;
+}
+
+.checkout-review-section {
+  margin-bottom: 24px;
+}
+
+.checkout-review-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 11px;
+}
+
+.checkout-review-heading h4 {
+  margin: 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.25rem;
+}
+
+.checkout-review-heading > span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.text-button {
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--gookie-red);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.checkout-details-card,
+.checkout-order-review {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+}
+
+.checkout-details-card strong,
+.checkout-details-card span {
+  display: block;
+}
+
+.checkout-details-card strong {
+  margin-bottom: 5px;
+}
+
+.checkout-details-card span {
+  color: var(--muted);
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.checkout-details-card .checkout-phone {
+  margin-top: 10px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.checkout-details-card .checkout-notes {
+  margin-top: 13px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  font-size: 0.84rem;
+}
+
+.checkout-order-header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.checkout-order-header strong,
+.checkout-order-header span {
+  display: block;
+}
+
+.checkout-order-header strong {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.25rem;
+}
+
+.checkout-order-header span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.checkout-review-flavours {
+  display: grid;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+.checkout-review-flavour {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 0.88rem;
+}
+
+.checkout-review-flavour span:first-child {
+  color: var(--muted);
+}
+
+.checkout-review-flavour strong {
+  flex: 0 0 auto;
+}
+
+.checkout-next-step-note {
+  margin: 14px 4px 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .checkout-modal-card {
+    width: min(94vw, 760px);
+  }
+
+  .checkout-modal-body {
+    padding: 34px 38px 42px;
+  }
+}
+
+/* =========================================================
+   PAYMENT MODAL — FINAL CLEAN VERSION
+   ========================================================= */
+
+.checkout-order-price {
+  margin-top: 10px !important;
+  color: var(--gookie-red) !important;
+  font-weight: 900;
+}
+
+.payment-modal-card {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 620px);
+  max-height: 94vh;
+}
+
+.payment-modal-card .modal-sticky-header {
+  padding: 18px 22px 16px;
+}
+
+.payment-modal-card .modal-sticky-header h2 {
+  margin-top: 2px;
+  font-size: 1.75rem;
+}
+
+.payment-modal-card .drawer-eyebrow {
+  font-size: 0.68rem;
+}
+
+.payment-modal-body {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  overflow-y: auto;
+  padding: 14px 22px 22px;
+}
+
+.payment-order-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--white);
+  font-size: 0.8rem;
+}
+
+.payment-order-id-row span {
+  color: var(--muted);
+}
+
+.payment-order-id-row strong {
+  color: var(--gookie-red);
+  letter-spacing: 0.06em;
+}
+
+/* Payment summary */
+
+.payment-total-card {
+  margin: 0;
+  padding: 18px 20px 14px;
+  border: 1px solid rgba(187, 25, 26, 0.12);
+  border-radius: 22px;
+  background: var(--cream);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(72, 38, 20, 0.08);
+}
+
+.payment-total-main {
+  display: block;
+}
+
+.payment-total-main p {
+  margin: 0 0 3px;
+  color: var(--gookie-red);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.payment-total-main strong {
+  display: block;
+  color: var(--ink);
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.6rem, 8vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+/* Icon remains in the current HTML but is intentionally hidden. */
+.payment-cookie-icon {
+  display: none;
+}
+
+.payment-summary-details {
+  display: grid;
+  gap: 5px;
+  margin-top: 13px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(23, 21, 21, 0.12);
+}
+
+.payment-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 0.85rem;
+}
+
+.payment-summary-row span {
+  color: var(--muted);
+}
+
+.payment-summary-row strong {
+  color: var(--ink);
+  font-size: 0.87rem;
+}
+
+.payment-box-summary {
+  display: block;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+/* Legacy summary elements are no longer used by the final layout. */
+.payment-breakdown,
+.payment-total-divider {
+  display: none;
+}
+
+/* QR payment */
+
+.payment-qr-card {
+  margin: 0;
+  padding: 15px 16px 14px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--white);
+  text-align: center;
+}
+
+.payment-qr-card .mini-heading {
+  margin: 0 0 10px;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+.payment-qr-wrap {
+  display: grid;
+  place-items: center;
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  padding: 10px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--white);
+}
+
+.payment-qr-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.payment-qr-help,
+.payment-whatsapp-note {
+  color: var(--muted);
+  text-align: center;
+}
+
+.payment-qr-help {
+  max-width: 330px;
+  margin: 9px auto 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+/* Payment proof reminder */
+
+.payment-reminder {
+  display: grid;
+  grid-template-columns: 27px 1fr;
+  gap: 10px;
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(187, 25, 26, 0.2);
+  border-radius: 15px;
+  background: #fff1f1;
+}
+
+.payment-reminder > span {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--gookie-red);
+  color: var(--white);
+  font-weight: 900;
+}
+
+.payment-reminder strong,
+.payment-reminder p {
+  display: block;
+}
+
+.payment-reminder strong {
+  font-size: 0.8rem;
+}
+
+.payment-reminder p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.payment-proof-check {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 15px;
+  background: var(--white);
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.payment-proof-check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.payment-checkmark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(23, 21, 21, 0.24);
+  border-radius: 8px;
+  background: var(--cream-soft);
+}
+
+.payment-proof-check input:checked + .payment-checkmark {
+  border-color: var(--gookie-red);
+  background: var(--gookie-red);
+}
+
+.payment-proof-check input:checked + .payment-checkmark::after {
+  content: "✓";
+  color: var(--white);
+  font-weight: 900;
+}
+
+.payment-proof-check:focus-within {
+  border-color: var(--gookie-red);
+  box-shadow: 0 0 0 4px rgba(187, 25, 26, 0.1);
+}
+
+#continueToWhatsAppButton {
+  min-height: 52px;
+}
+
+.payment-whatsapp-note {
+  max-width: 430px;
+  margin: -2px auto 0;
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+/* Continue to payment loading state */
+
+#proceedToPaymentButton.is-loading {
+  gap: 10px;
+  cursor: wait;
+  opacity: 0.88;
+}
+
+.button-loading-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.button-loading-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: paymentButtonDot 900ms ease-in-out infinite;
+}
+
+.button-loading-dots span:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.button-loading-dots span:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes paymentButtonDot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-modal-card {
+    width: min(94vw, 620px);
+  }
+}
+
+@media (max-width: 600px) {
+  .payment-modal-card {
+    max-height: 96vh;
+    border-radius: 26px 26px 0 0;
+  }
+
+  .payment-modal-card .modal-sticky-header {
+    padding: 15px 18px 13px;
+  }
+
+  .payment-modal-card .modal-sticky-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .payment-modal-card .modal-close-button {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .payment-modal-body {
+    gap: 10px;
+    padding: 12px 16px 18px;
+  }
+
+  .payment-total-card {
+    padding: 15px 16px 12px;
+    border-radius: 18px;
+  }
+
+  .payment-total-main strong {
+    font-size: 2.7rem;
+  }
+
+  .payment-summary-details {
+    margin-top: 10px;
+    padding-top: 9px;
+  }
+
+  .payment-box-summary {
+    margin-top: 7px;
+  }
+
+  .payment-qr-card {
+    padding: 13px 12px 12px;
+    border-radius: 18px;
+  }
+
+  .payment-qr-wrap {
+    width: min(100%, 245px);
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .payment-qr-help {
+    margin-top: 7px;
+    font-size: 0.7rem;
+  }
+
+  .payment-reminder {
+    padding: 9px 11px;
+  }
+
+  .payment-proof-check {
+    padding: 10px 12px;
+  }
+
+  .payment-whatsapp-note {
+    display: none;
+  }
+}
+
+/* =========================================================
+   COMMIT 1 — COMPACT TABBED ORDER BUILDER
+   ========================================================= */
+
+.order-builder {
+  position: relative;
+  padding: 88px 20px 96px;
+  background: var(--cream-soft);
+  scroll-margin-top: calc(var(--header-height-mobile) + 14px);
+}
+
+.order-builder-heading {
+  margin-bottom: 26px;
+}
+
+.order-builder-heading h2 {
+  margin-bottom: 12px;
+}
+
+.order-builder-tabs {
+  position: relative;
+  z-index: 8;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  width: min(100%, 720px);
+  margin: 0 auto 28px;
+  padding: 5px;
+  border: 1px solid rgba(23, 21, 21, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 34px rgba(55, 26, 12, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.order-builder-tab {
+  min-width: 0;
+  min-height: 54px;
+  padding: 13px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: clamp(0.7rem, 3vw, 0.84rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.055em;
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.order-builder-tab:hover:not(.is-active) {
+  color: var(--ink);
+  background: rgba(187, 25, 26, 0.06);
+}
+
+.order-builder-tab.is-active {
+  background: var(--gookie-red);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(187, 25, 26, 0.24);
+}
+
+.order-builder-tab:active {
+  transform: scale(0.98);
+}
+
+.order-builder-tab:focus-visible {
+  outline: 3px solid rgba(187, 25, 26, 0.22);
+  outline-offset: 3px;
+}
+
+.order-builder-content {
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+
+.order-builder-panel.order-section {
+  padding: 0;
+  background: transparent;
+  scroll-margin-top: calc(var(--header-height-mobile) + 92px);
+}
+
+.order-builder-panel:not(.is-hidden) {
+  animation: orderPanelIn 240ms ease both;
+}
+
+@keyframes orderPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The old choice cards are no longer rendered in Commit 1. */
+.choice-section,
+.choice-grid,
+.choice-card {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .order-builder {
+    padding: 72px 14px 84px;
+  }
+
+  .order-builder-heading {
+    padding-inline: 8px;
+    margin-bottom: 22px;
+  }
+
+  .order-builder-heading h2 {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .order-builder-tabs {
+    position: sticky;
+    top: calc(var(--header-height-mobile) + 8px);
+    margin-bottom: 22px;
+  }
+
+  .order-builder-tab {
+    min-height: 50px;
+    padding-inline: 8px;
+    letter-spacing: 0.035em;
+  }
+
+  .order-builder-content {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .order-builder {
+    padding: 110px 32px 120px;
+    scroll-margin-top: calc(var(--header-height-desktop) + 18px);
+  }
+
+  .order-builder-tabs {
+    margin-bottom: 36px;
+  }
+
+  .order-builder-tab {
+    min-height: 58px;
+    font-size: 0.84rem;
+  }
+
+  .order-builder-panel.order-section {
+    scroll-margin-top: calc(var(--header-height-desktop) + 100px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-builder-panel:not(.is-hidden) {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   GOOKIE'S PICKS — FINAL COMPACT CARDS
+   ========================================================= */
+
+.gookies-picks-intro {
+  width: min(100%, 720px);
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.gookies-picks-intro h2 {
+  margin: 8px 0 10px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.7rem, 10vw, 5.2rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.gookies-picks-intro > p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.gookies-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.gookies-pick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 22px;
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(55, 26, 12, 0.08);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.gookies-pick-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(55, 26, 12, 0.12);
+}
+
+.gookies-pick-card:active {
+  transform: scale(0.985);
+}
+
+.gookies-pick-card.is-selected {
+  border-color: var(--gookie-red);
+  box-shadow: 0 16px 38px rgba(187, 25, 26, 0.15);
+}
+
+.gookies-pick-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 0.78;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.gookies-pick-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gookies-pick-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.gookies-pick-card > strong {
+  display: block;
+  padding: 14px 14px 4px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+@media (min-width: 700px) {
+  .gookies-picks-grid {
+    gap: 18px;
+  }
+
+  .gookies-pick-card {
+    border-radius: 26px;
+  }
+
+  .gookies-pick-card > strong {
+    padding: 18px 18px 5px;
+    font-size: 1.35rem;
+  }
+}
+
+/* =========================================================
+   GOOKIE'S PICK POPUP
+   ========================================================= */
+
+.gookie-pick-modal-card {
+  position: relative;
+  padding: 20px;
+}
+
+.gookie-pick-modal-card > .modal-close-button {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  margin-left: auto;
+}
+
+.gookie-pick-modal-image {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--cream);
+}
+
+.gookie-pick-modal-image img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.gookie-pick-modal-content {
+  padding: 24px 2px 6px;
+}
+
+.gookie-pick-modal-content h2 {
+  margin: 9px 0 12px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.5rem, 11vw, 4.8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.gookie-pick-modal-content > p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.gookie-pick-included {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 22px;
+  background: var(--white);
+}
+
+.gookie-pick-included .mini-heading {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+#gookiePickModalIncluded {
+  display: grid;
+  gap: 9px;
+}
+
+.gookie-pick-included-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+
+.gookie-pick-included-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.gookie-pick-included-row strong {
+  font-size: 0.9rem;
+}
+
+.gookie-pick-included-row span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.gookie-pick-modal-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.gookie-pick-modal-meta span {
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.gookie-pick-modal-meta strong {
+  color: #ffcb3d;
+  font-size: 1.15rem;
+}
+
+@media (min-width: 760px) {
+  .gookie-pick-modal-card {
+    width: min(92vw, 760px);
+    padding: 28px;
+    border-radius: 30px;
+  }
+
+  .gookie-pick-modal-image {
+    min-height: 300px;
+  }
+}
+
+/* =========================================================
+   GOOKIE ORDER CREATION LOADER — GIF VERSION
+   Source file: gookie-loading.gif (800 × 800)
+   ========================================================= */
+
+.order-creation-loader[hidden] {
+  display: none !important;
+}
+
+.order-creation-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(23, 21, 21, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.order-creation-loader-card {
+  width: min(100%, 420px);
+  padding: 28px 24px 26px;
+  border-radius: 30px;
+  background: var(--cream-soft);
+  box-shadow: 0 30px 90px rgba(23, 21, 21, 0.34);
+  text-align: center;
+  animation: orderLoaderCardIn 300ms ease both;
+}
+
+.order-creation-kicker {
+  margin: 0 0 12px;
+  color: var(--gookie-red);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.gookie-loader-gif-wrap {
+  position: relative;
+  width: min(100%, 290px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.gookie-loader-gif {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Small success/error treatment without covering the GIF. */
+.order-creation-loader.is-complete .gookie-loader-gif-wrap::after,
+.order-creation-loader.is-error .gookie-loader-gif-wrap::after {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.35rem;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(23, 21, 21, 0.2);
+  animation: loaderBadgeIn 320ms cubic-bezier(.2,.8,.25,1.25) both;
+}
+
+.order-creation-loader.is-complete .gookie-loader-gif-wrap::after {
+  content: "✓";
+  background: var(--gookie-red);
+}
+
+.order-creation-loader.is-error .gookie-loader-gif-wrap::after {
+  content: "!";
+  background: var(--ink);
+}
+
+.order-creation-loader-card h2 {
+  margin: 10px 0 7px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.order-creation-loader-card > p:not(.order-creation-kicker) {
+  min-height: 1.45em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.order-creation-progress {
+  height: 8px;
+  margin-top: 22px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(23, 21, 21, 0.1);
+}
+
+.order-creation-progress span {
+  display: block;
+  width: 16%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gookie-red);
+  animation: orderCreationProgress 2.35s ease-out forwards;
+  transition: width 300ms ease;
+}
+
+.order-creation-loader.is-complete .order-creation-progress span {
+  width: 100%;
+}
+
+@keyframes orderCreationProgress {
+  from { width: 8%; }
+  to { width: 88%; }
+}
+
+@keyframes orderLoaderCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loaderBadgeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.45) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .order-creation-loader {
+    padding: 16px;
+  }
+
+  .order-creation-loader-card {
+    padding: 24px 16px 22px;
+  }
+
+  .gookie-loader-gif-wrap {
+    width: min(100%, 250px);
+  }
+
+  .order-creation-loader-card h2 {
+    margin-top: 6px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-creation-loader-card,
+  .order-creation-progress span,
+  .order-creation-loader.is-complete .gookie-loader-gif-wrap::after,
+  .order-creation-loader.is-error .gookie-loader-gif-wrap::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+  }
+}
+
+/* =========================================================
+   HERO — MOBILE
+   Keep this as the only mobile Hero override.
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    margin: 24px 0 36px;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .hero-highlight {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .hero-highlight span {
+    font-size: 28px;
+  }
+
+  .hero-highlight strong {
+    width: 100%;
+    font-size: 0.65rem;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .hero-actions .hero-button {
+    flex: 1 1 0;
+    width: auto;
+    max-width: 170px;
+    min-width: 0;
+    min-height: 56px;
+    padding: 14px 10px;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .hero-cookie-image {
+    filter: none;
+  }
+}
+
+/* =========================================================
+   GOOKIE FOOTER — FULL BRAND VERSION
+========================================================= */
+
+.site-footer {
+  position: relative;
+  margin-top: 60px;
+  overflow: hidden;
+  background: #fff8ef;
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   FOOTER HERO
+========================================================= */
+
+.footer-hero {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: 64px 0 42px;
+  text-align: center;
+}
+
+.footer-hero .footer-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  margin: 0 0 12px;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.footer-hero h2 {
+  margin: 0;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 900;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+
+.footer-cookie {
+  display: inline-block;
+  margin-left: 5px;
+  transform-origin: center bottom;
+  transition: transform 240ms ease;
+}
+
+.footer-hero h2:hover .footer-cookie {
+  transform:
+    translateY(-6px)
+    rotate(10deg)
+    scale(1.08);
+}
+
+.footer-message {
+  margin: 22px 0 0;
+
+  color: #38312d;
+
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.footer-heart-doodle {
+  display: block;
+
+  margin-top: 14px;
+
+  color: var(--gookie-red);
+
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  line-height: 1;
+  transform: rotate(-8deg);
+}
+
+
+/* =========================================================
+   MAIN FOOTER GRID
+========================================================= */
+
+.footer-main {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1.08fr)
+    minmax(220px, 1fr)
+    minmax(250px, 1.08fr)
+    minmax(250px, 1.12fr);
+
+  width: min(1400px, 92%);
+  margin: 0 auto;
+  padding: 46px 0 44px;
+
+  border-top: 1px solid rgba(23, 21, 21, 0.11);
+}
+
+.footer-main > * {
+  min-width: 0;
+  padding: 0 38px;
+}
+
+.footer-main > * + * {
+  border-left: 1px solid rgba(23, 21, 21, 0.11);
+}
+
+
+/* =========================================================
+   BRAND COLUMN
+========================================================= */
+
+.footer-brand-column {
+  padding-left: 0;
+}
+
+.footer-logo {
+  margin: 0;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.3rem, 3.5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.footer-tagline {
+  margin: 8px 0 0;
+
+  color: var(--gookie-red);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-style: italic;
+}
+
+.footer-brand-description {
+  max-width: 280px;
+  margin: 24px 0 0;
+
+  color: #302b27;
+
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.footer-brand-divider {
+  width: 100%;
+  max-width: 280px;
+  height: 1px;
+
+  margin: 20px 0 17px;
+
+  background: rgba(23, 21, 21, 0.11);
+}
+
+.footer-social-section h3,
+.footer-contact-section h3 {
+  margin: 0 0 12px;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.055em;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-socials a {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1.5px solid rgba(187, 25, 26, 0.52);
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 900;
+
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.footer-socials a:hover {
+  background: var(--gookie-red);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.footer-contact-section {
+  margin-top: 22px;
+}
+
+.footer-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin: 0 0 9px;
+
+  color: #302b27;
+
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+a.footer-contact-row:hover {
+  color: var(--gookie-red);
+}
+
+.footer-contact-icon {
+  flex: 0 0 auto;
+
+  color: var(--gookie-red);
+
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   FOOTER LINK COLUMNS
+========================================================= */
+
+.footer-column-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin: 0 0 28px;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.025em;
+}
+
+.footer-heading-icon {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  color: var(--gookie-red);
+
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.footer-help-column .footer-heading-icon i {
+  font-size: 1.9rem;
+  transform: translateY(1px) scaleX(1.08);
+}
+
+.footer-heading-icon i{
+  font-size:1.7rem;
+}
+
+.footer-link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.footer-text-link {
+  width: fit-content;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: #302b27;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.footer-text-link:hover {
+  color: var(--gookie-red);
+  transform: translateX(4px);
+}
+
+.footer-allergen-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  max-width: 305px;
+  min-height: 58px;
+
+  padding: 12px 16px;
+
+  border: 1.5px solid rgba(187, 25, 26, 0.48);
+  border-radius: 12px;
+
+  background: transparent;
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.025em;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    color 190ms ease,
+    background-color 190ms ease,
+    border-color 190ms ease,
+    transform 190ms ease;
+}
+
+.footer-allergen-icon {
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.footer-allergen-button:hover {
+  border-color: var(--gookie-red);
+  background: var(--gookie-red);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   WHATSAPP COLUMN
+========================================================= */
+
+.footer-whatsapp-column {
+  padding-right: 0;
+  text-align: center;
+}
+
+.footer-whatsapp-icon {
+  margin: 0 auto 16px;
+
+  color: var(--gookie-red);
+
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.footer-whatsapp-icon i{
+  font-size:3.5rem;
+}
+
+.footer-whatsapp-column h3 {
+  margin: 0;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.footer-whatsapp-column p {
+  max-width: 270px;
+  margin: 24px auto 28px;
+
+  color: #302b27;
+
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.footer-whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+
+  width: 100%;
+  min-height: 60px;
+
+  padding: 15px 22px;
+
+  border-radius: 10px;
+
+  background: var(--gookie-red);
+  color: var(--white);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.025em;
+
+  box-shadow: 0 12px 28px rgba(187, 25, 26, 0.17);
+
+  transition:
+    background-color 190ms ease,
+    box-shadow 190ms ease,
+    transform 190ms ease;
+}
+
+.footer-whatsapp-button i{
+   font-size:1.15rem;
+}
+
+.footer-whatsapp-button:hover {
+  background: var(--gookie-red-dark);
+  box-shadow: 0 16px 34px rgba(187, 25, 26, 0.25);
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   TRUST BAR
+========================================================= */
+
+.footer-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: min(1400px, 92%);
+  margin: 0 auto 0;
+  padding: 24px 26px;
+
+  border: 1px solid rgba(23, 21, 21, 0.06);
+  border-radius: 24px 24px 0 0;
+
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.footer-trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+
+  min-width: 0;
+  padding: 4px 25px;
+}
+
+.footer-trust-item + .footer-trust-item {
+  border-left: 1px solid rgba(23, 21, 21, 0.12);
+}
+
+.footer-trust-icon {
+  flex: 0 0 auto;
+
+  color: var(--gookie-red);
+
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.footer-trust-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-trust-item strong {
+  color: #2a2522;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.footer-trust-item span:not(.footer-trust-icon) {
+  color: #4f4843;
+
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   RED BOTTOM BAR
+========================================================= */
+
+.footer-red-bar {
+  position: relative;
+
+  margin-top: 0;
+
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+.footer-red-scallop {
+  position: absolute;
+  top: -12px;
+  left: 0;
+
+  width: 100%;
+  height: 14px;
+
+  background:
+    radial-gradient(
+      circle at 12px 14px,
+      var(--gookie-red) 12px,
+      transparent 13px
+    )
+    0 0 / 24px 14px repeat-x;
+}
+
+.footer-red-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+
+  width: min(1200px, 90%);
+  min-height: 90px;
+  margin: 0 auto;
+  padding: 24px 0;
+
+  text-align: center;
+}
+
+.footer-red-bar-inner p {
+  margin: 0;
+
+  color: var(--white);
+
+  font-size: 0.82rem;
+}
+
+.footer-bottom-divider {
+  width: 1px;
+  height: 38px;
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.footer-baked-line,
+.footer-thank-you {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem !important;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.footer-text-link:focus-visible,
+.footer-allergen-button:focus-visible,
+.footer-whatsapp-button:focus-visible,
+.footer-socials a:focus-visible,
+.footer-contact-row:focus-visible {
+  outline: 3px solid rgba(187, 25, 26, 0.24);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   FOOTER — SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1180px) {
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 42px;
+  }
+
+  .footer-main > * {
+    padding: 0 32px;
+  }
+
+  .footer-main > * + * {
+    border-left: 0;
+  }
+
+  .footer-main > :nth-child(even) {
+    border-left: 1px solid rgba(23, 21, 21, 0.11);
+  }
+
+  .footer-brand-column {
+    padding-left: 0;
+  }
+
+  .footer-whatsapp-column {
+    padding-right: 0;
+  }
+
+  .footer-trust-bar {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 22px;
+  }
+
+  .footer-trust-item:nth-child(3) {
+    border-left: 0;
+  }
+
+}
+
+
+/* =========================================================
+   FOOTER — TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .footer-hero {
+    padding-top: 48px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 20px 0 36px;
+  }
+
+  .footer-main > * {
+    padding: 30px 0;
+  }
+
+  .footer-main > * + *,
+  .footer-main > :nth-child(even) {
+    border-top: 1px solid rgba(23, 21, 21, 0.1);
+    border-left: 0;
+  }
+
+  .footer-brand-description,
+  .footer-brand-divider {
+    max-width: none;
+  }
+
+  .footer-column-heading {
+    margin-bottom: 20px;
+  }
+
+  .footer-whatsapp-column p {
+    max-width: 380px;
+  }
+
+  .footer-whatsapp-button {
+    max-width: 380px;
+  }
+
+  .footer-red-bar-inner {
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+    padding: 34px 0 28px;
+  }
+
+  .footer-bottom-divider {
+    width: 70px;
+    height: 1px;
+  }
+
+}
+
+
+/* =========================================================
+   FOOTER — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .site-footer {
+    margin-top: 38px;
+  }
+
+  .footer-hero {
+    width: 88%;
+    padding: 38px 0 28px;
+  }
+
+  .footer-hero .footer-eyebrow {
+    gap: 8px;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .footer-hero h2 {
+    font-size: 2.4rem;
+    line-height: 0.98;
+  }
+
+  .footer-message {
+    margin-top: 15px;
+    font-size: 0.88rem;
+  }
+
+  .footer-heart-doodle {
+    margin-top: 10px;
+    font-size: 2.2rem;
+  }
+
+  .footer-main {
+    width: 88%;
+  }
+
+  .footer-main > * {
+    padding: 27px 0;
+  }
+
+  .footer-logo {
+    font-size: 2.6rem;
+  }
+
+  .footer-tagline {
+    font-size: 1rem;
+  }
+
+  .footer-brand-description {
+    font-size: 0.88rem;
+  }
+
+  .footer-contact-row {
+    font-size: 0.84rem;
+  }
+
+  .footer-column-heading {
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .footer-heading-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.45rem;
+  }
+
+  .footer-link-list {
+    gap: 15px;
+  }
+
+  .footer-text-link {
+    font-size: 0.9rem;
+  }
+
+  .footer-allergen-button {
+    max-width: none;
+    min-height: 54px;
+    font-size: 0.76rem;
+  }
+
+  .footer-whatsapp-column h3 {
+    font-size: 1.35rem;
+  }
+
+  .footer-whatsapp-column p {
+    margin: 18px auto 22px;
+    font-size: 0.88rem;
+  }
+
+  .footer-whatsapp-button {
+    min-height: 55px;
+    font-size: 0.8rem;
+  }
+
+  .footer-trust-bar {
+    grid-template-columns: 1fr;
+
+    width: 88%;
+    padding: 10px 20px 18px;
+
+    border-radius: 20px 20px 0 0;
+  }
+
+  .footer-trust-item {
+    justify-content: flex-start;
+
+    padding: 20px 4px;
+  }
+
+  .footer-trust-item + .footer-trust-item,
+  .footer-trust-item:nth-child(3) {
+    border-top: 1px solid rgba(23, 21, 21, 0.1);
+    border-left: 0;
+  }
+
+  .footer-trust-icon {
+    width: 48px;
+    font-size: 2.35rem;
+    text-align: center;
+  }
+
+  .footer-red-bar-inner {
+    width: 86%;
+  }
+
+  .footer-red-bar-inner p {
+    font-size: 0.72rem;
+  }
+
+  .footer-baked-line,
+  .footer-thank-you {
+    font-size: 0.95rem !important;
+  }
+
+}
+/* =========================================================
+   FOOTER INFORMATION MODAL
+========================================================= */
+
+.footer-info-modal {
+  align-items: center;
+  justify-items: center;
+  padding: 24px;
+}
+
+.footer-info-modal-card {
+  width: min(100%, 760px);
+  max-height: min(86vh, 820px);
+  overflow: hidden;
+
+  border-radius: 30px;
+  background: var(--cream-soft);
+
+  box-shadow:
+    0 28px 80px rgba(47, 18, 15, 0.26);
+
+  transform:
+    translateY(20px)
+    scale(0.98);
+}
+
+.footer-info-modal.is-open .footer-info-modal-card {
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* ========================================
+   MODAL HEADER
+======================================== */
+
+.footer-info-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 28px 30px 24px;
+
+  border-bottom: 1px solid rgba(23, 21, 21, 0.1);
+
+  background:
+    rgba(255, 248, 239, 0.96);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.footer-info-modal-eyebrow {
+  margin: 0 0 6px;
+
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.footer-info-modal-header h2 {
+  margin: 0;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+
+/* ========================================
+   MODAL BODY
+======================================== */
+
+.footer-info-modal-body {
+  max-height: calc(86vh - 112px);
+  overflow-y: auto;
+
+  padding: 28px 30px 36px;
+
+  color: #4f4842;
+
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.footer-info-modal-body h3 {
+  margin: 30px 0 10px;
+
+  color: var(--ink);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.footer-info-modal-body h3:first-child {
+  margin-top: 0;
+}
+
+.footer-info-modal-body p {
+  margin: 0 0 15px;
+  line-height: 1.7;
+}
+
+.footer-info-modal-body ul {
+  margin: 10px 0 18px;
+  padding-left: 21px;
+}
+
+.footer-info-modal-body li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.footer-info-modal-body strong {
+  color: var(--ink);
+}
+
+.footer-info-modal-body a {
+  color: var(--gookie-red);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+
+/* ========================================
+   INFORMATION CARDS
+======================================== */
+
+.footer-info-card {
+  margin-bottom: 14px;
+  padding: 18px 20px;
+
+  border: 1px solid rgba(23, 21, 21, 0.09);
+  border-radius: 20px;
+
+  background: var(--white);
+}
+
+.footer-info-card h3 {
+  margin: 0 0 6px;
+}
+
+.footer-info-card p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-info-alert {
+  padding: 18px 20px;
+
+  border: 2px solid rgba(187, 25, 26, 0.22);
+  border-radius: 20px;
+
+  background: rgba(187, 25, 26, 0.05);
+}
+
+.footer-info-alert h3 {
+  margin-top: 0;
+  color: var(--gookie-red);
+}
+
+
+/* =========================================================
+   FOOTER INFORMATION MODAL — MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .footer-info-modal {
+    align-items: end;
+    padding: 0;
+  }
+
+  .footer-info-modal-card {
+    width: 100%;
+    max-height: 92vh;
+
+    border-radius: 28px 28px 0 0;
+
+    transform: translateY(28px);
+  }
+
+  .footer-info-modal.is-open .footer-info-modal-card {
+    transform: translateY(0);
+  }
+
+  .footer-info-modal-header {
+    padding: 22px 20px 18px;
+  }
+
+  .footer-info-modal-header h2 {
+    font-size: 2rem;
+  }
+
+  .footer-info-modal-eyebrow {
+    font-size: 0.64rem;
+  }
+
+  .footer-info-modal-body {
+    max-height: calc(92vh - 94px);
+    padding: 22px 20px 34px;
+    font-size: 0.9rem;
+  }
+
+  .footer-info-modal-body h3 {
+    font-size: 1.15rem;
+  }
+
+  .footer-info-card,
+  .footer-info-alert {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+}
+
+/* =========================================================
+   FRESH BANNER — MOBILE IMAGE SIZE
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .fresh-banner-cookie {
+    width: 105px;
+     grid-template-columns: 52px minmax(0, 1fr) 82px;
+  }
+
+   .fresh-oven-icon{
+
+    width:70px;
+    height:70px;
+
+    stroke:var(--gookie-red);
+
+    stroke-width:2.8;
+
+    fill:none;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
+    display:block;
+
+}
+
+   .fresh-banner-copy span{
+   white-space: nowrap; 
+    display:block;
+    margin-bottom:6px;
+    font-family:"League Spartan",sans-serif;
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--gookie-red);
+
+}
+
+.fresh-banner-copy p{
+ margin:0;
+    font-size:0.8rem;
+    color:var(--muted);
+    line-height:1.5;
+}
+}
+
+/* =========================================================
+   MEET THE GOOKIES — WOW TITLE
+========================================================= */
+
+.meet-section .section-heading {
+  position: relative;
+  width: min(100%, 760px);
+  margin-bottom: 48px;
+}
+
+.meet-section .section-kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.meet-section .section-kicker::before,
+.meet-section .section-kicker::after {
+  content: "✦";
+  color: var(--gookie-red);
+  font-size: 1rem;
+}
+
+.meet-title {
+  margin: 14px 0 20px !important;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 600;
+  line-height: 0.82 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.meet-title-top,
+.meet-title-red {
+  display: block;
+}
+
+.meet-title-top {
+  color: var(--ink);
+  font-size: clamp(3.6rem, 7vw, 6.8rem);
+}
+
+.meet-title-red {
+  position: relative;
+  color: var(--gookie-red);
+  font-size: clamp(4rem, 8vw, 7.8rem);
+}
+
+.meet-title-heart {
+  position: absolute;
+  top: 50%;
+  margin-left: 10px;
+
+  color: var(--gookie-red);
+  font-family: Arial, sans-serif;
+  font-size: 0.52em;
+  font-weight: 400;
+
+  transform: translateY(-44%) rotate(-10deg);
+}
+
+.meet-section .section-heading > p:last-child {
+  max-width: 520px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .meet-section .section-heading {
+    width: 92%;
+    margin-bottom: 34px;
+  }
+
+  .meet-section .section-kicker {
+    gap: 8px;
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+  }
+
+  .meet-section .section-kicker::before,
+  .meet-section .section-kicker::after {
+    font-size: 0.72rem;
+  }
+
+  .meet-title {
+    margin: 12px 0 18px !important;
+  }
+
+  .meet-title-top {
+    font-size: clamp(3rem, 14vw, 4.4rem);
+  }
+
+  .meet-title-red {
+    font-size: clamp(3.35rem, 15.5vw, 4.8rem);
+  }
+
+  .meet-title-heart {
+    margin-left: 5px;
+  }
+
+  .meet-section .section-heading > p:last-child {
+    max-width: 330px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+}
+
+/* =========================================================
+   MEET THE GOOKIES — COOKIE CARD WOW UPGRADE
+========================================================= */
+
+.meet-section .marquee-card {
+  position: relative;
+  padding-bottom: 14px;
+}
+
+
+/* CREAM GLOW BEHIND COOKIE */
+
+.meet-section .marquee-card-image {
+  position: relative;
+  isolation: isolate;
+}
+
+.meet-section .marquee-card-image::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 82%;
+  height: 82%;
+
+  border-radius:
+    52% 48% 44% 56% /
+    46% 58% 42% 54%;
+
+  background: #fff1dc;
+
+  transform: rotate(-7deg);
+
+  transition:
+    transform 280ms ease,
+    background-color 280ms ease;
+}
+
+
+/* LITTLE DOODLES */
+
+.meet-section .marquee-card-image::after {
+  content: "✦";
+
+  position: absolute;
+  z-index: 3;
+
+  top: 8%;
+  right: 8%;
+
+  color: var(--gookie-red);
+
+  font-family: Arial, sans-serif;
+  font-size: 1.3rem;
+
+  pointer-events: none;
+
+  animation: gookieDoodleFloat 4.8s ease-in-out infinite;
+}
+
+/* Extra lightweight doodles around each cookie */
+
+.meet-section .marquee-card {
+  --doodle-delay: 0s;
+}
+
+.meet-section .marquee-card:nth-child(2n) {
+  --doodle-delay: -1.2s;
+}
+
+.meet-section .marquee-card:nth-child(3n) {
+  --doodle-delay: -2.4s;
+}
+
+.meet-section .marquee-card-image {
+  overflow: visible;
+}
+
+.meet-section .marquee-card-image::after {
+  animation-delay: var(--doodle-delay);
+}
+
+.meet-section .marquee-card-copy::before {
+  content: "♡";
+
+  position: absolute;
+
+  top: -28px;
+  left: 10%;
+
+  color: var(--gookie-red);
+
+  font-family: Arial, sans-serif;
+  font-size: 1.15rem;
+
+  transform: rotate(-14deg);
+
+  pointer-events: none;
+
+  animation:
+    gookieDoodleFloat 5.5s ease-in-out infinite;
+  animation-delay: calc(var(--doodle-delay) - 0.7s);
+}
+
+.meet-section .marquee-card:nth-child(3n) .marquee-card-image::after {
+  content: "✧";
+  top: 18%;
+  right: 3%;
+}
+
+.meet-section .marquee-card:nth-child(3n + 1) .marquee-card-copy::before {
+  content: "◌";
+  top: -18px;
+  left: 14%;
+  font-size: 1.35rem;
+}
+
+.meet-section .marquee-card:nth-child(3n + 2) .marquee-card-copy::before {
+  content: "⌁";
+  top: -22px;
+  left: 8%;
+  font-size: 1.3rem;
+}
+
+@keyframes gookieDoodleFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .meet-section .marquee-card-image::after,
+  .meet-section .marquee-card-copy::before {
+    animation: none;
+  }
+
+}
+
+/* COOKIE IMAGE */
+
+.meet-section .marquee-card-image img {
+  position: relative;
+  z-index: 2;
+
+  width: 92%;
+
+  transition:
+    transform 280ms ease,
+    filter 280ms ease;
+}
+
+
+/* COOKIE CAPTION */
+
+.meet-section .marquee-card-copy {
+  position: relative;
+  min-height: 108px;
+  padding: 14px 10px 8px;
+}
+
+.meet-section .marquee-card-copy small {
+  margin-bottom: 7px;
+
+  color: var(--gookie-red);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.meet-section .marquee-card-copy strong {
+  display: block;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+
+/* DISCOVER MORE */
+
+.meet-section .marquee-card-copy::after {
+  content: "DISCOVER MORE →";
+
+  display: inline-block;
+
+  margin-top: 13px;
+  padding: 9px 16px;
+
+  border: 1px solid rgba(187, 25, 26, 0.42);
+  border-radius: 999px;
+
+  color: var(--ink);
+
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+
+  opacity: 0;
+  transform: translateY(5px);
+
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    color 220ms ease,
+    background-color 220ms ease;
+}
+
+
+/* DESKTOP HOVER */
+
+@media (hover: hover) {
+
+  .meet-section .marquee-card:hover .marquee-card-image::before {
+    background: #ffe8c8;
+    transform: rotate(4deg) scale(1.06);
+  }
+
+  .meet-section .marquee-card:hover .marquee-card-image img {
+    transform: translateY(-10px) rotate(-2deg) scale(1.045);
+
+    filter:
+      drop-shadow(0 24px 20px rgba(70, 30, 10, 0.22));
+  }
+
+  .meet-section .marquee-card:hover .marquee-card-copy::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .meet-section .marquee-card-copy::after:hover {
+    background: var(--gookie-red);
+    color: var(--white);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .meet-section .marquee-card {
+    width: min(72vw, 280px);
+  }
+
+  .meet-section .marquee-card-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .meet-section .marquee-card-image::before {
+    width: 88%;
+    height: 88%;
+  }
+
+  .meet-section .marquee-card-image::after {
+    top: 8%;
+    right: 3%;
+
+    font-size: 1rem;
+  }
+
+  .meet-section .marquee-card-image img {
+    width: 94%;
+    height: 94%;
+  }
+
+  .meet-section .marquee-card-copy {
+    min-height: 120px;
+    padding-top: 14px;
+  }
+
+  .meet-section .marquee-card-copy small {
+    font-size: 0.68rem;
+  }
+
+  .meet-section .marquee-card-copy strong {
+    font-size: 1.45rem;
+  }
+
+  .meet-section .marquee-card-copy::after {
+    margin-top: 12px;
+
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+/* =========================================================
+   MEET THE GOOKIES — PREMIUM SNAP CAROUSEL V1
+========================================================= */
+
+.meet-section .marquee-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.meet-section .marquee-shell {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: calc((100vw - 340px) / 2);
+
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  cursor: grab;
+}
+
+.meet-section .marquee-shell::-webkit-scrollbar {
+  display: none;
+}
+
+.meet-section .marquee-shell.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.meet-section .marquee-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 34px;
+
+  width: max-content;
+
+  padding:
+    20px
+    max(40px, calc((100vw - 340px) / 2))
+    28px;
+
+  transform: none !important;
+  animation: none !important;
+}
+
+
+/* EACH SLIDE */
+
+.meet-section .marquee-card {
+  width: 340px;
+  flex: 0 0 340px;
+
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+
+  opacity: 0.48;
+
+  transform:
+    translateY(12px)
+    scale(0.9);
+
+  transition:
+    opacity 380ms ease,
+    transform 380ms cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* ACTIVE COOKIE */
+
+.meet-section .marquee-card.is-active {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.meet-section
+.marquee-card.is-active
+.marquee-card-image::before {
+  transform:
+    rotate(3deg)
+    scale(1.05);
+
+  background: #ffe8c8;
+}
+
+.meet-section
+.marquee-card.is-active
+.marquee-card-image img {
+  transform:
+    translateY(-7px)
+    scale(1.035);
+}
+
+
+/* POP ANIMATION WHEN ACTIVE */
+
+.meet-section
+.marquee-card.is-active
+.marquee-card-image::after {
+  animation: gookieDoodlePop 500ms ease both;
+}
+
+@keyframes gookieDoodlePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-12deg);
+  }
+
+  70% {
+    transform: scale(1.16) rotate(7deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(3deg);
+  }
+}
+
+
+/* PAGINATION DOTS */
+
+.marquee-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 8px;
+}
+
+.marquee-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+
+  background: rgba(187, 25, 26, 0.18);
+
+  cursor: pointer;
+
+  transition:
+    width 260ms ease,
+    background-color 260ms ease,
+    transform 260ms ease;
+}
+
+.marquee-dot.is-active {
+  width: 25px;
+
+  background: var(--gookie-red);
+
+  transform: scale(1.02);
+}
+
+.marquee-dot:focus-visible {
+  outline: 3px solid rgba(187, 25, 26, 0.24);
+  outline-offset: 4px;
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+  .meet-section .marquee-shell {
+    scroll-padding-inline:
+      calc((100vw - 360px) / 2);
+  }
+
+  .meet-section .marquee-track {
+    gap: 48px;
+
+    padding-inline:
+      max(60px, calc((100vw - 360px) / 2));
+  }
+
+  .meet-section .marquee-card {
+    width: 360px;
+    flex-basis: 360px;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .meet-section .marquee-shell {
+    scroll-padding-inline: 11vw;
+  }
+
+  .meet-section .marquee-track {
+    gap: 18px;
+
+    padding:
+      14px
+      11vw
+      24px;
+  }
+
+  .meet-section .marquee-card {
+    width: 78vw;
+    max-width: 310px;
+
+    flex-basis: 78vw;
+  }
+
+  .meet-section .marquee-card-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .meet-section .marquee-card:not(.is-active) {
+    opacity: 0.42;
+
+    transform:
+      translateY(8px)
+      scale(0.92);
+  }
+
+  .marquee-pagination {
+    gap: 7px;
+    margin-top: 4px;
+  }
+
+  .marquee-dot {
+    width: 7px;
+    height: 7px;
+    flex-basis: 7px;
+  }
+
+  .marquee-dot.is-active {
+    width: 21px;
+  }
+
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .meet-section .marquee-shell {
+    scroll-behavior: auto;
+  }
+
+  .meet-section .marquee-card,
+  .marquee-dot {
+    transition: none;
+  }
+
+  .meet-section
+  .marquee-card.is-active
+  .marquee-card-image::after {
+    animation: none;
+  }
+
+}
+
+/* =========================================================
+   MEET THE GOOKIES — CLEAN CAROUSEL NAVIGATION
+========================================================= */
+
+.meet-section .marquee-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+
+/* BUTTON BASE */
+
+.meet-section .marquee-arrow {
+  position: absolute;
+  top: 200px;
+  z-index: 20;
+
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 58px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--gookie-red);
+
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+
+  box-shadow:
+    0 8px 24px rgba(24, 14, 7, 0.08);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+
+/* POSITION */
+
+.meet-section .marquee-arrow-left {
+  left: 18px;
+}
+
+.meet-section .marquee-arrow-right {
+  right: 18px;
+}
+
+
+/* HOVER */
+
+@media (hover: hover) {
+
+  .meet-section .marquee-arrow {
+    opacity: 0.72;
+  }
+
+  .meet-section .marquee-wrapper:hover .marquee-arrow {
+    opacity: 1;
+  }
+
+  .meet-section .marquee-arrow:hover {
+    background: var(--gookie-red);
+    color: #fff;
+
+    transform:
+      translateY(-50%)
+      scale(1.06);
+  }
+
+}
+
+
+/* PRESS */
+
+.meet-section .marquee-arrow:active {
+  transform:
+    translateY(-50%)
+    scale(0.9);
+}
+
+
+/* KEYBOARD */
+
+.meet-section .marquee-arrow:focus-visible {
+  outline: 3px solid rgba(187, 25, 26, 0.25);
+  outline-offset: 3px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .meet-section .marquee-arrow {
+    /*
+       Mobile image starts after 14px track padding.
+       Card image is 78vw wide, capped at 310px.
+       This places the arrows at the image centre.
+    */
+    top: calc(14px + min(39vw, 155px));
+
+    width: 34px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    font-size: 40px;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    box-shadow:
+      0 6px 18px rgba(24, 14, 7, 0.08);
+  }
+
+  .meet-section .marquee-arrow-left {
+    left: 8px;
+  }
+
+  .meet-section .marquee-arrow-right {
+    right: 8px;
+  }
+
+}
+
+/* =========================================================
+   GET YOUR GOOKIES — CLEAR, PLAYFUL ORDER EXPERIENCE V9.1
+========================================================= */
+
+.order-builder-heading .section-kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.order-builder-heading .section-kicker::before,
+.order-builder-heading .section-kicker::after {
+  content: "✦";
+  color: var(--gookie-red);
+  font-size: 1rem;
+}
+
+.order-title {
+  margin: 14px 0 20px !important;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 900;
+  line-height: 0.82 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.order-title-top,
+.order-title-red {
+  display: block;
+}
+
+.order-title-top {
+  color: var(--ink);
+  font-size: clamp(3.6rem, 7vw, 6.8rem);
+}
+
+.order-title-red {
+  position: relative;
+  color: var(--gookie-red);
+  font-size: clamp(4rem, 8vw, 7.8rem);
+}
+
+.order-title-heart {
+  position: absolute;
+  top: 50%;
+  margin-left: 10px;
+  color: var(--gookie-red);
+  font-family: Arial, sans-serif;
+  font-size: 0.52em;
+  font-weight: 400;
+  transform: translateY(-44%) rotate(-10deg);
+}
+
+.box-accordion-copy small {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.box-accordion-copy small b {
+  color: var(--gookie-red);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.035em;
+}
+
+.box-accordion-copy small span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.flavour-box-meter {
+  margin: 18px 20px 4px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(187, 25, 26, 0.12);
+  border-radius: 22px;
+  background: var(--white);
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(55, 26, 12, 0.05);
+}
+
+.flavour-meter-label {
+  margin: 0 0 13px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.flavour-meter-slots {
+  --meter-capacity: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--meter-capacity), minmax(34px, 62px));
+  justify-content: center;
+  gap: clamp(5px, 1.6vw, 10px);
+  width: 100%;
+}
+
+.flavour-meter-slot {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: 0;
+  overflow: hidden;
+  border: 1.5px dashed rgba(187, 25, 26, 0.25);
+  border-radius: 50%;
+  background: #fff8ef;
+}
+
+.flavour-meter-slot.has-cookie {
+  border-style: solid;
+  border-color: rgba(187, 25, 26, 0.16);
+  background: #fff3df;
+}
+
+.flavour-meter-slot img {
+  display: block;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 5px rgba(55, 26, 12, 0.14));
+}
+
+.flavour-meter-ghost {
+  opacity: 0.17;
+  filter: grayscale(1);
+  font-size: clamp(1rem, 3vw, 1.45rem);
+}
+
+.flavour-meter-slot.is-new {
+  animation: gookieMeterPop 230ms ease-out both;
+}
+
+@keyframes gookieMeterPop {
+  0% { transform: scale(0.78); opacity: 0.35; }
+  65% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.flavour-meter-count {
+  margin: 13px 0 2px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+}
+
+.flavour-meter-count strong {
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+.flavour-meter-message {
+  min-height: 20px;
+  margin: 3px 0 0;
+  color: var(--gookie-red);
+  font-family: "League Spartan", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.025em;
+}
+
+@media (max-width: 767px) {
+  .order-builder-heading .section-kicker {
+    gap: 8px;
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+  }
+
+  .order-builder-heading .section-kicker::before,
+  .order-builder-heading .section-kicker::after {
+    font-size: 0.72rem;
+  }
+
+  .order-title {
+    margin: 12px 0 18px !important;
+  }
+
+  .order-title-top {
+    font-size: clamp(3rem, 14vw, 4.4rem);
+  }
+
+  .order-title-red {
+    font-size: clamp(3.35rem, 15.5vw, 4.8rem);
+  }
+
+  .order-title-heart {
+    margin-left: 5px;
+  }
+
+  .flavour-box-meter {
+    margin: 14px 14px 2px;
+    padding: 15px 10px 14px;
+  }
+
+  .flavour-meter-slots {
+    grid-template-columns: repeat(var(--meter-capacity), minmax(22px, 48px));
+    gap: 4px;
+  }
+
+  .flavour-meter-count {
+    margin-top: 10px;
+  }
+}
+
+/* =========================================================
+   GOOKIE FOOTER — MOBILE ACCORDION V3
+   Uses the SAME links, modal buttons and social icons as desktop.
+   Desktop layout remains unchanged.
+========================================================= */
+
+.footer-accordion-toggle {
+  font: inherit;
+}
+
+.footer-accordion-chevron,
+.footer-mobile-only {
+  display: none;
+}
+
+.footer-contact-heading {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    margin-top: 38px;
+  }
+
+  .footer-hero {
+    width: calc(100% - 44px);
+    padding: 45px 0 34px;
+  }
+
+  .footer-hero h2 {
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .footer-message {
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  .footer-main {
+    display: flex;
+    width: calc(100% - 44px);
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 30px;
+  }
+
+  .footer-main > * {
+    width: 100%;
+    padding: 0;
+    border: 0 !important;
+  }
+
+  .footer-help-column {
+    order: 1;
+  }
+
+  .footer-legal-column {
+    order: 2;
+  }
+
+  .footer-brand-column {
+    display: flex;
+    order: 3;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .footer-whatsapp-column {
+    display: none;
+  }
+
+  .footer-brand,
+  .footer-brand-description,
+  .footer-brand-divider {
+    display: none;
+  }
+
+  .footer-contact-section {
+    order: 1;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(23, 21, 21, 0.1);
+  }
+
+  .footer-social-section {
+    order: 2;
+    margin: 0;
+    padding: 31px 0 28px;
+    text-align: center;
+  }
+
+  .footer-social-section h3 {
+    margin-bottom: 18px;
+    font-size: 0.82rem;
+    letter-spacing: 0.13em;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .footer-socials a {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .footer-accordion-group {
+    border-bottom: 1px solid rgba(23, 21, 21, 0.1);
+  }
+
+  .footer-column-heading,
+  .footer-contact-heading {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 78px;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--gookie-red);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .footer-column-heading .footer-heading-icon,
+  .footer-contact-heading .footer-heading-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border: 0;
+    background: transparent;
+    font-size: 1.45rem;
+  }
+
+  .footer-accordion-label {
+    min-width: 0;
+    flex: 1;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.03rem;
+    font-weight: 900;
+    letter-spacing: 0.035em;
+  }
+
+  .footer-accordion-chevron {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    margin-right: 2px;
+    transition: transform 260ms ease;
+  }
+
+  .footer-accordion-chevron::before,
+  .footer-accordion-chevron::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 10px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+  }
+
+  .footer-accordion-chevron::before {
+    left: 1px;
+    transform: rotate(45deg);
+  }
+
+  .footer-accordion-chevron::after {
+    right: 1px;
+    transform: rotate(-45deg);
+  }
+
+  .footer-accordion-group.is-open .footer-accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  .footer-accordion-panel {
+    display: none;
+    padding: 0 52px 24px;
+  }
+
+  .footer-accordion-group.is-open > .footer-accordion-panel,
+  .footer-contact-section.is-open > .footer-accordion-panel {
+    display: grid;
+  }
+
+  .footer-link-list {
+    gap: 15px;
+  }
+
+  .footer-text-link {
+    width: 100%;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .footer-allergen-button {
+    width: 100%;
+    max-width: none;
+    min-height: 58px;
+    justify-content: flex-start;
+    padding: 13px 16px;
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .footer-contact-panel {
+    gap: 15px;
+  }
+
+  .footer-contact-row {
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .footer-contact-icon {
+    width: 25px;
+    color: var(--gookie-red);
+    text-align: center;
+  }
+
+  .footer-mobile-only {
+    display: grid;
+  }
+
+  .footer-red-bar-inner {
+    gap: 7px;
+    padding: 27px 20px 25px;
+  }
+
+  .footer-red-bar-inner p {
+    font-size: 0.75rem;
+  }
+
+  .footer-bottom-divider {
+    display: none;
+  }
+
+  .footer-baked-line,
+  .footer-thank-you {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (min-width: 601px) {
+  .footer-accordion-panel {
+    display: grid !important;
+  }
+
+  .footer-column-heading {
+    cursor: default;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-accordion-chevron {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   FIX FOOTER ACCORDION HEADINGS ON DESKTOP
+========================================================= */
+
+@media (min-width: 601px) {
+
+  .footer-column-heading.footer-accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    width: auto;
+    min-height: 0;
+    margin: 0 0 28px;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+
+    background: transparent;
+    box-shadow: none;
+
+    color: var(--gookie-red);
+    text-align: left;
+    cursor: default;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .footer-column-heading.footer-accordion-toggle:hover,
+  .footer-column-heading.footer-accordion-toggle:focus,
+  .footer-column-heading.footer-accordion-toggle:active {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .footer-column-heading .footer-accordion-label {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .footer-column-heading .footer-heading-icon {
+    display: grid;
+    place-items: center;
+
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+
+    color: var(--gookie-red);
+    font-size: 1.35rem;
+  }
+
+  .footer-column-heading .footer-accordion-chevron {
+    display: none;
+  }
+}
+
+/* =========================================================
+   PREMIUM LEFT MENU DRAWER
+========================================================= */
+
+.premium-menu-drawer {
+  width: min(92vw, 430px);
+  padding: 26px 26px 24px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(187, 25, 26, 0.07),
+      transparent 34%
+    ),
+    var(--cream-soft);
+}
+
+.premium-menu-header {
+  align-items: flex-start;
+  padding-bottom: 26px;
+}
+
+.premium-menu-header h2 {
+  margin: 13px 0 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.premium-menu-nav {
+  display: grid;
+  gap: 0;
+  padding: 8px 0 0;
+}
+
+.premium-menu-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 16px;
+
+  min-height: 92px;
+  padding: 18px 4px;
+
+  border-bottom: 1px solid rgba(23, 21, 21, 0.1);
+
+  color: var(--ink);
+  overflow: hidden;
+
+  transition:
+    transform 240ms ease,
+    padding 240ms ease,
+    background-color 240ms ease;
+}
+
+
+.premium-menu-icon {
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 18px;
+  background: rgba(187, 25, 26, 0.075);
+  color: var(--gookie-red);
+
+  font-size: 1.55rem;
+
+  transition:
+    transform 240ms ease,
+    background-color 240ms ease,
+    color 240ms ease;
+}
+
+.premium-menu-copy {
+  display: block;
+  min-width: 0;
+}
+
+.premium-menu-copy strong {
+  display: block;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.015em;
+}
+
+.premium-menu-copy small {
+  display: block;
+
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+
+  opacity: 0;
+  transform: translateY(-4px);
+
+  transition:
+    max-height 260ms ease,
+    margin-top 260ms ease,
+    opacity 220ms ease,
+    transform 260ms ease,
+    color 240ms ease;
+}
+
+.premium-menu-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1.5px solid rgba(187, 25, 26, 0.35);
+  border-radius: 50%;
+
+  color: var(--gookie-red);
+  font-size: 0.86rem;
+
+  transition:
+    transform 240ms ease,
+    background-color 240ms ease,
+    color 240ms ease,
+    border-color 240ms ease;
+}
+
+/* =========================================================
+   DESKTOP HOVER EFFECTS
+========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-menu-item:hover {
+    padding-right: 8px;
+    padding-left: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    transform: translateX(3px);
+  }
+
+  .premium-menu-item:hover .premium-menu-copy small {
+    max-height: 42px;
+    margin-top: 6px;
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--muted);
+  }
+
+  .premium-menu-item:hover .premium-menu-arrow {
+    border-color: var(--gookie-red);
+    background: var(--gookie-red);
+    color: var(--white);
+    transform: translateX(5px);
+  }
+
+  .premium-menu-item:hover .premium-menu-icon {
+    background: var(--gookie-red);
+    color: var(--white);
+  }
+
+  .premium-menu-item-cookie:hover .premium-menu-icon {
+    transform: rotate(-8deg) scale(1.04);
+  }
+
+  .premium-menu-item-box:hover .premium-menu-icon {
+    transform: translateY(-3px) scale(1.04);
+  }
+
+  .premium-menu-item-goodies:hover .premium-menu-icon {
+    transform: translateY(-3px) rotate(4deg) scale(1.04);
+  }
+
+  .premium-menu-item-about:hover .premium-menu-icon {
+    animation: premiumMenuHeartPulse 420ms ease;
+  }
+}
+
+@keyframes premiumMenuHeartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.16);
+  }
+}
+
+/* =========================================================
+   DRAWER OPEN STAGGER ANIMATION
+========================================================= */
+
+.premium-menu-header,
+.premium-menu-item {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.premium-menu-drawer.is-open .premium-menu-header,
+.premium-menu-drawer.is-open .premium-menu-item {
+  animation: premiumMenuReveal 420ms ease forwards;
+}
+
+.premium-menu-drawer.is-open .premium-menu-header {
+  animation-delay: 40ms;
+}
+
+.premium-menu-drawer.is-open .premium-menu-item:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.premium-menu-drawer.is-open .premium-menu-item:nth-child(2) {
+  animation-delay: 155ms;
+}
+
+.premium-menu-drawer.is-open .premium-menu-item:nth-child(3) {
+  animation-delay: 210ms;
+}
+
+.premium-menu-drawer.is-open .premium-menu-item:nth-child(4) {
+  animation-delay: 265ms;
+}
+
+@keyframes premiumMenuReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .premium-menu-drawer {
+    width: min(92vw, 390px);
+    padding: 24px 22px;
+  }
+
+  .premium-menu-header {
+    padding-bottom: 24px;
+  }
+
+  .premium-menu-header h2 {
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+    letter-spacing: 0.01em;
+  }
+
+  .premium-menu-item {
+    grid-template-columns: 46px minmax(0, 1fr) 38px;
+    gap: 13px;
+    min-height: 84px;
+    padding: 15px 2px;
+  }
+
+  .premium-menu-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    font-size: 1.35rem;
+  }
+
+  .premium-menu-copy strong {
+    font-size: 0.98rem;
+  }
+
+  .premium-menu-copy small {
+    display: none;
+  }
+
+  .premium-menu-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .premium-menu-drawer {
+    padding-inline: 18px;
+  }
+
+  .premium-menu-item {
+    grid-template-columns: 42px minmax(0, 1fr) 34px;
+    gap: 10px;
+  }
+
+  .premium-menu-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .premium-menu-copy strong {
+    font-size: 0.9rem;
+  }
+
+  .premium-menu-arrow {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-menu-header,
+  .premium-menu-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  .premium-menu-drawer.is-open .premium-menu-header,
+  .premium-menu-drawer.is-open .premium-menu-item {
+    animation: none;
+  }
+
+  .premium-menu-item,
+  .premium-menu-icon,
+  .premium-menu-arrow,
+  .premium-menu-copy small {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   HOMEPAGE — MATCH GET YOUR GOOKIES CARD DESIGN
+   Uses the same visual treatment as order.html without
+   changing the homepage order flow or JavaScript behaviour.
+========================================================= */
+
+/* =========================================================
+   BUILD YOUR BOX — PREMIUM PRODUCT SELECTION
+========================================================= */
+
+.box-size-options {
+  gap: 18px;
+  width: min(100%, 1040px);
+}
+
+.box-size-card {
+  position: relative;
+  border: 1px solid rgba(23, 21, 21, 0.09);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 14px 34px rgba(55, 26, 12, 0.075);
+  transition:
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 240ms ease,
+    background-color 240ms ease;
+}
+
+.box-size-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 22px 46px rgba(55, 26, 12, 0.12);
+}
+
+.box-size-card.is-selected,
+.box-size-card.is-open {
+  border-color: rgba(187, 25, 26, 0.48);
+  background:
+    linear-gradient(rgba(255, 248, 239, 0.96), rgba(255, 248, 239, 0.96)),
+    #fff;
+  box-shadow:
+    0 22px 52px rgba(187, 25, 26, 0.13);
+}
+
+.box-accordion-header {
+  min-height: 166px;
+  padding: 18px 22px 18px 16px;
+  gap: 10px;
+}
+
+.box-size-image {
+  width: 150px;
+  flex-basis: 150px;
+  margin: -18px 0 -18px -22px;
+}
+
+.box-size-image img {
+  height: 145px;
+}
+
+.box-accordion-copy {
+  min-width: 0;
+}
+
+.box-accordion-copy strong {
+  font-size: 1.72rem;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+}
+
+.box-accordion-copy small {
+  display: grid;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.box-accordion-copy small b {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.box-accordion-copy small span {
+  color: var(--gookie-red);
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.42rem;
+  font-weight: 900;
+}
+
+.box-accordion-arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 50%;
+  background: var(--cream-soft);
+  color: var(--gookie-red);
+  font-size: 1.25rem;
+}
+
+.box-size-card.is-open .box-accordion-arrow {
+  background: var(--gookie-red);
+  color: var(--white);
+}
+
+/* Visual cookie capacity */
+.box-accordion-copy::after {
+  content: "";
+  display: block;
+  width: 112px;
+  height: 16px;
+  margin-top: 14px;
+  background:
+    radial-gradient(circle, rgba(187, 25, 26, 0.22) 0 5px, transparent 5.5px)
+    left center / 28px 16px repeat-x;
+}
+
+.box-size-card[data-box-size="6"] .box-accordion-copy::after {
+  width: 168px;
+}
+
+.box-size-card[data-box-size="12"] .box-accordion-copy::after {
+  width: 196px;
+  background-size: 24px 16px;
+}
+
+.box-accordion-body {
+  padding: 22px;
+  border-top: 1px solid rgba(23, 21, 21, 0.07);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.box-mini-slots {
+  margin-top: 0;
+  gap: 10px;
+}
+
+.box-mini-slot {
+  border-radius: 16px;
+  background: #fffaf4;
+}
+
+.box-accordion-helper {
+  margin: 16px 0;
+  font-size: 0.82rem;
+}
+
+.box-accordion-action {
+  min-height: 52px;
+}
+
+
+/* =========================================================
+   GET YOUR GOOKIES — SPRINT 2 POLISH
+   - Larger hero notes
+   - Cookie icon replaces dropdown arrow
+   - Cookie icons replace capacity dots
+========================================================= */
+
+/* Replace the dropdown chevron with a cookie icon */
+.box-accordion-arrow {
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+  background: #fff4e8;
+  border: 1px solid rgba(187, 25, 26, 0.08);
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.box-accordion-arrow::before {
+  content: "🍪";
+  display: block;
+  color: initial;
+  font-size: 1.28rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.box-size-card:hover .box-accordion-arrow {
+  transform: scale(1.06);
+  border-color: rgba(187, 25, 26, 0.18);
+  box-shadow: 0 7px 16px rgba(55, 26, 12, 0.09);
+}
+
+.box-size-card.is-open .box-accordion-arrow,
+.box-size-card.is-selected .box-accordion-arrow {
+  background: #fff;
+  border-color: rgba(187, 25, 26, 0.28);
+  box-shadow: 0 8px 20px rgba(187, 25, 26, 0.12);
+  transform: scale(1.08);
+}
+
+/* Replace the decorative capacity dots with cookie icons */
+.box-accordion-copy::after {
+  display: block;
+  width: auto !important;
+  height: auto;
+  margin-top: 13px;
+  background: none !important;
+  color: var(--gookie-red);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  white-space: nowrap;
+  opacity: 0.82;
+}
+
+.box-size-card[data-box-size="4"] .box-accordion-copy::after {
+  content: "🍪 🍪 🍪 🍪";
+}
+
+.box-size-card[data-box-size="6"] .box-accordion-copy::after {
+  content: "🍪 🍪 🍪 🍪 🍪 🍪";
+  font-size: 0.92rem;
+  letter-spacing: 0.15em;
+}
+
+.box-size-card[data-box-size="12"] .box-accordion-copy::after {
+  content: "🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪";
+  max-width: 230px;
+  overflow: hidden;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+
+/* Mobile tuning */
+@media (max-width: 600px) {
+
+  .box-accordion-arrow::before {
+    font-size: 1.1rem;
+  }
+
+  .box-accordion-copy::after {
+    margin-top: 9px;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
+
+  .box-size-card[data-box-size="6"] .box-accordion-copy::after {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+
+  .box-size-card[data-box-size="12"] .box-accordion-copy::after {
+    max-width: 155px;
+    font-size: 0.56rem;
+    letter-spacing: 0;
+  }
+}
+
+
+/* =========================================================
+   GET YOUR GOOKIES — SPRINT 3 FIXES
+   - Stable hero note typography
+   - Cleaner accordion arrow
+   - Cookie Feast icons in two rows
+========================================================= */
+
+/* Replace cookie toggle icon with a clean chevron */
+.box-accordion-arrow {
+  color: transparent;
+  font-size: 0;
+  background: #fff8ef;
+}
+
+.box-accordion-arrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--gookie-red);
+  border-bottom: 2px solid var(--gookie-red);
+  transform: rotate(45deg) translate(-1px, -1px);
+  transition: transform 220ms ease;
+}
+
+.box-size-card.is-open .box-accordion-arrow,
+.box-size-card.is-selected .box-accordion-arrow {
+  background: var(--gookie-red);
+}
+
+.box-size-card.is-open .box-accordion-arrow::before,
+.box-size-card.is-selected .box-accordion-arrow::before {
+  border-color: var(--white);
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+
+/* Keep 12 cookie icons readable by splitting them into two rows */
+.box-size-card[data-box-size="12"] .box-accordion-copy::after {
+  content:
+    "🍪 🍪 🍪 🍪 🍪 🍪\A"
+    "🍪 🍪 🍪 🍪 🍪 🍪";
+  display: block;
+  width: 185px !important;
+  max-width: none;
+  overflow: visible;
+  white-space: pre;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 600px) {
+
+  .box-size-card[data-box-size="12"] .box-accordion-copy::after {
+    width: 145px !important;
+    font-size: 0.68rem;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+  }
+}
+
+
+/* =========================================================
+   GET YOUR GOOKIES — SPRINT 4
+   - BUILD MY BOX replaces dropdown arrow
+   - Equal-size cookie icons across all cards
+========================================================= */
+
+/* Turn the old arrow slot into a clear CTA. */
+.box-accordion-arrow {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 210px);
+  height: auto;
+  min-height: 46px;
+  flex: 0 0 auto;
+  margin-top: 16px;
+  padding: 12px 18px;
+  overflow: visible;
+  border: 1.5px solid rgba(187, 25, 26, 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  box-shadow: none;
+  transform: none !important;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.box-accordion-arrow::before {
+  content: "BUILD MY BOX";
+  width: auto;
+  height: auto;
+  border: 0;
+  color: var(--gookie-red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  transform: none !important;
+}
+
+.box-size-card:hover .box-accordion-arrow {
+  border-color: var(--gookie-red);
+  background: var(--gookie-red);
+  box-shadow: 0 10px 22px rgba(187, 25, 26, 0.18);
+  transform: translateY(-2px) !important;
+}
+
+.box-size-card:hover .box-accordion-arrow::before {
+  color: var(--white);
+}
+
+/* Once open, this control becomes the close/collapse action.
+   The existing CHOOSE MY GOOKIES button remains inside the expanded panel. */
+.box-size-card.is-open .box-accordion-arrow,
+.box-size-card.is-selected .box-accordion-arrow {
+  border-color: rgba(23, 21, 21, 0.14);
+  background: var(--white);
+  box-shadow: none;
+  transform: none !important;
+}
+
+.box-size-card.is-open .box-accordion-arrow::before,
+.box-size-card.is-selected .box-accordion-arrow::before {
+  content: "CLOSE";
+  color: var(--ink);
+  transform: none !important;
+}
+
+/* Equal cookie icon size on every card. */
+.box-accordion-copy::after {
+  display: block;
+  width: 210px !important;
+  max-width: 210px;
+  height: auto;
+  margin: 14px auto 0;
+  overflow: visible;
+  background: none !important;
+  color: initial;
+  font-size: 0.92rem !important;
+  line-height: 1.55;
+  letter-spacing: 0.08em !important;
+  text-align: center;
+  white-space: pre;
+  opacity: 1;
+}
+
+.box-size-card[data-box-size="4"] .box-accordion-copy::after {
+  content: "🍪 🍪 🍪 🍪";
+}
+
+.box-size-card[data-box-size="6"] .box-accordion-copy::after {
+  content:
+    "🍪 🍪 🍪\A"
+    "🍪 🍪 🍪";
+}
+
+.box-size-card[data-box-size="12"] .box-accordion-copy::after {
+  content:
+    "🍪 🍪 🍪 🍪\A"
+    "🍪 🍪 🍪 🍪\A"
+    "🍪 🍪 🍪 🍪";
+}
+
+/* Desktop: CTA sits naturally beneath the product information. */
+@media (min-width: 768px) {
+  .box-accordion-header {
+    min-height: 410px;
+  }
+
+  .box-accordion-arrow {
+    margin-top: auto;
+  }
+}
+
+/* Mobile: keep image and copy compact, then place CTA on its own row. */
+@media (max-width: 767px) {
+  .box-accordion-header {
+    flex-wrap: wrap;
+  }
+
+  .box-accordion-arrow {
+    width: 100%;
+    max-width: none;
+    flex-basis: 100%;
+    margin: 8px 4px 0;
+  }
+
+  .box-accordion-copy::after {
+    width: 170px !important;
+    max-width: 170px;
+    margin-left: 0;
+    font-size: 0.78rem !important;
+    line-height: 1.48;
+    letter-spacing: 0.04em !important;
+    text-align: left;
+  }
+}
+
+
+/* =========================================================
+   GET YOUR GOOKIES — SPRINT 5
+   - Cookie quantity shown as badges
+   - Flavour progress card stays visible while scrolling
+   - Softer price typography
+========================================================= */
+
+/* Quantity badge on each Build Your Box card */
+.box-accordion-copy small {
+  align-items: center;
+}
+
+.box-accordion-copy small b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 30px;
+  padding: 7px 15px;
+  border: 1px solid rgba(187, 25, 26, 0.32);
+  border-radius: 999px;
+  background: #fffaf4;
+  color: var(--gookie-red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.075em;
+}
+
+/* Price remains clear without looking overly heavy */
+.box-accordion-copy small span {
+  margin-top: 2px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Remove the old decorative cookie-count row */
+.box-accordion-copy::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Progress meter stays directly below the modal header */
+.flavour-box-meter {
+  position: sticky;
+  top: 91px;
+  z-index: 3;
+  margin-top: 16px;
+  box-shadow:
+    0 10px 26px rgba(55, 26, 12, 0.08),
+    0 1px 0 rgba(187, 25, 26, 0.05);
+}
+
+/* Prevent menu rows from showing through the sticky card edges */
+.flavour-box-meter::before {
+  content: "";
+  position: absolute;
+  inset: -16px -1px auto;
+  height: 16px;
+  background: var(--cream-soft);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .flavour-box-meter {
+    top: 93px;
+  }
+}
+
+@media (max-width: 767px) {
+  .box-accordion-copy small b {
+    min-height: 27px;
+    padding: 6px 12px;
+    font-size: 0.62rem;
+  }
+
+  .box-accordion-copy small span {
+    font-size: 1.18rem;
+  }
+
+  .flavour-box-meter {
+    top: 82px;
+    margin-right: 14px;
+    margin-left: 14px;
+    padding: 14px 12px 13px;
+    border-radius: 19px;
+  }
+}
+
+
+/* =========================================================
+   HOMEPAGE BOX CARD LAYOUT — CORRECTION
+   Restores the exact vertical layout used on order.html.
+========================================================= */
+
+@media (min-width: 768px) {
+  .box-size-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .box-accordion-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 410px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .box-size-image {
+    width: 210px;
+    flex: 0 0 210px;
+    margin: -28px auto -6px;
+  }
+
+  .box-size-image img {
+    display: block;
+    width: 100%;
+    height: 205px;
+    object-fit: contain;
+  }
+
+  .box-accordion-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .box-accordion-copy small {
+    align-items: center;
+  }
+
+  .box-accordion-copy small b {
+    margin-inline: auto;
+  }
+
+  .box-accordion-arrow {
+    position: static;
+    width: min(100%, 210px);
+    max-width: 210px;
+    margin: auto auto 0;
+    align-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .box-accordion-header {
+    min-height: auto;
+  }
+
+  .box-accordion-arrow {
+    box-sizing: border-box;
+    width: calc(100% - 8px);
+    max-width: none;
+  }
+}
+
+/* =========================================================
+   DESKTOP SCALE POLISH — HOMEPAGE HERO
+   Compact hero so the full content fits better on screen
+========================================================= */
+
+@media (min-width: 921px) {
+
+  .hero-section {
+    min-height: calc(86svh - var(--header-height-desktop));
+    padding-top: 34px;
+    padding-bottom: 26px;
+  }
+
+  .hero-inner {
+    width: min(1180px, calc(100% - 56px));
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .hero-title {
+    font-size: clamp(4.6rem, 6.3vw, 7.2rem);
+    line-height: 0.84;
+  }
+
+  .hero-kicker {
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    margin-top: 18px;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .hero-highlights {
+    gap: 54px;
+    margin: 24px 0 28px;
+  }
+
+  .hero-highlight span {
+    font-size: 16px;
+  }
+
+  .hero-highlight strong {
+    font-size: 0.78rem;
+  }
+
+  .hero-actions {
+    gap: 14px;
+  }
+
+  .hero-button {
+    min-height: 52px;
+    padding: 14px 25px;
+    font-size: 0.78rem;
+  }
+
+  .hero-visual {
+    transform: scale(0.75);
+    transform-origin: center bottom;
+  }
+
+   .hero-cookie-image{
+    width: clamp(420px, 33vw, 500px);
+  }
+}
+
+
+/* =========================================================
+   HOMEPAGE GOOKIE'S PICKS — PRODUCTION DESIGN SYNC
+========================================================= */
+
+.gookies-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.gookies-pick-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+  min-height: 385px;
+  padding: 0 20px 20px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(23, 21, 21, 0.1);
+  border-radius: 30px;
+
+  background: var(--white);
+  color: var(--ink);
+
+  text-align: center;
+  cursor: pointer;
+
+  box-shadow: 0 12px 28px rgba(55, 26, 12, 0.065);
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.gookies-pick-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(187, 25, 26, 0.32);
+  box-shadow: 0 16px 34px rgba(55, 26, 12, 0.095);
+}
+
+.gookies-pick-card:active {
+  transform: scale(0.985);
+}
+
+.gookies-pick-card.is-selected {
+  border-color: var(--gookie-red);
+  box-shadow: 0 18px 40px rgba(187, 25, 26, 0.15);
+}
+
+/* ==================== IMAGE ==================== */
+
+.gookies-pick-image {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 210px;
+  margin: 0 auto -10px;
+
+  overflow: visible;
+  background: transparent;
+}
+
+.gookies-pick-image img {
+  display: block;
+
+  width: min(100%, 225px);
+  height: 215px;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 18px 18px rgba(55, 26, 12, 0.12)
+  );
+}
+
+.gookies-pick-badge {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: var(--ink);
+  color: var(--white);
+
+  font-size: 0.56rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+/* ==================== COPY ==================== */
+
+.gookies-pick-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.gookies-pick-copy strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 2.05em;
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.62rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.gookies-pick-quantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 30px;
+  margin-top: 10px;
+  padding: 7px 15px;
+
+  border: 1px solid rgba(187, 25, 26, 0.32);
+  border-radius: 999px;
+
+  background: #fffaf4;
+  color: var(--gookie-red);
+
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.075em;
+}
+
+.gookies-pick-price {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--gookie-red);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+/* ==================== CTA ==================== */
+
+.gookies-pick-action {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 22px;
+  padding: 0;
+
+  border: 1.5px solid rgba(187, 25, 26, 0.35);
+  border-radius: 999px;
+
+  background: transparent;
+  color: var(--gookie-red);
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gookies-pick-card:hover .gookies-pick-action {
+  background: var(--gookie-red);
+  border-color: var(--gookie-red);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+  .gookies-picks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 760px);
+  }
+
+  .gookies-pick-card {
+    min-height: 375px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .gookies-picks-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .gookies-pick-card {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    grid-template-areas:
+      "image copy"
+      "action action";
+
+    column-gap: 14px;
+
+    min-height: 0;
+    padding: 14px;
+
+    border-radius: 24px;
+    text-align: left;
+  }
+
+  .gookies-pick-image {
+    grid-area: image;
+
+    width: 118px;
+    height: 126px;
+    margin: 0;
+  }
+
+  .gookies-pick-image img {
+    width: 118px;
+    height: 122px;
+  }
+
+  .gookies-pick-badge {
+    top: -4px;
+    left: -3px;
+
+    min-height: 22px;
+    padding: 4px 7px;
+
+    font-size: 0.48rem;
+  }
+
+  .gookies-pick-copy {
+    grid-area: copy;
+
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .gookies-pick-copy strong {
+    justify-content: flex-start;
+
+    min-height: 0;
+
+    font-size: 1.28rem;
+    line-height: 0.96;
+    text-align: left;
+  }
+
+  .gookies-pick-quantity {
+    min-height: 27px;
+    margin-top: 9px;
+    padding: 6px 11px;
+
+    font-size: 0.6rem;
+  }
+
+  .gookies-pick-price {
+    margin-top: 8px;
+    font-size: 1.18rem;
+  }
+
+  .gookies-pick-action {
+    grid-area: action;
+    width: 100%;
+    height: 44px;
+    margin: 12px 0 0;
+    line-height: 41px;
+  }
+}
+

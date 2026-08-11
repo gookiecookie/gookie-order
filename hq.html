@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#bb191a"
+  >
+
+  <title>GOOKIE HQ</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- HQ Styles -->
+  <link rel="stylesheet" href="hq.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       GOOKIE HQ APP
+  ====================================================== -->
+
+  <div class="hq-app">
+
+    <!-- ===================================================
+         TOP HEADER
+    ==================================================== -->
+
+    <header class="hq-header">
+
+      <div class="hq-brand">
+        <div class="hq-brand-mark">G</div>
+
+        <div class="hq-brand-copy">
+          <p class="hq-eyebrow">GOOKIE</p>
+          <h1>Production HQ</h1>
+        </div>
+      </div>
+
+      <div class="hq-header-actions">
+
+        <div
+          class="connection-status"
+          id="connectionStatus"
+          data-status="loading"
+        >
+          <span class="connection-dot"></span>
+          <span id="connectionText">Connecting...</span>
+        </div>
+
+        <button
+          class="icon-button"
+          id="refreshHQButton"
+          type="button"
+          aria-label="Refresh GOOKIE HQ"
+          title="Refresh HQ"
+        >
+          ↻
+        </button>
+
+<button
+  id="doughStockDrawerButton"
+  class="header-button dough-stock-trigger"
+  type="button"
+  aria-expanded="false"
+  aria-controls="doughStockDrawer"
+  aria-label="Open Dough Stock"
+>
+  <span
+    class="dough-stock-trigger-icon"
+    aria-hidden="true"
+  >
+    🥣
+  </span>
+
+  <span class="dough-stock-trigger-label">
+    Dough Stock
+  </span>
+
+  <span
+    id="doughStockDrawerBadge"
+    class="header-badge"
+  >
+    0
+  </span>
+</button>
+        
+        <button
+          class="mission-control-button"
+          id="missionControlButton"
+          type="button"
+          aria-label="Open Mission Control"
+          aria-expanded="false"
+          aria-controls="missionControlDrawer"
+        >
+          <span class="mission-control-icon">☷</span>
+          <span>Mission Control</span>
+        </button>
+        
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         MAIN CONTENT
+    ==================================================== -->
+
+    <main class="hq-main">
+
+      <!-- =================================================
+           HQ SUMMARY
+      ================================================== -->
+
+      <section class="hq-summary-section">
+
+        <div class="section-heading">
+          <div>
+            <p class="section-eyebrow">LIVE PRODUCTION</p>
+            <h2>Today at GOOKIE HQ</h2>
+          </div>
+
+          <p class="last-updated" id="lastUpdatedText">
+            Waiting for HQ data...
+          </p>
+        </div>
+
+
+        <div class="summary-grid">
+
+          <article class="summary-card">
+            <p class="summary-label">New Orders</p>
+            <strong class="summary-value" id="newOrdersCount">0</strong>
+            <span class="summary-note">Waiting for payment</span>
+          </article>
+
+          <article class="summary-card">
+            <p class="summary-label">To Bake</p>
+            <strong class="summary-value" id="readyToBakeCount">0</strong>
+            <span class="summary-note">Verified orders</span>
+          </article>
+
+          <article class="summary-card">
+            <p class="summary-label">In Production</p>
+            <strong class="summary-value" id="productionCount">0</strong>
+            <span class="summary-note">Bake to packing</span>
+          </article>
+
+          <article class="summary-card">
+            <p class="summary-label">Ready to Ship</p>
+            <strong class="summary-value" id="readyToShipCount">0</strong>
+            <span class="summary-note">Courier preparation</span>
+          </article>
+
+                </div>
+
+      </section>
+
+      <!-- =================================================
+           ONE-PAGE WORKFLOW
+      ================================================== -->
+
+      <section class="workflow-section">
+
+        <div class="section-heading">
+          <div>
+            <p class="section-eyebrow">ONE-PAGE WORKFLOW</p>
+            <h2>Production Flow</h2>
+          </div>
+        </div>
+
+
+        <div class="workflow-board">
+
+          <!-- =============================================
+               1. VERIFY PAYMENT
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="verifyColumn"
+            data-workflow-column="NEW"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">💳</span>
+
+                <div>
+                  <p class="workflow-step">STEP 01</p>
+                  <h3>Verify</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="verifyCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="verifyOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No payment to verify.</p>
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- =============================================
+               2. BAKE QUEUE
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="bakeQueueColumn"
+            data-workflow-column="READY_TO_BAKE"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">🔥</span>
+
+                <div>
+                  <p class="workflow-step">STEP 02</p>
+                  <h3>Bake Queue</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="bakeQueueCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="bakeQueueOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No order waiting to bake.</p>
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- =============================================
+               3. IN OVEN
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="inOvenColumn"
+            data-workflow-column="BAKING"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">🍪</span>
+
+                <div>
+                  <p class="workflow-step">STEP 03</p>
+                  <h3>In Oven</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="inOvenCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="inOvenOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No active baking batch.</p>
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- =============================================
+               4. COOLING
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="coolingColumn"
+            data-workflow-column="COOLING"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">❄️</span>
+
+                <div>
+                  <p class="workflow-step">STEP 04</p>
+                  <h3>Cooling</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="coolingCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="coolingOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No cooling batch.</p>
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- =============================================
+               5. PACKING
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="packingColumn"
+            data-workflow-column="READY_TO_PACK"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">📦</span>
+
+                <div>
+                  <p class="workflow-step">STEP 05</p>
+                  <h3>Packing</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="packingCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="packingOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No order waiting to pack.</p>
+              </div>
+            </div>
+
+          </section>
+
+
+          <!-- =============================================
+               6. SHIPPING
+          ============================================== -->
+
+          <section
+            class="workflow-column"
+            id="shippingColumn"
+            data-workflow-column="READY_TO_SHIP"
+          >
+
+            <header class="workflow-column-header">
+
+              <div class="workflow-title-group">
+                <span class="workflow-icon">🚚</span>
+
+                <div>
+                  <p class="workflow-step">STEP 06</p>
+                  <h3>Shipping</h3>
+                </div>
+              </div>
+
+              <span
+                class="workflow-count"
+                id="shippingCount"
+              >
+                0
+              </span>
+
+            </header>
+
+            <div
+              class="workflow-list"
+              id="shippingOrderList"
+            >
+              <div class="empty-state">
+                <span>✓</span>
+                <p>No order waiting to ship.</p>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       PAGE OVERLAY
+  ====================================================== -->
+
+  <div
+    class="page-overlay"
+    id="pageOverlay"
+    hidden
+  ></div>
+
+
+  <!-- =====================================================
+       MISSION CONTROL DRAWER
+  ====================================================== -->
+
+<!-- =====================================================
+     DOUGH STOCK DRAWER
+===================================================== -->
+
+<aside
+  id="doughStockDrawer"
+  class="dough-stock-drawer"
+  aria-hidden="true"
+>
+  <div class="dough-stock-drawer-header">
+
+    <div>
+      <p class="drawer-eyebrow">
+        LIVE INVENTORY
+      </p>
+
+      <h2>
+        🥣 Dough Stock
+      </h2>
+    </div>
+
+    <button
+      id="closeDoughStockDrawerButton"
+      class="drawer-close-button"
+      type="button"
+      aria-label="Close Dough Stock"
+    >
+      ✕
+    </button>
+
+  </div>
+
+  <div class="dough-stock-drawer-content">
+
+  <button
+    class="dough-alert-summary"
+    id="doughAlertSummary"
+    type="button"
+    data-status="ok"
+  >
+    <span class="dough-alert-icon">✓</span>
+
+    <span>
+      <strong id="doughAlertCount">0</strong>
+      <span id="doughAlertText">Dough Alerts</span>
+    </span>
+  </button>
+    
+   <div
+  id="doughStockDrawerMount"
+  class="dough-stock-drawer-mount"
+>
+     
+  <div
+    class="dough-stock-grid"
+    id="doughStockGrid"
+  >
+
+    <div class="dough-stock-loading">
+      Loading dough stock...
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+</aside>
+  
+  <aside
+    class="mission-control-drawer"
+    id="missionControlDrawer"
+    aria-hidden="true"
+  >
+
+    <header class="drawer-header">
+
+      <div>
+        <p class="drawer-eyebrow">GOOKIE HQ</p>
+        <h2>Mission Control</h2>
+      </div>
+
+      <button
+        class="drawer-close-button"
+        id="closeMissionControlButton"
+        type="button"
+        aria-label="Close Mission Control"
+      >
+        ✕
+      </button>
+
+    </header>
+
+
+    <div class="drawer-search">
+
+      <label
+        class="sr-only"
+        for="missionControlSearch"
+      >
+        Search Order ID
+      </label>
+
+      <div class="search-input-wrap">
+        <span class="search-icon">⌕</span>
+
+        <input
+          id="missionControlSearch"
+          type="search"
+          placeholder="Search Order ID..."
+          autocomplete="off"
+        >
+      </div>
+
+    </div>
+
+
+    <div
+      class="drawer-order-flow"
+      id="missionControlFlow"
+    >
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="NEW"
+      >
+        <div class="drawer-flow-heading">
+          <h3>💳 Verify</h3>
+          <span id="drawerVerifyCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerVerifyList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="READY_TO_BAKE"
+      >
+        <div class="drawer-flow-heading">
+          <h3>🔥 Bake Queue</h3>
+          <span id="drawerBakeQueueCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerBakeQueueList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="BAKING"
+      >
+        <div class="drawer-flow-heading">
+          <h3>🍪 In Oven</h3>
+          <span id="drawerInOvenCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerInOvenList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="COOLING"
+      >
+        <div class="drawer-flow-heading">
+          <h3>❄️ Cooling</h3>
+          <span id="drawerCoolingCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerCoolingList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="READY_TO_PACK"
+      >
+        <div class="drawer-flow-heading">
+          <h3>📦 Packing</h3>
+          <span id="drawerPackingCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerPackingList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="READY_TO_SHIP"
+      >
+        <div class="drawer-flow-heading">
+          <h3>🚚 Shipping</h3>
+          <span id="drawerShippingCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerShippingList"
+        ></div>
+      </section>
+
+
+      <section
+        class="drawer-flow-group"
+        data-drawer-workflow="COMPLETED"
+      >
+        <div class="drawer-flow-heading">
+          <h3>✅ Done</h3>
+          <span id="drawerCompletedCount">0</span>
+        </div>
+
+        <div
+          class="drawer-order-list"
+          id="drawerCompletedList"
+        ></div>
+      </section>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       VERIFY PAYMENT MODAL
+  ====================================================== -->
+
+  <div
+    class="modal-shell"
+    id="verifyPaymentModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="verifyPaymentModalTitle"
+    hidden
+  >
+
+    <div class="modal-card">
+
+      <header class="modal-header">
+
+        <div>
+          <p class="modal-eyebrow">PAYMENT CHECK</p>
+          <h2 id="verifyPaymentModalTitle">
+            Verify Payment
+          </h2>
+        </div>
+
+        <button
+          class="modal-close-button"
+          id="closeVerifyModalButton"
+          type="button"
+          aria-label="Close payment verification"
+        >
+          ✕
+        </button>
+
+      </header>
+
+
+      <div class="modal-body">
+
+        <div class="order-reference-box">
+          <span>Order ID</span>
+          <strong id="verifyModalOrderID">—</strong>
+        </div>
+
+
+        <div class="modal-detail-grid">
+
+          <div class="modal-detail">
+            <span>Customer</span>
+            <strong id="verifyModalCustomerName">—</strong>
+          </div>
+
+          <div class="modal-detail">
+            <span>Phone</span>
+            <strong id="verifyModalPhone">—</strong>
+          </div>
+
+          <div class="modal-detail">
+            <span>Order Total</span>
+            <strong id="verifyModalTotal">RM0.00</strong>
+          </div>
+
+          <div class="modal-detail">
+            <span>Payment Status</span>
+            <strong id="verifyModalPaymentStatus">Pending</strong>
+          </div>
+
+        </div>
+
+
+        <div class="modal-order-items">
+          <p class="modal-section-label">Order Items</p>
+
+          <div id="verifyModalItems">
+            —
+          </div>
+        </div>
+
+      </div>
+
+
+     <footer class="modal-footer">
+
+  <button
+    class="whatsapp-proof-button"
+    id="openVerifyWhatsAppButton"
+    type="button"
+  >
+    🟢 Payment Proof
+  </button>
+
+  <button
+    class="secondary-button"
+    id="cancelVerifyPaymentButton"
+    type="button"
+  >
+    Cancel
+  </button>
+
+  <button
+    class="primary-button"
+    id="confirmVerifyPaymentButton"
+    type="button"
+  >
+    <span id="verifyButtonText">
+      Verify Payment
+    </span>
+
+    <span
+      class="button-spinner"
+      id="verifyButtonSpinner"
+      hidden
+    ></span>
+
+  </button>
+
+</footer>
+          <span id="verifyButtonText">Verify Payment</span>
+          <span
+            class="button-spinner"
+            id="verifyButtonSpinner"
+            hidden
+          ></span>
+        </button>
+
+      </footer>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ORDER DETAILS MODAL
+  ====================================================== -->
+
+  <div
+    class="modal-shell"
+    id="orderDetailsModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="orderDetailsModalTitle"
+    hidden
+  >
+
+    <div class="modal-card modal-card-large">
+
+      <header class="modal-header">
+
+        <div>
+          <p class="modal-eyebrow">ORDER DETAILS</p>
+          <h2 id="orderDetailsModalTitle">
+            Order
+          </h2>
+        </div>
+
+        <button
+          class="modal-close-button"
+          id="closeOrderDetailsButton"
+          type="button"
+          aria-label="Close order details"
+        >
+          ✕
+        </button>
+
+      </header>
+
+      <div
+        class="modal-body"
+        id="orderDetailsContent"
+      ></div>
+
+    </div>
+
+  </div>
+
+<!-- =====================================================
+     PACKING MODAL
+====================================================== -->
+
+<div
+  class="modal-shell"
+  id="packingModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="packingModalTitle"
+  hidden
+>
+  <div class="modal-card modal-card-large">
+
+    <header class="modal-header">
+
+      <div>
+        <p class="modal-eyebrow">PACK ORDER</p>
+
+        <h2 id="packingModalTitle">
+          Packing
+        </h2>
+      </div>
+
+      <button
+        class="modal-close-button"
+        id="closePackingModalButton"
+        type="button"
+        aria-label="Close packing"
+      >
+        ✕
+      </button>
+
+    </header>
+
+    <div class="modal-body">
+
+      <div class="order-reference-box">
+        <span>Order ID</span>
+
+        <strong id="packingModalOrderId">
+          —
+        </strong>
+      </div>
+
+      <div class="modal-detail-grid">
+
+        <div class="modal-detail">
+          <span>Order Box</span>
+
+          <strong id="packingModalBoxId">
+            —
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Box</span>
+
+          <strong id="packingModalBoxName">
+            —
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Box Number</span>
+
+          <strong id="packingModalBoxNumber">
+            —
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Total Cookies</span>
+
+          <strong id="packingModalExpectedQty">
+            0
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="modal-order-items">
+
+        <p class="modal-section-label">
+          Packing Checklist
+        </p>
+
+        <div
+          class="packing-checklist"
+          id="packingChecklist"
+        >
+          <p>No packing items.</p>
+        </div>
+
+      </div>
+
+      <div class="packing-progress-section">
+
+        <div class="packing-progress-heading">
+
+          <span>Packed</span>
+
+          <strong>
+            <span id="packingProgressCurrent">0</span>
+            /
+            <span id="packingProgressTotal">0</span>
+          </strong>
+
+        </div>
+
+        <div
+          class="packing-progress-track"
+          role="progressbar"
+          aria-label="Packing progress"
+          aria-valuemin="0"
+          aria-valuemax="0"
+          aria-valuenow="0"
+          id="packingProgressBar"
+        >
+          <span
+            class="packing-progress-fill"
+            id="packingProgressFill"
+          ></span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer class="modal-footer">
+
+      <button
+        class="secondary-button"
+        id="cancelPackingButton"
+        type="button"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="primary-button"
+        id="finishPackingButton"
+        type="button"
+        disabled
+      >
+        Finish Packing
+      </button>
+
+    </footer>
+
+  </div>
+</div>
+
+<!-- =====================================================
+     SHIPPING MODAL
+====================================================== -->
+
+<div
+  class="modal-shell"
+  id="shippingModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="shippingModalTitle"
+  hidden
+>
+  <div class="modal-card modal-card-large">
+
+    <header class="modal-header">
+
+      <div>
+        <p class="modal-eyebrow">
+          SHIP ORDER
+        </p>
+
+        <h2 id="shippingModalTitle">
+          Shipping
+        </h2>
+      </div>
+
+      <button
+        class="modal-close-button"
+        id="closeShippingModalButton"
+        type="button"
+        aria-label="Close shipping"
+      >
+        ✕
+      </button>
+
+    </header>
+
+    <div class="modal-body">
+
+      <div class="order-reference-box">
+        <span>Order ID</span>
+
+        <strong id="shippingModalOrderId">
+          —
+        </strong>
+      </div>
+
+      <div class="modal-detail-grid">
+
+        <div class="modal-detail">
+          <span>Customer</span>
+
+          <strong id="shippingModalCustomer">
+            —
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Total Boxes</span>
+
+          <strong id="shippingModalBoxCount">
+            0
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Total Cookies</span>
+
+          <strong id="shippingModalCookieQty">
+            0
+          </strong>
+        </div>
+
+        <div class="modal-detail">
+          <span>Postcode</span>
+
+          <strong id="shippingModalPostcode">
+            —
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="modal-order-items">
+
+        <p class="modal-section-label">
+          Delivery Address
+        </p>
+
+        <div class="shipping-address-box">
+          <p id="shippingModalAddress">
+            —
+          </p>
+        </div>
+
+      </div>
+
+      <div class="shipping-form-grid">
+
+        <label class="shipping-field">
+          <span>Courier</span>
+
+          <select id="shippingCourierSelect">
+            <option value="">
+              Select courier
+            </option>
+
+            <option value="J&T Express">
+              J&T Express
+            </option>
+
+            <option value="Ninja Van">
+              Ninja Van
+            </option>
+
+            <option value="Pos Laju">
+              Pos Laju
+            </option>
+
+            <option value="DHL eCommerce">
+              DHL eCommerce
+            </option>
+
+            <option value="SPX Express">
+              SPX Express
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+          </select>
+        </label>
+
+        <label class="shipping-field">
+          <span>Tracking Number</span>
+
+          <input
+            id="shippingTrackingNumberInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Example: 630012345678"
+          >
+        </label>
+
+      </div>
+
+    <div class="shipping-tracking-link-section">
+
+  <span class="shipping-tracking-label">
+    Tracking Link
+  </span>
+
+  <a
+    class="shipping-open-tracking-link"
+    id="shippingOpenTrackingLink"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+    hidden
+  >
+    <span>🔗</span>
+    <span>Open Tracking</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+
+  <p
+    class="shipping-tracking-unavailable"
+    id="shippingTrackingUnavailable"
+  >
+    Enter a courier and tracking number.
+  </p>
+
+</div>
+
+      <div class="shipping-notification-preview">
+
+        <div class="shipping-preview-heading">
+          <span>Customer Notification</span>
+
+          <span class="shipping-preview-badge">
+            WhatsApp
+          </span>
+        </div>
+
+        <p id="shippingNotificationPreview">
+          Enter the courier and tracking number
+          to preview the customer message.
+        </p>
+
+      </div>
+
+    </div>
+
+    <footer class="modal-footer">
+
+      <button
+        class="secondary-button"
+        id="cancelShippingButton"
+        type="button"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="primary-button"
+        id="markAsShippedButton"
+        type="button"
+        disabled
+      >
+        MARK AS SHIPPED
+      </button>
+
+    </footer>
+
+  </div>
+</div>
+  
+  <!-- =====================================================
+       TOAST NOTIFICATION
+  ====================================================== -->
+
+  <div
+    class="toast"
+    id="hqToast"
+    role="status"
+    aria-live="polite"
+    hidden
+  >
+    <span class="toast-icon" id="toastIcon">✓</span>
+
+    <div>
+      <strong id="toastTitle">Done</strong>
+      <p id="toastMessage">GOOKIE HQ updated.</p>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       LOADING SCREEN
+  ====================================================== -->
+
+  <div
+    class="hq-loading-screen"
+    id="hqLoadingScreen"
+  >
+    <div class="loading-card">
+      <div class="loading-logo">G</div>
+      <h2>GOOKIE HQ</h2>
+      <p id="loadingMessage">Connecting to Mission Control...</p>
+      <div class="loading-bar">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- HQ JavaScript -->
+  <script src="hq.js"></script>
+
+<!-- =================================================
+     TOP UP DOUGH MODAL
+================================================== -->
+
+<div
+  class="hq-modal"
+  id="doughTopUpModal"
+  hidden
+>
+
+  <div
+    class="hq-modal-backdrop"
+    data-action="close-dough-modal"
+  ></div>
+
+
+  <div
+    class="hq-modal-panel dough-topup-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="doughTopUpModalTitle"
+  >
+
+    <button
+      class="hq-modal-close"
+      type="button"
+      data-action="close-dough-modal"
+      aria-label="Close"
+    >
+      ✕
+    </button>
+
+
+    <div class="dough-modal-heading">
+
+      <p class="section-eyebrow">
+        DOUGH INVENTORY
+      </p>
+
+      <h2 id="doughTopUpModalTitle">
+        Top Up Dough Stock
+      </h2>
+
+      <p
+        class="dough-modal-product"
+        id="doughTopUpProductName"
+      >
+        Wonder Chip
+      </p>
+
+    </div>
+
+
+    <div class="dough-modal-current">
+
+      <span>Current Stock</span>
+
+      <strong id="doughTopUpCurrentStock">
+        0
+      </strong>
+
+      <span>pcs</span>
+
+    </div>
+
+
+    <form id="doughTopUpForm">
+
+      <input
+        type="hidden"
+        id="doughTopUpDoughId"
+      >
+
+      <input
+        type="hidden"
+        id="doughTopUpProductId"
+      >
+
+
+      <label
+        class="dough-form-field"
+        for="doughTopUpQuantity"
+      >
+
+        <span>
+          Quantity Prepared
+        </span>
+
+        <input
+          id="doughTopUpQuantity"
+          type="number"
+          min="1"
+          step="1"
+          inputmode="numeric"
+          placeholder="Example: 16"
+          required
+        >
+
+      </label>
+
+
+      <div
+        class="dough-stock-preview"
+        id="doughStockPreview"
+      >
+
+        <span>New Stock</span>
+
+        <strong id="doughTopUpNewStock">
+          0 pcs
+        </strong>
+
+      </div>
+
+
+      <label
+        class="dough-form-field"
+        for="doughTopUpNotes"
+      >
+
+        <span>
+          Notes
+          <small>Optional</small>
+        </span>
+
+        <input
+          id="doughTopUpNotes"
+          type="text"
+          maxlength="120"
+          placeholder="Example: Morning batch"
+        >
+
+      </label>
+
+
+      <p
+        class="dough-modal-message"
+        id="doughTopUpMessage"
+        hidden
+      ></p>
+
+
+      <button
+        class="dough-save-button"
+        id="doughTopUpSaveButton"
+        type="submit"
+      >
+        Save Dough Stock
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+  
+</body>
+</html>

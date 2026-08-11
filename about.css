@@ -1,0 +1,444 @@
+/* =========================================================
+   ABOUT GOOKIE
+========================================================= */
+
+.about-page {
+  background: #fff;
+}
+
+.about-page .premium-menu-item.is-current {
+  background: rgba(187, 25, 26, 0.055);
+}
+
+.about-cart-link {
+  right: 12px;
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(420px, 1.02fr);
+  min-height: calc(100vh - var(--header-height-desktop));
+  overflow: hidden;
+  background: #fff;
+}
+
+.about-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 88px clamp(32px, 7vw, 112px);
+}
+
+.about-hero-copy h1 {
+  margin: 15px 0 24px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(4.8rem, 8vw, 8.4rem);
+  font-weight: 600;
+  line-height: 0.78;
+  letter-spacing: -0.055em;
+}
+
+.about-hero-copy h1 span {
+  display: block;
+}
+
+.about-hero-copy h1 span:last-child {
+  color: var(--gookie-red);
+}
+
+.about-hero-copy > p:not(.section-kicker) {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.about-primary-cta,
+.about-final-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: var(--gookie-red);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.about-primary-cta {
+  align-self: flex-start;
+  margin-top: 32px;
+}
+
+.about-hero-art {
+  display: grid;
+  place-items: center;
+  min-height: 640px;
+  padding: clamp(38px, 6vw, 90px);
+}
+
+.about-logo-disc {
+  display: grid;
+  place-items: center;
+  width: min(520px, 88%);
+  aspect-ratio: 1;
+  padding: 42px;
+  border: 0px solid rgba(187, 25, 26, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: none;
+}
+
+.about-logo-disc img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.about-philosophy {
+  padding: 110px 24px 120px;
+  background: #fff;
+}
+
+.about-section-heading {
+  width: min(800px, 100%);
+  margin: 0 auto 58px;
+  text-align: center;
+}
+
+.about-section-heading h2,
+.about-malaysia h2,
+.about-final-cta h2 {
+  margin: 12px 0 18px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.about-section-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.about-pillars article {
+  padding: 34px 28px;
+  border: 1px solid rgba(187, 25, 26, 0.08);
+  border-radius: 28px;
+  background: #fff8ef;
+  text-align: center;
+}
+
+.about-pillar-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gookie-red);
+  font-size: 1.7rem;
+}
+
+.about-pillars h3 {
+  margin: 20px 0 10px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.about-pillars p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.about-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 42px;
+  align-items: center;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 120px 0;
+}
+
+.about-story-copy h2,
+.about-cookie-copy h2 {
+  margin: 12px 0 22px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.4rem, 6vw, 6rem);
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+
+.about-story-copy > p:not(.section-kicker) {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.78;
+}
+
+.about-story-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 460px;
+  padding: 46px;
+  border-radius: 38px;
+  background:
+    radial-gradient(circle at 65% 25%, rgba(255, 226, 193, 0.76), transparent 36%),
+    var(--gookie-red);
+  color: #fff;
+}
+
+.about-story-quote {
+  margin: 0 0 18px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.about-story-card span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.about-cookie {
+  display: grid;
+  grid-template-columns: minmax(380px, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  min-height: 650px;
+  overflow: hidden;
+  background: #fff8ef;
+}
+
+.about-cookie-art {
+  display: grid;
+  place-items: center;
+  min-height: 650px;
+  padding: 50px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 224, 188, 0.84), transparent 55%);
+}
+
+.about-cookie-art img {
+  width: min(520px, 88%);
+  filter: none;
+}
+
+.about-cookie-copy {
+  padding: 80px clamp(32px, 7vw, 110px);
+}
+
+.about-cookie-list {
+  display: grid;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.about-cookie-list div {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.about-cookie-list i {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--gookie-red);
+  color: #fff;
+  font-size: 0.68rem;
+}
+
+.about-malaysia {
+  padding: 110px 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.about-malaysia-inner {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.about-malaysia-flag {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 3rem;
+}
+
+.about-malaysia p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.about-final-cta {
+  padding: 110px 24px;
+  background: var(--gookie-red);
+  color: #fff;
+  text-align: center;
+}
+
+.about-final-cta .section-kicker {
+  color: #fff;
+  opacity: 0.72;
+}
+
+.about-final-cta p:not(.section-kicker) {
+  margin: 0;
+  opacity: 0.82;
+}
+
+.about-final-cta a {
+  margin-top: 30px;
+  background: #fff;
+  color: var(--gookie-red);
+}
+
+.about-footer {
+  padding: 60px 24px 34px;
+  background: #171515;
+  color: #fff;
+  text-align: center;
+}
+
+.about-footer-brand {
+  font-family: "League Spartan", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+.about-footer > p {
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.about-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.about-footer-thanks {
+  font-size: 0.78rem;
+}
+
+@media (max-width: 920px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-copy {
+    order: 2;
+    padding: 68px 24px 82px;
+    text-align: center;
+  }
+
+  .about-primary-cta {
+    align-self: center;
+  }
+
+  .about-hero-art {
+    min-height: 500px;
+  }
+
+  .about-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story,
+  .about-cookie {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story-card {
+    min-height: 360px;
+  }
+
+  .about-cookie-copy {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero-copy h1 {
+    font-size: clamp(4rem, 18vw, 5.8rem);
+  }
+
+  .about-hero-art {
+    min-height: 360px;
+    padding: 28px 20px;
+  }
+
+  .about-logo-disc {
+    width: min(320px, 92%);
+    padding: 24px;
+  }
+
+  .about-philosophy {
+    padding: 84px 16px 92px;
+  }
+
+  .about-story {
+    width: calc(100% - 28px);
+    gap: 26px;
+    padding: 90px 0;
+  }
+
+  .about-story-card {
+    min-height: 320px;
+    padding: 30px;
+    border-radius: 28px;
+  }
+
+  .about-cookie-art {
+    min-height: 390px;
+  }
+
+  .about-cookie-copy {
+    padding: 58px 22px 74px;
+    text-align: center;
+  }
+
+  .about-cookie-list {
+    text-align: left;
+  }
+
+  .about-malaysia,
+  .about-final-cta {
+    padding: 86px 20px;
+  }
+}

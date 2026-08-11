@@ -1,0 +1,623 @@
+/* =========================================================
+   GOOKIE'S GOODIES
+========================================================= */
+
+.goodies-page {
+  background: #fff;
+}
+
+.goodies-page .premium-menu-item.is-current {
+  background: rgba(187, 25, 26, 0.055);
+}
+
+.goodies-cart-link {
+  right: 12px;
+}
+
+.goodies-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(430px, 1.05fr);
+  min-height: calc(100vh - var(--header-height-desktop));
+  overflow: hidden;
+  background: #fff;
+}
+
+.goodies-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 88px clamp(32px, 7vw, 112px);
+}
+
+.goodies-hero-copy h1 {
+  margin: 15px 0 24px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(4.8rem, 8vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.055em;
+}
+
+.goodies-hero-copy h1 span {
+  display: block;
+}
+
+.goodies-hero-copy h1 span:last-child {
+  color: var(--gookie-red);
+}
+
+.goodies-hero-copy > p:not(.section-kicker) {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.goodies-primary-cta,
+.goodies-final-cta a,
+.goodies-bulk-banner > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: var(--gookie-red);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.goodies-primary-cta {
+  align-self: flex-start;
+  margin-top: 32px;
+}
+
+.goodies-hero-art {
+  position: relative;
+  min-height: 640px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 224, 188, 0.72), transparent 58%),
+    #fff8ef;
+}
+
+.goodies-hero-art::before,
+.goodies-hero-art::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.goodies-hero-art::before {
+  top: 11%;
+  right: 12%;
+  width: 440px;
+  height: 440px;
+  border: 2px solid rgba(187, 25, 26, 0.11);
+}
+
+.goodies-hero-art::after {
+  right: -110px;
+  bottom: -90px;
+  width: 330px;
+  height: 330px;
+  background: rgba(187, 25, 26, 0.08);
+}
+
+.goodies-hero-cookie {
+  position: absolute;
+  z-index: 2;
+  filter: drop-shadow(0 26px 24px rgba(67, 29, 12, 0.2));
+}
+
+.goodies-hero-cookie img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.goodies-cookie-one {
+  top: 20%;
+  left: 16%;
+  width: 255px;
+  height: 255px;
+  transform: rotate(-12deg);
+}
+
+.goodies-cookie-two {
+  top: 11%;
+  right: 8%;
+  width: 185px;
+  height: 185px;
+  transform: rotate(13deg);
+}
+
+.goodies-cookie-three {
+  right: 14%;
+  bottom: 12%;
+  width: 225px;
+  height: 225px;
+  transform: rotate(-7deg);
+}
+
+.goodies-cookie-four {
+  bottom: 5%;
+  left: 4%;
+  width: 175px;
+  height: 175px;
+  transform: rotate(18deg);
+}
+
+.goodies-intro {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 110px 24px 80px;
+  text-align: center;
+}
+
+.goodies-intro h2,
+.goodies-why-heading h2,
+.goodies-final-cta h2 {
+  margin: 12px 0 18px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.goodies-intro > p:last-child,
+.goodies-why-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.goodies-showcase {
+  display: grid;
+  gap: 34px;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-bottom: 120px;
+}
+
+.goodies-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 38px;
+  background: #fff8ef;
+  box-shadow: 0 20px 60px rgba(55, 26, 12, 0.08);
+}
+
+.goodies-feature-birthday {
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.goodies-feature-visual {
+  display: grid;
+  place-items: center;
+  min-height: 500px;
+  padding: 38px;
+}
+
+.goodies-feature-wedding .goodies-feature-visual {
+  background: linear-gradient(145deg, #f7eee5, #fffaf5);
+}
+
+.goodies-feature-birthday .goodies-feature-visual {
+  background: linear-gradient(145deg, #fff1dc, #fff8ef);
+}
+
+.goodies-feature-corporate .goodies-feature-visual {
+  background: linear-gradient(145deg, #f2e5d7, #fff8ef);
+}
+
+.goodies-visual-placeholder {
+  display: grid;
+  place-items: center;
+  width: min(420px, 90%);
+  aspect-ratio: 1 / 0.78;
+  border: 1px dashed rgba(187, 25, 26, 0.22);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--gookie-red);
+  text-align: center;
+}
+
+.goodies-visual-placeholder i {
+  font-size: 4.4rem;
+}
+
+.goodies-visual-placeholder span {
+  margin-top: 18px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.goodies-feature-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.goodies-feature-copy h2 {
+  margin: 12px 0 20px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+
+.goodies-feature-copy > p:not(.section-kicker) {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.goodies-feature-copy > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  align-self: flex-start;
+  margin-top: 28px;
+  color: var(--gookie-red);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.goodies-bulk-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 30px;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto 120px;
+  padding: 48px 54px;
+  border-radius: 34px;
+  background: var(--gookie-red);
+  color: #fff;
+}
+
+.goodies-bulk-banner .section-kicker {
+  color: #fff;
+  opacity: 0.72;
+}
+
+.goodies-bulk-banner h2 {
+  margin: 10px 0 10px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.goodies-bulk-banner p:not(.section-kicker) {
+  max-width: 680px;
+  margin: 0;
+  opacity: 0.82;
+  line-height: 1.65;
+}
+
+.goodies-bulk-banner > a {
+  background: #fff;
+  color: var(--gookie-red);
+  white-space: nowrap;
+}
+
+.goodies-why {
+  padding: 110px 24px 120px;
+  background: #fff8ef;
+}
+
+.goodies-why-heading {
+  width: min(800px, 100%);
+  margin: 0 auto 58px;
+  text-align: center;
+}
+
+.goodies-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.goodies-why-grid article {
+  padding: 30px 24px;
+  border: 1px solid rgba(187, 25, 26, 0.08);
+  border-radius: 26px;
+  background: #fff;
+  text-align: center;
+}
+
+.goodies-why-grid i {
+  color: var(--gookie-red);
+  font-size: 2.2rem;
+}
+
+.goodies-why-grid h3 {
+  margin: 17px 0 9px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.goodies-why-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.goodies-final-cta {
+  padding: 110px 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.goodies-final-cta p:not(.section-kicker) {
+  margin: 0;
+  color: var(--muted);
+}
+
+.goodies-final-cta a {
+  margin-top: 30px;
+}
+
+.goodies-footer {
+  padding: 60px 24px 34px;
+  background: #171515;
+  color: #fff;
+  text-align: center;
+}
+
+.goodies-footer-brand {
+  font-family: "League Spartan", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 900;
+}
+
+.goodies-footer > p {
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.goodies-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.goodies-footer-thanks {
+  font-size: 0.78rem;
+}
+
+@media (max-width: 920px) {
+  .goodies-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .goodies-hero-copy {
+    order: 2;
+    padding: 66px 24px 82px;
+    text-align: center;
+  }
+
+  .goodies-primary-cta {
+    align-self: center;
+  }
+
+  .goodies-hero-art {
+    min-height: 500px;
+  }
+
+  .goodies-feature,
+  .goodies-feature-birthday {
+    grid-template-columns: 1fr;
+  }
+
+  .goodies-feature-birthday .goodies-feature-copy {
+    order: 2;
+  }
+
+  .goodies-feature-visual {
+    min-height: 400px;
+  }
+
+  .goodies-bulk-banner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .goodies-bulk-banner > a {
+    justify-self: center;
+  }
+
+  .goodies-why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .goodies-hero-copy h1 {
+    font-size: clamp(4rem, 18vw, 5.8rem);
+  }
+
+  .goodies-hero-art {
+    min-height: 390px;
+  }
+
+  .goodies-cookie-one {
+    top: 22%;
+    left: 7%;
+    width: 180px;
+    height: 180px;
+  }
+
+  .goodies-cookie-two {
+    top: 9%;
+    right: 3%;
+    width: 125px;
+    height: 125px;
+  }
+
+  .goodies-cookie-three {
+    right: 7%;
+    bottom: 8%;
+    width: 150px;
+    height: 150px;
+  }
+
+  .goodies-cookie-four {
+    left: -2%;
+    bottom: 2%;
+    width: 115px;
+    height: 115px;
+  }
+
+  .goodies-intro {
+    padding: 82px 20px 58px;
+  }
+
+  .goodies-showcase {
+    width: calc(100% - 28px);
+    gap: 20px;
+    padding-bottom: 88px;
+  }
+
+  .goodies-feature {
+    min-height: 0;
+    border-radius: 28px;
+  }
+
+  .goodies-feature-visual {
+    min-height: 300px;
+    padding: 24px;
+  }
+
+  .goodies-feature-copy {
+    padding: 36px 24px 42px;
+    text-align: center;
+  }
+
+  .goodies-feature-copy > a {
+    align-self: center;
+  }
+
+  .goodies-bulk-banner {
+    width: calc(100% - 28px);
+    margin-bottom: 90px;
+    padding: 38px 22px;
+    border-radius: 28px;
+  }
+
+  .goodies-why {
+    padding: 84px 16px 90px;
+  }
+
+  .goodies-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goodies-final-cta {
+    padding: 86px 20px;
+  }
+}
+
+
+/* =========================================================
+   GOOKIE'S GOODIES — HERO PHOTO UPDATE
+   Replaces floating cookie artwork with header.png
+========================================================= */
+
+.goodies-hero-art {
+  display: grid;
+  place-items: center;
+  min-height: 640px;
+  padding: clamp(28px, 5vw, 70px);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 226, 193, 0.6), transparent 62%),
+    #fff8ef;
+}
+
+.goodies-hero-art::before,
+.goodies-hero-art::after,
+.goodies-hero-cookie {
+  display: none !important;
+}
+
+.goodies-hero-photo-frame {
+  position: relative;
+  width: min(100%, 760px);
+  overflow: hidden;
+  border: 1px solid rgba(187, 25, 26, 0.08);
+  border-radius: 34px;
+  background: #fff;
+  box-shadow:
+    0 28px 70px rgba(55, 26, 12, 0.16),
+    0 4px 18px rgba(55, 26, 12, 0.08);
+  transform: rotate(-1.2deg);
+}
+
+.goodies-hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+.goodies-hero-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 920px) {
+  .goodies-hero-art {
+    min-height: 500px;
+    padding: 34px 24px;
+  }
+
+  .goodies-hero-photo-frame {
+    width: min(100%, 720px);
+    border-radius: 28px;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .goodies-hero-art {
+    min-height: 340px;
+    padding: 20px 14px 8px;
+  }
+
+  .goodies-hero-photo-frame {
+    border-radius: 22px;
+  }
+
+  .goodies-hero-photo {
+    aspect-ratio: 4 / 3;
+    object-position: center;
+  }
+}

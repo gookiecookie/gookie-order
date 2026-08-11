@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#BB191A" />
+  <title>About Gookie — No Drama, Just Real Good Cookies</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="style.css?v=10.0" />
+  <link rel="stylesheet" href="about.css?v=1.0" />
+  <link rel="stylesheet" href="responsive-modal.css?v=1.0" />
+</head>
+
+<body class="about-page">
+  <button
+    class="page-overlay"
+    id="pageOverlay"
+    type="button"
+    aria-label="Close open panel"
+    hidden
+  ></button>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <button
+        class="header-icon-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="menuDrawer"
+        aria-expanded="false"
+      >
+        <span class="hamburger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <a class="brand-logo" href="index.html" aria-label="Gookie home">
+        <img src="smallgookielogo.png" alt="Gookie" />
+      </a>
+
+      <span class="malaysia-flag" title="Proudly baked in Malaysia">🇲🇾</span>
+
+      <a
+        class="header-icon-button cart-button about-cart-link"
+        href="order.html"
+        aria-label="Go to Get Your Gookies"
+      >
+        <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path
+            d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <circle cx="13" cy="26" r="1.8" fill="currentColor"></circle>
+          <circle cx="24" cy="26" r="1.8" fill="currentColor"></circle>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <aside
+    class="drawer drawer-left premium-menu-drawer"
+    id="menuDrawer"
+    aria-hidden="true"
+    aria-label="Main menu"
+  >
+    <div class="drawer-header premium-menu-header">
+      <div>
+        <p class="drawer-eyebrow">
+          HELLO, COOKIE LOVER <span aria-hidden="true">🍪</span>
+        </p>
+        <h2>What’s on the menu?</h2>
+      </div>
+
+      <button
+        class="drawer-close-button"
+        id="menuCloseButton"
+        type="button"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+    </div>
+
+    <nav class="drawer-nav premium-menu-nav" aria-label="Primary navigation">
+      <a class="premium-menu-item premium-menu-item-cookie" href="gookies.html">
+        <span class="premium-menu-icon" aria-hidden="true">
+          <i class="fa-solid fa-cookie-bite"></i>
+        </span>
+        <span class="premium-menu-copy">
+          <strong>MEET THE GOOKIES</strong>
+          <small>Explore every chunky wonder.</small>
+        </span>
+        <span class="premium-menu-arrow" aria-hidden="true">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <a class="premium-menu-item premium-menu-item-box" href="order.html">
+        <span class="premium-menu-icon" aria-hidden="true">
+          <i class="fa-solid fa-box-open"></i>
+        </span>
+        <span class="premium-menu-copy">
+          <strong>GET YOUR GOOKIES</strong>
+          <small>Build your box or choose a combo.</small>
+        </span>
+        <span class="premium-menu-arrow" aria-hidden="true">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <a class="premium-menu-item premium-menu-item-goodies" href="goodies.html">
+        <span class="premium-menu-icon" aria-hidden="true">
+          <i class="fa-solid fa-gift"></i>
+        </span>
+        <span class="premium-menu-copy">
+          <strong>GOOKIE’S GOODIES</strong>
+          <small>Weddings, birthdays and gifting.</small>
+        </span>
+        <span class="premium-menu-arrow" aria-hidden="true">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <a
+        class="premium-menu-item premium-menu-item-about is-current"
+        href="about.html"
+        aria-current="page"
+      >
+        <span class="premium-menu-icon" aria-hidden="true">
+          <i class="fa-regular fa-heart"></i>
+        </span>
+        <span class="premium-menu-copy">
+          <strong>ABOUT GOOKIE</strong>
+          <small>Our story and cookie philosophy.</small>
+        </span>
+        <span class="premium-menu-arrow" aria-hidden="true">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="about-hero">
+      <div class="about-hero-copy">
+        <p class="section-kicker">ABOUT GOOKIE</p>
+        <h1>
+          <span>No drama.</span>
+          <span>Just real good cookies.</span>
+        </h1>
+        <p>
+          Gookie began with one simple idea: make chunky cookies that feel
+          special, taste balanced and stay enjoyable beyond the first bite.
+        </p>
+
+        <a class="about-primary-cta" href="order.html">
+          GET YOUR GOOKIES
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="about-hero-art">
+        <div class="about-logo-disc">
+          <img src="logo.png" alt="Gookie's Cookies logo" />
+        </div>
+      </div>
+    </section>
+
+    <section class="about-philosophy">
+      <div class="about-section-heading">
+        <p class="section-kicker">OUR COOKIE PHILOSOPHY</p>
+        <h2>Big on flavour.<br>Easy on the drama.</h2>
+        <p>
+          Everything about Gookie is built around making cookies that are fun,
+          memorable and genuinely enjoyable to finish.
+        </p>
+      </div>
+
+      <div class="about-pillars">
+        <article>
+          <span class="about-pillar-icon" aria-hidden="true">
+            <i class="fa-regular fa-heart"></i>
+          </span>
+          <h3>LESS SWEET</h3>
+          <p>
+            Balanced sweetness, so the flavour stays exciting without becoming
+            too much.
+          </p>
+        </article>
+
+        <article>
+          <span class="about-pillar-icon" aria-hidden="true">
+            <i class="fa-solid fa-mitten"></i>
+          </span>
+          <h3>BAKED FRESH</h3>
+          <p>
+            Made in small batches with care, because good cookies deserve proper
+            attention.
+          </p>
+        </article>
+
+        <article>
+          <span class="about-pillar-icon" aria-hidden="true">
+            <i class="fa-solid fa-heart"></i>
+          </span>
+          <h3>MADE WITH HEART</h3>
+          <p>
+            Built by a cookie lover, for cookie lovers who appreciate a little
+            extra joy.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-story">
+      <div class="about-story-copy">
+        <p class="section-kicker">HOW IT STARTED</p>
+        <h2>One mixer.<br>One oven.<br>One serious cookie obsession.</h2>
+
+        <p>
+          Gookie started small in Ampang, Selangor — with lots of testing,
+          plenty of butter and a very clear goal: create chunky cookies with a
+          crisp edge, a soft chewy centre and enough personality to make people
+          remember them.
+        </p>
+
+        <p>
+          What began as a kitchen idea slowly became a full cookie crew, each
+          flavour with its own mood, texture and little bit of Gookie charm.
+        </p>
+      </div>
+
+      <div class="about-story-card">
+        <p class="about-story-quote">
+          “You’re sweeter than our cookies.”
+        </p>
+        <span>Less sweet is part of the Gookie DNA.</span>
+      </div>
+    </section>
+
+    <section class="about-cookie">
+      <div class="about-cookie-art" aria-hidden="true">
+        <img src="wonder-chip.png" alt="" />
+      </div>
+
+      <div class="about-cookie-copy">
+        <p class="section-kicker">WHAT MAKES A GOOKIE?</p>
+        <h2>Chunky where it counts.</h2>
+
+        <div class="about-cookie-list">
+          <div>
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span>Crisp edge with a soft, chewy centre</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span>Approximately 90–95g of chunky goodness</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span>Balanced sweetness and bold flavour</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span>Made to travel well and stay enjoyable for days</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-check" aria-hidden="true"></i>
+            <span>Baked fresh in small batches</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-malaysia">
+      <div class="about-malaysia-inner">
+        <span class="about-malaysia-flag" aria-hidden="true">🇲🇾</span>
+        <p class="section-kicker">PROUDLY LOCAL</p>
+        <h2>Baked with ❤️ in Malaysia.</h2>
+        <p>
+          Gookie is a Muslim Bumiputera-owned company based in Ampang, Selangor and currently delivers throughout
+          Peninsular Malaysia. Sabah and Sarawak — we’re coming for you.
+        </p>
+      </div>
+    </section>
+
+    <section class="about-final-cta">
+      <p class="section-kicker">READY FOR YOUR FIRST BITE?</p>
+      <h2>Take a Gookie break.</h2>
+      <p>Pick your chunky wonders and build a box that feels very you.</p>
+
+      <a href="order.html">
+        GET YOUR GOOKIES
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </section>
+  </main>
+
+  <footer class="about-footer">
+    <a class="about-footer-brand" href="index.html">GOOKIE</a>
+    <p>Baked with ❤️ in Malaysia.</p>
+
+    <nav aria-label="Footer navigation">
+      <a href="gookies.html">Meet the Gookies</a>
+      <a href="order.html">Get Your Gookies</a>
+      <a href="goodies.html">Goodies</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <p class="about-footer-thanks">Thank you for supporting us. ♡</p>
+  </footer>
+
+  <script src="about.js?v=1.0"></script>
+  <script src="responsive-modal.js?v=1.0"></script>
+</body>
+</html>

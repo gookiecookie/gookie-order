@@ -1,0 +1,434 @@
+/* =========================================================
+   GOOKIE — GLOBAL RESPONSIVE MODAL & DRAWER SYSTEM
+   FILE: responsive-modal.css
+
+   Purpose:
+   - Keeps every popup inside the visible Android/iOS viewport.
+   - Preserves existing visual styling and JavaScript behaviour.
+   - Uses internal scrolling only where content is longer than the screen.
+   - Supports browser toolbars, notches, safe areas and landscape phones.
+========================================================= */
+
+:root {
+  --gookie-vh: 100dvh;
+  --gookie-safe-top: max(8px, env(safe-area-inset-top));
+  --gookie-safe-right: max(8px, env(safe-area-inset-right));
+  --gookie-safe-bottom: max(8px, env(safe-area-inset-bottom));
+  --gookie-safe-left: max(8px, env(safe-area-inset-left));
+  --gookie-modal-gap: 16px;
+}
+
+/* Fallback order: older browsers use vh/svh, modern browsers use JS-updated px. */
+@supports not (height: 100dvh) {
+  :root {
+    --gookie-vh: 100svh;
+  }
+}
+
+/* Prevent accidental horizontal overflow inside all overlays. */
+.modal,
+.drawer,
+.order-creation-loader {
+  max-width: 100vw;
+}
+
+/* =========================================================
+   GLOBAL MODAL VIEWPORT
+========================================================= */
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: var(--gookie-vh);
+  max-height: var(--gookie-vh);
+  padding:
+    var(--gookie-safe-top)
+    var(--gookie-safe-right)
+    var(--gookie-safe-bottom)
+    var(--gookie-safe-left);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.modal-card {
+  min-width: 0;
+  max-width: 100%;
+  max-height: calc(
+    var(--gookie-vh)
+    - var(--gookie-safe-top)
+    - var(--gookie-safe-bottom)
+  );
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Close controls must remain reachable above long content. */
+.modal-close-button {
+  position: relative;
+  z-index: 40;
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   STRUCTURED MODALS
+   Header/footer stay visible; only the middle content scrolls.
+========================================================= */
+
+.flavour-selector-modal,
+.checkout-modal-card,
+.payment-modal-card,
+.footer-info-modal-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header remains part of the card and never collapses. */
+.modal-sticky-header,
+.footer-info-modal-header {
+  position: relative;
+  z-index: 30;
+  flex: 0 0 auto;
+}
+
+/* Footer CTA remains reachable without scrolling the whole popup. */
+.modal-sticky-footer {
+  position: relative;
+  z-index: 30;
+  flex: 0 0 auto;
+  padding-bottom: max(
+    12px,
+    env(safe-area-inset-bottom)
+  );
+}
+
+/* Flavour selector: meter remains visible while the flavour list scrolls. */
+.flavour-selector-modal {
+  height: min(
+    92vh,
+    calc(var(--gookie-vh) - var(--gookie-safe-top) - var(--gookie-safe-bottom))
+  );
+}
+
+.flavour-selector-modal .flavour-box-meter {
+  position: relative;
+  top: auto;
+  z-index: 20;
+  flex: 0 0 auto;
+}
+
+.flavour-selector-modal .flavour-name-list {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Checkout and payment: preserve current design while containing scrolling. */
+.checkout-modal-card,
+.payment-modal-card,
+.footer-info-modal-card {
+  height: min(
+    92vh,
+    calc(var(--gookie-vh) - var(--gookie-safe-top) - var(--gookie-safe-bottom))
+  );
+}
+
+.checkout-modal-body,
+.payment-modal-body,
+.footer-info-modal-body {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================================
+   FREE-FORM CONTENT MODALS
+   These do not have dedicated body wrappers, so the card scrolls safely.
+========================================================= */
+
+.cookie-detail-modal,
+.gookie-pick-modal-card,
+.gookie-profile-modal-card {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: calc(
+    var(--gookie-vh)
+    - var(--gookie-safe-top)
+    - var(--gookie-safe-bottom)
+  );
+}
+
+/* Meet the Gookies close button stays visible during card scrolling. */
+.gookie-profile-modal-card {
+  position: relative;
+}
+
+.gookie-profile-modal-card .gookie-profile-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  margin-left: auto;
+}
+
+/* =========================================================
+   ORDER LOADER
+========================================================= */
+
+.order-creation-loader {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: var(--gookie-vh);
+  max-height: var(--gookie-vh);
+  padding:
+    var(--gookie-safe-top)
+    var(--gookie-safe-right)
+    var(--gookie-safe-bottom)
+    var(--gookie-safe-left);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.order-creation-loader-card {
+  max-width: 100%;
+  max-height: calc(
+    var(--gookie-vh)
+    - var(--gookie-safe-top)
+    - var(--gookie-safe-bottom)
+  );
+}
+
+/* =========================================================
+   DRAWERS
+========================================================= */
+
+.drawer {
+  height: 100vh;
+  height: 100svh;
+  height: var(--gookie-vh);
+  max-height: var(--gookie-vh);
+  padding-top: max(18px, env(safe-area-inset-top));
+  padding-right: max(18px, env(safe-area-inset-right));
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+  padding-left: max(18px, env(safe-area-inset-left));
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.drawer-header,
+.cart-drawer-footer {
+  flex: 0 0 auto;
+}
+
+.drawer-nav,
+.cart-content,
+.cart-empty-state {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================================
+   MOBILE — ALL PHONE WIDTHS
+========================================================= */
+
+@media (max-width: 767px) {
+  :root {
+    --gookie-modal-gap: 8px;
+  }
+
+  .modal {
+    padding:
+      max(6px, env(safe-area-inset-top))
+      max(6px, env(safe-area-inset-right))
+      max(6px, env(safe-area-inset-bottom))
+      max(6px, env(safe-area-inset-left));
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(
+      var(--gookie-vh)
+      - max(6px, env(safe-area-inset-top))
+      - max(6px, env(safe-area-inset-bottom))
+    );
+  }
+
+  .flavour-selector-modal,
+  .checkout-modal-card,
+  .payment-modal-card,
+  .footer-info-modal-card {
+    height: calc(
+      var(--gookie-vh)
+      - max(6px, env(safe-area-inset-top))
+      - max(6px, env(safe-area-inset-bottom))
+    );
+  }
+
+  /* Prevent sticky areas from taking more space than necessary. */
+  .modal-sticky-header,
+  .footer-info-modal-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .modal-sticky-footer {
+    padding-top: 10px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .flavour-selector-modal .flavour-box-meter {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .flavour-selector-modal .flavour-name-list {
+    scroll-padding-top: 12px;
+  }
+
+  /* Large standalone modal layouts must not force desktop widths. */
+  .cookie-detail-modal,
+  .gookie-pick-modal-card,
+  .gookie-profile-modal-card {
+    width: 100%;
+  }
+
+  /* Forms must never stretch beyond the viewport. */
+  .modal input,
+  .modal textarea,
+  .modal select,
+  .modal button {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   VERY NARROW PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+  .modal {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .modal-sticky-header,
+  .footer-info-modal-header {
+    gap: 10px;
+  }
+
+  .modal-close-button {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .flavour-selector-modal .flavour-name-list,
+  .checkout-modal-body,
+  .payment-modal-body,
+  .footer-info-modal-body {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* =========================================================
+   SHORT ANDROID / iPHONE SCREENS
+========================================================= */
+
+@media (max-height: 700px) {
+  .modal-sticky-header,
+  .footer-info-modal-header {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .modal-sticky-header h2,
+  .footer-info-modal-header h2 {
+    margin-top: 2px;
+    line-height: 1;
+  }
+
+  .modal-sticky-footer {
+    padding-top: 7px;
+    padding-bottom: max(7px, env(safe-area-inset-bottom));
+  }
+
+  .flavour-selector-modal .flavour-box-meter {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .payment-modal-body,
+  .checkout-modal-body {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (orientation: landscape) and (max-height: 540px) {
+  .modal {
+    padding: 4px;
+  }
+
+  .modal-card,
+  .flavour-selector-modal,
+  .checkout-modal-card,
+  .payment-modal-card,
+  .footer-info-modal-card {
+    max-height: calc(var(--gookie-vh) - 8px);
+    height: calc(var(--gookie-vh) - 8px);
+  }
+
+  .modal-sticky-header,
+  .footer-info-modal-header {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .modal-sticky-footer {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .flavour-selector-modal .flavour-box-meter {
+    margin-top: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .flavour-selector-modal .flavour-name-list,
+  .checkout-modal-body,
+  .payment-modal-body,
+  .footer-info-modal-body {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal-card,
+  .drawer {
+    transition-duration: 1ms !important;
+  }
+}

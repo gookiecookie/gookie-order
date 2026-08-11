@@ -1,0 +1,967 @@
+/* =========================================================
+   MEET THE GOOKIES — STANDALONE PAGE
+========================================================= */
+
+.gookies-page {
+  background: #fff;
+}
+
+.gookies-page .premium-menu-item.is-current {
+  background: rgba(187, 25, 26, 0.055);
+}
+
+.gookies-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+  min-height: calc(100vh - var(--header-height-desktop));
+  overflow: hidden;
+  background: #fff;
+}
+
+.gookies-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 90px clamp(34px, 7vw, 120px);
+}
+
+.gookies-hero-copy h1 {
+  margin: 15px 0 24px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(5rem, 9vw, 9rem);
+  font-weight: 600;
+  line-height: 0.78;
+  letter-spacing: -0.055em;
+}
+
+.gookies-hero-copy h1 span {
+  display: block;
+}
+
+.gookies-hero-copy h1 span:last-child {
+  color: var(--gookie-red);
+}
+
+.gookies-hero-copy > p:not(.section-kicker) {
+  max-width: 570px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.gookies-hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  margin-top: 34px;
+  color: var(--gookie-red);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gookies-hero-art {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  min-height: 620px;
+  background:
+    radial-gradient(circle at 50% 45%, #fff1dc 0 26%, transparent 65%),
+    #fff8ef;
+}
+
+.gookies-hero-art::before {
+  content: "";
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  border: 2px solid rgba(187, 25, 26, 0.12);
+  border-radius: 50%;
+}
+
+.gookies-hero-art img {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 720px);
+  filter: drop-shadow(0 30px 28px rgba(64, 27, 14, 0.18));
+}
+
+.gookie-collection-section {
+  padding: 110px 30px 130px;
+  background: #fff;
+}
+
+.gookie-collection-heading {
+  width: min(720px, 100%);
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.gookie-collection-heading h2 {
+  margin: 12px 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.gookie-collection-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.gookie-catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 54px 28px;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.gookie-catalogue-card {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.gookie-catalogue-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 36px;
+  background: #fff;
+}
+
+.gookie-catalogue-image::after {
+  content: "DISCOVER";
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 220ms ease;
+}
+
+.gookie-catalogue-image img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 17px rgba(68, 28, 11, 0.17));
+  transition: transform 260ms ease;
+}
+
+.gookie-catalogue-card:hover .gookie-catalogue-image img {
+  transform: translateY(-7px) scale(1.045);
+}
+
+.gookie-catalogue-card:hover .gookie-catalogue-image::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gookie-catalogue-card-copy {
+  display: block;
+  padding: 20px 8px 0;
+}
+
+.gookie-catalogue-card-copy small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--gookie-red);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.gookie-catalogue-card-copy strong {
+  display: block;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.gookie-catalogue-card.is-monthly .gookie-catalogue-image::before {
+  content: "MONTHLY WONDER";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: var(--gookie-red);
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.gookie-page-cta {
+  padding: 110px 24px;
+  background: var(--gookie-red);
+  color: #fff;
+  text-align: center;
+}
+
+.gookie-page-cta .section-kicker {
+  color: #fff;
+  opacity: 0.78;
+}
+
+.gookie-page-cta h2 {
+  margin: 12px 0;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.4rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.gookie-page-cta > p:not(.section-kicker) {
+  margin: 0;
+  opacity: 0.82;
+}
+
+.gookie-page-cta-button,
+.gookie-profile-order-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  margin-top: 30px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--gookie-red);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.gookies-simple-footer {
+  padding: 58px 24px 34px;
+  background: #171515;
+  color: #fff;
+  text-align: center;
+}
+
+.gookies-footer-brand {
+  font-family: "League Spartan", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.gookies-simple-footer > p {
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.gookies-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.gookies-footer-thanks {
+  font-size: 0.78rem;
+}
+
+.gookie-profile-modal {
+  place-items: center;
+  padding: 24px;
+}
+
+.gookie-profile-modal-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(330px, 1fr);
+  width: min(920px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+  border-radius: 32px;
+  background: #fff8ef;
+}
+
+.gookie-profile-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+}
+
+.gookie-profile-image {
+  display: grid;
+  place-items: center;
+  min-height: 560px;
+  padding: 40px;
+  background: #fff1dc;
+}
+
+.gookie-profile-image img {
+  width: 95%;
+  max-height: 470px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 20px rgba(66, 29, 12, 0.2));
+}
+
+.gookie-profile-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+}
+
+.gookie-profile-subtitle {
+  margin: 0 0 8px;
+  color: var(--gookie-red);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gookie-profile-copy h2 {
+  margin: 0 0 18px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+}
+
+.gookie-profile-copy > p:not(.gookie-profile-subtitle) {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.gookie-profile-order-button {
+  align-self: flex-start;
+  border: 0;
+  background: var(--gookie-red);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .gookies-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .gookies-hero-copy {
+    order: 2;
+    padding: 64px 24px 80px;
+    text-align: center;
+  }
+
+  .gookies-hero-copy h1 {
+    font-size: clamp(4rem, 16vw, 7rem);
+  }
+
+  .gookies-hero-copy > p:not(.section-kicker) {
+    margin-inline: auto;
+  }
+
+  .gookies-hero-link {
+    align-self: center;
+  }
+
+  .gookies-hero-art {
+    min-height: 420px;
+  }
+
+  .gookies-hero-art img {
+    width: min(100%, 600px);
+  }
+
+  .gookie-catalogue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gookie-profile-modal-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gookie-profile-image {
+    min-height: 330px;
+  }
+
+  .gookie-profile-copy {
+    padding: 42px 30px 46px;
+    text-align: center;
+  }
+
+  .gookie-profile-order-button {
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .gookies-hero-art {
+    min-height: 330px;
+  }
+
+  .gookies-hero-art::before {
+    width: 270px;
+    height: 270px;
+  }
+
+  .gookies-hero-copy {
+    padding: 50px 20px 70px;
+  }
+
+  .gookies-hero-copy h1 {
+    margin-top: 12px;
+    font-size: clamp(3.7rem, 18vw, 5.4rem);
+  }
+
+  .gookie-collection-section {
+    padding: 76px 16px 90px;
+  }
+
+  .gookie-collection-heading {
+    margin-bottom: 42px;
+  }
+
+  .gookie-catalogue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 12px;
+  }
+
+  .gookie-catalogue-image {
+    border-radius: 23px;
+  }
+
+  .gookie-catalogue-image::after {
+    display: none;
+  }
+
+  .gookie-catalogue-card-copy {
+    padding-top: 13px;
+  }
+
+  .gookie-catalogue-card-copy small {
+    min-height: 28px;
+    font-size: 0.55rem;
+    line-height: 1.35;
+  }
+
+  .gookie-catalogue-card-copy strong {
+    font-size: 1.2rem;
+  }
+
+  .gookie-catalogue-card.is-monthly .gookie-catalogue-image::before {
+    top: 10px;
+    left: 10px;
+    padding: 7px 8px;
+    font-size: 0.46rem;
+  }
+
+  .gookie-page-cta {
+    padding: 82px 20px;
+  }
+
+  .gookie-profile-modal {
+    place-items: end center;
+    padding: 0;
+  }
+
+  .gookie-profile-modal-card {
+    max-height: 92vh;
+    border-radius: 28px 28px 0 0;
+  }
+
+  .gookie-profile-image {
+    min-height: 280px;
+    padding: 26px;
+  }
+
+  .gookie-profile-image img {
+    max-height: 250px;
+  }
+
+  .gookie-profile-copy h2 {
+    font-size: 3.5rem;
+  }
+}
+
+
+/* =========================================================
+   MEET THE GOOKIES — POLISH V2
+========================================================= */
+
+/* Keep logo, flag and cart in their own lanes. */
+.gookies-page .header-inner {
+  padding-inline: 22px;
+}
+
+.gookies-page .brand-logo {
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.gookies-page .brand-logo img {
+  width: 150px;
+}
+
+.gookies-header-flag {
+  right: 76px;
+  z-index: 3;
+}
+
+.gookies-header-cart {
+  right: 16px !important;
+  z-index: 3;
+}
+
+.gookies-header-cart .cart-count {
+  top: -1px;
+  right: -3px;
+}
+
+/* Remove the card-box look completely. */
+.gookie-catalogue-image {
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+
+.gookie-catalogue-card {
+  overflow: visible;
+}
+
+.gookie-catalogue-image::after {
+  right: 50%;
+  bottom: 3%;
+  transform: translate(50%, 8px);
+}
+
+.gookie-catalogue-card:hover .gookie-catalogue-image::after {
+  transform: translate(50%, 0);
+}
+
+.gookie-catalogue-image img {
+  width: 94%;
+  height: 94%;
+  filter: drop-shadow(0 20px 16px rgba(68, 28, 11, 0.18));
+}
+
+/* More personality in cookie names and subtitles. */
+.gookie-catalogue-card-copy {
+  position: relative;
+  padding-top: 14px;
+}
+
+.gookie-catalogue-card-copy::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 2px;
+  margin: 0 auto 11px;
+  border-radius: 999px;
+  background: var(--gookie-red);
+  opacity: 0.75;
+}
+
+.gookie-catalogue-card-copy small {
+  margin-bottom: 8px;
+  color: var(--gookie-red);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.13em;
+}
+
+.gookie-catalogue-card-copy strong {
+  font-size: clamp(1.55rem, 2.1vw, 2.15rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.gookie-catalogue-card:hover .gookie-catalogue-card-copy strong {
+  color: var(--gookie-red);
+  transform: translateY(-1px);
+}
+
+/* Monthly badge stays visible without a box. */
+.gookie-catalogue-card.is-monthly .gookie-catalogue-image::before {
+  top: 4%;
+  left: 7%;
+}
+
+
+/* =========================================================
+   GOOKIE PROFILE MODAL — CLEAN V4
+========================================================= */
+
+.gookie-profile-modal {
+  place-items: center;
+  padding: 18px;
+}
+
+.gookie-profile-modal-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+  grid-template-rows: 1fr auto auto;
+  width: min(960px, calc(100vw - 36px));
+  height: min(670px, calc(100dvh - 36px));
+  max-height: calc(100dvh - 36px);
+  overflow: hidden;
+  border-radius: 30px;
+  background: #fffaf3;
+  box-shadow: 0 30px 100px rgba(40, 18, 10, 0.24);
+}
+
+.gookie-profile-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+}
+
+.gookie-profile-main {
+  display: contents;
+}
+
+.gookie-profile-copy {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 48px 26px 24px 48px;
+  text-align: left;
+}
+
+.gookie-profile-kicker {
+  margin: 0 0 8px;
+  color: var(--gookie-red);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.gookie-profile-copy h2 {
+  margin: 0 0 8px;
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(3.3rem, 5.6vw, 5.4rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+}
+
+.gookie-profile-subtitle {
+  margin: 0 0 16px;
+  color: var(--gookie-red);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.gookie-profile-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.gookie-profile-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(23, 21, 21, 0.1);
+}
+
+.gookie-profile-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 0.78rem;
+}
+
+.gookie-profile-facts i {
+  color: var(--gookie-red);
+}
+
+.gookie-profile-image {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 44px 46px 20px 18px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 232, 201, 0.9) 0 36%, transparent 72%);
+}
+
+.gookie-profile-image img {
+  width: min(100%, 410px);
+  max-height: 360px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 18px rgba(66, 29, 12, 0.22));
+}
+
+.gookie-allergen-section {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0 34px;
+  padding: 15px 8px 12px;
+  border-top: 1px solid rgba(23, 21, 21, 0.1);
+}
+
+.gookie-allergen-heading {
+  margin: 0 0 10px;
+  color: var(--gookie-red);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gookie-allergen-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-height: 32px;
+}
+
+.gookie-allergen-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #fff1dc;
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.gookie-allergen-chip i {
+  color: var(--gookie-red);
+}
+
+.gookie-allergen-note {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.4;
+}
+
+.gookie-profile-purchase {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  margin: 0 34px 24px;
+  padding: 15px 18px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(55, 26, 12, 0.07);
+}
+
+.gookie-profile-purchase p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.gookie-profile-order-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 240px;
+  min-height: 50px;
+  margin: 0;
+  padding: 13px 18px;
+  border-radius: 999px;
+  background: var(--gookie-red);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.gookie-profile-order-button i:last-child {
+  margin-left: auto;
+}
+
+/* ==================== TABLET / MOBILE ==================== */
+
+@media (max-width: 760px) {
+  .gookie-profile-modal {
+    padding: 10px;
+  }
+
+  .gookie-profile-modal-card {
+    grid-template-columns: minmax(0, 1.05fr) minmax(120px, 0.95fr);
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    width: calc(100vw - 20px);
+    height: calc(100dvh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 24px;
+  }
+
+  .gookie-profile-close {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    font-size: 1.65rem;
+  }
+
+  .gookie-profile-copy {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: center;
+    padding: 46px 8px 12px 18px;
+  }
+
+  .gookie-profile-kicker {
+    margin-bottom: 6px;
+    font-size: 0.54rem;
+  }
+
+  .gookie-profile-copy h2 {
+    margin-bottom: 6px;
+    font-size: clamp(2.2rem, 11vw, 3.3rem);
+  }
+
+  .gookie-profile-subtitle {
+    margin-bottom: 9px;
+    font-size: 0.54rem;
+    line-height: 1.25;
+  }
+
+  .gookie-profile-description {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.72rem;
+    line-height: 1.42;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .gookie-profile-facts {
+    display: grid;
+    gap: 5px;
+    margin-top: 10px;
+    padding-top: 9px;
+  }
+
+  .gookie-profile-facts span {
+    font-size: 0.64rem;
+  }
+
+  .gookie-profile-image {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 46px 12px 10px 0;
+  }
+
+  .gookie-profile-image img {
+    width: 100%;
+    max-height: 210px;
+  }
+
+  .gookie-allergen-section {
+    margin: 0 14px;
+    padding: 10px 2px 8px;
+  }
+
+  .gookie-allergen-heading {
+    margin-bottom: 6px;
+    font-size: 0.55rem;
+  }
+
+  .gookie-allergen-list {
+    gap: 5px;
+  }
+
+  .gookie-allergen-chip {
+    min-height: 27px;
+    padding: 5px 8px;
+    font-size: 0.58rem;
+  }
+
+  .gookie-allergen-note {
+    margin-top: 6px;
+    font-size: 0.54rem;
+  }
+
+  .gookie-profile-purchase {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 0 12px 12px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .gookie-profile-purchase p {
+    font-size: 0.64rem;
+  }
+
+  .gookie-profile-order-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 43px;
+    padding: 10px 14px;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 390px), (max-height: 700px) {
+  .gookie-profile-copy {
+    padding-top: 40px;
+  }
+
+  .gookie-profile-copy h2 {
+    font-size: 2rem;
+  }
+
+  .gookie-profile-description {
+    -webkit-line-clamp: 3;
+  }
+
+  .gookie-profile-image img {
+    max-height: 165px;
+  }
+
+  .gookie-allergen-note {
+    display: none;
+  }
+}
