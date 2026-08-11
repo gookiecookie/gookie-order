@@ -242,18 +242,10 @@ select{
 }
 
 .brand-logo img{
+  display:block;
   width:132px;
   height:auto;
-
-  filter:
-    brightness(0)
-    saturate(100%)
-    invert(17%)
-    sepia(95%)
-    saturate(2933%)
-    hue-rotate(350deg)
-    brightness(89%)
-    contrast(94%);
+  object-fit:contain;
 }
 
 .header-icon-button{
@@ -1784,7 +1776,10 @@ select{
     --header-height-mobile:70px;
   }
 
-
+ .brand-logo img{
+    width:116px;
+  }
+   
   .section-shell{
     width:min(100% - 28px,var(--page-width));
   }
