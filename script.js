@@ -113,6 +113,12 @@ const menuButton = $("menuButton");
 const menuDrawer = $("menuDrawer");
 const menuCloseButton = $("menuCloseButton");
 
+const searchButton = $("searchButton");
+const searchModal = $("searchModal");
+const searchModalClose = $("searchModalClose");
+const siteSearchInput = $("siteSearchInput");
+const siteSearchResults = $("siteSearchResults");
+
 const heroStage = $("heroStage");
 const heroPrev = $("heroPrev");
 const heroNext = $("heroNext");
@@ -1474,8 +1480,182 @@ function setupFooterInformation() {
 }
 
 
+
 /* =========================================================
-   13. GLOBAL EVENTS
+   13. SITE SEARCH
+========================================================= */
+
+const siteSearchIndex = [
+  ...gookieCatalogue.map((cookie) => ({
+    title: cookie.name,
+    subtitle: cookie.subtitle,
+    href: `gookies.html#${cookie.id}`,
+    keywords: `${cookie.name} ${cookie.subtitle} cookie flavour`,
+  })),
+
+  {
+    title: "Best-Seller Box",
+    subtitle: "Four of Gookie's most-loved flavours",
+    href: "order.html?filter=assorted#best-seller",
+    keywords: "best seller box assorted box 4",
+  },
+  {
+    title: "The Whole Crew",
+    subtitle: "All eight core Gookies",
+    href: "order.html?filter=assorted#whole-crew",
+    keywords: "whole crew assorted box 8",
+  },
+  {
+    title: "Build Your Own",
+    subtitle: "Mix and match your favourites",
+    href: "order.html?filter=build",
+    keywords: "build your own mix match box 4 8",
+  },
+  {
+    title: "Gookie Big Box",
+    subtitle: "Box of 12 for sharing and gifting",
+    href: "order.html?product=single-flavour&size=12",
+    keywords: "big box box 12 sharing gifting",
+  },
+  {
+    title: "Mini Box",
+    subtitle: "15 mini Gookies in three flavours",
+    href: "order.html?filter=mini",
+    keywords: "mini box 15 mini cookies",
+  },
+  {
+    title: "Party Kit",
+    subtitle: "Make your Gookie box celebration-ready",
+    href: "order.html#add-ons",
+    keywords: "party kit add on candle cake board sprinkles",
+  },
+  {
+    title: "Wish Card",
+    subtitle: "Add a custom message to your box",
+    href: "order.html#add-ons",
+    keywords: "wish card message add on",
+  },
+];
+
+
+function renderSiteSearchResults(query = "") {
+  if (!siteSearchResults) return;
+
+  const normalizedQuery =
+    String(query || "")
+      .trim()
+      .toLowerCase();
+
+  const matches =
+    normalizedQuery
+      ? siteSearchIndex.filter((item) => {
+          const haystack =
+            `${item.title} ${item.subtitle} ${item.keywords}`
+              .toLowerCase();
+
+          return haystack.includes(normalizedQuery);
+        })
+      : siteSearchIndex.slice(0, 6);
+
+  if (!matches.length) {
+    siteSearchResults.innerHTML = `
+      <p class="search-empty">
+        No Gookie found yet. Try another flavour or box name.
+      </p>
+    `;
+    return;
+  }
+
+  siteSearchResults.innerHTML =
+    matches
+      .slice(0, 8)
+      .map(
+        (item) => `
+          <a
+            class="search-result-item"
+            href="${item.href}"
+          >
+            <span class="search-result-copy">
+              <strong>${item.title}</strong>
+              <span>${item.subtitle}</span>
+            </span>
+
+            <i
+              class="fa-solid fa-arrow-right search-result-arrow"
+              aria-hidden="true"
+            ></i>
+          </a>
+        `
+      )
+      .join("");
+}
+
+
+function openSiteSearch() {
+  if (!searchModal) return;
+
+  openModal(searchModal);
+
+  searchButton?.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  renderSiteSearchResults(
+    siteSearchInput?.value || ""
+  );
+
+  window.setTimeout(() => {
+    siteSearchInput?.focus();
+  }, 120);
+}
+
+
+function closeSiteSearch() {
+  closeModal(searchModal);
+
+  searchButton?.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+}
+
+
+function setupSiteSearch() {
+  searchButton?.addEventListener(
+    "click",
+    openSiteSearch
+  );
+
+  searchModalClose?.addEventListener(
+    "click",
+    closeSiteSearch
+  );
+
+  searchModal?.addEventListener(
+    "click",
+    (event) => {
+      if (event.target === searchModal) {
+        closeSiteSearch();
+      }
+    }
+  );
+
+  siteSearchInput?.addEventListener(
+    "input",
+    (event) => {
+      renderSiteSearchResults(
+        event.target.value
+      );
+    }
+  );
+
+  renderSiteSearchResults();
+}
+
+
+/* =========================================================
+   14. GLOBAL EVENTS
 ========================================================= */
 
 function setupGlobalEvents() {
@@ -1555,6 +1735,15 @@ function setupGlobalEvents() {
     (event) => {
 
       if (event.key !== "Escape") {
+        return;
+      }
+
+      if (
+        searchModal?.classList.contains(
+          "is-open"
+        )
+      ) {
+        closeSiteSearch();
         return;
       }
 
@@ -1649,6 +1838,8 @@ function initGookieV3() {
   setupMarqueeDrag();
 
   setupFooterInformation();
+
+  setupSiteSearch();
 
   setupGlobalEvents();
 }

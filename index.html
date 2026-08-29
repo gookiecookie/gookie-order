@@ -20,7 +20,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   />
 
-  <link rel="stylesheet" href="style.css?v=11.0" />
+  <link rel="stylesheet" href="style.css?v=11.1" />
 </head>
 
 <body>
@@ -94,6 +94,19 @@
           alt="Gookie"
         />
       </a>
+
+
+
+      <button
+        class="header-icon-button header-search-button"
+        id="searchButton"
+        type="button"
+        aria-label="Search Gookie"
+        aria-controls="searchModal"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
 
 
       <a
@@ -1271,6 +1284,56 @@
   </footer>
 
 
+
+  <!-- =========================================================
+       SITE SEARCH MODAL
+  ========================================================== -->
+
+  <section
+    class="modal"
+    id="searchModal"
+    aria-hidden="true"
+    aria-label="Search Gookie"
+  >
+    <div class="modal-card search-modal-card">
+
+      <div class="search-modal-header">
+        <div>
+          <p class="search-modal-eyebrow">FIND YOUR GOOKIE</p>
+          <h2>What are you craving?</h2>
+        </div>
+
+        <button
+          class="modal-close-button"
+          id="searchModalClose"
+          type="button"
+          aria-label="Close search"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input
+          id="siteSearchInput"
+          type="search"
+          placeholder="Search cookies, boxes or add-ons..."
+          autocomplete="off"
+          aria-label="Search Gookie products"
+        />
+      </div>
+
+      <div
+        class="search-results"
+        id="siteSearchResults"
+        aria-live="polite"
+      ></div>
+
+    </div>
+  </section>
+
+
   <!-- =========================================================
        FOOTER INFORMATION MODAL
   ========================================================== -->
@@ -1320,7 +1383,7 @@
   </section>
 
 
-  <script src="script.js?v=11.0"></script>
+  <script src="script.js?v=11.1"></script>
 
 </body>
 </html>

@@ -44,8 +44,8 @@
   --page-width:1220px;
 
   --marquee-height:34px;
-  --header-height-mobile:76px;
-  --header-height-desktop:84px;
+  --header-height-mobile:68px;
+  --header-height-desktop:68px;
 
   --drawer-width:min(88vw,400px);
 
@@ -213,8 +213,8 @@ select{
 
   border-bottom:1px solid rgba(187,25,26,.08);
 
-  background:rgba(255,255,255,.96);
-  color:var(--gookie-red);
+  background:var(--gookie-red);
+  color:var(--white);
 
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
@@ -243,7 +243,7 @@ select{
 
 .brand-logo img{
   display:block;
-  width:132px;
+  width:108px;
   height:auto;
   object-fit:contain;
 }
@@ -255,8 +255,8 @@ select{
   display:grid;
   place-items:center;
 
-  width:46px;
-  height:46px;
+  width:38px;
+  height:38px;
 
   padding:0;
 
@@ -284,20 +284,29 @@ select{
 }
 
 .header-shop-button{
-  right:16px;
+  right:14px;
+}
+
+.header-search-button{
+  right:58px;
+}
+
+.header-search-button i{
+  font-size:1.05rem;
+  line-height:1;
 }
 
 .hamburger-icon{
   display:flex;
   flex-direction:column;
-  gap:5px;
+  gap:4px;
 
-  width:25px;
+  width:22px;
 }
 
 .hamburger-icon span{
   width:100%;
-  height:2.5px;
+  height:2px;
 
   border-radius:var(--radius-pill);
 
@@ -305,8 +314,8 @@ select{
 }
 
 .cart-icon{
-  width:27px;
-  height:27px;
+  width:23px;
+  height:23px;
 }
 
 
@@ -1773,11 +1782,11 @@ select{
 
   :root{
     --marquee-height:32px;
-    --header-height-mobile:70px;
+    --header-height-mobile:62px;
   }
 
  .brand-logo img{
-    width:116px;
+    width:100px;
   }
    
   .section-shell{
@@ -1798,7 +1807,7 @@ select{
   /* HEADER */
 
   .brand-logo img{
-    width:116px;
+    width:100px;
   }
 
   #menuButton{
@@ -1807,6 +1816,10 @@ select{
 
   .header-shop-button{
     right:8px;
+  }
+
+  .header-search-button{
+    right:48px;
   }
 
 
@@ -2195,4 +2208,141 @@ select{
     animation:none;
   }
 
+}
+
+
+/* =========================================================
+   V3 HEADER SEARCH
+========================================================= */
+
+.search-modal-card{
+  width:min(100%,620px);
+  padding:26px;
+}
+
+.search-modal-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.search-modal-header h2{
+  margin:0;
+  font-family:"League Spartan",sans-serif;
+  font-size:2rem;
+  font-weight:700;
+  line-height:1;
+}
+
+.search-modal-eyebrow{
+  margin:0 0 6px;
+  color:var(--gookie-red);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.search-input-wrap{
+  position:relative;
+}
+
+.search-input-wrap i{
+  position:absolute;
+  left:17px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+#siteSearchInput{
+  width:100%;
+  min-height:52px;
+  padding:12px 18px 12px 46px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-pill);
+  background:var(--white);
+  color:var(--ink);
+  outline:none;
+}
+
+#siteSearchInput:focus{
+  border-color:rgba(187,25,26,.42);
+  box-shadow:0 0 0 4px rgba(187,25,26,.07);
+}
+
+.search-results{
+  display:grid;
+  gap:8px;
+  margin-top:14px;
+}
+
+.search-result-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:13px 15px;
+  border:1px solid rgba(23,21,21,.07);
+  border-radius:14px;
+  background:var(--white);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.search-result-item:hover{
+  transform:translateY(-1px);
+  border-color:rgba(187,25,26,.20);
+  background:#fffdfb;
+}
+
+.search-result-copy{
+  min-width:0;
+}
+
+.search-result-copy strong{
+  display:block;
+  font-family:"League Spartan",sans-serif;
+  font-size:1rem;
+  font-weight:700;
+}
+
+.search-result-copy span{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:.76rem;
+}
+
+.search-result-arrow{
+  flex:0 0 auto;
+  color:var(--gookie-red);
+  font-size:.9rem;
+}
+
+.search-empty{
+  margin:8px 0 0;
+  padding:18px 8px 4px;
+  color:var(--muted);
+  text-align:center;
+  font-size:.84rem;
+}
+
+@media (max-width:767px){
+  .search-modal-card{
+    padding:20px;
+  }
+
+  .search-modal-header h2{
+    font-size:1.7rem;
+  }
+
+  #siteSearchInput{
+    min-height:48px;
+  }
 }
