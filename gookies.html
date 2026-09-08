@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="style.css?v=10.1" />
   <link rel="stylesheet" href="gookies.css?v=1.0" />
   <link rel="stylesheet" href="responsive-modal.css?v=1.0" />
+  <link rel="stylesheet" href="shared-header.css?v=1.0" />
 </head>
 
 <body class="gookies-page">
@@ -31,49 +32,37 @@
     hidden
   ></button>
 
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <button
-        class="header-icon-button"
-        id="menuButton"
-        type="button"
-        aria-label="Open menu"
-        aria-controls="menuDrawer"
-        aria-expanded="false"
-      >
-        <span class="hamburger-icon" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
-      </button>
+  
+<!-- =========================================================
+     GOOKIE GLOBAL TOP MARQUEE
+========================================================= -->
+<div class="gookie-top-marquee" aria-label="Gookie announcements">
+  <div class="gookie-top-marquee-track">
+    <span>WELCOME TO GOOKIE</span>
+    <span>BAKED FRESH, LESS SWEET 🍪</span>
+    <span>🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
+    <span aria-hidden="true">WELCOME TO GOOKIE</span>
+    <span aria-hidden="true">BAKED FRESH, LESS SWEET 🍪</span>
+    <span aria-hidden="true">🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
+  </div>
+</div>
 
-      <a class="brand-logo" href="index.html" aria-label="Gookie home">
-        <img src="smallgookielogo.png" alt="Gookie" />
-      </a>
-
-      <span class="malaysia-flag gookies-header-flag" title="Proudly baked in Malaysia" aria-label="Malaysia">
-        🇲🇾
-      </span>
-
-      <a
-        class="header-icon-button cart-button gookies-header-cart"
-        href="order.html"
-        aria-label="Go to order page"
-      >
-        <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path
-            d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9"
-            stroke="currentColor"
-            stroke-width="2.4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-          <circle cx="13" cy="26" r="1.8" fill="currentColor"></circle>
-          <circle cx="24" cy="26" r="1.8" fill="currentColor"></circle>
-        </svg>
-        <span class="cart-count">0</span>
-      </a>
-    </div>
-  </header>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <button class="header-icon-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="menuDrawer" aria-expanded="false">
+      <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <a class="brand-logo" href="index.html" aria-label="Gookie home"><img src="smallgookielogo.png" alt="Gookie" /></a>
+    <button class="header-icon-button header-search-button" id="searchButton" type="button" aria-label="Search Gookie" aria-controls="searchModal" aria-expanded="false">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    </button>
+    <span class="malaysia-flag" title="Proudly baked in Malaysia" aria-label="Malaysia">🇲🇾</span>
+    <a class="header-icon-button cart-button" href="order.html" aria-label="Go to Get Your Gookies">
+          <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="13" cy="26" r="1.8" fill="currentColor"></circle><circle cx="24" cy="26" r="1.8" fill="currentColor"></circle></svg>
+          <span class="cart-count">0</span>
+        </a>
+  </div>
+</header>
 
   <aside
     class="drawer drawer-left premium-menu-drawer"
@@ -272,5 +261,21 @@
 
   <script src="gookies.js?v=1.0"></script>
   <script src="responsive-modal.js?v=1.0"></script>
+
+<section class="modal search-modal" id="searchModal" aria-hidden="true" aria-label="Search Gookie">
+  <div class="modal-card search-modal-card">
+    <div class="search-modal-header">
+      <div><p class="search-modal-eyebrow">FIND YOUR GOOKIE</p><h2>What are you craving?</h2></div>
+      <button class="modal-close-button" id="searchModalClose" type="button" aria-label="Close search">×</button>
+    </div>
+    <div class="search-input-wrap">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input id="siteSearchInput" type="search" placeholder="Search cookies, boxes or add-ons..." autocomplete="off" aria-label="Search Gookie products" />
+    </div>
+    <div class="search-results" id="siteSearchResults" aria-live="polite"></div>
+  </div>
+</section>
+
+  <script src="site-search.js?v=1.0"></script>
 </body>
 </html>
