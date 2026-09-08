@@ -1546,8 +1546,12 @@ body {
 
 }
 
-/* MONTHLY WONDER — COOKIE NAME POSITION FIX */
+/* MONTHLY WONDER — COOKIE + NAME GROUP FIX */
+
+.monthly-wonder-visual {
+  gap: 12px;
+}
 
 .monthly-wonder-name {
-  margin-top: -8px;
+  margin-top: 0;
 }
