@@ -1,7 +1,7 @@
 "use strict";
 
 /* =========================================================
-   GOOKIE ORDER ENGINE V5.1
+   GOOKIE ORDER ENGINE V5.4 — MINI + ADD-ONS CONSOLIDATED
    Converts website cart data into Apps Script payload.
 ========================================================= */
 
@@ -20,9 +20,25 @@ const GOOGLE_SCRIPT_URL =
 
 const GOOKIE_BOX_IDS = Object.freeze({
   4: "BOX001",
-  6: "BOX002",
+  8: "BOX002",
   12: "BOX003",
+  15: "BOX004",
 });
+
+
+/* =========================================================
+   3. ADD-ON ID MAPPING
+========================================================= */
+
+const GOOKIE_ADDON_IDS = Object.freeze({
+  "party-kit": "ADDON001",
+  "wishcard": "ADDON002",
+  "wish-card": "ADDON002",
+  ADDON001: "ADDON001",
+  ADDON002: "ADDON002",
+});
+
+const GOOKIE_ADDON_MESSAGE_LIMIT = 70;
 
 
 /* =========================================================
@@ -40,8 +56,13 @@ const GOOKIE_PRODUCT_IDS = Object.freeze({
   "choki-chomp": "PRD008",
   "coffee-kiss": "PRD009",
 
+  /* Mini Box production SKUs — 40g dough each. */
+  "mini-wonder-chip": "PRD012",
+  "mini-dark-crush": "PRD013",
+  "mini-red-bloom": "PRD014",
+
   /*
-    Berry Nutty is the current Monthly Wonder.
+    Monthly Wonder operational slot.
   */
   "monthly-wonder": "PRD010",
 
@@ -62,12 +83,19 @@ function getOrderSelectionType(order) {
     return "BUILD_YOUR_OWN";
   }
 
-  if (order.type === "Gookie's Picks") {
+  if (
+    order.type === "Gookie's Picks" ||
+    order.type === "Assorted Box" ||
+    order.type === "Single Flavour Box" ||
+    order.type === "Gookie Big Box" ||
+    order.type === "Mini Box"
+  ) {
     return "GOOKIES_CHOICE";
   }
 
   throw new Error(
-    "Unknown order type: " + String(order.type || "")
+    "Unknown order type: " +
+      String(order.type || "")
   );
 }
 
@@ -108,11 +136,86 @@ function buildOrderItems(cookieIds) {
 
 
 /* =========================================================
-   6. BUILD CREATE ORDER PAYLOAD
+   7. NORMALISE ADD-ONS
+========================================================= */
+
+function buildOrderAddons(addons, boxIndex) {
+  if (!Array.isArray(addons) || addons.length === 0) {
+    return [];
+  }
+
+  const seenAddonIds = new Set();
+
+  return addons.map(function (addon) {
+    if (!addon || typeof addon !== "object") {
+      throw new Error(
+        "Invalid add-on in cart box " + (boxIndex + 1) + "."
+      );
+    }
+
+    const rawId =
+      addon.addonId ||
+      addon.id ||
+      addon.type ||
+      "";
+
+    const addonId =
+      GOOKIE_ADDON_IDS[String(rawId)];
+
+    if (!addonId) {
+      throw new Error(
+        "Unknown add-on in cart box " +
+          (boxIndex + 1) +
+          ": " +
+          String(rawId || "(missing Add-on ID)")
+      );
+    }
+
+    if (seenAddonIds.has(addonId)) {
+      throw new Error(
+        "The same add-on cannot be added twice to cart box " +
+          (boxIndex + 1) +
+          "."
+      );
+    }
+
+    seenAddonIds.add(addonId);
+
+    const message =
+      String(addon.message || "").trim();
+
+    if (message.length > GOOKIE_ADDON_MESSAGE_LIMIT) {
+      throw new Error(
+        "Add-on message for cart box " +
+          (boxIndex + 1) +
+          " must be " +
+          GOOKIE_ADDON_MESSAGE_LIMIT +
+          " characters or fewer."
+      );
+    }
+
+    if (addonId === "ADDON002" && !message) {
+      throw new Error(
+        "Wish Card for cart box " +
+          (boxIndex + 1) +
+          " needs a custom message."
+      );
+    }
+
+    return {
+      addonId: addonId,
+      qty: 1,
+      message: message,
+    };
+  });
+}
+
+/* =========================================================
+   8. BUILD CREATE ORDER PAYLOAD
 ========================================================= */
 
 function buildOrderPayload() {
-  if (!currentOrder) {
+  if (!Array.isArray(cart) || cart.length === 0) {
     throw new Error("Your Gookie cart is empty.");
   }
 
@@ -120,34 +223,54 @@ function buildOrderPayload() {
     throw new Error("Customer details are missing.");
   }
 
-  const boxId =
-    GOOKIE_BOX_IDS[currentOrder.boxSize];
+  const boxes = cart.map(function (order, index) {
+    const boxId =
+      GOOKIE_BOX_IDS[order.boxSize];
 
-  if (!boxId) {
-    throw new Error(
-      "No Box ID found for " +
-        currentOrder.boxSize +
-        " cookies."
-    );
-  }
+    if (!boxId) {
+      throw new Error(
+        "No Box ID found for " +
+          order.boxSize +
+          " cookies in cart box " +
+          (index + 1) +
+          "."
+      );
+    }
 
-  const items =
-    buildOrderItems(currentOrder.cookies);
+    const items =
+      buildOrderItems(order.cookies);
 
-  const totalQuantity =
-    items.reduce(function (total, item) {
-      return total + item.qty;
-    }, 0);
+    const totalQuantity =
+      items.reduce(function (total, item) {
+        return total + item.qty;
+      }, 0);
 
-  if (totalQuantity !== currentOrder.boxSize) {
-    throw new Error(
-      "This box requires exactly " +
-        currentOrder.boxSize +
-        " cookies, but received " +
-        totalQuantity +
-        "."
-    );
-  }
+    if (totalQuantity !== order.boxSize) {
+      throw new Error(
+        "Cart box " +
+          (index + 1) +
+          " requires exactly " +
+          order.boxSize +
+          " cookies, but received " +
+          totalQuantity +
+          "."
+      );
+    }
+
+    const addons =
+      buildOrderAddons(
+        order.addons || [],
+        index
+      );
+
+    return {
+      boxId: boxId,
+      selectionType:
+        getOrderSelectionType(order),
+      items: items,
+      addons: addons,
+    };
+  });
 
   return {
     customer: {
@@ -159,13 +282,6 @@ function buildOrderPayload() {
       notes: customerDetails.notes || "",
     },
 
-    boxes: [
-      {
-        boxId: boxId,
-        selectionType:
-          getOrderSelectionType(currentOrder),
-        items: items,
-      },
-    ],
+    boxes: boxes,
   };
 }

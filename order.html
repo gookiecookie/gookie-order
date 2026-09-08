@@ -21,6 +21,7 @@
   />
 
   <link rel="stylesheet" href="order.css?v=1.0" />
+  <link rel="stylesheet" href="shared-header.css?v=1.0" />
 </head>
   <body class="order-page">
     <button
@@ -31,54 +32,37 @@
       hidden
     ></button>
 
-    <header class="site-header" id="siteHeader">
-      <div class="header-inner">
-        <button
-          class="header-icon-button"
-          id="menuButton"
-          type="button"
-          aria-label="Open menu"
-          aria-controls="menuDrawer"
-          aria-expanded="false"
-        >
-          <span class="hamburger-icon" aria-hidden="true"
-            ><span></span><span></span><span></span
-          ></span>
-        </button>
-        <a class="brand-logo" href="index.html" aria-label="Gookie home">
-          <img src="smallgookielogo.png" alt="Gookie" />
-        </a>
-        <span class="malaysia-flag" title="Proudly Baked in Malaysia">
-  🇲🇾
-</span>
-        <button
-          class="header-icon-button cart-button"
-          id="cartButton"
-          type="button"
-          aria-label="Open cart"
-          aria-controls="cartDrawer"
-          aria-expanded="false"
-        >
-          <svg
-            class="cart-icon"
-            viewBox="0 0 32 32"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-            <circle cx="13" cy="26" r="1.8" fill="currentColor"></circle>
-            <circle cx="24" cy="26" r="1.8" fill="currentColor"></circle>
-          </svg>
+    
+<!-- =========================================================
+     GOOKIE GLOBAL TOP MARQUEE
+========================================================= -->
+<div class="gookie-top-marquee" aria-label="Gookie announcements">
+  <div class="gookie-top-marquee-track">
+    <span>WELCOME TO GOOKIE</span>
+    <span>BAKED FRESH, LESS SWEET 🍪</span>
+    <span>🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
+    <span aria-hidden="true">WELCOME TO GOOKIE</span>
+    <span aria-hidden="true">BAKED FRESH, LESS SWEET 🍪</span>
+    <span aria-hidden="true">🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <button class="header-icon-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="menuDrawer" aria-expanded="false">
+      <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <a class="brand-logo" href="index.html" aria-label="Gookie home"><img src="smallgookielogo.png" alt="Gookie" /></a>
+    <button class="header-icon-button header-search-button" id="searchButton" type="button" aria-label="Search Gookie" aria-controls="searchModal" aria-expanded="false">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    </button>
+    <span class="malaysia-flag" title="Proudly baked in Malaysia" aria-label="Malaysia">🇲🇾</span>
+    <button class="header-icon-button cart-button" id="cartButton" type="button" aria-label="Open cart" aria-controls="cartDrawer" aria-expanded="false">
+          <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="13" cy="26" r="1.8" fill="currentColor"></circle><circle cx="24" cy="26" r="1.8" fill="currentColor"></circle></svg>
           <span class="cart-count" id="cartCount">0</span>
         </button>
-      </div>
-    </header>
+  </div>
+</header>
 
    <aside
   class="drawer drawer-left premium-menu-drawer"
@@ -215,519 +199,545 @@
       </div>
       <div class="cart-drawer-footer">
         <div class="cart-summary-row">
-          <span>Cookies selected</span><strong id="cartSelectedCount">0</strong>
+          <span>Cookies in cart</span><strong id="cartSelectedCount">0</strong>
         </div>
+        <button
+          class="cart-continue-shopping"
+          id="continueShoppingButton"
+          type="button"
+        >
+          ← CONTINUE SHOPPING
+        </button>
+
         <button
           class="primary-button"
           id="checkoutButton"
           type="button"
           disabled
         >
-          CONTINUE
+          CONTINUE TO CHECKOUT
         </button>
       </div>
     </aside>
 
-    <main>
-      <section class="hero-section" id="home">
-        <div class="hero-cookie-area">
-          <div class="hero-shape hero-shape-one"></div>
-          <div class="hero-shape hero-shape-two"></div>
-          <img
-            class="hero-cookie-image"
-            src="hero-cookies.gif"
-            alt="A stack of Gookie chunky cookies"
-          />
-        </div>
-        <div class="hero-content">
-          <p class="section-kicker">YOU DESERVE A GOOKIE BREAK.</p>
-          <h1><span>PICK YOUR</span><span>CHUNKY</span><span>WONDERS</span></h1>
+    <main class="gookie-shop-page">
 
-<div class="hero-highlights">
+  <!-- =========================================================
+       GET YOUR GOOKIES — HERO
+       Keep this hero direction from the current page.
+  ========================================================= -->
+  <section class="order-page-hero" aria-labelledby="orderPageTitle">
+    <div class="order-page-hero-inner">
+      <p class="section-kicker">NOW FOR THE FUN PART</p>
 
-  <div class="hero-highlight">
-    <span>🍪</span>
-    <strong>Baked Fresh</strong>
-  </div>
+      <h1 id="orderPageTitle">
+        <span>GET YOUR</span>
+        <span>GOOKIES</span>
+      </h1>
 
-  <div class="hero-highlight">
-    <span>🤎</span>
-    <strong>Less Sweet</strong>
-  </div>
+      <p class="order-page-hero-copy">
+        Pick your box, choose your favourites, and make it a Gookie day.
+      </p>
+    </div>
+  </section>
 
-  <div class="hero-highlight">
-    <span>❤️</span>
-    <strong>Enjoy Longer</strong>
-  </div>
 
-</div>
+  <!-- =========================================================
+       SHOP NAVIGATION
+  ========================================================= -->
+  <section class="shop-catalogue" id="shopCatalogue">
 
-<div class="hero-actions">
+    <div
+      class="shop-category-tabs"
+      role="tablist"
+      aria-label="Shop Gookie categories"
+    >
+      <button
+        class="shop-category-tab is-active"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        data-shop-tab="all"
+      >
+        ALL PRODUCTS
+      </button>
 
-  <a class="hero-button hero-button-primary" href="#order-builder">
-    BUILD YOUR BOX
-  </a>
+      <button
+        class="shop-category-tab"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-shop-tab="assorted"
+      >
+        ASSORTED BOXES
+      </button>
 
-  <a class="hero-button hero-button-secondary" href="#meet-the-gookies">
-    MEET THE GOOKIES
-  </a>
+      <button
+        class="shop-category-tab"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-shop-tab="build"
+      >
+        BUILD YOUR OWN
+      </button>
 
-</div>
-        </div>
-      </section>
-
-<!-- =========================================================
-     FRESH BANNER
-========================================================= -->
-
-<!-- =========================================================
-     GOOKIE TRUST BANNER
-========================================================= -->
-
-<section
-  class="gookie-trust-section"
-  aria-label="Why customers love Gookie"
->
-
-  <div class="gookie-trust-banner">
-
-    <div class="gookie-trust-item">
-
-      <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-mitten"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>BAKED FRESH</strong>
-        <span>
-          In small batches<br>
-          for the best taste.
-        </span>
-      </div>
-
+      <button
+        class="shop-category-tab"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-shop-tab="mini"
+      >
+        MINI BOX
+      </button>
     </div>
 
 
-    <div class="gookie-trust-item">
-
-      <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-cookie-bite"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>QUALITY INGREDIENTS</strong>
-        <span>
-          Real ingredients,<br>
-          real goodness.
-        </span>
+    <!-- =====================================================
+         ALL PRODUCTS
+    ====================================================== -->
+    <div
+      class="shop-category-panel is-active"
+      data-shop-panel="all"
+    >
+      <div class="shop-panel-heading">
+        <p class="section-kicker">ALL THE GOOD STUFF</p>
+        <h2>Pick Your Gookie.</h2>
+        <p>Ready-made favourites, build-your-own boxes, minis and more.</p>
       </div>
 
-    </div>
+      <div class="shop-product-grid">
 
-
-    <div class="gookie-trust-item">
-
-     <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-truck-fast"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>PENINSULAR MALAYSIA DELIVERY</strong>
-        <span>
-          Delivered with care<br>
-          straight to your door.
-        </span>
-      </div>
-
-    </div>
-
-
-    <div class="gookie-trust-item">
-
-     <div class="gookie-trust-icon" aria-hidden="true">
-  <i class="fa-solid fa-heart"></i>
-</div>
-
-      <div class="gookie-trust-copy">
-        <strong>MADE WITH LOVE</strong>
-        <span>
-          From our kitchen<br>
-          to your heart.
-        </span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-      
-<section class="meet-section" id="meet-the-gookies">
-        <div class="section-heading">
-          <p class="section-kicker">SAY HELLO TO THE WHOLE CREW</p>
-          <h2 class="meet-title">
-  <span class="meet-title-top">MEET THE</span>
-  <span class="meet-title-red">
-    GOOKIES
-    <span class="meet-title-heart">♡</span>
-  </span>
-</h2>
-          <p>Every Gookie has its own personality.<br>
-Which one will steal your heart?</p>
-        </div>
-        <div class="marquee-wrapper">
-
-  <button
-    class="marquee-arrow marquee-arrow-left"
-    id="marqueePrev"
-    type="button"
-    aria-label="View previous Gookie"
-  >
-    ‹
-  </button>
-
-  <div class="marquee-shell" id="marqueeShell">
-    <div class="marquee-track" id="marqueeTrack"></div>
-  </div>
-
-  <button
-    class="marquee-arrow marquee-arrow-right"
-    id="marqueeNext"
-    type="button"
-    aria-label="View next Gookie"
-  >
-    ›
-  </button>
-
-</div>
-          
-        <p class="marquee-hint"></p>
-      </section>
-
-
-      <section class="order-page-hero" aria-labelledby="orderPageTitle">
-        <div class="order-page-hero-inner">
-          <p class="section-kicker">NOW FOR THE FUN PART</p>
-
-          <h1 id="orderPageTitle">
-            <span>GET YOUR</span>
-            <span>GOOKIES</span>
-          </h1>
-
-          <p class="order-page-hero-copy">
-            Build your dream box, or let Gookie do the choosing.
-          </p>
-
-          <div class="order-page-hero-notes" aria-label="Ordering highlights">
-            <span>Choose 4, 6 or 12</span>
-            <span aria-hidden="true">•</span>
-            <span>Mix your favourites</span>
-            <span aria-hidden="true">•</span>
-            <span>Checkout in minutes</span>
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">BEST SELLER</span>
+            <img src="treat-box.png" alt="Best-Seller Box" />
           </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4</p>
+            <h3>Best-Seller Box</h3>
+            <p>Our four most-loved Gookies.</p>
+            <p class="shop-product-price">RM39</p>
+
+            <button
+              class="shop-card-action"
+              type="button"
+              data-shop-action="best-seller"
+            >
+              DISCOVER MORE →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">THE FULL CREW</span>
+            <img src="chunky-box.png" alt="The Whole Crew" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 8</p>
+            <h3>The Whole Crew</h3>
+            <p>Meet every Gookie in one box.</p>
+            <p class="shop-product-price">RM74</p>
+
+            <button
+              class="shop-card-action"
+              type="button"
+              data-shop-action="whole-crew"
+            >
+              DISCOVER MORE →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">PICK A FAVOURITE</span>
+            <img src="chunky-box.png" alt="Single Flavour Boxes" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4 / BOX OF 8</p>
+            <h3>Single Flavour Boxes</h3>
+            <p>One flavour. Zero sharing required.</p>
+            <p class="shop-product-price">FROM RM39</p>
+
+            <button
+              class="shop-card-action"
+              id="openSingleFlavourShop"
+              type="button"
+            >
+              CHOOSE A FLAVOUR →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">MADE FOR SHARING</span>
+            <img src="cookie-feast.png" alt="Gookie Big Box" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 12 · UP TO 2 FLAVOURS</p>
+            <h3>Gookie Big Box</h3>
+            <p>For meetings, celebrations and serious Gookie situations.</p>
+            <p class="shop-product-price">RM108</p>
+
+            <button
+              class="shop-card-action"
+              type="button"
+              data-shop-action="big-box"
+            >
+              CHOOSE A FLAVOUR →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card shop-product-card-featured">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">MAKE IT YOURS</span>
+            <img src="cookie-feast.png" alt="Build Your Own Gookie box" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4 / BOX OF 8</p>
+            <h3>Build Your Own</h3>
+            <p>Mix your favourites and make the box completely yours.</p>
+            <p class="shop-product-price">FROM RM39</p>
+
+            <button
+              class="shop-card-action"
+              type="button"
+              data-open-shop-tab="build"
+            >
+              START BUILDING →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">LITTLE BITES</span>
+            <img src="treat-box.png" alt="Gookie Mini Box" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">15 MINI GOOKIES</p>
+            <h3>Mini Box</h3>
+            <p>5 Wonder Chip · 5 Dark Crush · 5 Red Bloom</p>
+            <p class="shop-product-price">RM59</p>
+
+            <button
+              class="shop-card-action"
+              type="button"
+              data-open-shop-tab="mini"
+            >
+              SEE MINI BOX →
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+
+      <!-- ADD-ONS -->
+      <div class="shop-addons-block">
+        <div class="shop-addons-heading">
+          <p class="section-kicker">A LITTLE EXTRA</p>
+          <h2>Add-ons</h2>
+          <p>Add them to any eligible Gookie order.</p>
         </div>
-      </section>
 
-      <section class="order-builder" id="order-builder">
-        <div class="section-heading order-builder-heading">
-          <p class="section-kicker">NOW FOR THE FUN PART</p>
-          <h2 class="order-title">
-            <span class="order-title-top">GET YOUR</span>
-            <span class="order-title-red">
-              GOOKIES
-              <span class="order-title-heart">♡</span>
-            </span>
-          </h2>
-          <p>Build your dream box, or let Gookie do the choosing.</p>
-        </div>
+        <div class="shop-addons-grid">
 
-        <div
-          class="order-builder-tabs"
-          role="tablist"
-          aria-label="Choose your ordering style"
-        >
-          <button
-            class="order-builder-tab is-active"
-            id="showBuildYourBox"
-            type="button"
-            role="tab"
-            aria-selected="true"
-            aria-controls="build-your-box"
-            data-order-tab="build"
-          >
-            BUILD YOUR BOX
-          </button>
-          <button
-            class="order-builder-tab"
-            id="showGookiesChoice"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            aria-controls="gookies-choice"
-            data-order-tab="choice"
-          >
-            GOOKIE'S PICKS
-          </button>
-        </div>
+          <article class="shop-addon-card">
+            <div class="shop-addon-visual">
+              <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+            </div>
 
-        <div class="order-builder-content">
-          <section class="order-section order-builder-panel" id="build-your-box" data-order-panel="build">
-            <div class="box-size-options" id="buildBoxSizeOptions">
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="4"
-    data-box-name="Treat Box"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="treat-box.png" alt="Treat Box">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>TREAT BOX</strong>
-        <small><b>4 COOKIES</b><span>RM39</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="4"></div>
-
-      <p class="box-accordion-helper">
-        Pick 4 cookies to complete your Treat Box.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="4"
-      >
-        CHOOSE MY GOOKIES
-      </button>
-    </div>
-  </article>
-
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="6"
-    data-box-name="Chunky Box"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="chunky-box.png" alt="Chunky Box">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>CHUNKY BOX</strong>
-        <small><b>6 COOKIES</b><span>RM56</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="6"></div>
-
-      <p class="box-accordion-helper">
-        Pick 6 cookies to complete your Chunky Box.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="6"
-      >
-        CHOOSE MY GOOKIES
-      </button>
-    </div>
-  </article>
-
-  <article
-    class="box-size-card box-accordion"
-    data-box-size="12"
-    data-box-name="Cookie Feast"
-  >
-    <button
-      class="box-accordion-header"
-      type="button"
-      aria-expanded="false"
-    >
-      <div class="box-size-image">
-  <img src="cookie-feast.png" alt="Cookie Feast">
-</div>
-
-      <span class="box-accordion-copy">
-        <strong>COOKIE FEAST</strong>
-        <small><b>12 COOKIES</b><span>RM108</span></small>
-      </span>
-
-      <span class="box-accordion-arrow" aria-hidden="true">⌄</span>
-    </button>
-
-    <div class="box-accordion-body" hidden>
-      <div class="box-mini-slots" data-box-slots="12"></div>
-
-      <p class="box-accordion-helper">
-        Pick 12 cookies to complete your Cookie Feast.
-      </p>
-
-      <button
-        class="primary-button box-accordion-action"
-        type="button"
-        data-box-action="12"
-      >
-        CHOOSE MY GOOKIES
-      </button>
-    </div>
-  </article>
-</div>
-            <div class="cookie-box-panel build-legacy-panel">
-              <div class="cookie-box-header">
-                <div>
-                  <p class="cookie-box-label">YOUR BOX</p>
-                  <h3 id="buildSelectedBoxName">Choose a box size</h3>
-                </div>
-                <div class="box-counter">
-                  <strong id="buildSelectedCount">0</strong><span>/</span
-                  ><strong id="buildBoxCapacity">0</strong>
-                </div>
-              </div>
-
-              <!-- ==================== BUILD BOX PROGRESS ==================== -->
-              <div
-                class="box-progress"
-                id="buildBoxProgress"
-                role="progressbar"
-                aria-label="Build Your Box progress"
-                aria-valuemin="0"
-                aria-valuemax="0"
-                aria-valuenow="0"
-              >
-                <div class="box-progress-track">
-                  <div class="box-progress-fill" id="buildBoxProgressFill"></div>
-                </div>
-                <span class="box-progress-text" id="buildBoxProgressText">
-                  Choose a box size to begin
-                </span>
-              </div>
-
-              <div class="cookie-box-slots" id="buildCookieSlots"></div>
-              <p class="box-helper-text" id="buildBoxHelper">
-                Choose your box size to start building.
-              </p>
-              <button
-                class="primary-button"
-                id="openFlavourSelector"
-                type="button"
-                disabled
-              >
-                CHOOSE MY GOOKIES
+            <div class="shop-addon-copy">
+              <h3>Party Kit + Wish Card</h3>
+              <p>Candle, cardboard, sprinkles + custom wish card topper.</p>
+              <span class="shop-addon-price">RM7</span>
+              <button type="button" data-addon="party-kit">
+                ADD PARTY KIT + WISH CARD →
               </button>
             </div>
-          </section>
+          </article>
 
-      <section
-  class="order-section order-builder-panel is-hidden"
-  id="gookies-choice"
-  data-order-panel="choice"
->
-  <div class="gookies-picks-intro">
-    <p class="section-kicker">THE EASY, DELICIOUS WAY</p>
-    <p>We'll pick. You enjoy.</p>
-  </div>
 
-  <div class="gookies-picks-grid" id="collectionGrid">
-    <button
-      class="gookies-pick-card"
-      type="button"
-      data-pick-id="first-timer"
+          <article class="shop-addon-card">
+            <div class="shop-addon-visual">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            </div>
+
+            <div class="shop-addon-copy">
+              <h3>Wish Card</h3>
+              <p>A little card with your custom message, up to 70 characters.</p>
+              <span class="shop-addon-price">RM2</span>
+              <button type="button" data-addon="wishcard">
+                ADD WISH CARD →
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- =====================================================
+         ASSORTED BOXES
+    ====================================================== -->
+    <div
+      class="shop-category-panel"
+      data-shop-panel="assorted"
+      hidden
     >
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="First-Timer box" />
-        <span class="gookies-pick-badge">START HERE</span>
+      <div class="shop-panel-heading">
+        <p class="section-kicker">WE PICKED THE GOOD STUFF</p>
+        <h2>Assorted Boxes</h2>
+        <p>Easy choices when you want Gookie to do some of the thinking.</p>
       </div>
 
-      <div class="gookies-pick-copy">
-        <strong>FIRST-TIMER</strong>
-        <span class="gookies-pick-quantity">4 COOKIES</span>
-        <span class="gookies-pick-price">RM36</span>
+      <div class="shop-product-grid shop-product-grid-assorted">
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">BEST SELLER</span>
+            <img src="treat-box.png" alt="Best-Seller Box" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4</p>
+            <h3>Best-Seller Box</h3>
+            <p>Our four most-loved Gookies.</p>
+            <p class="shop-product-price">RM39</p>
+            <button class="shop-card-action" type="button" data-shop-action="best-seller">
+              DISCOVER MORE →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">ALL 8</span>
+            <img src="chunky-box.png" alt="The Whole Crew" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 8</p>
+            <h3>The Whole Crew</h3>
+            <p>Meet every Gookie in one box.</p>
+            <p class="shop-product-price">RM74</p>
+            <button class="shop-card-action" type="button" data-shop-action="whole-crew">
+              DISCOVER MORE →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">PICK ONE</span>
+            <img src="chunky-box.png" alt="Single Flavour Boxes" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4 / BOX OF 8</p>
+            <h3>Single Flavour Boxes</h3>
+            <p>Choose one favourite flavour for the whole box.</p>
+            <p class="shop-product-price">FROM RM39</p>
+            <button class="shop-card-action" type="button" data-single-flavour-trigger>
+              CHOOSE A FLAVOUR →
+            </button>
+          </div>
+        </article>
+
+
+        <article class="shop-product-card">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">BIG BOX</span>
+            <img src="cookie-feast.png" alt="Gookie Big Box" />
+          </div>
+
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 12 · UP TO 2 FLAVOURS</p>
+            <h3>Gookie Big Box</h3>
+            <p>Made for sharing.</p>
+            <p class="shop-product-price">RM108</p>
+            <button class="shop-card-action" type="button" data-shop-action="big-box">
+              CHOOSE A FLAVOUR →
+            </button>
+          </div>
+        </article>
+
       </div>
+    </div>
 
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
 
-    <button
-      class="gookies-pick-card"
-      type="button"
-      data-pick-id="the-classics"
+    <!-- =====================================================
+         BUILD YOUR OWN
+    ====================================================== -->
+    <div
+      class="shop-category-panel"
+      data-shop-panel="build"
+      hidden
     >
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="The Classics box" />
+      <div class="shop-panel-heading">
+        <p class="section-kicker">YOUR BOX. YOUR RULES.</p>
+        <h2>Build Your Own</h2>
+        <p>Choose a box size, then fill every spot with your favourites.</p>
       </div>
 
-      <div class="gookies-pick-copy">
-        <strong>THE CLASSICS</strong>
-        <span class="gookies-pick-quantity">6 COOKIES</span>
-        <span class="gookies-pick-price">RM52</span>
+      <div class="shop-build-size-grid">
+        <button class="shop-build-size-card shop-product-card" type="button" data-new-build-size="4">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">MAKE IT YOURS</span>
+            <img src="treat-box.png" alt="Build Your Own Box of 4" />
+          </div>
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 4</p>
+            <h3>Build Your Own</h3>
+            <p>Pick four favourites and make the box completely yours.</p>
+            <p class="shop-product-price">RM39</p>
+            <span class="shop-card-action shop-build-card-action">BUILD MY BOX →</span>
+          </div>
+        </button>
+
+        <button class="shop-build-size-card shop-product-card" type="button" data-new-build-size="8">
+          <div class="shop-product-visual">
+            <span class="shop-card-badge">MORE TO LOVE</span>
+            <img src="chunky-box.png" alt="Build Your Own Box of 8" />
+          </div>
+          <div class="shop-product-info">
+            <p class="shop-product-eyebrow">BOX OF 8</p>
+            <h3>Build Your Own</h3>
+            <p>Pick eight favourites for a bigger box made your way.</p>
+            <p class="shop-product-price">RM74</p>
+            <span class="shop-card-action shop-build-card-action">BUILD MY BOX →</span>
+          </div>
+        </button>
       </div>
 
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
+      <p class="shop-build-note">
+        Monthly Gookie can be included here whenever it is available.
+      </p>
+    </div>
 
-    <button
-      class="gookies-pick-card"
-      type="button"
-      data-pick-id="surprise-box"
+
+    <!-- =====================================================
+         MINI BOX
+    ====================================================== -->
+    <div
+      class="shop-category-panel"
+      data-shop-panel="mini"
+      hidden
     >
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="Surprise Box" />
+      <div class="shop-panel-heading">
+        <p class="section-kicker">SMALL BUT MIGHTY</p>
+        <h2>Mini Box</h2>
+        <p>15 little Gookies. 3 favourite flavours. Made for sharing.</p>
       </div>
 
-      <div class="gookies-pick-copy">
-        <strong>SURPRISE BOX</strong>
-        <span class="gookies-pick-quantity">6 COOKIES</span>
-        <span class="gookies-pick-price">RM52</span>
+      <article class="shop-mini-feature">
+        <div class="shop-mini-image">
+          <img src="treat-box.png" alt="Gookie Mini Box" />
+        </div>
+
+        <div class="shop-mini-copy">
+          <span class="shop-card-badge">15 MINI GOOKIES</span>
+          <h3>Mini Box</h3>
+
+          <p>
+            Fifteen 40g Mini Gookies in three fixed favourites —
+            5 Wonder Chip, 5 Dark Crush and 5 Red Bloom.
+          </p>
+
+          <p class="shop-product-price">RM59</p>
+
+          <button type="button" class="shop-card-action" data-shop-action="mini-box">
+            DISCOVER MORE →
+          </button>
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       SINGLE FLAVOUR SELECTOR — UI SHELL
+  ========================================================= -->
+  <section
+    class="modal shop-choice-modal"
+    id="singleFlavourShopModal"
+    aria-hidden="true"
+    aria-label="Choose a single flavour box"
+  >
+    <div class="modal-card shop-choice-modal-card">
+
+      <div class="modal-sticky-header">
+        <div>
+          <p class="drawer-eyebrow">SINGLE FLAVOUR BOX</p>
+          <h2>Pick your favourite.</h2>
+        </div>
+
+        <button
+          class="modal-close-button"
+          id="singleFlavourShopClose"
+          type="button"
+          aria-label="Close flavour selector"
+        >
+          ×
+        </button>
       </div>
 
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-
-    <button
-      class="gookies-pick-card"
-      type="button"
-      data-pick-id="full-wonder"
-    >
-      <div class="gookies-pick-image">
-        <img src="chunky-box.png" alt="Full Wonder box" />
+      <div class="single-flavour-size-row">
+        <button type="button" class="single-flavour-size is-active" data-single-size="4">
+          BOX OF 4
+        </button>
+        <button type="button" class="single-flavour-size" data-single-size="8">
+          BOX OF 8
+        </button>
       </div>
 
-      <div class="gookies-pick-copy">
-        <strong>FULL WONDER</strong>
-        <span class="gookies-pick-quantity">12 COOKIES</span>
-        <span class="gookies-pick-price">RM99</span>
+      <div class="single-flavour-list">
+        <button type="button" data-single-cookie="wonder-chip">Wonder Chip</button>
+        <button type="button" data-single-cookie="dark-crush">Dark Crush</button>
+        <button type="button" data-single-cookie="red-bloom">Red Bloom</button>
+        <button type="button" data-single-cookie="coffee-kiss">Coffee Kiss</button>
+        <button type="button" data-single-cookie="matcha-matchy">Matcha Matchy</button>
+        <button type="button" data-single-cookie="dream-cream">Dream Cream</button>
+        <button type="button" data-single-cookie="mallow-melt">Mallow Melt</button>
+        <button type="button" data-single-cookie="biscoff-boom">Biscoff Boom</button>
       </div>
 
-      <span class="gookies-pick-action">WHAT'S INSIDE →</span>
-    </button>
-  </div>
-</section>
-    </main>
-<!-- =========================================================
-     GOOKIE FOOTER — PRODUCTION
-========================================================= -->
+      <div class="shop-choice-footer">
+        <button
+          class="primary-button"
+          id="confirmSingleFlavourShop"
+          type="button"
+          disabled
+        >
+          CHOOSE A FLAVOUR
+        </button>
+      </div>
 
-<!-- =========================================================
-     GOOKIE FOOTER — FULL BRAND VERSION
-========================================================= -->
+    </div>
+  </section>
+
+</main>
 
 <footer class="site-footer" id="siteFooter">
 
@@ -1211,6 +1221,100 @@ Which one will steal your heart?</p>
     </section>
 
 
+
+    <!-- =========================================================
+         ADD-ON MODAL
+    ========================================================= -->
+    <section
+      class="modal addon-modal"
+      id="addonModal"
+      aria-hidden="true"
+      aria-label="Add an extra to your Gookie box"
+    >
+      <div class="modal-card addon-modal-card">
+        <div class="modal-sticky-header">
+          <div>
+            <p class="drawer-eyebrow">A LITTLE EXTRA</p>
+            <h2 id="addonModalTitle">Add something special.</h2>
+          </div>
+
+          <button
+            class="modal-close-button"
+            id="addonModalClose"
+            type="button"
+            aria-label="Close add-on"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="addon-modal-body">
+          <div class="addon-modal-product">
+            <div class="addon-modal-icon" id="addonModalIcon" aria-hidden="true">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+
+            <div class="addon-modal-product-copy">
+              <p class="section-kicker" id="addonModalEyebrow">PARTY KIT</p>
+              <h3 id="addonModalName">Party Kit</h3>
+              <p id="addonModalDescription"></p>
+              <strong id="addonModalPrice">RM7</strong>
+            </div>
+          </div>
+
+          <section class="addon-box-section" id="addonBoxSection">
+            <div class="addon-section-heading">
+              <h4>Which box is this for?</h4>
+              <p id="addonBoxHelper">
+                Choose the Gookie box that should receive this add-on.
+              </p>
+            </div>
+
+            <div
+              class="addon-box-list"
+              id="addonBoxList"
+              role="radiogroup"
+              aria-label="Choose a box for this add-on"
+            ></div>
+          </section>
+
+          <section class="addon-message-section" id="addonMessageSection">
+            <div class="addon-section-heading">
+              <h4 id="addonMessageHeading">Wish card message</h4>
+              <p id="addonMessageHelp"></p>
+            </div>
+
+            <label class="addon-message-field" for="addonMessage">
+              <textarea
+                id="addonMessage"
+                maxlength="70"
+                rows="3"
+                placeholder="Type your short wish here..."
+              ></textarea>
+
+              <span class="addon-message-meta">
+                <small id="addonMessageRequirement"></small>
+                <strong><span id="addonMessageCount">0</span>/70</strong>
+              </span>
+            </label>
+
+            <p class="addon-message-error" id="addonMessageError" role="alert"></p>
+          </section>
+        </div>
+
+        <div class="addon-modal-footer">
+          <button
+            class="primary-button"
+            id="saveAddonButton"
+            type="button"
+          >
+            ADD TO BOX
+          </button>
+        </div>
+      </div>
+    </section>
+
+
     <!-- =========================================================
          CHECKOUT MODAL: CUSTOMER DETAILS & ORDER REVIEW
          ========================================================= -->
@@ -1492,47 +1596,128 @@ Which one will steal your heart?</p>
     </div>
 
 <section
-  class="modal"
+  class="modal gookie-product-modal"
   id="gookiePickModal"
   aria-hidden="true"
-  aria-label="Gookie's Pick details"
+  aria-label="Gookie product details"
 >
-  <div class="modal-card gookie-pick-modal-card">
+  <div class="modal-card gookie-pick-modal-card gookie-product-modal-card">
+
     <button
-      class="modal-close-button"
+      class="modal-close-button gookie-product-close"
       id="gookiePickModalClose"
       type="button"
-      aria-label="Close Gookie's Pick details"
+      aria-label="Close product details"
     >
       ×
     </button>
 
-    <div class="gookie-pick-modal-image">
-      <img id="gookiePickModalImage" src="" alt="" />
-    </div>
+    <div class="gookie-product-modal-layout">
 
-    <div class="gookie-pick-modal-content">
-      <p class="section-kicker" id="gookiePickModalKicker"></p>
-      <h2 id="gookiePickModalTitle"></h2>
-      <p id="gookiePickModalDescription"></p>
-
-      <div class="gookie-pick-included">
-        <p class="mini-heading">WHAT'S INSIDE</p>
-        <div id="gookiePickModalIncluded"></div>
+      <div class="gookie-pick-modal-image gookie-product-media">
+        <img id="gookiePickModalImage" src="" alt="" />
       </div>
 
-      <div class="gookie-pick-modal-meta">
-        <span id="gookiePickModalQuantity"></span>
-        <strong id="gookiePickModalPrice"></strong>
-      </div>
+      <div class="gookie-pick-modal-content gookie-product-info">
 
-      <button
-        class="primary-button"
-        id="addGookiePickToCart"
-        type="button"
-      >
-        ADD TO CART
-      </button>
+        <p class="section-kicker" id="gookiePickModalKicker"></p>
+
+        <h2 id="gookiePickModalTitle"></h2>
+
+        <div class="gookie-product-meta">
+          <span id="gookiePickModalQuantity"></span>
+          <strong id="gookiePickModalPrice"></strong>
+        </div>
+
+        <p
+          class="gookie-product-description"
+          id="gookiePickModalDescription"
+        ></p>
+
+        <p
+          class="gookie-product-flavour-preview"
+          id="gookiePickModalPreview"
+        ></p>
+
+        <button
+          class="primary-button gookie-product-add-button"
+          id="addGookiePickToCart"
+          type="button"
+        >
+          ADD TO CART
+        </button>
+
+        <div class="gookie-product-accordions">
+
+          <details class="gookie-product-accordion">
+            <summary>
+              <span>WHAT'S IN THE BOX</span>
+              <span class="gookie-product-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="gookie-product-accordion-body">
+              <div id="gookiePickModalIncluded"></div>
+            </div>
+          </details>
+
+          <details class="gookie-product-accordion">
+            <summary>
+              <span>INGREDIENTS &amp; ALLERGENS</span>
+              <span class="gookie-product-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="gookie-product-accordion-body">
+              <p>
+                Ingredients vary by flavour. Please contact Gookie if you need
+                the ingredient information for a specific cookie before ordering.
+              </p>
+
+              <p><strong>Our cookies contain or may contain:</strong></p>
+
+              <ul>
+                <li>Wheat (Gluten)</li>
+                <li>Milk</li>
+                <li>Eggs</li>
+                <li>Soy</li>
+                <li>Peanuts</li>
+                <li>Tree Nuts, including Macadamia and Pistachio</li>
+              </ul>
+
+              <p class="gookie-product-allergen-note">
+                All Gookies are prepared in the same kitchen and may come into
+                contact with other allergens. We cannot guarantee that any
+                product is completely free from allergen cross-contact.
+              </p>
+            </div>
+          </details>
+
+          <details class="gookie-product-accordion">
+            <summary>
+              <span>STORAGE &amp; REHEATING</span>
+              <span class="gookie-product-accordion-icon" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="gookie-product-accordion-body">
+              <p>
+                Best enjoyed within <strong>3 days</strong>. Keep in an airtight
+                container at room temperature, away from direct sunlight and heat.
+              </p>
+
+              <p>
+                Freeze in an airtight container or freezer-safe bag for up to
+                <strong>2 months</strong>.
+              </p>
+
+              <p>
+                <strong>Microwave:</strong> 8–12 seconds.<br />
+                <strong>Air fryer:</strong> 150°C for 2–3 minutes.
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -1540,5 +1725,21 @@ Which one will steal your heart?</p>
 <script src="order-engine.js"></script>
 <script src="order.js?v=1.0"></script>
         
-  </body>
+  
+<section class="modal search-modal" id="searchModal" aria-hidden="true" aria-label="Search Gookie">
+  <div class="modal-card search-modal-card">
+    <div class="search-modal-header">
+      <div><p class="search-modal-eyebrow">FIND YOUR GOOKIE</p><h2>What are you craving?</h2></div>
+      <button class="modal-close-button" id="searchModalClose" type="button" aria-label="Close search">×</button>
+    </div>
+    <div class="search-input-wrap">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input id="siteSearchInput" type="search" placeholder="Search cookies, boxes or add-ons..." autocomplete="off" aria-label="Search Gookie products" />
+    </div>
+    <div class="search-results" id="siteSearchResults" aria-live="polite"></div>
+  </div>
+</section>
+
+  <script src="site-search.js?v=1.0"></script>
+</body>
 </html>
