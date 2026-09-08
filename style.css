@@ -484,35 +484,131 @@ body {
 }
 
 
-/* LITTLE HANDWRITTEN NOTE */
+/* ========================================
+   OUR CLASSIC STICKER
+======================================== */
 
-.cookie-note {
+.cookie-sticker {
   position: absolute;
 
-  top: 8%;
-  right: -65px;
+  top: 3%;
+  right: -88px;
+
+  width: 150px;
+  height: 130px;
+
+  z-index: 4;
+
+  transform: rotate(-5deg);
+
+  pointer-events: none;
+}
+
+
+/* RED LABEL */
+
+.sticker-label {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  min-width: 132px;
+
+  padding: 12px 15px 11px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  border: 6px solid var(--cream);
+  border-radius: 18px;
+
+  background: var(--red);
+
+  box-shadow:
+    0 4px 0 rgba(18, 62, 150, 0.06);
+
+  color: var(--white);
+
+  font-family: "Titan One", sans-serif;
+
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 0.86;
+
+  letter-spacing: -0.02em;
+
+  text-align: center;
+}
+
+
+/* ARROW */
+
+.sticker-arrow {
+  position: absolute;
+
+  width: 102px;
+  height: 72px;
+
+  right: 52px;
+  top: 55px;
+
+  overflow: visible;
 
   color: var(--red);
-
-  font-family: "DM Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.05;
-
-  transform: rotate(-7deg);
 }
 
 
-.note-arrow {
-  margin-top: 2px;
+/* LITTLE RED RAYS */
 
-  font-size: 35px;
-  line-height: 1;
+.sticker-rays {
+  position: absolute;
+
+  top: 3px;
+  right: -34px;
+
+  width: 35px;
+  height: 62px;
 }
 
+
+.sticker-rays i {
+  position: absolute;
+
+  display: block;
+
+  width: 23px;
+  height: 5px;
+
+  border-radius: 99px;
+
+  background: var(--red);
+}
+
+
+.sticker-rays i:nth-child(1) {
+  top: 4px;
+  left: 0;
+
+  transform: rotate(-65deg);
+}
+
+
+.sticker-rays i:nth-child(2) {
+  top: 27px;
+  left: 8px;
+
+  transform: rotate(-25deg);
+}
+
+
+.sticker-rays i:nth-child(3) {
+  top: 50px;
+  left: 5px;
+
+  transform: rotate(8deg);
+}
 
 /* COOKIE NAME */
 
@@ -679,7 +775,45 @@ body {
 
     font-size: 13px;
   }
+   
+.cookie-sticker {
+  top: 1%;
+  right: -6px;
 
+  width: 105px;
+  height: 100px;
+
+  transform: rotate(-5deg);
+}
+
+
+.sticker-label {
+  min-width: 91px;
+
+  padding: 9px 10px 8px;
+
+  border-width: 4px;
+  border-radius: 13px;
+
+  font-size: 14px;
+}
+
+
+.sticker-arrow {
+  width: 69px;
+  height: 51px;
+
+  right: 38px;
+  top: 42px;
+}
+
+
+.sticker-rays {
+  right: -24px;
+
+  transform: scale(0.7);
+  transform-origin: top left;
+}
 }
 
 
