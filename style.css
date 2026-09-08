@@ -564,6 +564,7 @@ body {
 
 .sticker-rays {
   position: absolute;
+   display: none;
 
   top: 3px;
   right: -34px;
