@@ -12,17 +12,10 @@ const cookieLineup = [
   },
 
   {
-    name: "DARK CRUSH",
-    image: "dark-crush.png",
-    description: "Deep chocolate. Big comfort.",
-    sticker: "CHOCO LOVE"
-  },
-
-  {
-    name: "BISCOFF BOOM",
-    image: "biscoff-boom.png",
-    description: "Biscoff-filled and made for serious cravings.",
-    sticker: "CROWD FAVE"
+    name: "RED BLOOM",
+    image: "red-bloom.png",
+    description: "A soft red velvet favourite with a rich creamy bite.",
+    sticker: "VELVET LOVE"
   },
 
   {
@@ -33,6 +26,13 @@ const cookieLineup = [
   },
 
   {
+    name: "MALLOW MELT",
+    image: "mallow-melt.png",
+    description: "Chocolate, marshmallow and all the cosy s'mores vibes.",
+    sticker: "S'MORES FAVE"
+  },
+
+  {
     name: "DREAM CREAM",
     image: "dream-cream.png",
     description: "Cookies and cream with a dreamy centre.",
@@ -40,10 +40,40 @@ const cookieLineup = [
   },
 
   {
-    name: "MONTHLY WONDER",
-    image: "monthly-wonder.png",
-    description: "A little something special, only for a while.",
-    sticker: "LIMITED DROP"
+    name: "DARK CRUSH",
+    image: "dark-crush.png",
+    description: "Deep chocolate flavour for serious chocolate lovers.",
+    sticker: "CHOCO LOVE"
+  },
+
+  {
+    name: "COFFEE KISS",
+    image: "coffee-kiss.png",
+    description: "A comforting coffee-inspired cookie with a rich finish.",
+    sticker: "COFFEE TIME"
+  },
+
+  {
+    name: "BISCOFF BOOM",
+    image: "biscoff-boom.png",
+    description: "Biscoff-filled and made for serious cravings.",
+    sticker: "CROWD FAVE"
+  },
+
+  // ========================================
+  // MONTHLY WONDER
+  // TUKAR BAHAGIAN INI SETIAP BULAN
+  // 1. name
+  // 2. image
+  // 3. description
+  // 4. sticker
+  // ========================================
+
+  {
+    name: "BERRY BLAST",
+    image: "berry-blast.png",
+    description: "A berry-packed limited drop, here for this month only.",
+    sticker: "MONTHLY WONDER"
   }
 
 ];
