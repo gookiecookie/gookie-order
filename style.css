@@ -8,60 +8,111 @@ body {
   padding: 0;
 }
 
+:root {
+  --gookie-blue: #0f3f99;
+  --gookie-red: #d9272e;
+  --gookie-pink: #f7b7c3;
+  --gookie-cream: #f8f0df;
+  --gookie-white: #ffffff;
+  --gookie-ink: #17324d;
+}
+
 body {
-  background: #f4eee4;
-  color: #17324d;
+  background: var(--gookie-cream);
   font-family: "DM Sans", sans-serif;
+  color: var(--gookie-blue);
 }
 
 .font-test {
-  width: min(100%, 650px);
+  width: min(100%, 720px);
   margin: 0 auto;
-  padding: 50px 18px 80px;
+  padding: 0 18px 80px;
 }
 
+/* WHITE HEADER FEEL */
 .eyebrow {
-  margin: 0 0 28px;
+  margin: 0 -18px 36px;
+  padding: 24px 18px;
   text-align: center;
+
+  background: var(--gookie-white);
+
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.18em;
-  color: #e94b3c;
+
+  color: var(--gookie-red);
 }
 
+/* EACH FONT SAMPLE */
 .font-card {
-  background: #fffaf3;
-  border-radius: 28px;
-  padding: 34px 22px;
-  margin-bottom: 22px;
+  position: relative;
+
+  background: transparent;
+
+  padding: 48px 18px 52px;
+  margin-bottom: 8px;
+
   text-align: center;
+
+  border-bottom: 2px solid rgba(15, 63, 153, 0.08);
 }
 
 .font-card span {
-  display: block;
-  margin-bottom: 22px;
+  display: inline-block;
+
+  margin-bottom: 28px;
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: var(--gookie-pink);
+
   font-family: "DM Sans", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #e94b3c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  color: var(--gookie-blue);
 }
 
+/* MAIN TITLE */
 .font-card h1 {
   margin: 0;
-  font-size: clamp(48px, 14vw, 82px);
-  line-height: 0.88;
+
+  font-size: clamp(58px, 13vw, 100px);
+  line-height: 0.85;
+
   font-weight: 400;
-  letter-spacing: -0.035em;
-  color: #17324d;
+  letter-spacing: -0.045em;
+
+  color: var(--gookie-blue);
 }
 
+/* HAPPINESS */
 .font-card h2 {
-  margin: 28px 0 0;
-  font-size: clamp(33px, 9vw, 55px);
-  line-height: 0.92;
+  margin: 32px 0 0;
+
+  font-size: clamp(42px, 9vw, 68px);
+  line-height: 0.88;
+
   font-weight: 400;
-  color: #e94b3c;
+  letter-spacing: -0.03em;
+
+  color: var(--gookie-red);
+}
+
+/* LITTLE PINK ACCENT */
+.font-card::after {
+  content: "♥";
+
+  display: block;
+
+  margin-top: 28px;
+
+  font-size: 22px;
+
+  color: var(--gookie-pink);
 }
 
 
@@ -71,13 +122,11 @@ body {
   font-family: "Titan One", sans-serif;
 }
 
-
 /* FONT 02 */
 .lilita h1,
 .lilita h2 {
   font-family: "Lilita One", sans-serif;
 }
-
 
 /* FONT 03 */
 .bowlby h1,
@@ -85,13 +134,11 @@ body {
   font-family: "Bowlby One", sans-serif;
 }
 
-
 /* FONT 04 */
 .coiny h1,
 .coiny h2 {
   font-family: "Coiny", sans-serif;
 }
-
 
 /* FONT 05 */
 .fredoka h1,
