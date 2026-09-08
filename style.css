@@ -1545,3 +1545,9 @@ body {
   }
 
 }
+
+/* MONTHLY WONDER — COOKIE NAME POSITION FIX */
+
+.monthly-wonder-name {
+  margin-top: -8px;
+}
