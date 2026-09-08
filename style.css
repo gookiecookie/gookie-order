@@ -1555,3 +1555,133 @@ body {
 .monthly-wonder-name {
   margin-top: 0;
 }
+
+/* ========================================
+   GOOKIE'S GUIDE
+======================================== */
+
+.gookie-guide {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(100% - 60px, 980px);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+
+  z-index: 3;
+}
+
+.guide-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px 18px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.guide-icon {
+  flex: 0 0 auto;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 16px;
+
+  background: var(--pink);
+  color: var(--red);
+}
+
+.guide-icon svg {
+  width: 27px;
+  height: 27px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.guide-text h3 {
+  margin: 0;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.1;
+
+  color: var(--white);
+}
+
+.guide-text p {
+  margin: 4px 0 0;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  color: var(--cream);
+}
+
+
+/* ========================================
+   GOOKIE'S GUIDE — MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .gookie-guide {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+
+    width: 100%;
+
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    margin-bottom: 42px;
+  }
+
+  .guide-step {
+    padding: 13px 12px;
+    gap: 10px;
+
+    border-radius: 18px;
+  }
+
+  .guide-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 14px;
+  }
+
+  .guide-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .guide-text h3 {
+    font-size: 12px;
+  }
+
+  .guide-text p {
+    font-size: 10px;
+  }
+
+}
