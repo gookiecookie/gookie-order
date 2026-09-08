@@ -1329,3 +1329,51 @@ body {
   }
 
 }
+
+/* ========================================
+   COOKIE CAROUSEL TRANSITION
+======================================== */
+
+.cookie-image {
+  opacity: 1;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.32s ease,
+    filter 0.25s ease;
+}
+
+
+.cookie-image.is-changing {
+  opacity: 0;
+
+  transform:
+    scale(0.93)
+    rotate(-2deg);
+}
+
+
+.cookie-info h2,
+.cookie-info p,
+.cookie-sticker {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.cookie-info h2.is-changing,
+.cookie-info p.is-changing {
+  opacity: 0;
+
+  transform: translateY(7px);
+}
+
+
+.cookie-sticker.is-changing {
+  opacity: 0;
+
+  transform:
+    rotate(-5deg)
+    scale(0.88);
+}
