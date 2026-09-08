@@ -1685,3 +1685,17 @@ body {
   }
 
 }
+
+/* HAPPINESS SECTION — GUIDE POSITION RESET */
+
+.gookie-guide {
+  top: 120px;
+}
+
+.happiness-copy {
+  transform: translateY(70px);
+}
+
+.happiness-copy h2 {
+  font-size: clamp(54px, 6.2vw, 82px);
+}
