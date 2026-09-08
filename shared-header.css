@@ -1,0 +1,26 @@
+/* GOOKIE GLOBAL HEADER v1.0 — master: homepage compact red header */
+:root{--header-height-mobile:68px;--header-height-desktop:72px}
+.gookie-top-marquee{position:relative;z-index:51;width:100%;height:32px;overflow:hidden;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.28)}
+.gookie-top-marquee-track{display:flex;align-items:center;width:max-content;height:100%;animation:gookieTopMarquee 26s linear infinite;will-change:transform}
+.gookie-top-marquee-track span{position:relative;flex:0 0 auto;padding:0 30px;font-family:"DM Sans",sans-serif;font-size:.75rem;font-weight:600;line-height:1;letter-spacing:.10em;text-transform:uppercase;white-space:nowrap}
+.gookie-top-marquee-track span::after{content:"•";position:absolute;right:-2px;top:50%;transform:translateY(-50%);opacity:.65}
+@keyframes gookieTopMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.site-header{position:sticky;top:0;z-index:50;height:var(--header-height-mobile);background:#bb191a;color:#fff}
+.header-inner{position:relative;display:flex;align-items:center;justify-content:center;height:100%;max-width:none!important;margin:0!important;padding:0!important}
+.brand-logo{position:absolute;left:50%;transform:translateX(-50%)}
+.brand-logo img{display:block;width:112px;height:auto}
+.header-icon-button{position:absolute;top:50%;display:grid;place-items:center;width:38px;height:38px;padding:0;border:0;border-radius:50%;background:transparent;color:#fff;cursor:pointer;transform:translateY(-50%)}
+.header-icon-button:hover{background:rgba(255,255,255,.12)}
+#menuButton{left:14px}.header-inner>.cart-button{right:12px}.header-search-button{right:96px}.header-search-button i{font-size:1rem;line-height:1}
+.malaysia-flag{position:absolute;right:58px;top:50%;transform:translateY(-50%);font-size:14px;line-height:1;user-select:none}
+.hamburger-icon{display:flex;flex-direction:column;gap:4px;width:22px}.hamburger-icon span{width:100%;height:3px;border-radius:999px;background:currentColor}.cart-icon{width:24px;height:24px}
+.header-inner .cart-count{position:absolute;top:1px;right:-1px;display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border:2px solid #bb191a;border-radius:999px;background:#fff;color:#bb191a;font-size:.62rem;font-weight:800;line-height:1}
+.search-modal{position:fixed;inset:0;z-index:100;display:grid;place-items:start center;padding:72px 20px 20px;background:rgba(17,9,9,.55);opacity:0;visibility:hidden;transition:opacity 260ms ease,visibility 260ms ease}
+.search-modal.is-open{opacity:1;visibility:visible}.search-modal-card{width:min(100%,620px);max-height:min(76vh,680px);overflow:auto;border-radius:24px;padding:24px;background:#fff8ef;color:#171515;transform:translateY(24px);transition:transform 260ms ease}.search-modal.is-open .search-modal-card{transform:translateY(0)}
+.search-modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}.search-modal-header h2{margin:0;font-family:"League Spartan",sans-serif;font-size:1.9rem;line-height:1}.search-modal-eyebrow{margin:0 0 6px;color:#bb191a;font-size:.68rem;font-weight:800;letter-spacing:.13em}.search-modal .modal-close-button{display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;padding:0 0 4px;border:1px solid rgba(23,21,21,.12);border-radius:50%;background:#fff;color:#171515;font-size:2rem;line-height:1;cursor:pointer}
+.search-input-wrap{position:relative}.search-input-wrap>i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#716860;font-size:.95rem}#siteSearchInput{width:100%;min-height:50px;padding:11px 18px 11px 44px;border:1px solid rgba(23,21,21,.12);border-radius:999px;background:#fff;color:#171515;outline:none;font:inherit}#siteSearchInput:focus{border-color:rgba(187,25,26,.42);box-shadow:0 0 0 4px rgba(187,25,26,.07)}
+.search-results{display:grid;gap:8px;margin-top:14px}.search-result-item{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid rgba(23,21,21,.08);border-radius:14px;background:#fff;color:#171515;text-decoration:none}.search-result-item:hover{background:#fffaf6;border-color:rgba(187,25,26,.2)}.search-result-copy strong{display:block;font-family:"League Spartan",sans-serif;font-size:.98rem}.search-result-copy span{display:block;margin-top:2px;color:#716860;font-size:.74rem}.search-result-arrow{color:#bb191a;font-size:.88rem}.search-empty{margin:0;padding:18px 6px 4px;color:#716860;text-align:center;font-size:.82rem}
+body.site-search-open{overflow:hidden}
+@media(min-width:768px){.site-header{height:var(--header-height-desktop)}}
+@media(max-width:767px){.brand-logo img{width:98px}.header-icon-button{width:36px;height:36px}#menuButton{left:10px}.header-inner>.cart-button{right:8px}.malaysia-flag{right:50px;font-size:13px}.header-search-button{right:78px}.hamburger-icon{width:20px}.cart-icon{width:21px;height:21px}.search-modal{padding:58px 12px 12px}.search-modal-card{padding:18px;border-radius:20px}.search-modal-header h2{font-size:1.6rem}}
+@media(prefers-reduced-motion:reduce){.gookie-top-marquee-track{animation:none}}
