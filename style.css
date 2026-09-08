@@ -1377,3 +1377,171 @@ body {
     rotate(-5deg)
     scale(0.88);
 }
+
+/* ========================================
+   MONTHLY WONDER
+======================================== */
+
+.monthly-wonder {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--pink);
+}
+
+.monthly-wonder-inner {
+  width: min(100% - 60px, 1100px);
+  min-height: 680px;
+  margin: 0 auto;
+  padding: 90px 0;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+
+/* TEXT */
+
+.monthly-wonder-copy h2 {
+  margin: 0;
+
+  font-family: "Titan One", sans-serif;
+  font-size: clamp(72px, 8vw, 112px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+
+  color: var(--red);
+}
+
+.monthly-wonder-copy p {
+  max-width: 390px;
+  margin: 30px 0 0;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  color: var(--blue);
+}
+
+
+/* BUTTON */
+
+.monthly-wonder-button {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 25px;
+
+  border-radius: 999px;
+
+  background: var(--red);
+  color: var(--white);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.monthly-wonder-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 var(--blue);
+}
+
+
+/* COOKIE */
+
+.monthly-wonder-visual {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.monthly-wonder-cookie {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+
+  filter: drop-shadow(0 20px 18px rgba(0, 0, 0, 0.12));
+
+  transform: rotate(5deg);
+}
+
+.monthly-wonder-name {
+  margin-top: 18px;
+
+  font-family: "Titan One", sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--blue);
+}
+
+
+/* ========================================
+   MONTHLY WONDER — MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .monthly-wonder-inner {
+    width: min(100% - 40px, 500px);
+    min-height: auto;
+    padding: 70px 0 75px;
+
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    text-align: center;
+  }
+
+  .monthly-wonder-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .monthly-wonder-copy h2 {
+    font-size: clamp(62px, 18vw, 82px);
+    line-height: 0.84;
+  }
+
+  .monthly-wonder-copy p {
+    max-width: 330px;
+    margin-top: 24px;
+
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .monthly-wonder-button {
+    margin-top: 25px;
+    padding: 15px 21px;
+
+    font-size: 12px;
+  }
+
+  .monthly-wonder-cookie {
+    width: min(100%, 390px);
+  }
+
+  .monthly-wonder-name {
+    margin-top: 12px;
+    font-size: 29px;
+  }
+
+}
