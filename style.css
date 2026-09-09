@@ -1160,3 +1160,66 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
   cursor: pointer;
 }
+
+/* ========================================
+   COOKIE LINEUP — DESKTOP POLISH
+======================================== */
+
+@media (min-width: 701px) {
+
+  .lineup-shell {
+    padding-top: 52px;
+    padding-bottom: 56px;
+  }
+
+  .section-heading > p {
+    margin-bottom: 6px;
+    font-size: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(34px, 3.8vw, 48px);
+    line-height: 1;
+  }
+
+  .cookie-feature {
+    margin-top: 16px;
+  }
+
+  .cookie-stage {
+    min-height: 320px;
+  }
+
+  .cookie-visual {
+    width: min(34vw, 330px);
+  }
+
+  .cookie-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 30px;
+  }
+
+  .cookie-arrow-left {
+    left: 30px;
+  }
+
+  .cookie-arrow-right {
+    right: 30px;
+  }
+
+  .cookie-info {
+    margin-top: 2px;
+  }
+
+  .cookie-info h2,
+  .cookie-info h3 {
+    font-size: clamp(26px, 2.8vw, 34px);
+  }
+
+  .lineup-link {
+    margin-top: 18px;
+    font-size: 10px;
+  }
+
+}
