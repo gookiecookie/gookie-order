@@ -503,6 +503,80 @@ searchInput.addEventListener("keydown", (event) => {
 
   searchPanel.classList.remove("is-open");
 });
+
+/* ----------------------------------------
+   SEARCH SUGGESTIONS
+---------------------------------------- */
+
+const searchSuggestions =
+  document.getElementById("search-suggestions");
+
+function openCookieFromSearch(index) {
+  currentCookieIndex = index;
+  showCookie(currentCookieIndex);
+
+  document
+    .getElementById("cookie-lineup")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+  searchPanel.classList.remove("is-open");
+  searchSuggestions.classList.remove("is-open");
+  searchInput.value = "";
+}
+
+searchInput.addEventListener("input", () => {
+
+  const keyword =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  searchSuggestions.innerHTML = "";
+
+  if (!keyword) {
+    searchSuggestions.classList.remove("is-open");
+    return;
+  }
+
+  const matches = cookieLineup
+    .map((cookie, index) => ({
+      cookie,
+      index
+    }))
+    .filter(({ cookie }) =>
+      cookie.name
+        .toLowerCase()
+        .includes(keyword)
+    );
+
+  if (matches.length === 0) {
+    searchSuggestions.classList.remove("is-open");
+    return;
+  }
+
+  matches.forEach(({ cookie, index }) => {
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+    button.className =
+      "search-suggestion-item";
+
+    button.textContent =
+      cookie.name;
+
+    button.addEventListener("click", () => {
+      openCookieFromSearch(index);
+    });
+
+    searchSuggestions.appendChild(button);
+  });
+
+  searchSuggestions.classList.add("is-open");
+});
     
   </script>
 
