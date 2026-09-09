@@ -442,6 +442,30 @@
     } catch (error) {
       console.log("Monthly Wonder hero is using its HTML fallback.");
     }
+
+/* ----------------------------------------
+   SEARCH PANEL
+---------------------------------------- */
+
+const searchButton = document.querySelector(".search-btn");
+const searchPanel = document.getElementById("search-panel");
+const searchInput = document.getElementById("site-search-input");
+const searchCloseButton = document.getElementById("search-close-btn");
+
+searchButton.addEventListener("click", () => {
+  searchPanel.classList.toggle("is-open");
+
+  if (searchPanel.classList.contains("is-open")) {
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+  }
+});
+
+searchCloseButton.addEventListener("click", () => {
+  searchPanel.classList.remove("is-open");
+});
+    
   </script>
 
 </body>
