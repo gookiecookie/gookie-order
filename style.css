@@ -647,3 +647,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
     max-height: 300px !important;
   }
 }
+
+/* ========================================
+   HELLO WE'RE GOOKIE — SHOP IMAGE
+======================================== */
+
+.story-shop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-shop-image {
+  display: block;
+  width: min(100%, 390px);
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .story-shop-image {
+    width: min(82vw, 300px);
+  }
+
+}
