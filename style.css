@@ -1223,3 +1223,67 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
 }
+
+/* ========================================
+   SEARCH SUGGESTIONS
+======================================== */
+
+.search-panel-inner {
+  position: relative;
+}
+
+.search-suggestions {
+  position: absolute;
+
+  top: 66px;
+  left: 0;
+  right: 50px;
+
+  display: none;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 22, 158, 0.12);
+  border-radius: 16px;
+
+  background: var(--white);
+
+  box-shadow: 0 12px 30px rgba(0, 22, 158, 0.10);
+
+  z-index: 20;
+}
+
+.search-suggestions.is-open {
+  display: block;
+}
+
+.search-suggestion-item {
+  width: 100%;
+
+  display: block;
+
+  padding: 13px 16px;
+
+  border: 0;
+  border-bottom: 1px solid rgba(0, 22, 158, 0.08);
+
+  background: var(--white);
+
+  color: var(--blue);
+
+  text-align: left;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: 0;
+}
+
+.search-suggestion-item:hover {
+  background: var(--cream);
+}
