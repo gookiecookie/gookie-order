@@ -577,3 +577,73 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
 }
+
+/* ========================================
+   PROMO HERO — COMPACT VERSION
+======================================== */
+
+.promo-carousel {
+  min-height: 520px;
+}
+
+.promo-slide {
+  min-height: 520px;
+  padding: 55px 5%;
+}
+
+.promo-slide-inner {
+  max-width: 1250px;
+  gap: 50px;
+}
+
+.promo-copy h1 {
+  font-size: clamp(58px, 6vw, 92px);
+  line-height: 0.88;
+}
+
+.promo-copy p {
+  max-width: 520px;
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.promo-visual img,
+.promo-hero-cookies {
+  max-width: 500px !important;
+  max-height: 410px !important;
+  object-fit: contain;
+}
+
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .promo-carousel,
+  .promo-slide {
+    min-height: auto;
+  }
+
+  .promo-slide {
+    padding: 42px 24px 48px;
+  }
+
+  .promo-slide-inner {
+    gap: 24px;
+  }
+
+  .promo-copy h1 {
+    font-size: clamp(46px, 13vw, 62px);
+    line-height: 0.9;
+  }
+
+  .promo-copy p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .promo-visual img,
+  .promo-hero-cookies {
+    width: min(82vw, 330px) !important;
+    max-height: 300px !important;
+  }
+}
