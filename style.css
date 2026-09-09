@@ -930,3 +930,57 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 
 }
+
+/* ========================================
+   MENU DRAWER — FINAL POLISH
+======================================== */
+
+.menu-socials {
+  position: absolute;
+  left: 40px;
+  bottom: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-socials a {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1.5px solid var(--blue);
+  border-radius: 50%;
+
+  color: var(--blue);
+  font-size: 17px;
+  text-decoration: none;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.menu-socials a:hover {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .menu-socials {
+    left: 28px;
+    bottom: 36px;
+    gap: 10px;
+  }
+
+  .menu-socials a {
+    width: 39px;
+    height: 39px;
+    font-size: 16px;
+  }
+}
