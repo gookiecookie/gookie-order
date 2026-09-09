@@ -1293,12 +1293,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
 ======================================== */
 
 .search-panel {
-  overflow: visible;
+  position: sticky;
+  top: var(--header-height);
   z-index: 2000;
+
+  max-height: 0;
+  overflow: hidden;
+
+  background: var(--white);
+  transition: max-height 0.25s ease;
 }
 
 .search-panel.is-open {
-  max-height: none;
+  max-height: 120px;
   overflow: visible;
 }
 
@@ -1310,7 +1317,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .search-suggestions {
   z-index: 3000;
 }
-
 /* Hide browser's native search clear button */
 #site-search-input::-webkit-search-cancel-button {
   -webkit-appearance: none;
