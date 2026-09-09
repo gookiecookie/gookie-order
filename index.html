@@ -464,6 +464,40 @@ searchButton.addEventListener("click", () => {
 searchCloseButton.addEventListener("click", () => {
   searchPanel.classList.remove("is-open");
 });
+
+/* ----------------------------------------
+   SEARCH COOKIE BY NAME
+---------------------------------------- */
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+
+  const keyword = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  if (!keyword) return;
+
+  const foundIndex = cookieLineup.findIndex((cookie) =>
+    cookie.name.toLowerCase().includes(keyword)
+  );
+
+  if (foundIndex === -1) {
+    alert("Cookie not found.");
+    return;
+  }
+
+  currentCookieIndex = foundIndex;
+  showCookie(currentCookieIndex);
+
+  document
+    .getElementById("cookie-lineup")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+  searchPanel.classList.remove("is-open");
+});
     
   </script>
 
