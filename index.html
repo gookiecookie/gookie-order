@@ -19,24 +19,57 @@
 <body>
 
   <!-- ================= HEADER ================= -->
-  <header class="site-header">
-    <button class="menu-btn" id="menu-open" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+ <header class="site-header">
+
+  <!-- HAMBURGER -->
+  <button
+    class="menu-btn"
+    id="menu-open"
+    type="button"
+    aria-label="Open menu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+
+  <!-- LOGO -->
+  <a href="#" class="brand" aria-label="Gookie home">
+    <img src="logo.png" alt="Gookie">
+  </a>
+
+
+  <!-- RIGHT SIDE ICONS -->
+  <div class="header-actions">
+
+    <!-- SEARCH -->
+    <button
+      class="header-icon-btn search-btn"
+      type="button"
+      aria-label="Search"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
     </button>
 
-    <a href="#" class="brand" aria-label="Gookie home">
-      <!-- Current blue logo is temporarily turned white with CSS. -->
-      <img src="logo.png" alt="Gookie">
-    </a>
 
-    <button class="cart-btn" aria-label="Open cart">
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M14 17h20l-2 22H16L14 17Z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
-        <path d="M19 18v-3a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
-      </svg>
-      <span class="cart-count">0</span>
+    <!-- CART / BASKET -->
+    <button
+      class="header-icon-btn cart-btn"
+      type="button"
+      aria-label="Open cart"
+    >
+      <i class="fa-solid fa-basket-shopping"></i>
+
+      <span class="cart-count">
+        0
+      </span>
     </button>
-  </header>
+
+  </div>
+
+</header>
 
   <!-- ================= MENU DRAWER ================= -->
 <div class="menu-overlay" id="menu-overlay" hidden>
