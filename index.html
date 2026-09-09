@@ -618,6 +618,65 @@ searchInput.addEventListener("input", () => {
 
   searchSuggestions.classList.add("is-open");
 });
+
+/* ----------------------------------------
+   CART DRAWER
+---------------------------------------- */
+
+const cartButton =
+  document.querySelector(".cart-btn");
+
+const cartOverlay =
+  document.getElementById("cart-overlay");
+
+const cartCloseButton =
+  document.getElementById("cart-close-btn");
+
+const cartShopButton =
+  document.getElementById("cart-shop-btn");
+
+
+function openCart() {
+
+  cartOverlay.hidden = false;
+
+  requestAnimationFrame(() => {
+    cartOverlay.classList.add("is-open");
+  });
+
+  document.body.classList.add("cart-open");
+}
+
+
+function closeCart() {
+
+  cartOverlay.classList.remove("is-open");
+
+  document.body.classList.remove("cart-open");
+
+  setTimeout(() => {
+    cartOverlay.hidden = true;
+  }, 280);
+}
+
+
+cartButton.addEventListener("click", openCart);
+
+cartCloseButton.addEventListener("click", closeCart);
+
+
+cartOverlay.addEventListener("click", (event) => {
+
+  if (event.target === cartOverlay) {
+    closeCart();
+  }
+
+});
+
+
+cartShopButton.addEventListener("click", () => {
+  closeCart();
+});
     
   </script>
 
