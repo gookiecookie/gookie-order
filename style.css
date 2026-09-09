@@ -1287,3 +1287,32 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .search-suggestion-item:hover {
   background: var(--cream);
 }
+
+/* ========================================
+   FIX SEARCH SUGGESTIONS LAYER
+======================================== */
+
+.search-panel {
+  overflow: visible;
+  z-index: 2000;
+}
+
+.search-panel.is-open {
+  max-height: none;
+  overflow: visible;
+}
+
+.search-panel-inner {
+  position: relative;
+  z-index: 2001;
+}
+
+.search-suggestions {
+  z-index: 3000;
+}
+
+/* Hide browser's native search clear button */
+#site-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
