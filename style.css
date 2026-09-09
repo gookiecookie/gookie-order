@@ -558,3 +558,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .cookie-stage { min-height: 270px; }
   .guide-grid { gap: 26px 10px; }
 }
+
+/* ========================================
+   MEET THE GOOKIES — HERO IMAGE
+======================================== */
+
+.promo-hero-cookies {
+  width: min(100%, 620px) !important;
+  max-height: 500px !important;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+
+  .promo-hero-cookies {
+    width: min(92vw, 390px) !important;
+    max-height: 330px !important;
+  }
+
+}
