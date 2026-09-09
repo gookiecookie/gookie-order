@@ -3,414 +3,340 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Gookie Font Test</title><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Gookie — Chunky Wonders</title>
-
-  <!-- GOOGLE FONTS -->
+  <title>Gookie — Soft Cookies. Brighter Days.</title>
+  <meta name="description" content="Soft, chunky cookies baked fresh in small batches. Less sweet, big on comfort.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- ================= HEADER ================= -->
   <header class="site-header">
-
-    <button class="menu-btn" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <button class="menu-btn" id="menu-open" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
 
-
-    <a href="#" class="brand">
+    <a href="#" class="brand" aria-label="Gookie home">
+      <!-- Current blue logo is temporarily turned white with CSS. -->
       <img src="logo.png" alt="Gookie">
     </a>
 
-
     <button class="cart-btn" aria-label="Open cart">
-
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path
-          d="M14 17h20l-2 22H16L14 17Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.8"
-          stroke-linejoin="round"
-        />
-
-        <path
-          d="M19 18v-3a5 5 0 0 1 10 0v3"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.8"
-          stroke-linecap="round"
-        />
+        <path d="M14 17h20l-2 22H16L14 17Z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M19 18v-3a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
       </svg>
-
       <span class="cart-count">0</span>
-
     </button>
-
   </header>
 
+  <!-- ================= MENU DRAWER ================= -->
+  <div class="menu-overlay" id="menu-overlay" hidden>
+    <div class="menu-panel">
+      <button class="menu-close" id="menu-close" aria-label="Close menu">×</button>
+      <nav class="menu-links" aria-label="Main navigation">
+        <a href="#cookie-lineup">Meet the Gookies</a>
+        <a href="#build-box">Build Your Box</a>
+        <a href="#gookie-story">About Gookie</a>
+        <a href="#gookies-guide">How It Works</a>
+        <a href="#footer">FAQ & Help</a>
+      </nav>
+      <p class="menu-note">Soft cookies. Brighter days.</p>
+    </div>
+  </div>
 
+  <!-- ================= ANNOUNCEMENT ================= -->
+  <div class="announcement-bar">
+    <div class="announcement-track">
+      <span>BAKED FRESH</span><i>•</i>
+      <span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i>
+      <span>SOFT COOKIES. BRIGHTER DAYS.</span>
+    </div>
+  </div>
 
-  <!-- =========================
-       HERO
-  ========================== -->
   <main>
 
-    <section class="hero">
+    <!-- ================= PROMO HERO ================= -->
+    <section class="promo-hero" aria-label="Featured promotions">
 
-      <div class="hero-inner">
-
-        <p class="hero-kicker">
-          SOFT COOKIES. BRIGHTER DAYS.
-        </p>
-
-        <span class="pink-heart">&#9829;&#xfe0e;</span>
-
-
-        <div class="hero-title-wrap">
-
-          <span class="burst burst-left">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-
-
-          <h1 class="hero-title">
-            THE COOKIE
-            <span>LINEUP</span>
-          </h1>
-
-
-          <span class="burst burst-right">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-
+      <div class="promo-slide is-active" data-promo-slide="0">
+        <div class="promo-copy">
+          <p class="promo-kicker">THIS MONTH'S WONDER</p>
+          <h1 id="monthly-hero-name">BERRY<br>BLAST</h1>
+          <p class="promo-description" id="monthly-hero-description">This month's limited cookie. Here for a good time, not a long time.</p>
+          <a href="#cookie-lineup" class="btn btn-red">I WANT THIS ONE</a>
         </div>
-
-
-        <p class="hero-description">
-          Your box of happiness starts here.
-        </p>
-
-
-        <!-- COOKIE AKAN MASUK SINI NEXT STEP -->
-       <!-- =========================
-     COOKIE FEATURE
-========================== -->
-
-<div class="cookie-feature">
-
-  <div class="cookie-stage">
-
-    <button class="cookie-arrow cookie-arrow-left" aria-label="Previous cookie">
-      ‹
-    </button>
-
-    <div class="cookie-visual">
-
-<img
-  src="wonder-chip.png"
-  alt="Wonder Chip"
-  class="cookie-image"
-  id="featured-cookie-image"
->
-
-     <div class="cookie-sticker" id="featured-cookie-sticker" aria-hidden="true">
-
-  <div class="sticker-label">
-    <span>OUR</span>
-    <span>CLASSIC</span>
-  </div>
-
-  <svg class="sticker-arrow" viewBox="0 0 120 80">
-    <path
-      d="M105 8
-         C100 35, 75 55, 35 58"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="8"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M48 43
-         L28 59
-         L50 72"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-
-  <div class="sticker-rays">
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
-
-</div>
-
-    </div>
-    
-
-    <button class="cookie-arrow cookie-arrow-right" aria-label="Next cookie">
-      ›
-    </button>
-
-  </div>
-
-
-  <div class="cookie-info">
-
-  <h2 id="featured-cookie-name">
-    WONDER CHIP
-  </h2>
-
-  <p id="featured-cookie-description">
-    Classic chocolate chip, never goes out of style.
-  </p>
-
-</div>
-
-  </div>
-
-
-  <a href="#" class="cookie-cta">
-    <span>EXPLORE OUR COOKIES</span>
-    <span class="cta-arrow">→</span>
-  </a>
-
-</div>
-
+        <div class="promo-visual">
+          <span class="promo-blob">LIMITED<br>DROP</span>
+          <img id="monthly-hero-image" src="berry-blast.png" alt="Berry Blast Monthly Wonder cookie">
+        </div>
       </div>
 
+      <div class="promo-slide" data-promo-slide="1">
+        <div class="promo-copy">
+          <p class="promo-kicker">YOUR COOKIES. YOUR CALL.</p>
+          <h2>BUILD<br>YOUR BOX</h2>
+          <p class="promo-description">Pick your favourites and make the box yours.</p>
+          <a href="#build-box" class="btn btn-red">LET'S BUILD A BOX</a>
+        </div>
+        <div class="promo-visual promo-stack" aria-hidden="true">
+          <img src="wonder-chip.png" alt="">
+          <img src="red-bloom.png" alt="">
+          <img src="biscoff-boom.png" alt="">
+        </div>
+      </div>
+
+      <div class="promo-slide" data-promo-slide="2">
+        <div class="promo-copy">
+          <p class="promo-kicker">SAY HELLO TO THE CREW</p>
+          <h2>MEET THE<br>GOOKIES</h2>
+          <p class="promo-description">Eight favourites, plus one Monthly Wonder.</p>
+          <a href="#cookie-lineup" class="btn btn-red">SHOW ME THE COOKIES</a>
+        </div>
+        <div class="promo-visual promo-stack" aria-hidden="true">
+          <img src="matcha-matchy.png" alt="">
+          <img src="dark-crush.png" alt="">
+          <img src="dream-cream.png" alt="">
+        </div>
+      </div>
+
+      <button class="promo-arrow promo-arrow-left" type="button" aria-label="Previous promotion">‹</button>
+      <button class="promo-arrow promo-arrow-right" type="button" aria-label="Next promotion">›</button>
+
+      <div class="promo-dots" aria-label="Choose promotion">
+        <button class="is-active" type="button" data-promo-dot="0" aria-label="Promotion 1"></button>
+        <button type="button" data-promo-dot="1" aria-label="Promotion 2"></button>
+        <button type="button" data-promo-dot="2" aria-label="Promotion 3"></button>
+      </div>
     </section>
 
-</div> <!-- end cookie-feature -->
-
-</div> <!-- end hero-inner -->
-</section> <!-- end hero -->
-
-
-<!-- =========================
-     HAPPINESS UNLOCKED
-========================== -->
-
-<section class="happiness-section">
-
-  <!-- SMOOTH WAVE -->
-  <div class="wave-top" aria-hidden="true">
-    <svg
-      viewBox="0 0 1440 120"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M0,65
-           C180,5 300,115 500,60
-           C700,5 820,110 1020,55
-           C1190,10 1320,85 1440,45
-           L1440,0
-           L0,0
-           Z"
-      />
-    </svg>
-  </div>
-
-
-  <div class="happiness-inner">
-
-  <!-- GOOKIE'S GUIDE -->
-<div class="gookie-guide">
-
-  <div class="guide-step">
-    <div class="guide-icon" aria-hidden="true">
-     <svg viewBox="0 0 48 48">
-  <path d="M14 9l20 14-9 3 5 10-6 3-5-10-5 7z"></path>
-</svg>
-    </div>
-
-    <div class="guide-text">
-      <h3>PICK</h3>
-      <p>Choose your box.</p>
-    </div>
-  </div>
-
-
-  <div class="guide-step">
-    <div class="guide-icon" aria-hidden="true">
-      <svg viewBox="0 0 48 48">
-        <rect x="8" y="13" width="32" height="22" rx="3"></rect>
-        <path d="M8 20h32"></path>
-        <path d="M14 29h8"></path>
-      </svg>
-    </div>
-
-    <div class="guide-text">
-      <h3>PAY</h3>
-      <p>Secure your order.</p>
-    </div>
-  </div>
-
-
-  <div class="guide-step">
-    <div class="guide-icon" aria-hidden="true">
-      <svg viewBox="0 0 48 48">
-        <path d="M16 31V17c0-4 3-7 7-7 3 0 5 2 5 5v7"></path>
-        <path d="M28 22c0-3 2-5 5-5s5 2 5 5v11c0 5-4 9-9 9h-4c-5 0-9-4-9-9v-2"></path>
-      </svg>
-    </div>
-
-    <div class="guide-text">
-      <h3>BAKE FRESH</h3>
-      <p>We bake in small batches.</p>
-    </div>
-  </div>
-
-
-  <div class="guide-step">
-    <div class="guide-icon" aria-hidden="true">
-      <svg viewBox="0 0 48 48">
-        <path d="M7 15h24v18H7z"></path>
-        <path d="M31 22h6l5 6v5H31z"></path>
-        <circle cx="15" cy="35" r="4"></circle>
-        <circle cx="35" cy="35" r="4"></circle>
-      </svg>
-    </div>
-
-    <div class="guide-text">
-      <h3>DELIVER</h3>
-      <p>Straight to your door.</p>
-    </div>
-  </div>
-
-</div>
-
-    <!-- LEFT DECORATION -->
-    <span class="happy-burst happy-burst-left" aria-hidden="true">
-      <i></i>
-      <i></i>
-      <i></i>
-    </span>
-
-
-    <div class="happiness-copy">
-
-      <h2>
-        HAPPINESS:
-        <span>UNLOCKED</span>
-      </h2>
-
-      <p class="happiness-description">
-        Same great cookies.<br>
-        Brighter days ahead.
-      </p>
-
-    </div>
-
-
-    <!-- RIGHT DECORATION -->
-    <span class="happy-burst happy-burst-right" aria-hidden="true">
-      <i></i>
-      <i></i>
-      <i></i>
-    </span>
-
-
-    <div class="happy-sticker">
-      <span>GOOD COOKIES</span>
-      <span>GOOD MOOD</span>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     MONTHLY WONDER
-========================== -->
-
-<section class="monthly-wonder">
-
-  <div class="monthly-wonder-inner">
-
-    <div class="monthly-wonder-copy">
-
-      <h2>
-        MONTHLY<br>
-        WONDER
-      </h2>
-
-      <p>
-        Meet this month’s limited cookie.
-        Here for a good time, not a long time.
-      </p>
-
-      <a href="#" class="monthly-wonder-button">
-        MEET THIS MONTH’S WONDER →
-      </a>
-
-    </div>
-
-    <div class="monthly-wonder-visual">
-
-      <img
-        src="berry-blast.png"
-        alt="Berry Blast Monthly Wonder"
-        class="monthly-wonder-cookie"
-      >
-
-      <div class="monthly-wonder-name">
-        BERRY BLAST
+    <!-- ================= BRAND STORY ================= -->
+    <section class="story-section" id="gookie-story">
+      <div class="section-shell story-grid">
+        <div class="story-copy">
+          <h2>HELLO, WE'RE<br>GOOKIE.</h2>
+          <p>Soft, chunky cookies baked fresh in small batches. Less sweet, big on comfort, made for happier little moments.</p>
+          <a href="#cookie-lineup" class="text-link">MEET THE GOOKIES</a>
+        </div>
+        <div class="story-cookies" aria-hidden="true">
+          <img class="story-cookie story-cookie-a" src="wonder-chip.png" alt="">
+          <img class="story-cookie story-cookie-b" src="red-bloom.png" alt="">
+          <img class="story-cookie story-cookie-c" src="matcha-matchy.png" alt="">
+        </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ================= COOKIE LINEUP ================= -->
+    <section class="lineup-section" id="cookie-lineup">
+      <div class="section-shell lineup-shell">
+        <div class="section-heading">
+          <p>THE COOKIE LINEUP</p>
+          <h2>Meet the Gookies.</h2>
+        </div>
 
-  </div>
+        <div class="cookie-feature">
+          <div class="cookie-stage">
+            <button class="cookie-arrow cookie-arrow-left" type="button" aria-label="Previous cookie">‹</button>
 
-</section>
-    
+            <div class="cookie-visual">
+              <img src="wonder-chip.png" alt="Wonder Chip" class="cookie-image" id="featured-cookie-image">
+
+              <!-- Kept because your current script.js updates this element. Hidden by CSS. -->
+              <div class="cookie-sticker" id="featured-cookie-sticker" aria-hidden="true">
+                <div class="sticker-label"><span>OUR</span><span>CLASSIC</span></div>
+              </div>
+            </div>
+
+            <button class="cookie-arrow cookie-arrow-right" type="button" aria-label="Next cookie">›</button>
+          </div>
+
+          <div class="cookie-info">
+            <h2 id="featured-cookie-name">WONDER CHIP</h2>
+            <!-- Kept because your current script.js expects it. Hidden by CSS. -->
+            <p id="featured-cookie-description">Classic chocolate chip, never goes out of style.</p>
+          </div>
+
+          <a href="#build-box" class="lineup-link">SEE THE WHOLE CREW</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GOOKIE'S GUIDE ================= -->
+    <section class="guide-section" id="gookies-guide">
+      <div class="section-shell">
+        <div class="section-heading guide-heading">
+          <p>GOOKIE'S GUIDE</p>
+          <h2>How to get your Gookies.</h2>
+        </div>
+
+        <div class="guide-grid">
+          <article class="guide-item">
+            <div class="guide-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"></circle><circle cx="18" cy="18" r="2.2"></circle><circle cx="29" cy="17" r="2.2"></circle><circle cx="30" cy="28" r="2.2"></circle><circle cx="19" cy="29" r="2.2"></circle></svg>
+            </div>
+            <h3>PICK</h3><p>Choose your box.</p>
+          </article>
+
+          <article class="guide-item">
+            <div class="guide-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="8" y="13" width="32" height="22" rx="4"></rect><path d="M8 20h32"></path><path d="M14 29h8"></path></svg>
+            </div>
+            <h3>PAY</h3><p>Secure your order.</p>
+          </article>
+
+          <article class="guide-item">
+            <div class="guide-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="9" y="11" width="30" height="27" rx="4"></rect><path d="M9 19h30"></path><circle cx="16" cy="15" r="1"></circle><circle cx="21" cy="15" r="1"></circle><path d="M17 27c3-4 11-4 14 0"></path></svg>
+            </div>
+            <h3>WE BAKE</h3><p>In small batches.</p>
+          </article>
+
+          <article class="guide-item">
+            <div class="guide-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M7 16h24v17H7z"></path><path d="M31 22h6l5 6v5H31z"></path><circle cx="15" cy="35" r="4"></circle><circle cx="35" cy="35" r="4"></circle></svg>
+            </div>
+            <h3>DELIVER</h3><p>Straight to your door.</p>
+          </article>
+        </div>
+
+        <p class="guide-payoff">HAPPINESS: UNLOCKED.</p>
+      </div>
+    </section>
+
+    <!-- ================= BUILD YOUR BOX ================= -->
+    <section class="build-section" id="build-box">
+      <div class="section-shell build-grid">
+        <div class="build-copy">
+          <p class="build-kicker">YOUR FAVOURITES. YOUR WAY.</p>
+          <h2>BUILD YOUR BOX</h2>
+          <p>Pick your favourites and make it yours.</p>
+          <a href="#" class="btn btn-red">LET'S BUILD A BOX</a>
+        </div>
+        <div class="build-cookies" aria-hidden="true">
+          <img src="wonder-chip.png" alt="">
+          <img src="red-bloom.png" alt="">
+          <img src="dark-crush.png" alt="">
+          <img src="matcha-matchy.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COOKIE CLUB ================= -->
+    <section class="club-section">
+      <div class="section-shell club-grid">
+        <div class="club-copy">
+          <p>JOIN THE COOKIE CLUB</p>
+          <h2>GOOD THINGS<br>IN YOUR INBOX.</h2>
+          <span>New drops, sweet updates and the occasional good surprise.</span>
+        </div>
+
+        <form class="club-form" action="#" method="post">
+          <label class="sr-only" for="club-email">Email address</label>
+          <input id="club-email" name="email" type="email" placeholder="Your email">
+          <button class="btn btn-red" type="submit">KEEP ME POSTED</button>
+        </form>
+      </div>
+    </section>
+
   </main>
 
-</body>
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer" id="footer">
+    <div class="section-shell footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Gookie">
+        <p>Soft cookies. Brighter days.</p>
+      </div>
 
-  <!-- FREE GOOGLE FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#cookie-lineup">Shop</a>
+        <a href="#">FAQ</a>
+        <a href="#">Delivery</a>
+        <a href="#">Storage & Reheating</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund & Replacement</a>
+      </nav>
 
-  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Coiny&family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Titan+One&display=swap" rel="stylesheet">
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Facebook">FB</a>
+      </div>
+    </div>
 
-  <link rel="stylesheet" href="style.css">
-</head>
+    <p class="footer-bottom">© 2026 Gookie. Baked with love in Malaysia.</p>
+  </footer>
 
-<body>
+  <!-- Existing cookie carousel logic -->
+  <script src="script.js"></script>
 
-<script src="script.js"></script>
-  
+  <!-- Design A interactions -->
+  <script>
+    const menuOpen = document.getElementById("menu-open");
+    const menuClose = document.getElementById("menu-close");
+    const menuOverlay = document.getElementById("menu-overlay");
+
+    function openMenu() {
+      menuOverlay.hidden = false;
+      requestAnimationFrame(() => menuOverlay.classList.add("is-open"));
+      menuOpen.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMenu() {
+      menuOverlay.classList.remove("is-open");
+      menuOpen.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+      setTimeout(() => { menuOverlay.hidden = true; }, 220);
+    }
+
+    menuOpen.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
+    menuOverlay.addEventListener("click", (event) => {
+      if (event.target === menuOverlay) closeMenu();
+    });
+    document.querySelectorAll(".menu-links a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    const promoSlides = [...document.querySelectorAll("[data-promo-slide]")];
+    const promoDots = [...document.querySelectorAll("[data-promo-dot]")];
+    const promoPrevious = document.querySelector(".promo-arrow-left");
+    const promoNext = document.querySelector(".promo-arrow-right");
+    let promoIndex = 0;
+
+    function showPromo(index) {
+      promoIndex = (index + promoSlides.length) % promoSlides.length;
+      promoSlides.forEach((slide, i) => slide.classList.toggle("is-active", i === promoIndex));
+      promoDots.forEach((dot, i) => dot.classList.toggle("is-active", i === promoIndex));
+    }
+
+    promoPrevious.addEventListener("click", () => showPromo(promoIndex - 1));
+    promoNext.addEventListener("click", () => showPromo(promoIndex + 1));
+    promoDots.forEach((dot, index) => dot.addEventListener("click", () => showPromo(index)));
+
+    /* Automatically mirror the Monthly Wonder item from your existing cookieLineup array. */
+    try {
+      const monthlyWonder =
+        cookieLineup.find((cookie) => cookie.sticker === "MONTHLY WONDER") ||
+        cookieLineup[cookieLineup.length - 1];
+
+      if (monthlyWonder) {
+        const name = document.getElementById("monthly-hero-name");
+        const image = document.getElementById("monthly-hero-image");
+        const description = document.getElementById("monthly-hero-description");
+
+        name.innerHTML = monthlyWonder.name.trim().split(/\s+/).join("<br>");
+        image.src = monthlyWonder.image;
+        image.alt = monthlyWonder.name + " Monthly Wonder cookie";
+        description.textContent = monthlyWonder.description;
+      }
+    } catch (error) {
+      console.log("Monthly Wonder hero is using its HTML fallback.");
+    }
+  </script>
+
 </body>
 </html>
