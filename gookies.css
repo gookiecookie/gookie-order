@@ -1,13 +1,568 @@
 
-:root{--b:#00169E;--p:#F8C8D0;--c:#F8F0DF;--r:#D9272E;--w:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}.gookies-page{margin:0;overflow-x:hidden;background:#fff;color:var(--b);font-family:"DM Sans",sans-serif}.gookies-page.modal-open,.gookies-page.menu-open,.gookies-page.search-open,.gookies-page.cart-open{overflow:hidden}
-.gookies-page .announcement-bar{overflow:hidden;background:var(--p)}.gookies-page .announcement-track{display:flex;align-items:center;width:max-content;animation:marquee 26s linear infinite}.gookies-page .announcement-group{display:flex;align-items:center;flex-shrink:0;gap:20px;padding:0 10px;white-space:nowrap}.gookies-page .announcement-group span{font-size:13px;font-weight:500;line-height:1;letter-spacing:.04em}.gookies-page .announcement-group i{width:5px;height:5px;flex:0 0 5px;border-radius:50%;background:var(--r);font-size:0}@keyframes marquee{to{transform:translateX(-50%)}}
-.all-good-stuff{padding:72px 22px 82px;background:#fff}.products-shell{width:min(1180px,100%);margin:auto}.products-title{text-align:center;margin-bottom:48px}.products-title h1{margin:0;font:400 clamp(52px,7vw,84px)/.93 "Titan One",sans-serif}.products-title p{margin:16px 0 0;font-size:15px}
-.gookie-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 22px}.gookie-card{position:relative;border:0;background:transparent;color:inherit;padding:0;text-align:center;cursor:pointer}.gookie-card-image{position:relative;display:grid;place-items:center;aspect-ratio:1}.gookie-card-image img{width:90%;height:90%;object-fit:contain;filter:drop-shadow(0 16px 13px rgba(48,28,12,.14));transition:.22s}.gookie-card:hover img{transform:translateY(-5px) rotate(-2deg) scale(1.025)}.gookie-card h3{margin:9px 0 0;font:400 22px/1.05 "Titan One",sans-serif}
-.cookie-badge{position:absolute;z-index:2;top:5%;left:3%;display:grid;place-items:center;min-width:76px;min-height:56px;padding:10px 11px;border-radius:46% 54% 50% 50%/55% 42% 58% 45%;background:var(--r);color:#fff;font-size:10px;font-weight:800;line-height:1.05;letter-spacing:.04em;transform:rotate(-7deg)}.cookie-badge.limited{background:var(--p);color:var(--b);transform:rotate(7deg)}
-.ready-strip{padding:0 22px 52px;background:#fff}.ready-strip-inner{width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:center;gap:30px;padding:23px 28px;border-radius:20px;background:var(--c)}.ready-copy{display:flex;align-items:baseline;gap:16px}.ready-copy h2{margin:0;font:400 clamp(28px,3vw,38px) "Titan One",sans-serif;white-space:nowrap}.ready-copy p{margin:0;font-size:13px}.ready-button,.modal-order{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 23px;border-radius:999px;background:var(--r);color:#fff;font-size:11px;font-weight:800;text-decoration:none;white-space:nowrap}
-.gookie-modal{position:fixed;inset:0;z-index:6000;display:grid;place-items:center;padding:18px;background:rgba(0,22,158,.24);opacity:0;visibility:hidden;transition:.2s}.gookie-modal.is-open{opacity:1;visibility:visible}.gookie-modal-card{position:relative;display:grid;grid-template-columns:220px 1fr;width:min(590px,100%);max-height:calc(100dvh - 36px);overflow:auto;border-radius:20px;background:#fff;box-shadow:0 22px 60px rgba(0,0,0,.16)}.gookie-modal-close{position:absolute;z-index:3;top:9px;right:13px;border:0;background:transparent;color:var(--b);font-size:27px;cursor:pointer}.gookie-modal-image-wrap{display:grid;place-items:center;min-height:290px;padding:22px;background:var(--c)}.gookie-modal-image-wrap img{width:100%;max-height:230px;object-fit:contain;filter:drop-shadow(0 15px 12px rgba(48,28,12,.14))}.gookie-modal-copy{display:flex;flex-direction:column;justify-content:center;padding:30px 28px}.gookie-modal-copy h2{margin:0;font:400 29px/1 "Titan One",sans-serif}.modal-subtitle{margin:6px 0 0;font-size:11px;font-weight:700}.modal-description{margin:12px 0 0;font-size:12px;line-height:1.5}.modal-allergens{margin-top:15px;padding-top:12px;border-top:1px solid rgba(0,22,158,.12)}.modal-allergens>p{margin:0 0 6px;font-size:8px;font-weight:800;letter-spacing:.12em}#modal-allergens{display:flex;flex-wrap:wrap;gap:5px}.allergen-chip{padding:5px 8px;border-radius:999px;background:var(--c);font-size:8px;font-weight:700}.modal-order{align-self:flex-start;margin-top:16px}
-.product-search-overlay{position:fixed;inset:0;z-index:6500;display:grid;place-items:start center;padding:100px 18px;background:rgba(0,22,158,.2);opacity:0;visibility:hidden;transition:.2s}.product-search-overlay.is-open{opacity:1;visibility:visible}.product-search-box{width:min(540px,100%);padding:20px;border-radius:18px;background:var(--c)}.product-search-header{display:flex;align-items:center;justify-content:space-between}.product-search-header h2{margin:0;font:400 24px "Titan One",sans-serif}.product-search-close{border:0;background:transparent;color:var(--b);font-size:28px}.product-search-input-wrap{display:flex;align-items:center;gap:8px;margin-top:15px;padding:0 13px;border-radius:999px;background:#fff}.product-search-input-wrap input{width:100%;min-height:44px;border:0;outline:0;background:transparent;font:inherit}.product-search-results{display:grid;gap:6px;margin-top:10px}.search-result{display:flex;align-items:center;gap:10px;width:100%;padding:7px;border:0;border-radius:12px;background:#fff;color:inherit;text-align:left;cursor:pointer}.search-result img{width:43px;height:43px;object-fit:contain}.search-result strong{display:block;font-size:12px}.search-result small{display:block;font-size:9px}
-.gookies-page .menu-links .is-current{color:var(--r)}
-@media(max-width:950px){.gookie-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ready-strip-inner,.ready-copy{flex-direction:column}.ready-copy{align-items:center;gap:5px;text-align:center}}
-@media(max-width:700px){.gookies-page .announcement-bar,.gookies-page .announcement-track,.gookies-page .announcement-group{height:34px}.gookies-page .announcement-group{gap:16px}.gookies-page .announcement-group span{font-size:13px}.all-good-stuff{padding:50px 12px 56px}.products-title{margin-bottom:34px}.products-title h1{font-size:clamp(44px,14vw,61px)}.products-title p{font-size:13px}.gookie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:31px 8px}.gookie-card h3{font-size:18px}.cookie-badge{top:2%;left:0;min-width:60px;min-height:44px;padding:7px;font-size:8px}.ready-strip{padding:0 12px 38px}.ready-strip-inner{padding:20px 15px}.ready-copy h2{font-size:28px}.ready-copy p{font-size:11px}.gookie-modal{align-items:end;padding:7px}.gookie-modal-card{grid-template-columns:1fr;width:100%;max-height:87dvh;border-radius:20px 20px 0 0}.gookie-modal-image-wrap{min-height:190px;padding:16px}.gookie-modal-image-wrap img{max-height:170px}.gookie-modal-copy{padding:21px 19px 24px}.gookie-modal-copy h2{font-size:28px}.modal-order{width:100%}}
+:root{
+  --b:#00169E;
+  --p:#F8C8D0;
+  --c:#F8F0DF;
+  --r:#D9272E;
+  --w:#FFFFFF;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body.gookies-page{
+  margin:0;
+  overflow-x:hidden;
+  background:#fff;
+  color:var(--b);
+  font-family:"DM Sans",sans-serif;
+}
+
+body.gookies-page.modal-open,
+body.gookies-page.menu-open,
+body.gookies-page.search-open,
+body.gookies-page.cart-open{
+  overflow:hidden;
+}
+
+/* ANNOUNCEMENT */
+.gookies-page .announcement-bar{
+  overflow:hidden;
+  background:var(--p);
+}
+
+.gookies-page .announcement-track{
+  display:flex;
+  align-items:center;
+  width:max-content;
+  animation:marquee 26s linear infinite;
+}
+
+.gookies-page .announcement-group{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  gap:20px;
+  padding:0 10px;
+  white-space:nowrap;
+}
+
+.gookies-page .announcement-group span{
+  font-size:13px;
+  font-weight:500;
+  line-height:1;
+  letter-spacing:.04em;
+}
+
+.gookies-page .announcement-group i{
+  width:5px;
+  height:5px;
+  flex:0 0 5px;
+  border-radius:50%;
+  background:var(--r);
+  font-size:0;
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* ONE PRODUCTS SECTION */
+.all-good-stuff{
+  padding:68px 22px 78px;
+  background:#fff;
+}
+
+.products-shell{
+  width:min(1180px,100%);
+  margin:auto;
+}
+
+.products-title{
+  text-align:center;
+  margin-bottom:46px;
+}
+
+.products-title h1{
+  margin:0;
+  font-family:"Titan One",sans-serif;
+  font-size:clamp(52px,7vw,84px);
+  font-weight:400;
+  line-height:.93;
+
+  /* tighter than previous version */
+  letter-spacing:-0.035em;
+}
+
+.products-title p{
+  margin:15px 0 0;
+  font-size:15px;
+}
+
+/* GRID */
+.gookie-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:46px 22px;
+}
+
+.gookie-card{
+  position:relative;
+  border:0;
+  background:transparent;
+  color:inherit;
+  padding:0;
+  text-align:center;
+  cursor:pointer;
+}
+
+.gookie-card-image{
+  position:relative;
+  display:grid;
+  place-items:center;
+  aspect-ratio:1;
+}
+
+.gookie-card-image img{
+  width:90%;
+  height:90%;
+  object-fit:contain;
+  filter:drop-shadow(0 16px 13px rgba(48,28,12,.14));
+  transition:transform .22s ease;
+}
+
+.gookie-card:hover .gookie-card-image img{
+  transform:translateY(-5px) rotate(-2deg) scale(1.025);
+}
+
+.gookie-card h3{
+  margin:9px 0 0;
+  font-family:"Titan One",sans-serif;
+  font-size:22px;
+  font-weight:400;
+  line-height:1.05;
+}
+
+/* BADGES */
+.cookie-badge{
+  position:absolute;
+  z-index:2;
+  top:5%;
+  left:3%;
+  display:grid;
+  place-items:center;
+  min-width:76px;
+  min-height:56px;
+  padding:10px 11px;
+  border-radius:46% 54% 50% 50% / 55% 42% 58% 45%;
+  background:var(--r);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  line-height:1.05;
+  letter-spacing:.04em;
+  text-align:center;
+  transform:rotate(-7deg);
+}
+
+.cookie-badge.limited{
+  background:var(--p);
+  color:var(--b);
+  transform:rotate(7deg);
+}
+
+/* READY TO PICK — PINK */
+.ready-strip{
+  padding:0 22px 52px;
+  background:#fff;
+}
+
+.ready-strip-inner{
+  width:min(1180px,100%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  padding:23px 28px;
+  border-radius:20px;
+
+  /* changed from cream */
+  background:var(--p);
+}
+
+.ready-copy{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+}
+
+.ready-copy h2{
+  margin:0;
+  font-family:"Titan One",sans-serif;
+  font-size:clamp(28px,3vw,38px);
+  font-weight:400;
+  white-space:nowrap;
+}
+
+.ready-copy p{
+  margin:0;
+  font-size:13px;
+}
+
+.ready-button,
+.modal-order{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:46px;
+  padding:0 23px;
+  border-radius:999px;
+  background:var(--r);
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+/* COMPACT POPUP */
+.gookie-modal{
+  position:fixed;
+  inset:0;
+  z-index:6000;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(0,22,158,.24);
+  opacity:0;
+  visibility:hidden;
+  transition:.2s;
+}
+
+.gookie-modal.is-open{
+  opacity:1;
+  visibility:visible;
+}
+
+.gookie-modal-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  width:min(590px,100%);
+  max-height:calc(100dvh - 36px);
+  overflow:auto;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 22px 60px rgba(0,0,0,.16);
+}
+
+.gookie-modal-close{
+  position:absolute;
+  z-index:3;
+  top:9px;
+  right:13px;
+  border:0;
+  background:transparent;
+  color:var(--b);
+  font-size:27px;
+  cursor:pointer;
+}
+
+.gookie-modal-image-wrap{
+  display:grid;
+  place-items:center;
+  min-height:290px;
+  padding:22px;
+  background:var(--c);
+}
+
+.gookie-modal-image-wrap img{
+  width:100%;
+  max-height:230px;
+  object-fit:contain;
+  filter:drop-shadow(0 15px 12px rgba(48,28,12,.14));
+}
+
+.gookie-modal-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:30px 28px;
+}
+
+.gookie-modal-copy h2{
+  margin:0;
+  font-family:"Titan One",sans-serif;
+  font-size:29px;
+  font-weight:400;
+  line-height:1;
+}
+
+.modal-subtitle{
+  margin:6px 0 0;
+  font-size:11px;
+  font-weight:700;
+}
+
+.modal-description{
+  margin:12px 0 0;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.modal-allergens{
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid rgba(0,22,158,.12);
+}
+
+.modal-allergens>p{
+  margin:0 0 6px;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+#modal-allergens{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+
+.allergen-chip{
+  padding:5px 8px;
+  border-radius:999px;
+  background:var(--c);
+  font-size:8px;
+  font-weight:700;
+}
+
+.modal-order{
+  align-self:flex-start;
+  margin-top:16px;
+}
+
+/* SEARCH */
+.product-search-overlay{
+  position:fixed;
+  inset:0;
+  z-index:6500;
+  display:grid;
+  place-items:start center;
+  padding:100px 18px;
+  background:rgba(0,22,158,.2);
+  opacity:0;
+  visibility:hidden;
+  transition:.2s;
+}
+
+.product-search-overlay.is-open{
+  opacity:1;
+  visibility:visible;
+}
+
+.product-search-box{
+  width:min(540px,100%);
+  padding:20px;
+  border-radius:18px;
+  background:var(--c);
+}
+
+.product-search-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.product-search-header h2{
+  margin:0;
+  font-family:"Titan One",sans-serif;
+  font-size:24px;
+  font-weight:400;
+}
+
+.product-search-close{
+  border:0;
+  background:transparent;
+  color:var(--b);
+  font-size:28px;
+  cursor:pointer;
+}
+
+.product-search-input-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:15px;
+  padding:0 13px;
+  border-radius:999px;
+  background:#fff;
+}
+
+.product-search-input-wrap input{
+  width:100%;
+  min-height:44px;
+  border:0;
+  outline:0;
+  background:transparent;
+  font:inherit;
+}
+
+.product-search-results{
+  display:grid;
+  gap:6px;
+  margin-top:10px;
+}
+
+.search-result{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  padding:7px;
+  border:0;
+  border-radius:12px;
+  background:#fff;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+
+.search-result img{
+  width:43px;
+  height:43px;
+  object-fit:contain;
+}
+
+.search-result strong{
+  display:block;
+  font-size:12px;
+}
+
+.search-result small{
+  display:block;
+  font-size:9px;
+}
+
+.gookies-page .menu-links .is-current{
+  color:var(--r);
+}
+
+@media(max-width:950px){
+  .gookie-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .ready-strip-inner,
+  .ready-copy{
+    flex-direction:column;
+  }
+
+  .ready-copy{
+    align-items:center;
+    gap:5px;
+    text-align:center;
+  }
+}
+
+@media(max-width:700px){
+  .gookies-page .announcement-bar,
+  .gookies-page .announcement-track,
+  .gookies-page .announcement-group{
+    height:34px;
+  }
+
+  .gookies-page .announcement-group{
+    gap:16px;
+  }
+
+  .gookies-page .announcement-group span{
+    font-size:13px;
+  }
+
+  .all-good-stuff{
+    padding:48px 12px 54px;
+  }
+
+  .products-title{
+    margin-bottom:32px;
+  }
+
+  .products-title h1{
+    font-size:clamp(44px,14vw,60px);
+    letter-spacing:-0.045em;
+  }
+
+  .products-title p{
+    font-size:13px;
+  }
+
+  .gookie-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:30px 8px;
+  }
+
+  .gookie-card h3{
+    font-size:18px;
+  }
+
+  .cookie-badge{
+    top:2%;
+    left:0;
+    min-width:60px;
+    min-height:44px;
+    padding:7px;
+    font-size:8px;
+  }
+
+  .ready-strip{
+    padding:0 12px 38px;
+  }
+
+  .ready-strip-inner{
+    padding:20px 15px;
+  }
+
+  .ready-copy h2{
+    font-size:28px;
+  }
+
+  .ready-copy p{
+    font-size:11px;
+  }
+
+  .gookie-modal{
+    align-items:end;
+    padding:7px;
+  }
+
+  .gookie-modal-card{
+    grid-template-columns:1fr;
+    width:100%;
+    max-height:87dvh;
+    border-radius:20px 20px 0 0;
+  }
+
+  .gookie-modal-image-wrap{
+    min-height:190px;
+    padding:16px;
+  }
+
+  .gookie-modal-image-wrap img{
+    max-height:170px;
+  }
+
+  .gookie-modal-copy{
+    padding:21px 19px 24px;
+  }
+
+  .gookie-modal-copy h2{
+    font-size:28px;
+  }
+
+  .modal-order{
+    width:100%;
+  }
+}
