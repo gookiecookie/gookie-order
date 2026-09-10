@@ -1469,39 +1469,33 @@ body.cart-open {
 }
 
 /* ========================================
-   ANNOUNCEMENT — MOVING MARQUEE
+   ANNOUNCEMENT — BIGGER TEXT ONLY
 ======================================== */
 
 .announcement-bar {
   overflow: hidden;
-  background: var(--pink);
 }
 
 .announcement-track {
   display: flex;
+  align-items: center;
   width: max-content;
+
   animation: announcement-scroll 22s linear infinite;
 }
 
-.announcement-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 32px;
-
-  padding: 13px 16px;
-
-  color: var(--blue);
-
+/* BESARKAN TULISAN SAHAJA */
+.announcement-track span {
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
+  letter-spacing: 0.08em;
 }
 
-.announcement-group i {
-  font-style: normal;
-  font-size: 14px;
+/* Jangan tambah tinggi strip */
+.announcement-track,
+.announcement-group {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @keyframes announcement-scroll {
@@ -1515,13 +1509,7 @@ body.cart-open {
 }
 
 @media (max-width: 700px) {
-
-  .announcement-group {
-    gap: 24px;
-    padding: 11px 12px;
-
-    font-size: 11px;
-    letter-spacing: 0.10em;
+  .announcement-track span {
+    font-size: 12px;
   }
-
 }
