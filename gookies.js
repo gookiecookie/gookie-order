@@ -15,8 +15,6 @@ const catalogue = [
     subtitle: "Dark Chocolate",
     description: "Deep chocolate flavour with a rich, soft and chunky bite.",
     image: "dark-crush.png",
-    badge: "BEST SELLER",
-    type: "best",
     allergens: ["Wheat", "Milk", "Egg", "Soy"]
   },
   {
@@ -24,6 +22,8 @@ const catalogue = [
     subtitle: "Red Velvet",
     description: "Velvety red cocoa cookie with creamy white chocolate.",
     image: "red-bloom.png",
+    badge: "BEST SELLER",
+type: "best",
     allergens: ["Wheat", "Milk", "Egg", "Soy"]
   },
   {
@@ -38,8 +38,6 @@ const catalogue = [
     subtitle: "Cookies & Cream",
     description: "Cookies and cream with a smooth, creamy centre.",
     image: "dream-cream.png",
-    badge: "BEST SELLER",
-    type: "best",
     allergens: ["Wheat", "Milk", "Egg", "Soy"]
   },
   {
@@ -47,6 +45,8 @@ const catalogue = [
     subtitle: "S'mores",
     description: "Toasty marshmallow, chocolate and cookie goodness in every bite.",
     image: "mallow-melt.png",
+        badge: "BEST SELLER",
+    type: "best",
     allergens: ["Wheat", "Milk", "Egg", "Soy"]
   },
   {
