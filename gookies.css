@@ -176,7 +176,7 @@ body.gookies-page.cart-open{
 .cookie-badge.limited{
   background:var(--p);
   color:var(--b);
-  transform:rotate(7deg);
+  transform:rotate(-6deg);
 }
 
 /* READY TO PICK — PINK */
