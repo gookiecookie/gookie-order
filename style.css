@@ -1467,3 +1467,61 @@ button, a { -webkit-tap-highlight-color: transparent; }
 body.cart-open {
   overflow: hidden;
 }
+
+/* ========================================
+   ANNOUNCEMENT — MOVING MARQUEE
+======================================== */
+
+.announcement-bar {
+  overflow: hidden;
+  background: var(--pink);
+}
+
+.announcement-track {
+  display: flex;
+  width: max-content;
+  animation: announcement-scroll 22s linear infinite;
+}
+
+.announcement-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 32px;
+
+  padding: 13px 16px;
+
+  color: var(--blue);
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.announcement-group i {
+  font-style: normal;
+  font-size: 14px;
+}
+
+@keyframes announcement-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 700px) {
+
+  .announcement-group {
+    gap: 24px;
+    padding: 11px 12px;
+
+    font-size: 11px;
+    letter-spacing: 0.10em;
+  }
+
+}
