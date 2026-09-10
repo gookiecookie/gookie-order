@@ -1469,35 +1469,68 @@ body.cart-open {
 }
 
 /* ========================================
-   ANNOUNCEMENT — BIGGER TEXT ONLY
+   ANNOUNCEMENT MARQUEE — CLEAN
 ======================================== */
 
 .announcement-bar {
   overflow: hidden;
+  background: var(--pink);
 }
 
+/* Moving track */
 .announcement-track {
   display: flex;
   align-items: center;
   width: max-content;
 
-  animation: announcement-scroll 22s linear infinite;
+  animation: announcement-scroll 26s linear infinite;
 }
 
-/* BESARKAN TULISAN SAHAJA */
-.announcement-track span {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-/* Jangan tambah tinggi strip */
-.announcement-track,
+/* Each repeated sentence group */
 .announcement-group {
-  padding-top: 0;
-  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  gap: 20px;
+
+  padding: 0 10px;
+
+  white-space: nowrap;
 }
 
+/* Normal, readable text */
+.announcement-group span {
+  display: flex;
+  align-items: center;
+
+  color: var(--blue);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Red dots */
+.announcement-group i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 5px;
+  height: 5px;
+
+  flex: 0 0 5px;
+
+  border-radius: 50%;
+  background: var(--red);
+
+  font-size: 0;
+}
+
+/* Seamless movement */
 @keyframes announcement-scroll {
   from {
     transform: translateX(0);
@@ -1509,7 +1542,13 @@ body.cart-open {
 }
 
 @media (max-width: 700px) {
-  .announcement-track span {
+
+  .announcement-group {
+    gap: 16px;
+  }
+
+  .announcement-group span {
     font-size: 12px;
   }
+
 }
