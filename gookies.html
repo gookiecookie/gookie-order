@@ -1,281 +1,149 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#BB191A" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00169E">
   <title>Meet the Gookies — Gookie</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  />
-
-  <link rel="stylesheet" href="style.css?v=10.1" />
-  <link rel="stylesheet" href="gookies.css?v=1.0" />
-  <link rel="stylesheet" href="responsive-modal.css?v=1.0" />
-  <link rel="stylesheet" href="shared-header.css?v=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gookies.css">
 </head>
-
 <body class="gookies-page">
-  <button
-    class="page-overlay"
-    id="pageOverlay"
-    type="button"
-    aria-label="Close open panel"
-    hidden
-  ></button>
 
-  
-<!-- =========================================================
-     GOOKIE GLOBAL TOP MARQUEE
-========================================================= -->
-<div class="gookie-top-marquee" aria-label="Gookie announcements">
-  <div class="gookie-top-marquee-track">
-    <span>WELCOME TO GOOKIE</span>
-    <span>BAKED FRESH, LESS SWEET 🍪</span>
-    <span>🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
-    <span aria-hidden="true">WELCOME TO GOOKIE</span>
-    <span aria-hidden="true">BAKED FRESH, LESS SWEET 🍪</span>
-    <span aria-hidden="true">🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
-  </div>
-</div>
-
-<header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <button class="header-icon-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="menuDrawer" aria-expanded="false">
-      <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-    <a class="brand-logo" href="index.html" aria-label="Gookie home"><img src="smallgookielogo.png" alt="Gookie" /></a>
-    <button class="header-icon-button header-search-button" id="searchButton" type="button" aria-label="Search Gookie" aria-controls="searchModal" aria-expanded="false">
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-    </button>
-    <span class="malaysia-flag" title="Proudly baked in Malaysia" aria-label="Malaysia">🇲🇾</span>
-    <a class="header-icon-button cart-button" href="order.html" aria-label="Go to Get Your Gookies">
-          <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="13" cy="26" r="1.8" fill="currentColor"></circle><circle cx="24" cy="26" r="1.8" fill="currentColor"></circle></svg>
-          <span class="cart-count">0</span>
-        </a>
+<header class="site-header">
+  <button class="menu-btn" id="menu-open" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a href="index.html" class="brand" aria-label="Gookie home"><img src="logo.png" alt="Gookie"></a>
+  <div class="header-actions">
+    <button class="header-icon-btn search-btn" id="product-search-open" type="button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="header-icon-btn cart-btn" id="cart-open" type="button" aria-label="Open cart"><i class="fa-solid fa-basket-shopping"></i><span class="cart-count">0</span></button>
   </div>
 </header>
 
-  <aside
-    class="drawer drawer-left premium-menu-drawer"
-    id="menuDrawer"
-    aria-hidden="true"
-    aria-label="Main menu"
-  >
-    <div class="drawer-header premium-menu-header">
-      <div>
-        <p class="drawer-eyebrow">
-          HELLO, COOKIE LOVER <span aria-hidden="true">🍪</span>
-        </p>
-        <h2>What’s on the menu?</h2>
-      </div>
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <div class="announcement-group"><span>BAKED FRESH</span><i>•</i><span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i><span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i></div>
+    <div class="announcement-group" aria-hidden="true"><span>BAKED FRESH</span><i>•</i><span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i><span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i></div>
+  </div>
+</div>
 
-      <button
-        class="drawer-close-button"
-        id="menuCloseButton"
-        type="button"
-        aria-label="Close menu"
-      >
-        ×
-      </button>
-    </div>
-
-    <nav class="drawer-nav premium-menu-nav" aria-label="Primary navigation">
-      <a
-        class="premium-menu-item premium-menu-item-cookie is-current"
-        href="gookies.html"
-        aria-current="page"
-      >
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-cookie-bite"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>MEET THE GOOKIES</strong>
-          <small>Explore every chunky wonder.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
-
-      <a class="premium-menu-item premium-menu-item-box" href="order.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-box-open"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>GET YOUR GOOKIES</strong>
-          <small>Build your box or choose a combo.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
-
-      <a class="premium-menu-item premium-menu-item-goodies" href="goodies.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-gift"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>GOOKIE’S GOODIES</strong>
-          <small>Weddings, birthdays and gifting.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
-
-      <a class="premium-menu-item premium-menu-item-about" href="about.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-regular fa-heart"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>ABOUT GOOKIE</strong>
-          <small>Our story and cookie philosophy.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
+<div class="menu-overlay" id="menu-overlay" hidden>
+  <aside class="menu-panel">
+    <button class="menu-close" id="menu-close" type="button" aria-label="Close menu">×</button>
+    <p class="menu-title">MENU</p>
+    <nav class="menu-links">
+      <a href="gookies.html" class="is-current">PRODUCTS</a>
+      <a href="order.html">SHOP</a>
+      <a href="goodies.html">GIFTS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="#footer">CONTACT</a>
     </nav>
-  </aside>
-
-  <main>
-    <section class="gookies-hero">
-      <div class="gookies-hero-copy">
-        <p class="section-kicker">SAY HELLO TO THE WHOLE CREW</p>
-        <h1>
-          <span>MEET THE</span>
-          <span>GOOKIES</span>
-        </h1>
-        <p>
-          Every Gookie has its own personality. Meet the classics, the filled
-          favourites and the limited wonder that never stays for long.
-        </p>
-        <a class="gookies-hero-link" href="#gookieCollection">
-          MEET THEM ALL
-          <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="gookies-hero-art" aria-hidden="true">
-        <img src="gookie-cracked-cookie.png" alt="" />
-      </div>
-    </section>
-
-    <section class="gookie-collection-section" id="gookieCollection">
-      <div class="gookie-collection-heading">
-        <p class="section-kicker">PICK A PERSONALITY</p>
-        <h2>The whole Gookie family.</h2>
-        <p>Tap any Gookie to discover what makes it special.</p>
-      </div>
-
-      <div class="gookie-catalogue-grid" id="gookieCatalogueGrid"></div>
-    </section>
-
-    <section class="gookie-page-cta">
-      <p class="section-kicker">FOUND YOUR FAVOURITE?</p>
-      <h2>Now put it in a box.</h2>
-      <p>Build your own mix or let Gookie choose the good stuff for you.</p>
-      <a class="gookie-page-cta-button" href="order.html">
-        GET YOUR GOOKIES
-        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-      </a>
-    </section>
-  </main>
-
-  <footer class="gookies-simple-footer">
-    <a class="gookies-footer-brand" href="index.html">GOOKIE</a>
-    <p>Baked with ♡ in Malaysia.</p>
-    <div class="gookies-footer-links">
-      <a href="gookies.html">Meet the Gookies</a>
-      <a href="order.html">Order</a>
-      <a href="goodies.html">Goodies</a>
-      <a href="about.html">About</a>
+    <div class="menu-socials">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
     </div>
-    <p class="gookies-footer-thanks">Thank you for supporting us. ♡</p>
-  </footer>
+  </aside>
+</div>
 
-  <section
-    class="modal gookie-profile-modal"
-    id="gookieProfileModal"
-    aria-hidden="true"
-    aria-labelledby="gookieProfileName"
-  >
-    <div class="modal-card gookie-profile-modal-card" role="dialog" aria-modal="true">
-      <button
-        class="modal-close-button gookie-profile-close"
-        id="gookieProfileClose"
-        type="button"
-        aria-label="Close Gookie details"
-      >
-        ×
-      </button>
+<div class="product-search-overlay" id="product-search-overlay" hidden>
+  <div class="product-search-box">
+    <div class="product-search-header">
+      <div><p>FIND YOUR GOOKIE</p><h2>What are you craving?</h2></div>
+      <button class="product-search-close" id="product-search-close" type="button">×</button>
+    </div>
+    <div class="product-search-input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input id="product-search-input" type="search" placeholder="Search cookies..." autocomplete="off"></div>
+    <div class="product-search-results" id="product-search-results"></div>
+  </div>
+</div>
 
-      <div class="gookie-profile-main">
-        <div class="gookie-profile-copy">
-          <p class="gookie-profile-kicker" id="gookieProfileKicker">MEET YOUR GOOKIE</p>
-          <h2 id="gookieProfileName"></h2>
-          <p class="gookie-profile-subtitle" id="gookieProfileSubtitle"></p>
-          <p class="gookie-profile-description" id="gookieProfileDescription"></p>
+<div class="cart-overlay" id="cart-overlay" hidden>
+  <aside class="cart-drawer">
+    <div class="cart-header"><h2>YOUR GOOKIES</h2><button class="cart-close-btn" id="cart-close-btn" type="button">×</button></div>
+    <div class="cart-body">
+      <div class="cart-empty"><p class="cart-empty-title">Your box is lonely.</p><p>Add some Gookies to make it happier.</p><a href="order.html" class="cart-shop-btn">BUILD A BOX</a></div>
+    </div>
+  </aside>
+</div>
 
-          <div class="gookie-profile-facts" aria-label="Cookie highlights">
-            <span><i class="fa-regular fa-heart" aria-hidden="true"></i> Less sweet</span>
-            <span><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Approx. 90–95g</span>
-          </div>
-        </div>
+<main>
+  <section class="products-intro">
+    <img class="intro-cookie intro-left" src="wonder-chip.png" alt="" aria-hidden="true">
+    <div class="products-intro-inner">
+      <p class="eyebrow">THE COOKIE LINEUP</p>
+      <h1>MEET THE<br>GOOKIES.</h1>
+      <p class="intro-copy">Pick a favourite. Or several. We don’t judge.</p>
+      <a href="#classics" class="text-link">SEE THE WHOLE CREW <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+    <img class="intro-cookie intro-right" src="red-bloom.png" alt="" aria-hidden="true">
+  </section>
 
-        <div class="gookie-profile-image">
-          <img id="gookieProfileImage" src="" alt="" />
-        </div>
+  <section class="products-section" id="classics">
+    <div class="products-shell">
+      <div class="products-heading"><p>ALWAYS GOOKIN'</p><h2>The Classics</h2></div>
+      <div class="gookie-grid" id="classic-grid"></div>
+    </div>
+  </section>
+
+  <section class="products-section pink-section">
+    <div class="products-shell">
+      <div class="products-heading"><p>EXTRA IN THE MIDDLE</p><h2>Filled & Fun</h2></div>
+      <div class="gookie-grid" id="filled-grid"></div>
+    </div>
+  </section>
+
+  <section class="monthly-section">
+    <div class="monthly-shell">
+      <div class="monthly-copy">
+        <p>THIS MONTH'S WONDER</p>
+        <h2>BERRY<br>BLAST</h2>
+        <span>A berry-packed limited drop, here for a delicious time — not a long time.</span>
+        <button id="monthly-button" type="button">MEET THIS GOOKIE</button>
       </div>
-
-      <div class="gookie-allergen-section">
-        <p class="gookie-allergen-heading">ALLERGEN INFORMATION</p>
-        <div class="gookie-allergen-list" id="gookieAllergenList"></div>
-        <p class="gookie-allergen-note">
-          Prepared in a shared kitchen. Cross-contact with other allergens may occur.
-        </p>
-      </div>
-
-      <div class="gookie-profile-purchase">
-        <p>
-          Not for individual sale.<br>
-          Add me to a Build-A-Box to purchase!
-        </p>
-        <a class="gookie-profile-order-button" href="order.html">
-          <i class="fa-solid fa-box-open" aria-hidden="true"></i>
-          <span>BUILD-A-BOX</span>
-          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-        </a>
+      <div class="monthly-visual">
+        <span class="monthly-sticker">LIMITED<br>DROP</span>
+        <img src="berry-blast.png" alt="Berry Blast">
       </div>
     </div>
   </section>
 
-  <script src="gookies.js?v=1.0"></script>
-  <script src="responsive-modal.js?v=1.0"></script>
+  <section class="products-cta">
+    <p>FOUND YOUR FAVOURITES?</p>
+    <h2>READY TO PICK?</h2>
+    <span>Mix them. Match them. Make the box yours.</span>
+    <a href="order.html">BUILD YOUR BOX <i class="fa-solid fa-arrow-right"></i></a>
+  </section>
+</main>
 
-<section class="modal search-modal" id="searchModal" aria-hidden="true" aria-label="Search Gookie">
-  <div class="modal-card search-modal-card">
-    <div class="search-modal-header">
-      <div><p class="search-modal-eyebrow">FIND YOUR GOOKIE</p><h2>What are you craving?</h2></div>
-      <button class="modal-close-button" id="searchModalClose" type="button" aria-label="Close search">×</button>
-    </div>
-    <div class="search-input-wrap">
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <input id="siteSearchInput" type="search" placeholder="Search cookies, boxes or add-ons..." autocomplete="off" aria-label="Search Gookie products" />
-    </div>
-    <div class="search-results" id="siteSearchResults" aria-live="polite"></div>
+<footer class="site-footer" id="footer">
+  <div class="section-shell footer-grid">
+    <div class="footer-brand"><img src="logo.png" alt="Gookie"><p>Soft cookies. Brighter days.</p></div>
+    <nav class="footer-links"><a href="gookies.html">Products</a><a href="order.html">Shop</a><a href="#">FAQ</a><a href="#">Delivery</a><a href="#">Storage & Reheating</a><a href="#">Contact</a><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a><a href="#">Refund & Replacement</a></nav>
+    <div class="footer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-tiktok"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a></div>
   </div>
-</section>
+  <p class="footer-bottom">© 2026 Gookie. Baked with love in Malaysia.</p>
+</footer>
 
-  <script src="site-search.js?v=1.0"></script>
+<div class="gookie-modal" id="gookie-modal" hidden>
+  <div class="gookie-modal-card" role="dialog" aria-modal="true">
+    <button class="gookie-modal-close" id="gookie-modal-close" type="button">×</button>
+    <div class="gookie-modal-visual"><img id="modal-image" src="" alt=""></div>
+    <div class="gookie-modal-copy">
+      <p>MEET YOUR GOOKIE</p>
+      <h2 id="modal-name"></h2>
+      <h3 id="modal-subtitle"></h3>
+      <div class="modal-description" id="modal-description"></div>
+      <div class="modal-facts"><span><i class="fa-regular fa-heart"></i> Less sweet</span><span><i class="fa-solid fa-cookie-bite"></i> Soft & chunky</span></div>
+      <div class="modal-allergens"><p>CONTAINS</p><div id="modal-allergens"></div></div>
+      <a href="order.html" class="modal-order">ADD ME TO A BOX <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<script src="gookies.js"></script>
 </body>
 </html>
