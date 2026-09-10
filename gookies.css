@@ -147,22 +147,30 @@ body.gookies-page.cart-open{
 .cookie-badge{
   position:absolute;
   z-index:2;
-  top:5%;
+  top:7%;
   left:3%;
-  display:grid;
-  place-items:center;
-  min-width:76px;
-  min-height:56px;
-  padding:10px 11px;
-  border-radius:46% 54% 50% 50% / 55% 42% 58% 45%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:92px;
+  height:38px;
+  padding:0 16px;
+
+  border-radius:999px;
+
   background:var(--r);
   color:#fff;
+
   font-size:10px;
   font-weight:800;
-  line-height:1.05;
+  line-height:1;
   letter-spacing:.04em;
+
   text-align:center;
-  transform:rotate(-7deg);
+
+  transform:rotate(-6deg);
 }
 
 .cookie-badge.limited{
@@ -249,8 +257,8 @@ body.gookies-page.cart-open{
 .gookie-modal-card{
   position:relative;
   display:grid;
-  grid-template-columns:220px 1fr;
-  width:min(590px,100%);
+  grid-template-columns:280px 1fr;
+width:min(720px,100%);
   max-height:calc(100dvh - 36px);
   overflow:auto;
   border-radius:20px;
@@ -273,14 +281,14 @@ body.gookies-page.cart-open{
 .gookie-modal-image-wrap{
   display:grid;
   place-items:center;
-  min-height:290px;
+  min-height:350px;
   padding:22px;
   background:var(--c);
 }
 
 .gookie-modal-image-wrap img{
   width:100%;
-  max-height:230px;
+  max-height:280px;
   object-fit:contain;
   filter:drop-shadow(0 15px 12px rgba(48,28,12,.14));
 }
@@ -289,13 +297,13 @@ body.gookies-page.cart-open{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:30px 28px;
+  padding:38px 26px;
 }
 
 .gookie-modal-copy h2{
   margin:0;
   font-family:"Titan One",sans-serif;
-  font-size:29px;
+  font-size:34px;
   font-weight:400;
   line-height:1;
 }
