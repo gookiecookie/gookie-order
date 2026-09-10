@@ -1544,7 +1544,7 @@ body.cart-open {
 @media (max-width: 700px) {
 
   .announcement-group {
-    gap: 16px;
+    gap: 10px;
   }
 
   .announcement-group span {
