@@ -1315,5 +1315,97 @@
 .buffet-add-row{position:sticky;bottom:8px;z-index:20;padding:12px;margin-top:24px;border:1px solid rgba(0,22,158,.10);border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 10px 32px rgba(0,22,158,.10)}
 .buffet-price strong{font-size:24px}.buffet-add-button{min-width:0;flex:1;padding:0 16px;font-size:10px}}
 
-/* V7 GIFT ADDONS */
-.gookie-gift-addon{margin:22px 0 12px;padding:14px;border-radius:14px;background:var(--cream)}.gookie-gift-addon-head{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:12px}.gookie-gift-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:#fff;color:var(--red);font-size:18px}.gookie-gift-addon-head strong{display:block;color:var(--blue);font-size:13px}.gookie-gift-addon-head p{margin:3px 0 0;color:var(--text);font-size:10px;line-height:1.35}.gookie-addon-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.gookie-addon-option{display:grid;grid-template-columns:20px 1fr auto;align-items:center;gap:9px;min-height:62px;padding:10px;border:1px solid rgba(0,22,158,.10);border-radius:12px;background:#fff;cursor:pointer}.gookie-addon-option input{position:absolute;opacity:0;pointer-events:none}.gookie-addon-radio{width:19px;height:19px;border:2px solid var(--blue);border-radius:50%;background:#fff;position:relative}.gookie-addon-option input:checked+.gookie-addon-radio{border-color:var(--red)}.gookie-addon-option input:checked+.gookie-addon-radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--red)}.gookie-addon-copy strong{display:block;color:var(--blue);font-size:11px}.gookie-addon-copy small{display:block;margin-top:3px;color:var(--text);font-size:8px;line-height:1.25}.gookie-addon-option>b{color:var(--red);font-size:11px;white-space:nowrap}.gookie-addon-message{margin-top:10px}.gookie-addon-message label{display:block;margin-bottom:5px;color:var(--blue);font-size:9px;font-weight:800}.gookie-addon-message textarea{width:100%;min-height:58px;padding:10px 12px;border:1px solid rgba(0,22,158,.15);border-radius:10px;background:#fff;color:var(--text);font:500 11px/1.4 "DM Sans",sans-serif}.gookie-addon-message-foot{display:flex;justify-content:space-between;align-items:center;margin-top:5px}.gookie-addon-message-foot span{font-size:8px}.gookie-addon-clear{padding:0;border:0;background:transparent;color:var(--red);font-size:8px;font-weight:800;cursor:pointer}@media(max-width:700px){.gookie-addon-options{grid-template-columns:1fr}}
+
+/* ========================================
+   ORDER PAGE — ANNOUNCEMENT MATCH HOME
+   v7.1
+======================================== */
+.shop-page-new ~ * {}
+
+/* keep strip height compact, but make text as readable as homepage */
+.announcement-bar{
+  height:36px;
+  min-height:36px;
+  overflow:hidden;
+  background:var(--pink);
+}
+
+.announcement-track{
+  width:max-content;
+  min-width:100%;
+  height:36px;
+  min-height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:0;
+  padding:0;
+  white-space:nowrap;
+  overflow:visible;
+  animation:gookieAnnouncementScroll 14s linear infinite !important;
+}
+
+.announcement-group{
+  flex:0 0 auto;
+  height:36px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:0 18px;
+}
+
+.announcement-group span{
+  font-family:"DM Sans",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.045em;
+  color:var(--blue);
+}
+
+.announcement-group i{
+  color:var(--red);
+  font-style:normal;
+  font-size:11px;
+  line-height:1;
+}
+
+@keyframes gookieAnnouncementScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+@media(max-width:700px){
+  .announcement-bar{
+    height:34px;
+    min-height:34px;
+  }
+
+  .announcement-track{
+    height:34px;
+    min-height:34px;
+    animation-duration:12s !important;
+  }
+
+  .announcement-group{
+    height:34px;
+    padding:0 10px;
+    gap:16px;
+  }
+
+  .announcement-group span{
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.03em;
+  }
+
+  .announcement-group i{
+    font-size:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .announcement-track{
+    animation:none !important;
+  }
+}
