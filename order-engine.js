@@ -1,7 +1,7 @@
 "use strict";
 
 /* =========================================================
-   GOOKIE ORDER ENGINE V5.4 — MINI + ADD-ONS CONSOLIDATED
+   GOOKIE ORDER ENGINE V5.1
    Converts website cart data into Apps Script payload.
 ========================================================= */
 
@@ -22,23 +22,7 @@ const GOOKIE_BOX_IDS = Object.freeze({
   4: "BOX001",
   8: "BOX002",
   12: "BOX003",
-  15: "BOX004",
 });
-
-
-/* =========================================================
-   3. ADD-ON ID MAPPING
-========================================================= */
-
-const GOOKIE_ADDON_IDS = Object.freeze({
-  "party-kit": "ADDON001",
-  "wishcard": "ADDON002",
-  "wish-card": "ADDON002",
-  ADDON001: "ADDON001",
-  ADDON002: "ADDON002",
-});
-
-const GOOKIE_ADDON_MESSAGE_LIMIT = 70;
 
 
 /* =========================================================
@@ -56,13 +40,8 @@ const GOOKIE_PRODUCT_IDS = Object.freeze({
   "choki-chomp": "PRD008",
   "coffee-kiss": "PRD009",
 
-  /* Mini Box production SKUs — 40g dough each. */
-  "mini-wonder-chip": "PRD012",
-  "mini-dark-crush": "PRD013",
-  "mini-red-bloom": "PRD014",
-
   /*
-    Monthly Wonder operational slot.
+    Berry Nutty is the current Monthly Wonder.
   */
   "monthly-wonder": "PRD010",
 
@@ -87,8 +66,7 @@ function getOrderSelectionType(order) {
     order.type === "Gookie's Picks" ||
     order.type === "Assorted Box" ||
     order.type === "Single Flavour Box" ||
-    order.type === "Gookie Big Box" ||
-    order.type === "Mini Box"
+    order.type === "Gookie Big Box"
   ) {
     return "GOOKIES_CHOICE";
   }
@@ -136,82 +114,7 @@ function buildOrderItems(cookieIds) {
 
 
 /* =========================================================
-   7. NORMALISE ADD-ONS
-========================================================= */
-
-function buildOrderAddons(addons, boxIndex) {
-  if (!Array.isArray(addons) || addons.length === 0) {
-    return [];
-  }
-
-  const seenAddonIds = new Set();
-
-  return addons.map(function (addon) {
-    if (!addon || typeof addon !== "object") {
-      throw new Error(
-        "Invalid add-on in cart box " + (boxIndex + 1) + "."
-      );
-    }
-
-    const rawId =
-      addon.addonId ||
-      addon.id ||
-      addon.type ||
-      "";
-
-    const addonId =
-      GOOKIE_ADDON_IDS[String(rawId)];
-
-    if (!addonId) {
-      throw new Error(
-        "Unknown add-on in cart box " +
-          (boxIndex + 1) +
-          ": " +
-          String(rawId || "(missing Add-on ID)")
-      );
-    }
-
-    if (seenAddonIds.has(addonId)) {
-      throw new Error(
-        "The same add-on cannot be added twice to cart box " +
-          (boxIndex + 1) +
-          "."
-      );
-    }
-
-    seenAddonIds.add(addonId);
-
-    const message =
-      String(addon.message || "").trim();
-
-    if (message.length > GOOKIE_ADDON_MESSAGE_LIMIT) {
-      throw new Error(
-        "Add-on message for cart box " +
-          (boxIndex + 1) +
-          " must be " +
-          GOOKIE_ADDON_MESSAGE_LIMIT +
-          " characters or fewer."
-      );
-    }
-
-    if (addonId === "ADDON002" && !message) {
-      throw new Error(
-        "Wish Card for cart box " +
-          (boxIndex + 1) +
-          " needs a custom message."
-      );
-    }
-
-    return {
-      addonId: addonId,
-      qty: 1,
-      message: message,
-    };
-  });
-}
-
-/* =========================================================
-   8. BUILD CREATE ORDER PAYLOAD
+   6. BUILD CREATE ORDER PAYLOAD
 ========================================================= */
 
 function buildOrderPayload() {
@@ -257,18 +160,11 @@ function buildOrderPayload() {
       );
     }
 
-    const addons =
-      buildOrderAddons(
-        order.addons || [],
-        index
-      );
-
     return {
       boxId: boxId,
       selectionType:
         getOrderSelectionType(order),
       items: items,
-      addons: addons,
     };
   });
 
