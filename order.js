@@ -150,7 +150,7 @@ function updateBuilder() {
 
   pickedCountEl.textContent = picked;
   capacityEl.textContent = selectedBoxSize;
-  totalEl.textContent = `RM${selectedBoxPrice}`;
+  totalEl.textContent = `RM${selectedBoxPrice + (getGiftAddon("build")?.price || 0)}`;
 
   cookieCards.forEach(updateCookieCard);
 
@@ -218,6 +218,7 @@ fillBestSellers?.addEventListener("click", () => {
 
 addButton?.addEventListener("click", () => {
   if (totalPicked() !== selectedBoxSize) return;
+  if (!validateGiftAddon("build")) return;
 
   basketCount += 1;
   if (cartCount) cartCount.textContent = String(basketCount);
@@ -241,23 +242,35 @@ addButton?.addEventListener("click", () => {
     item.className = "order-cart-build-item";
     item.innerHTML = `
       <strong>Build Your Cookie Box · ${selectedBoxSize}</strong>
-      <span>${selectedSummary}</span>
-      <b>RM${selectedBoxPrice}</b>
+      <span>${selectedSummary}${giftAddonSummary("build")}</span>
+      <b>RM${selectedBoxPrice + (getGiftAddon("build")?.price || 0)}</b>
     `;
     cartBody.appendChild(item);
   }
 
   openCart();
+  resetGiftAddon("build");
   clearSelection();
 });
 
 updateBuilder();
 
 
+
+/* V7 GIFT ADDONS */
+function getGiftAddon(n){const g=document.querySelector(`[data-addon-group="${n}"]`),s=g?.querySelector('input[type="radio"]:checked');if(!g||!s)return null;const message=g.querySelector('textarea')?.value.trim()||"";return{type:s.value,price:Number(s.dataset.price||0),label:s.value==="party-kit"?"Party Kit + Wish Card":"Wish Card",message}}
+function giftAddonSummary(n){const a=getGiftAddon(n);return a?` · ${a.label}${a.message?` — “${a.message}”`:""}`:""}
+function resetGiftAddon(n){const g=document.querySelector(`[data-addon-group="${n}"]`);if(!g)return;g.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);const t=g.querySelector('textarea'),b=g.querySelector('.gookie-addon-message'),k=g.querySelector('.gookie-addon-message-foot span b');if(t)t.value="";if(k)k.textContent="0";if(b)b.hidden=true}
+function validateGiftAddon(n){const a=getGiftAddon(n);if(a?.type==="wish-card"&&!a.message){document.querySelector(`[data-addon-group="${n}"] textarea`)?.focus();return false}return true}
+document.querySelectorAll('[data-addon-group]').forEach(g=>{const b=g.querySelector('.gookie-addon-message'),t=g.querySelector('textarea'),k=g.querySelector('.gookie-addon-message-foot span b');g.querySelectorAll('input[type="radio"]').forEach(x=>x.addEventListener('change',()=>{if(b)b.hidden=false;t?.focus();updateBuilder();updateMiniTotal();updateBuffetPrice()}));t?.addEventListener('input',()=>{if(k)k.textContent=t.value.length});g.querySelector('.gookie-addon-clear')?.addEventListener('click',()=>{resetGiftAddon(g.dataset.addonGroup);updateBuilder();updateMiniTotal();updateBuffetPrice()})});
+
 /* ---------- MINI GOOKIES ---------- */
 const addMiniGookiesToBasket = document.getElementById("addMiniGookiesToBasket");
+const miniPriceEl=document.querySelector(".mini-gookies-price strong");
+function updateMiniTotal(){if(miniPriceEl)miniPriceEl.textContent=`RM${59+(getGiftAddon("mini")?.price||0)}`}
 
 addMiniGookiesToBasket?.addEventListener("click", () => {
+  if (!validateGiftAddon("mini")) return;
   basketCount += 1;
   if (cartCount) cartCount.textContent = String(basketCount);
 
@@ -271,23 +284,26 @@ addMiniGookiesToBasket?.addEventListener("click", () => {
     item.className = "order-cart-build-item";
     item.innerHTML = `
       <strong>Mini Gookies · 15 pcs</strong>
-      <span>5× Wonder Chip, 5× Dark Crush, 5× Red Bloom</span>
-      <b>RM59</b>
+      <span>5× Wonder Chip, 5× Dark Crush, 5× Red Bloom${giftAddonSummary("mini")}</span>
+      <b>RM${59+(getGiftAddon("mini")?.price||0)}</b>
     `;
     cartBody.appendChild(item);
   }
 
   openCart();
+  resetGiftAddon("mini");
+  updateMiniTotal();
 });
 
 /* GOOKIE BUFFET */
 const buffetCustomSticker=document.getElementById("buffetCustomSticker");
 const buffetPrice=document.getElementById("buffetPrice");
 const addBuffetToBasket=document.getElementById("addBuffetToBasket");
-function getBuffetTotal(){return buffetCustomSticker?.checked?149:129}
+function getBuffetTotal(){return (buffetCustomSticker?.checked?149:129)+(getGiftAddon("buffet")?.price||0)}
 function updateBuffetPrice(){if(buffetPrice) buffetPrice.textContent=`RM${getBuffetTotal()}`}
 buffetCustomSticker?.addEventListener("change",updateBuffetPrice);
 addBuffetToBasket?.addEventListener("click",()=>{
+  if (!validateGiftAddon("buffet")) return;
   const custom=Boolean(buffetCustomSticker?.checked), price=getBuffetTotal();
   basketCount+=1; if(cartCount) cartCount.textContent=String(basketCount);
   const cartBody=document.getElementById("cart-body"), cartEmpty=document.getElementById("cart-empty");
@@ -295,11 +311,14 @@ addBuffetToBasket?.addEventListener("click",()=>{
     if(cartEmpty) cartEmpty.style.display="none";
     const item=document.createElement("div");
     item.className="order-cart-build-item";
-    item.innerHTML=`<strong>Gookie Buffet · 30 pcs</strong><span>10× Wonder Chip, 10× Dark Crush, 10× Red Bloom · Individually wrapped${custom?" · Customized stickers":""}</span><b>RM${price}</b>`;
+    item.innerHTML=`<strong>Gookie Buffet · 30 pcs</strong><span>10× Wonder Chip, 10× Dark Crush, 10× Red Bloom${giftAddonSummary("buffet")}${custom?" · Customized stickers":""}</span><b>RM${price}</b>`;
     cartBody.appendChild(item);
   }
   openCart();
   if(buffetCustomSticker) buffetCustomSticker.checked=false;
+  resetGiftAddon("buffet");
   updateBuffetPrice();
 });
 updateBuffetPrice();
+
+updateMiniTotal();
