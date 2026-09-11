@@ -103,7 +103,7 @@ shopTabs.forEach((tab) => {
 
 
 /* ---------- DIRECT BUILD YOUR BOX ---------- */
-const cookieCards = [...document.querySelectorAll(".cookie-picker-card")];
+const cookieCards = [...document.querySelectorAll(".cookie-picker-row, .cookie-picker-card")];
 const sizeButtons = [...document.querySelectorAll("[data-box-size]")];
 
 const pickedCountEl = document.getElementById("builderPickedCount");
