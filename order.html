@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="order.css?v=4.1">
+  <link rel="stylesheet" href="order.css?v=5.0">
 </head>
 <body>
 
@@ -249,7 +249,9 @@
       <div class="build-box-shell">
 
         <div class="build-box-heading">
+          <p class="shop-eyebrow">YOUR COOKIES. YOUR CALL.</p>
           <h1>Build Your Cookie Box</h1>
+          <p>Choose your box size, then fill it with your favourite Gookies.</p>
         </div>
 
         <div class="build-box-layout">
@@ -270,6 +272,7 @@
                 <span class="builder-step">1</span>
                 <div>
                   <h2>Pick your box</h2>
+                  <p>How many full-sized Gookies are coming home?</p>
                 </div>
               </div>
 
@@ -304,6 +307,7 @@
 
                 <div class="builder-cookie-heading-copy">
                   <h2>Choose your Gookies</h2>
+                  <p>Add as many of each flavour as you like.</p>
                 </div>
 
                 <div class="builder-progress" id="builderProgress">
@@ -484,27 +488,66 @@
       data-shop-panel="mini"
       hidden
     >
-      <div class="simple-product-shell">
-        <div class="simple-product-image">
-          <img src="treat-box.png" alt="Mini Gookies">
+      <div class="mini-gookies-shell">
+
+        <div class="mini-gookies-image">
+          <img src="treat-box.png" alt="Mini Gookies box">
         </div>
 
-        <div class="simple-product-copy">
-          <p class="shop-eyebrow">BITE-SIZED HAPPINESS</p>
-          <h1>Mini Gookies</h1>
-          <p class="simple-product-lead">Little in size. Big on Gookie.</p>
-          <p>15 Mini Gookies in three classic flavours.</p>
+        <div class="mini-gookies-content">
 
-          <div class="simple-product-pills">
-            <span>5 Wonder Chip</span>
-            <span>5 Dark Crush</span>
-            <span>5 Red Bloom</span>
+          <div class="mini-gookies-heading">
+            <p class="shop-eyebrow">BITE-SIZED HAPPINESS</p>
+            <h1>Mini Gookies</h1>
+            <p class="mini-gookies-lead">Little in size. Big on Gookie.</p>
+            <p class="mini-gookies-copy">
+              15 Mini Gookies in three classic flavours.
+            </p>
           </div>
 
-          <strong class="simple-product-price">RM59</strong>
-          <button class="simple-product-button" type="button">
-            ADD MINI GOOKIES →
-          </button>
+          <div class="mini-gookies-list">
+
+            <article class="mini-gookie-row">
+              <div class="mini-gookie-thumb">
+                <img src="wonder-chip.png" alt="Wonder Chip">
+              </div>
+              <h3>Wonder Chip</h3>
+              <strong>5 pcs</strong>
+            </article>
+
+            <article class="mini-gookie-row">
+              <div class="mini-gookie-thumb">
+                <img src="dark-crush.png" alt="Dark Crush">
+              </div>
+              <h3>Dark Crush</h3>
+              <strong>5 pcs</strong>
+            </article>
+
+            <article class="mini-gookie-row">
+              <div class="mini-gookie-thumb">
+                <img src="red-bloom.png" alt="Red Bloom">
+              </div>
+              <h3>Red Bloom</h3>
+              <strong>5 pcs</strong>
+            </article>
+
+          </div>
+
+          <div class="mini-gookies-add-row">
+            <div class="mini-gookies-price">
+              <span>MINI GOOKIES</span>
+              <strong>RM59</strong>
+            </div>
+
+            <button
+              class="mini-gookies-add-button"
+              id="addMiniGookiesToBasket"
+              type="button"
+            >
+              ADD TO BASKET →
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -581,6 +624,6 @@
   </footer>
 
 
-<script src="order.js?v=4.1"></script>
+<script src="order.js?v=5.0"></script>
 </body>
 </html>

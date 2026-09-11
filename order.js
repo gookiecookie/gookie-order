@@ -252,3 +252,30 @@ addButton?.addEventListener("click", () => {
 });
 
 updateBuilder();
+
+
+/* ---------- MINI GOOKIES ---------- */
+const addMiniGookiesToBasket = document.getElementById("addMiniGookiesToBasket");
+
+addMiniGookiesToBasket?.addEventListener("click", () => {
+  basketCount += 1;
+  if (cartCount) cartCount.textContent = String(basketCount);
+
+  const cartBody = document.getElementById("cart-body");
+  const cartEmpty = document.getElementById("cart-empty");
+
+  if (cartBody) {
+    if (cartEmpty) cartEmpty.style.display = "none";
+
+    const item = document.createElement("div");
+    item.className = "order-cart-build-item";
+    item.innerHTML = `
+      <strong>Mini Gookies · 15 pcs</strong>
+      <span>5× Wonder Chip, 5× Dark Crush, 5× Red Bloom</span>
+      <b>RM59</b>
+    `;
+    cartBody.appendChild(item);
+  }
+
+  openCart();
+});

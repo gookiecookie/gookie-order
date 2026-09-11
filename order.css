@@ -1005,3 +1005,268 @@
     height:28px;
   }
 }
+
+
+/* ========================================
+   MINI GOOKIES V5
+   Matches Build Your Box row sizing
+======================================== */
+
+.mini-gookies-shell{
+  width:min(100% - 48px,1120px);
+  margin:0 auto;
+  padding:54px 0 90px;
+  display:grid;
+  grid-template-columns:minmax(330px,.82fr) minmax(0,1.18fr);
+  gap:58px;
+  align-items:center;
+  background:#fff;
+}
+
+.mini-gookies-image{
+  display:grid;
+  place-items:center;
+  min-height:500px;
+  background:transparent;
+}
+
+.mini-gookies-image img{
+  width:min(100%,540px);
+  max-height:500px;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 20px rgba(0,0,0,.10));
+}
+
+.mini-gookies-content{
+  min-width:0;
+}
+
+.mini-gookies-heading{
+  margin-bottom:22px;
+}
+
+.mini-gookies-heading h1{
+  margin:0;
+  color:var(--blue);
+  font-family:"Titan One",sans-serif;
+  font-size:clamp(52px,6vw,76px);
+  font-weight:400;
+  line-height:.95;
+}
+
+.mini-gookies-lead{
+  margin:16px 0 6px;
+  color:var(--blue);
+  font-size:20px;
+  font-weight:800;
+}
+
+.mini-gookies-copy{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.5;
+}
+
+.mini-gookies-list{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+
+.mini-gookie-row{
+  display:grid;
+  grid-template-columns:74px minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  min-height:78px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(0,22,158,.11);
+  background:transparent;
+}
+
+.mini-gookie-row:last-child{
+  border-bottom:0;
+}
+
+.mini-gookie-thumb{
+  width:74px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  background:transparent;
+}
+
+.mini-gookie-thumb img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 5px rgba(0,0,0,.08));
+}
+
+.mini-gookie-row h3{
+  margin:0;
+  color:var(--blue);
+  font-family:"Titan One",sans-serif;
+  font-size:19px;
+  font-weight:400;
+  line-height:1.05;
+}
+
+.mini-gookie-row strong{
+  justify-self:end;
+  color:var(--blue);
+  font-size:14px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.mini-gookies-add-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:26px;
+  padding-top:20px;
+  border-top:1px solid rgba(0,22,158,.10);
+}
+
+.mini-gookies-price span{
+  display:block;
+  color:var(--text);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+.mini-gookies-price strong{
+  display:block;
+  margin-top:3px;
+  color:var(--blue);
+  font-size:30px;
+  font-weight:800;
+}
+
+.mini-gookies-add-button{
+  min-width:260px;
+  min-height:50px;
+  padding:0 26px;
+  border:0;
+  border-radius:999px;
+  background:var(--red);
+  color:#fff;
+  font-family:"DM Sans",sans-serif;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+@media (max-width:700px){
+
+  .mini-gookies-shell{
+    width:min(100% - 32px,520px);
+    padding:34px 0 64px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+
+  .mini-gookies-image{
+    order:1;
+    width:100%;
+    min-height:280px;
+  }
+
+  .mini-gookies-image img{
+    width:min(100%,360px);
+    max-height:320px;
+  }
+
+  .mini-gookies-content{
+    order:2;
+    width:100%;
+  }
+
+  .mini-gookies-heading h1{
+    font-size:clamp(46px,13vw,62px);
+  }
+
+  .mini-gookies-lead{
+    font-size:18px;
+  }
+
+  /* SAME THUMBNAIL SIZE AS BUILD YOUR BOX MOBILE */
+  .mini-gookie-row{
+    grid-template-columns:64px minmax(0,1fr) auto;
+    gap:10px;
+    min-height:70px;
+    padding:7px 0;
+  }
+
+  .mini-gookie-thumb{
+    width:64px;
+    height:56px;
+  }
+
+  .mini-gookie-thumb img{
+    width:54px;
+    height:54px;
+  }
+
+  .mini-gookie-row h3{
+    font-size:16px;
+  }
+
+  .mini-gookie-row strong{
+    font-size:13px;
+  }
+
+  .mini-gookies-add-row{
+    position:sticky;
+    bottom:8px;
+    z-index:20;
+    padding:12px;
+    margin-top:24px;
+    border:1px solid rgba(0,22,158,.10);
+    border-radius:18px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 10px 32px rgba(0,22,158,.10);
+    backdrop-filter:blur(8px);
+  }
+
+  .mini-gookies-price strong{
+    font-size:24px;
+  }
+
+  .mini-gookies-add-button{
+    min-width:0;
+    flex:1;
+    padding:0 16px;
+    font-size:10px;
+  }
+}
+
+@media (max-width:420px){
+
+  .mini-gookie-row{
+    grid-template-columns:56px minmax(0,1fr) auto;
+    gap:8px;
+  }
+
+  .mini-gookie-thumb{
+    width:56px;
+  }
+
+  .mini-gookie-thumb img{
+    width:50px;
+    height:50px;
+  }
+
+  .mini-gookie-row h3{
+    font-size:14px;
+  }
+
+  .mini-gookie-row strong{
+    font-size:12px;
+  }
+}
