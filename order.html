@@ -33,7 +33,7 @@
 
 
   <!-- LOGO -->
-  <a href="#" class="brand" aria-label="Gookie home">
+  <a href="index.html" class="brand" aria-label="Gookie home">
     <img src="logo.png" alt="Gookie">
   </a>
 
@@ -157,9 +157,9 @@
 
    <nav class="menu-links" aria-label="Main navigation">
 
-  <a href="#cookie-lineup">PRODUCTS</a>
+  <a href="gookies.html">PRODUCTS</a>
 
-  <a href="#build-box">SHOP</a>
+  <a href="order.html">SHOP</a>
 
   <a href="#">GIFTS</a>
 
@@ -202,131 +202,375 @@
   </div>
 
 
+
   <main class="shop-page-new">
 
-    <section class="shop-tabs-shell">
-      <div class="shop-tabs" role="tablist" aria-label="Shop Gookie">
-        <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="build">
+    <!-- ================= SHOP CATEGORY NAV ================= -->
+    <section class="shop-category-nav-wrap" aria-label="Shop categories">
+      <div class="shop-category-nav" role="tablist">
+        <button
+          class="shop-category-button is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          data-shop-tab="build"
+        >
           BUILD YOUR BOX
         </button>
-        <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="mini">
+
+        <button
+          class="shop-category-button"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-shop-tab="mini"
+        >
           MINI GOOKIES
         </button>
-        <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="buffet">
+
+        <button
+          class="shop-category-button"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-shop-tab="buffet"
+        >
           GOOKIE BUFFET
         </button>
       </div>
     </section>
 
-    <section class="shop-panel is-active" data-shop-panel="build">
-      <div class="shop-panel-grid shop-panel-build">
-        <div class="shop-panel-copy">
-          <p class="shop-kicker">FULL-SIZED GOOKIES</p>
-          <h1>BUILD<br>YOUR BOX.</h1>
-          <p class="shop-lead">Pick. Mix. Make it yours.</p>
-          <p class="shop-text">Our chunky, soft-baked Gookies in all your favourite flavours.</p>
 
-          <div class="shop-size-grid">
-            <button class="shop-size-card is-selected" type="button" data-box-size="4">
-              <span class="shop-size-title">BOX OF 4</span>
-              <strong>RM39</strong>
-              <small>4 chunky cookies</small>
-            </button>
-            <button class="shop-size-card" type="button" data-box-size="8">
-              <span class="shop-size-title">BOX OF 8</span>
-              <strong>RM74</strong>
-              <small>8 chunky cookies</small>
-            </button>
-          </div>
+    <!-- ================= BUILD YOUR BOX ================= -->
+    <section
+      class="shop-category-panel is-active"
+      data-shop-panel="build"
+    >
+      <div class="build-box-shell">
 
-          <div class="shop-preset">
-            <div>
-              <small>NOT SURE WHAT TO PICK?</small>
-              <strong>Start with our Best Sellers.</strong>
-            </div>
-            <button type="button">FILL WITH BEST SELLERS →</button>
-          </div>
-
-          <button class="shop-primary-btn" type="button">START BUILDING →</button>
+        <div class="build-box-heading">
+          <p class="shop-eyebrow">YOUR COOKIES. YOUR CALL.</p>
+          <h1>Build Your Cookie Box</h1>
+          <p>Choose your box size, then fill it with your favourite Gookies.</p>
         </div>
 
-        <div class="shop-panel-visual">
-          <span class="shop-doodle shop-doodle-blue">Chunky<br>Wonders<br>inside!</span>
-          <span class="shop-blob shop-blob-pink">Same classic size.<br>Same addictive taste.</span>
-          <img src="chunky-box.png" alt="Build Your Box Gookie box">
+        <div class="build-box-layout">
+
+          <!-- IMAGE FIRST ON MOBILE -->
+          <div class="build-box-image">
+            <img
+              src="chunky-box.png"
+              alt="Gookie cookie box"
+            >
+          </div>
+
+          <div class="build-box-controls">
+
+            <!-- BOX SIZE -->
+            <div class="builder-block builder-size-block">
+              <div class="builder-block-heading">
+                <span class="builder-step">1</span>
+                <div>
+                  <h2>Pick your box</h2>
+                  <p>How many full-sized Gookies are coming home?</p>
+                </div>
+              </div>
+
+              <div class="box-size-choice-grid">
+                <button
+                  class="box-size-choice is-selected"
+                  type="button"
+                  data-box-size="4"
+                  data-box-price="39"
+                >
+                  <span>BOX OF 4</span>
+                  <strong>RM39</strong>
+                </button>
+
+                <button
+                  class="box-size-choice"
+                  type="button"
+                  data-box-size="8"
+                  data-box-price="74"
+                >
+                  <span>BOX OF 8</span>
+                  <strong>RM74</strong>
+                </button>
+              </div>
+            </div>
+
+
+            <!-- COOKIE PICKER -->
+            <div class="builder-block">
+              <div class="builder-block-heading builder-cookie-heading">
+                <span class="builder-step">2</span>
+
+                <div class="builder-cookie-heading-copy">
+                  <h2>Choose your Gookies</h2>
+                  <p>Add as many of each flavour as you like.</p>
+                </div>
+
+                <div class="builder-progress" id="builderProgress">
+                  <strong id="builderPickedCount">0</strong>
+                  <span>/ <b id="builderBoxCapacity">4</b> picked</span>
+                </div>
+              </div>
+
+              <button
+                class="best-seller-fill"
+                id="fillBestSellers"
+                type="button"
+              >
+                NOT SURE? FILL WITH BEST SELLERS →
+              </button>
+
+              <div class="cookie-picker-grid" id="cookiePickerGrid">
+
+                <article class="cookie-picker-card" data-cookie-id="wonder-chip">
+                  <div class="cookie-picker-image">
+                    <span class="cookie-mini-badge">BEST SELLER</span>
+                    <img src="wonder-chip.png" alt="Wonder Chip">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Wonder Chip</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Wonder Chip">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Wonder Chip">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="dark-crush">
+                  <div class="cookie-picker-image">
+                    <span class="cookie-mini-badge">BEST SELLER</span>
+                    <img src="dark-crush.png" alt="Dark Crush">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Dark Crush</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Dark Crush">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Dark Crush">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="red-bloom">
+                  <div class="cookie-picker-image">
+                    <span class="cookie-mini-badge">BEST SELLER</span>
+                    <img src="red-bloom.png" alt="Red Bloom">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Red Bloom</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Red Bloom">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Red Bloom">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="matcha-matchy">
+                  <div class="cookie-picker-image">
+                    <img src="matcha-matchy.png" alt="Matcha Matchy">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Matcha Matchy</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Matcha Matchy">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Matcha Matchy">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="dream-cream">
+                  <div class="cookie-picker-image">
+                    <img src="dream-cream.png" alt="Dream Cream">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Dream Cream</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Dream Cream">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Dream Cream">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="mallow-melt">
+                  <div class="cookie-picker-image">
+                    <span class="cookie-mini-badge">BEST SELLER</span>
+                    <img src="mallow-melt.png" alt="Mallow Melt">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Mallow Melt</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Mallow Melt">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Mallow Melt">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="biscoff-boom">
+                  <div class="cookie-picker-image">
+                    <img src="biscoff-boom.png" alt="Biscoff Boom">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Biscoff Boom</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Biscoff Boom">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Biscoff Boom">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="choco-loco">
+                  <div class="cookie-picker-image">
+                    <img src="choco-loco.png" alt="Choco Loco">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Choco Loco</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Choco Loco">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Choco Loco">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="coffee-kiss">
+                  <div class="cookie-picker-image">
+                    <img src="coffee-kiss.png" alt="Coffee Kiss">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Coffee Kiss</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Coffee Kiss">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Coffee Kiss">+</button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="cookie-picker-card" data-cookie-id="berry-blast">
+                  <div class="cookie-picker-image">
+                    <span class="cookie-mini-badge cookie-mini-badge-monthly">LIMITED DROP</span>
+                    <img src="berry-blast.png" alt="Berry Blast">
+                  </div>
+                  <div class="cookie-picker-bottom">
+                    <h3>Berry Blast</h3>
+                    <div class="cookie-qty-control">
+                      <button type="button" data-qty-minus aria-label="Remove Berry Blast">−</button>
+                      <span data-qty-count>0</span>
+                      <button type="button" data-qty-plus aria-label="Add Berry Blast">+</button>
+                    </div>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+
+            <!-- ADD TO BASKET -->
+            <div class="builder-add-row">
+              <div class="builder-total">
+                <span>YOUR BOX</span>
+                <strong id="builderTotal">RM39</strong>
+              </div>
+
+              <button
+                class="builder-add-button"
+                id="addBuildBoxToBasket"
+                type="button"
+                disabled
+              >
+                PICK 4 MORE GOOKIES
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="shop-panel" data-shop-panel="mini" hidden>
-      <div class="shop-panel-grid shop-panel-mini">
-        <div class="shop-panel-copy">
-          <p class="shop-kicker">BITE-SIZED HAPPINESS</p>
-          <h1>MINI<br>GOOKIES.</h1>
-          <p class="shop-lead">Little in size. Big on Gookie.</p>
-          <p class="shop-text">15 bite-sized Gookies in 3 classic flavours. Perfect for snacking, sharing or gifting.</p>
 
-          <p class="shop-price">RM59</p>
-
-          <div class="shop-stat-row">
-            <span><b>15</b> Mini Gookies</span>
-            <span><b>3</b> flavours</span>
-            <span><b>5</b> of each</span>
-          </div>
-
-          <div class="shop-flavour-row">
-            <span>Wonder Chip</span>
-            <span>Dark Crush</span>
-            <span>Red Bloom</span>
-          </div>
-
-          <button class="shop-primary-btn" type="button">CHOOSE MINI GOOKIES →</button>
+    <!-- ================= MINI GOOKIES ================= -->
+    <section
+      class="shop-category-panel"
+      data-shop-panel="mini"
+      hidden
+    >
+      <div class="simple-product-shell">
+        <div class="simple-product-image">
+          <img src="treat-box.png" alt="Mini Gookies">
         </div>
 
-        <div class="shop-panel-visual">
-          <span class="shop-doodle shop-doodle-blue">Small cookies.<br>Big joy!</span>
-          <span class="shop-blob shop-blob-pink">Bite-sized<br>but still chunky.</span>
-          <img src="treat-box.png" alt="15 Mini Gookies">
+        <div class="simple-product-copy">
+          <p class="shop-eyebrow">BITE-SIZED HAPPINESS</p>
+          <h1>Mini Gookies</h1>
+          <p class="simple-product-lead">Little in size. Big on Gookie.</p>
+          <p>15 Mini Gookies in three classic flavours.</p>
+
+          <div class="simple-product-pills">
+            <span>5 Wonder Chip</span>
+            <span>5 Dark Crush</span>
+            <span>5 Red Bloom</span>
+          </div>
+
+          <strong class="simple-product-price">RM59</strong>
+          <button class="simple-product-button" type="button">
+            ADD MINI GOOKIES →
+          </button>
         </div>
       </div>
     </section>
 
-    <section class="shop-panel" data-shop-panel="buffet" hidden>
-      <div class="shop-panel-grid shop-panel-buffet">
-        <div class="shop-panel-copy">
-          <p class="shop-kicker">FOR MEETINGS, CELEBRATIONS & MORE</p>
-          <h1>GOOKIE<br>BUFFET.</h1>
-          <p class="shop-lead">Good cookies bring people together.</p>
-          <p class="shop-text">30 individually wrapped Mini Gookies. Choose up to 3 flavours. Ready to serve, easy to share, and made to look good on the table.</p>
 
-          <div class="shop-stat-row">
-            <span><b>30</b> Mini Gookies</span>
-            <span><b>INDIVIDUAL</b> wrapping</span>
-            <span><b>UP TO 3</b> flavours</span>
-          </div>
-
-          <div class="shop-custom-card">
-            <div class="shop-custom-sticker">G</div>
-            <div>
-              <small>MAKE IT EXTRA SPECIAL</small>
-              <strong>Custom stickers available</strong>
-              <p>Birthday · Corporate events · Gifts · Celebrations</p>
-            </div>
-            <span class="shop-custom-extra">+ RM</span>
-          </div>
-
-          <button class="shop-primary-btn" type="button">BUILD YOUR BUFFET →</button>
+    <!-- ================= GOOKIE BUFFET ================= -->
+    <section
+      class="shop-category-panel"
+      data-shop-panel="buffet"
+      hidden
+    >
+      <div class="simple-product-shell buffet-product-shell">
+        <div class="simple-product-image">
+          <img src="cookie-feast.png" alt="Gookie Buffet">
         </div>
 
-        <div class="shop-panel-visual">
-          <span class="shop-doodle shop-doodle-blue">Same little cookies.<br>Bigger moments.</span>
-          <span class="shop-blob shop-blob-blue">Custom stickers<br>available!</span>
-          <img src="cookie-feast.png" alt="Gookie Buffet with individually wrapped Mini Gookies">
+        <div class="simple-product-copy">
+          <p class="shop-eyebrow">MEETINGS · BIRTHDAYS · EVENTS</p>
+          <h1>Gookie Buffet</h1>
+          <p class="simple-product-lead">Good cookies bring people together.</p>
+          <p>30 individually wrapped Mini Gookies, ready to serve and easy to share.</p>
+
+          <div class="simple-product-pills">
+            <span>30 Mini Gookies</span>
+            <span>Individually wrapped</span>
+            <span>Up to 3 flavours</span>
+          </div>
+
+          <div class="buffet-custom-sticker">
+            <div class="buffet-sticker-preview">G</div>
+            <div>
+              <small>OPTIONAL EXTRA</small>
+              <strong>Customized stickers</strong>
+              <p>For birthdays, corporate events, gifts and celebrations.</p>
+            </div>
+          </div>
+
+          <button class="simple-product-button" type="button">
+            BUILD YOUR BUFFET →
+          </button>
         </div>
       </div>
     </section>
 
   </main>
+
 
   <footer class="site-footer" id="footer">
     <div class="section-shell footer-grid">
