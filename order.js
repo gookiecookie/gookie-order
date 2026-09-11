@@ -279,3 +279,27 @@ addMiniGookiesToBasket?.addEventListener("click", () => {
 
   openCart();
 });
+
+/* GOOKIE BUFFET */
+const buffetCustomSticker=document.getElementById("buffetCustomSticker");
+const buffetPrice=document.getElementById("buffetPrice");
+const addBuffetToBasket=document.getElementById("addBuffetToBasket");
+function getBuffetTotal(){return buffetCustomSticker?.checked?149:129}
+function updateBuffetPrice(){if(buffetPrice) buffetPrice.textContent=`RM${getBuffetTotal()}`}
+buffetCustomSticker?.addEventListener("change",updateBuffetPrice);
+addBuffetToBasket?.addEventListener("click",()=>{
+  const custom=Boolean(buffetCustomSticker?.checked), price=getBuffetTotal();
+  basketCount+=1; if(cartCount) cartCount.textContent=String(basketCount);
+  const cartBody=document.getElementById("cart-body"), cartEmpty=document.getElementById("cart-empty");
+  if(cartBody){
+    if(cartEmpty) cartEmpty.style.display="none";
+    const item=document.createElement("div");
+    item.className="order-cart-build-item";
+    item.innerHTML=`<strong>Gookie Buffet · 30 pcs</strong><span>10× Wonder Chip, 10× Dark Crush, 10× Red Bloom · Individually wrapped${custom?" · Customized stickers":""}</span><b>RM${price}</b>`;
+    cartBody.appendChild(item);
+  }
+  openCart();
+  if(buffetCustomSticker) buffetCustomSticker.checked=false;
+  updateBuffetPrice();
+});
+updateBuffetPrice();

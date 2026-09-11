@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="order.css?v=5.0">
+  <link rel="stylesheet" href="order.css?v=6.0">
 </head>
 <body>
 
@@ -249,7 +249,9 @@
       <div class="build-box-shell">
 
         <div class="build-box-heading">
+          <p class="shop-eyebrow">YOUR COOKIES. YOUR CALL.</p>
           <h1>Build Your Cookie Box</h1>
+          <p>Choose your box size, then fill it with your favourite Gookies.</p>
         </div>
 
         <div class="build-box-layout">
@@ -270,6 +272,7 @@
                 <span class="builder-step">1</span>
                 <div>
                   <h2>Pick your box</h2>
+                  <p>How many full-sized Gookies are coming home?</p>
                 </div>
               </div>
 
@@ -304,6 +307,7 @@
 
                 <div class="builder-cookie-heading-copy">
                   <h2>Choose your Gookies</h2>
+                  <p>Add as many of each flavour as you like.</p>
                 </div>
 
                 <div class="builder-progress" id="builderProgress">
@@ -493,9 +497,11 @@
         <div class="mini-gookies-content">
 
           <div class="mini-gookies-heading">
+            <p class="shop-eyebrow">BITE-SIZED HAPPINESS</p>
             <h1>Mini Gookies</h1>
+            <p class="mini-gookies-lead">Little in size. Big on Gookie.</p>
             <p class="mini-gookies-copy">
-              15 Mini Gookies in three classic flavours. Perfect for gifting.
+              15 Mini Gookies in three classic flavours.
             </p>
           </div>
 
@@ -547,46 +553,73 @@
     </section>
 
 
-    <!-- ================= GOOKIE BUFFET ================= -->
-    <section
-      class="shop-category-panel"
-      data-shop-panel="buffet"
-      hidden
-    >
-      <div class="simple-product-shell buffet-product-shell">
-        <div class="simple-product-image">
-          <img src="cookie-feast.png" alt="Gookie Buffet">
-        </div>
+    
+<!-- ================= GOOKIE BUFFET ================= -->
+<section class="shop-category-panel" data-shop-panel="buffet" hidden>
+  <div class="buffet-shell">
+    <div class="buffet-image">
+      <img src="cookie-feast.png" alt="Gookie Buffet">
+    </div>
 
-        <div class="simple-product-copy">
-          <p class="shop-eyebrow">MEETINGS · BIRTHDAYS · EVENTS</p>
-          <h1>Gookie Buffet</h1>
-          <p class="simple-product-lead">Good cookies bring people together.</p>
-          <p>30 individually wrapped Mini Gookies, ready to serve and easy to share.</p>
+    <div class="buffet-content">
+      <div class="buffet-heading">
+        <p class="shop-eyebrow">MEETINGS · BIRTHDAYS · EVENTS</p>
+        <h1>Gookie Buffet</h1>
+        <p class="buffet-lead">Good cookies bring people together.</p>
+        <p class="buffet-copy">30 individually wrapped Mini Gookies, ready to serve and easy to share.</p>
+      </div>
 
-          <div class="simple-product-pills">
-            <span>30 Mini Gookies</span>
-            <span>Individually wrapped</span>
-            <span>Up to 3 flavours</span>
-          </div>
+      <div class="buffet-signature-title">
+        <span>OUR MINI SIGNATURES</span>
+        <strong>30 pcs total</strong>
+      </div>
 
-          <div class="buffet-custom-sticker">
-            <div class="buffet-sticker-preview">G</div>
-            <div>
-              <small>OPTIONAL EXTRA</small>
-              <strong>Customized stickers</strong>
-              <p>For birthdays, corporate events, gifts and celebrations.</p>
-            </div>
-          </div>
+      <div class="buffet-flavour-list">
+        <article class="buffet-flavour-row">
+          <div class="buffet-flavour-thumb"><img src="wonder-chip.png" alt="Wonder Chip"></div>
+          <h3>Wonder Chip</h3><strong>10 pcs</strong>
+        </article>
+        <article class="buffet-flavour-row">
+          <div class="buffet-flavour-thumb"><img src="dark-crush.png" alt="Dark Crush"></div>
+          <h3>Dark Crush</h3><strong>10 pcs</strong>
+        </article>
+        <article class="buffet-flavour-row">
+          <div class="buffet-flavour-thumb"><img src="red-bloom.png" alt="Red Bloom"></div>
+          <h3>Red Bloom</h3><strong>10 pcs</strong>
+        </article>
+      </div>
 
-          <button class="simple-product-button" type="button">
-            BUILD YOUR BUFFET →
-          </button>
+      <div class="buffet-wrap-note">
+        <div class="buffet-wrap-icon"><i class="fa-solid fa-gift"></i></div>
+        <div>
+          <strong>Individually wrapped</strong>
+          <p>Each Mini Gookie comes packed separately and ready to serve.</p>
         </div>
       </div>
-    </section>
 
-  </main>
+      <label class="buffet-custom-option" for="buffetCustomSticker">
+        <input id="buffetCustomSticker" type="checkbox">
+        <span class="buffet-custom-check"></span>
+        <span class="buffet-custom-copy">
+          <small>MAKE IT YOURS</small>
+          <strong>Customized stickers</strong>
+          <span>Birthday · Corporate · Events · Gifts</span>
+        </span>
+        <b>+RM20</b>
+      </label>
+
+      <div class="buffet-add-row">
+        <div class="buffet-price">
+          <span>GOOKIE BUFFET</span>
+          <strong id="buffetPrice">RM129</strong>
+        </div>
+        <button class="buffet-add-button" id="addBuffetToBasket" type="button">ADD TO BASKET →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
 
 
   <footer class="site-footer" id="footer">
@@ -618,6 +651,6 @@
   </footer>
 
 
-<script src="order.js?v=5.0"></script>
+<script src="order.js?v=6.0"></script>
 </body>
 </html>
