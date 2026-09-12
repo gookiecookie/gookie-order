@@ -533,6 +533,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .lineup-link { margin-top: 26px; }
 
+
 /* GUIDE */
 .guide-section { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .guide-section .section-shell { padding-top: 60px; padding-bottom: 58px; }
