@@ -319,8 +319,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: center;
   gap: 42px;
 }
-.promo-slide.is-active { display: grid; animation: promoFade .35s ease; }
-@keyframes promoFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.promo-slide.is-active {
+  display: grid;
+  animation: promoSlideLeft .55s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes promoSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .promo-copy { position: relative; z-index: 2; }
 .promo-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
 .promo-copy h1, .promo-copy h2 {
