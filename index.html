@@ -462,21 +462,52 @@
     });
     document.querySelectorAll(".menu-links a").forEach((link) => link.addEventListener("click", closeMenu));
 
-    const promoSlides = [...document.querySelectorAll("[data-promo-slide]")];
-    const promoDots = [...document.querySelectorAll("[data-promo-dot]")];
-    const promoPrevious = document.querySelector(".promo-arrow-left");
-    const promoNext = document.querySelector(".promo-arrow-right");
-    let promoIndex = 0;
+  const promoSlides = [...document.querySelectorAll("[data-promo-slide]")];
+const promoDots = [...document.querySelectorAll("[data-promo-dot]")];
+const promoPrevious = document.querySelector(".promo-arrow-left");
+const promoNext = document.querySelector(".promo-arrow-right");
 
-    function showPromo(index) {
-      promoIndex = (index + promoSlides.length) % promoSlides.length;
-      promoSlides.forEach((slide, i) => slide.classList.toggle("is-active", i === promoIndex));
-      promoDots.forEach((dot, i) => dot.classList.toggle("is-active", i === promoIndex));
-    }
+let promoIndex = 0;
+let promoTimer;
 
-    promoPrevious.addEventListener("click", () => showPromo(promoIndex - 1));
-    promoNext.addEventListener("click", () => showPromo(promoIndex + 1));
-    promoDots.forEach((dot, index) => dot.addEventListener("click", () => showPromo(index)));
+function showPromo(index) {
+  promoIndex = (index + promoSlides.length) % promoSlides.length;
+
+  promoSlides.forEach((slide, i) => {
+    slide.classList.toggle("is-active", i === promoIndex);
+  });
+
+  promoDots.forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === promoIndex);
+  });
+}
+
+function startPromoTimer() {
+  clearInterval(promoTimer);
+
+  promoTimer = setInterval(() => {
+    showPromo(promoIndex + 1);
+  }, 5000);
+}
+
+promoPrevious.addEventListener("click", () => {
+  showPromo(promoIndex - 1);
+  startPromoTimer();
+});
+
+promoNext.addEventListener("click", () => {
+  showPromo(promoIndex + 1);
+  startPromoTimer();
+});
+
+promoDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    showPromo(index);
+    startPromoTimer();
+  });
+});
+
+startPromoTimer();
 
     /* Automatically mirror the Monthly Wonder item from your existing cookieLineup array. */
     try {
