@@ -215,16 +215,37 @@ function previousCookie() {
    BUTTONS
 ======================================== */
 
-nextButton.addEventListener(
-  "click",
-  nextCookie
-);
+nextButton.addEventListener("click", () => {
+  nextCookie();
+  startCookieAutoSlide();
+});
 
-previousButton.addEventListener(
-  "click",
-  previousCookie
-);
+previousButton.addEventListener("click", () => {
+  previousCookie();
+  startCookieAutoSlide();
+});
 
+/* ========================================
+   AUTO SLIDE
+======================================== */
+
+let cookieAutoTimer;
+
+function startCookieAutoSlide() {
+
+  clearInterval(cookieAutoTimer);
+
+  cookieAutoTimer = setInterval(() => {
+
+    if (!isChangingCookie) {
+      nextCookie();
+    }
+
+  }, 4000);
+
+}
+
+startCookieAutoSlide();
 
 /* ========================================
    SWIPE — MOBILE
