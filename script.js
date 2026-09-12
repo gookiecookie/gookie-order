@@ -119,22 +119,15 @@ function showCookie(index) {
   const cookie = cookieLineup[index];
 
   cookieImage.classList.add("is-changing");
-
   cookieName.classList.add("is-changing");
-  cookieDescription.classList.add("is-changing");
-  cookieSticker.classList.add("is-changing");
-
 
   setTimeout(() => {
 
     cookieImage.src = cookie.image;
     cookieImage.alt = cookie.name;
 
-    cookieName.textContent =
-      cookie.name;
-
-    cookieDescription.textContent =
-      cookie.description;
+    cookieName.textContent = cookie.name;
+    cookieDescription.textContent = cookie.description;
 
 
     const stickerLines =
@@ -143,15 +136,14 @@ function showCookie(index) {
     if (stickerLines.length >= 2) {
 
       const firstLine =
-        stickerLines.slice(
-          0,
-          Math.ceil(stickerLines.length / 2)
-        ).join(" ");
+        stickerLines
+          .slice(0, Math.ceil(stickerLines.length / 2))
+          .join(" ");
 
       const secondLine =
-        stickerLines.slice(
-          Math.ceil(stickerLines.length / 2)
-        ).join(" ");
+        stickerLines
+          .slice(Math.ceil(stickerLines.length / 2))
+          .join(" ");
 
       cookieSticker.querySelector(".sticker-label").innerHTML = `
         <span>${firstLine}</span>
@@ -167,22 +159,24 @@ function showCookie(index) {
 
 
     cookieImage.classList.remove("is-changing");
-
     cookieName.classList.remove("is-changing");
-    cookieDescription.classList.remove("is-changing");
-    cookieSticker.classList.remove("is-changing");
+
+    cookieImage.classList.add("is-entering");
+    cookieName.classList.add("is-entering");
 
 
     setTimeout(() => {
 
+      cookieImage.classList.remove("is-entering");
+      cookieName.classList.remove("is-entering");
+
       isChangingCookie = false;
 
-    }, 280);
+    }, 500);
 
-  }, 220);
+  }, 160);
 
 }
-
 
 /* ========================================
    NEXT
