@@ -78,6 +78,203 @@ const cookieLineup = [
 
 ];
 
+/* ========================================
+   COOKIE QUICK HIGHLIGHTS
+======================================== */
+
+const cookieHighlights = {
+
+  "WONDER CHIP": [
+    {
+      icon: "🍫",
+      title: "CHOCOLATE CHUNKS",
+      text: "Classic chocolate chip goodness."
+    },
+    {
+      icon: "🤎",
+      title: "SOFT & CHUNKY",
+      text: "A thick, chewy bite."
+    },
+    {
+      icon: "⭐",
+      title: "THE CLASSIC",
+      text: "The one that started it all."
+    }
+  ],
+
+  "RED BLOOM": [
+    {
+      icon: "❤️",
+      title: "RED VELVET",
+      text: "Soft cocoa velvet flavour."
+    },
+    {
+      icon: "🤍",
+      title: "CREAMY BITE",
+      text: "A rich creamy finish."
+    },
+    {
+      icon: "✨",
+      title: "VELVET LOVE",
+      text: "Pretty, soft and indulgent."
+    }
+  ],
+
+  "MATCHA MATCHY": [
+    {
+      icon: "🍵",
+      title: "MATCHA HIT",
+      text: "Earthy matcha flavour."
+    },
+    {
+      icon: "🤍",
+      title: "CREAMY FINISH",
+      text: "Sweet and smooth."
+    },
+    {
+      icon: "🌿",
+      title: "BALANCED BITE",
+      text: "Earthy meets creamy."
+    }
+  ],
+
+  "MALLOW MELT": [
+    {
+      icon: "🍫",
+      title: "CHOCOLATE",
+      text: "Chocolatey from first bite."
+    },
+    {
+      icon: "☁️",
+      title: "MARSHMALLOW",
+      text: "Soft marshmallow goodness."
+    },
+    {
+      icon: "🔥",
+      title: "S'MORES VIBES",
+      text: "Cosy campfire energy."
+    }
+  ],
+
+  "DREAM CREAM": [
+    {
+      icon: "🍪",
+      title: "COOKIES & CREAM",
+      text: "A familiar favourite."
+    },
+    {
+      icon: "🤍",
+      title: "DREAMY CENTRE",
+      text: "Creamy in the middle."
+    },
+    {
+      icon: "☁️",
+      title: "SOFT BITE",
+      text: "Soft, chunky comfort."
+    }
+  ],
+
+  "DARK CRUSH": [
+    {
+      icon: "🍫",
+      title: "DEEP CHOCOLATE",
+      text: "Made for chocolate lovers."
+    },
+    {
+      icon: "🤎",
+      title: "SOFT & CHUNKY",
+      text: "Rich, thick and chewy."
+    },
+    {
+      icon: "⭐",
+      title: "CHOCO LOVE",
+      text: "Serious chocolate energy."
+    }
+  ],
+
+  "COFFEE KISS": [
+    {
+      icon: "☕",
+      title: "COFFEE KICK",
+      text: "Comforting coffee flavour."
+    },
+    {
+      icon: "🤎",
+      title: "RICH FINISH",
+      text: "Warm and satisfying."
+    },
+    {
+      icon: "✨",
+      title: "COZY BITE",
+      text: "Coffee break, cookie form."
+    }
+  ],
+
+  "BISCOFF BOOM": [
+    {
+      icon: "🧡",
+      title: "BISCOFF FILLED",
+      text: "Big Biscoff flavour."
+    },
+    {
+      icon: "💥",
+      title: "BIG CENTRE",
+      text: "A little surprise inside."
+    },
+    {
+      icon: "⭐",
+      title: "CROWD FAVE",
+      text: "Built for serious cravings."
+    }
+  ],
+
+  "BERRY BLAST": [
+    {
+      icon: "🍓",
+      title: "BERRY PACKED",
+      text: "Bright berry flavour."
+    },
+    {
+      icon: "✨",
+      title: "LIMITED DROP",
+      text: "Here for this month only."
+    },
+    {
+      icon: "💗",
+      title: "MONTHLY WONDER",
+      text: "A new little adventure."
+    }
+  ]
+
+};
+
+function updateCookieHighlights(cookieName) {
+
+  const highlightContainer =
+    document.getElementById("cookie-highlights");
+
+  const highlights =
+    cookieHighlights[cookieName];
+
+  if (!highlightContainer || !highlights) return;
+
+  highlightContainer.innerHTML =
+    highlights.map((item) => `
+      <div class="cookie-highlight">
+
+        <span class="cookie-highlight-icon">
+          ${item.icon}
+        </span>
+
+        <div>
+          <strong>${item.title}</strong>
+          <p>${item.text}</p>
+        </div>
+
+      </div>
+    `).join("");
+
+}
 
 /* ========================================
    ELEMENTS
@@ -129,6 +326,7 @@ function showCookie(index) {
     cookieName.textContent = cookie.name;
     cookieDescription.textContent = cookie.description;
 
+     updateCookieHighlights(cookie.name);
 
     const stickerLines =
       cookie.sticker.split(" ");
