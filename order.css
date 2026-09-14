@@ -51,7 +51,7 @@
 
 .shop-category-button.is-active{
   background:var(--red);
-  color: var(--blue);
+  color: #00169E;
 }
 
 .shop-category-panel{
