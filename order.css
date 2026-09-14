@@ -754,8 +754,8 @@
 }
 
 .shop-category-button.is-active{
-  background:var(--pink);
-  color:#fff !important;
+ background: #F8C8D0;
+  color: #00169E;
 }
 
 /* NO BACKGROUND BEHIND LARGE BOX IMAGE */
