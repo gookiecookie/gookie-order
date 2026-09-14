@@ -754,7 +754,7 @@
 }
 
 .shop-category-button.is-active{
-  background:var(--red);
+  background:var(--pink);
   color:#fff !important;
 }
 
