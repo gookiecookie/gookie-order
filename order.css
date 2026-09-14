@@ -750,13 +750,9 @@
 }
 
 .shop-category-button.is-active{
-  background:#F8C8D0;
-  color:#00169E;
-}
-
-.shop-category-button.is-active{
  background: #F8C8D0;
   color: #00169E;
+   border: 2px solid var(--blue);
 }
 
 /* NO BACKGROUND BEHIND LARGE BOX IMAGE */
@@ -1328,6 +1324,6 @@
   .build-box-heading h1 {
     font-size: clamp(32px, 10vw, 48px);
     white-space: nowrap;
-   alignment:center;
+   text-align:center;
   }
 }
