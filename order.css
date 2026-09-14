@@ -49,9 +49,9 @@
   transform:translateY(-2px);
 }
 
-.shop-category-button.is-active{
-  background:var(--red);
-  color: #00169E;
+.shop-category-button.is-active {
+  background: var(--pink);
+  color: var(--blue);
 }
 
 .shop-category-panel{
@@ -742,15 +742,16 @@
   padding:0 28px;
   border-radius:12px;
   background:var(--blue);
-  color:#fff !important;
+  color:#fff;
   font-family:"Titan One",sans-serif;
   font-size:17px;
   font-weight:400;
   letter-spacing:.01em;
 }
 
-.shop-category-button:hover{
-  background:#102db9;
+.shop-category-button.is-active{
+  background:#F8C8D0;
+  color:#00169E;
 }
 
 .shop-category-button.is-active{
@@ -974,7 +975,7 @@
   }
 
   .shop-category-button{
-    font-size:8px;
+    font-size:12px;
     padding:0 3px;
   }
 
