@@ -1328,5 +1328,6 @@
   .build-box-heading h1 {
     font-size: clamp(32px, 10vw, 48px);
     white-space: nowrap;
+   alignment:center;
   }
 }
