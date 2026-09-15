@@ -1,377 +1,964 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#BB191A" />
-  <title>Gookie's Goodies — Made for Happy Moments</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gookie's Goodies — Made for Happy Moments</title>
+  <meta
+    name="description"
+    content="Gookie cookies for weddings, birthdays, corporate gifting, events and happy little moments."
+  >
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap"
     rel="stylesheet"
-  />
+  >
+
+  <!-- FONT AWESOME -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  />
+  >
 
-  <link rel="stylesheet" href="style.css?v=10.0" />
-  <link rel="stylesheet" href="goodies.css?v=1.0" />
-  <link rel="stylesheet" href="responsive-modal.css?v=1.0" />
-  <link rel="stylesheet" href="shared-header.css?v=1.0" />
+  <!-- SHARED GOOKIE STYLE -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GIFTS PAGE STYLE -->
+  <link rel="stylesheet" href="goodies.css?v=2.0">
 </head>
 
+
 <body class="goodies-page">
-  <button
-    class="page-overlay"
-    id="pageOverlay"
-    type="button"
-    aria-label="Close open panel"
-    hidden
-  ></button>
 
-  
-<!-- =========================================================
-     GOOKIE GLOBAL TOP MARQUEE
-========================================================= -->
-<div class="gookie-top-marquee" aria-label="Gookie announcements">
-  <div class="gookie-top-marquee-track">
-    <span>WELCOME TO GOOKIE</span>
-    <span>BAKED FRESH, LESS SWEET 🍪</span>
-    <span>🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
-    <span aria-hidden="true">WELCOME TO GOOKIE</span>
-    <span aria-hidden="true">BAKED FRESH, LESS SWEET 🍪</span>
-    <span aria-hidden="true">🚚 PENINSULAR MALAYSIA DELIVERY 📦</span>
-  </div>
-</div>
 
-<header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <button class="header-icon-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="menuDrawer" aria-expanded="false">
-      <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+  <!-- ================= HEADER ================= -->
+
+  <header class="site-header">
+
+    <!-- HAMBURGER -->
+    <button
+      class="menu-btn"
+      id="menu-open"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-    <a class="brand-logo" href="index.html" aria-label="Gookie home"><img src="smallgookielogo.png" alt="Gookie" /></a>
-    <button class="header-icon-button header-search-button" id="searchButton" type="button" aria-label="Search Gookie" aria-controls="searchModal" aria-expanded="false">
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-    </button>
-    <span class="malaysia-flag" title="Proudly baked in Malaysia" aria-label="Malaysia">🇲🇾</span>
-    <a class="header-icon-button cart-button" href="order.html" aria-label="Go to Get Your Gookies">
-          <svg class="cart-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 6h3l2.2 13.2a3 3 0 0 0 3 2.5h10.9a3 3 0 0 0 2.9-2.3L28 11H9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="13" cy="26" r="1.8" fill="currentColor"></circle><circle cx="24" cy="26" r="1.8" fill="currentColor"></circle></svg>
-          <span class="cart-count">0</span>
-        </a>
-  </div>
-</header>
 
-  <aside
-    class="drawer drawer-left premium-menu-drawer"
-    id="menuDrawer"
-    aria-hidden="true"
-    aria-label="Main menu"
-  >
-    <div class="drawer-header premium-menu-header">
-      <div>
-        <p class="drawer-eyebrow">
-          HELLO, COOKIE LOVER <span aria-hidden="true">🍪</span>
-        </p>
-        <h2>What’s on the menu?</h2>
-      </div>
+
+    <!-- LOGO -->
+    <a href="index.html" class="brand" aria-label="Gookie home">
+      <img src="logo.png" alt="Gookie">
+    </a>
+
+
+    <!-- RIGHT SIDE ICONS -->
+    <div class="header-actions">
 
       <button
-        class="drawer-close-button"
-        id="menuCloseButton"
+        class="header-icon-btn search-btn"
+        type="button"
+        aria-label="Search"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+
+      <button
+        class="header-icon-btn cart-btn"
+        type="button"
+        aria-label="Open cart"
+      >
+        <i class="fa-solid fa-basket-shopping"></i>
+
+        <span class="cart-count">0</span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ================= SEARCH PANEL ================= -->
+
+  <div class="search-panel" id="search-panel">
+
+    <div class="search-panel-inner">
+
+      <input
+        type="search"
+        id="site-search-input"
+        placeholder="Search Gookies..."
+        aria-label="Search Gookies"
+      >
+
+      <div
+        class="search-suggestions"
+        id="search-suggestions"
+      ></div>
+
+      <button
+        type="button"
+        class="search-close-btn"
+        id="search-close-btn"
+        aria-label="Close search"
+      >
+        ×
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================= CART DRAWER ================= -->
+
+  <div class="cart-overlay" id="cart-overlay" hidden>
+
+    <aside class="cart-drawer" id="cart-drawer">
+
+      <div class="cart-header">
+
+        <h2>YOUR GOOKIE CART</h2>
+
+        <button
+          type="button"
+          class="cart-close-btn"
+          id="cart-close-btn"
+          aria-label="Close cart"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="cart-body" id="cart-body">
+
+        <div class="cart-empty" id="cart-empty">
+
+          <p class="cart-empty-title">
+            Your box is lonely.
+          </p>
+
+          <p>
+            Add some Gookies to make it happier.
+          </p>
+
+          <a
+            href="order.html"
+            class="cart-shop-btn"
+            id="cart-shop-btn"
+          >
+            BUILD A BOX
+          </a>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+
+  <!-- ================= MENU DRAWER ================= -->
+
+  <div class="menu-overlay" id="menu-overlay" hidden>
+
+    <aside class="menu-panel" aria-label="Site menu">
+
+      <button
+        class="menu-close"
+        id="menu-close"
         type="button"
         aria-label="Close menu"
       >
         ×
       </button>
+
+
+      <p class="menu-title">MENU</p>
+
+
+      <nav class="menu-links" aria-label="Main navigation">
+
+        <a href="gookies.html">COOKIES</a>
+
+        <a href="order.html">SHOP</a>
+
+        <a href="goodies.html" aria-current="page">GIFTS</a>
+
+        <a href="about.html">ABOUT</a>
+
+        <a href="#footer">CONTACT</a>
+
+      </nav>
+
+
+      <div class="menu-socials">
+
+        <a href="#" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+
+        <a href="#" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="#" aria-label="Threads">
+          <i class="fa-brands fa-threads"></i>
+        </a>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+
+  <!-- ================= ANNOUNCEMENT ================= -->
+
+  <div class="announcement-bar">
+
+    <div class="announcement-track">
+
+      <div class="announcement-group">
+        <span>BAKED FRESH</span><i>•</i>
+        <span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i>
+        <span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i>
+      </div>
+
+      <div class="announcement-group" aria-hidden="true">
+        <span>BAKED FRESH</span><i>•</i>
+        <span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i>
+        <span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i>
+      </div>
+
     </div>
 
-    <nav class="drawer-nav premium-menu-nav" aria-label="Primary navigation">
-      <a class="premium-menu-item premium-menu-item-cookie" href="gookies.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-cookie-bite"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>MEET THE GOOKIES</strong>
-          <small>Explore every chunky wonder.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
+  </div>
 
-      <a class="premium-menu-item premium-menu-item-box" href="order.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-box-open"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>GET YOUR GOOKIES</strong>
-          <small>Build your box or choose a combo.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
 
-      <a
-        class="premium-menu-item premium-menu-item-goodies is-current"
-        href="goodies.html"
-        aria-current="page"
-      >
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-solid fa-gift"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>GOOKIE’S GOODIES</strong>
-          <small>Weddings, birthdays and gifting.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
-
-      <a class="premium-menu-item premium-menu-item-about" href="about.html">
-        <span class="premium-menu-icon" aria-hidden="true">
-          <i class="fa-regular fa-heart"></i>
-        </span>
-        <span class="premium-menu-copy">
-          <strong>ABOUT GOOKIE</strong>
-          <small>Our story and cookie philosophy.</small>
-        </span>
-        <span class="premium-menu-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-right"></i>
-        </span>
-      </a>
-    </nav>
-  </aside>
 
   <main>
-    <section class="goodies-hero">
-      <div class="goodies-hero-copy">
-        <p class="section-kicker">GOOKIE’S GOODIES</p>
+
+
+    <!-- ================= GIFTS HERO ================= -->
+
+    <section class="gifts-hero">
+
+      <div class="gifts-hero-copy">
+
+        <p class="gifts-kicker">
+          GOOKIE'S GOODIES
+        </p>
+
         <h1>
-          <span>Made for</span>
-          <span>happy moments.</span>
+          MADE FOR<br>
+          HAPPY MOMENTS.
         </h1>
-        <p>
-          Whether it’s a wedding, birthday, corporate gift or just because,
-          we’ll make every moment a little sweeter.
+
+        <p class="gifts-hero-description">
+          Weddings, birthdays, corporate gifts and everything
+          worth celebrating — made a little sweeter with Gookie.
         </p>
 
         <a
-          class="goodies-primary-cta"
+          class="gifts-button"
           href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20enquire%20about%20Gookie%27s%20Goodies."
           target="_blank"
           rel="noopener noreferrer"
         >
-          CHAT WITH GOOKIE
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          LET'S TALK COOKIES
+          <i class="fa-brands fa-whatsapp"></i>
         </a>
+
       </div>
 
-      <div class="goodies-hero-art">
-        <div class="goodies-hero-photo-frame">
+
+      <div class="gifts-hero-visual">
+
+        <div class="gifts-hero-photo">
+
           <img
-            class="goodies-hero-photo"
             src="header.png"
-            alt="Gookie gift box with cookies and coffee"
-          />
+            alt="Gookie cookies for gifting and celebrations"
+          >
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="goodies-intro">
-      <p class="section-kicker">A LITTLE SOMETHING SPECIAL</p>
-      <h2>Cookies for the moments people remember.</h2>
-      <p>
-        Thoughtful gifting, celebration-ready boxes and plenty of chunky joy —
-        made fresh for your occasion.
-      </p>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="gifts-intro">
+
+      <div class="gifts-intro-inner">
+
+        <p class="gifts-kicker">
+          A LITTLE SOMETHING SPECIAL
+        </p>
+
+        <h2>
+          Cookies for the moments<br>
+          people remember.
+        </h2>
+
+        <p>
+          Thoughtful gifting, celebration-ready boxes and plenty
+          of chunky joy — baked fresh for your occasion.
+        </p>
+
+      </div>
+
     </section>
 
-    <section class="goodies-showcase" aria-label="Gookie goodies occasions">
-      <article class="goodies-feature goodies-feature-wedding">
-        <div class="goodies-feature-visual">
-          <div class="goodies-visual-placeholder">
-            <i class="fa-solid fa-ring" aria-hidden="true"></i>
+
+
+    <!-- ================= OCCASIONS ================= -->
+
+    <section class="gifts-occasions">
+
+
+      <!-- WEDDINGS -->
+
+      <article class="gift-feature gift-feature-wedding">
+
+        <div class="gift-feature-visual">
+
+          <div class="gift-art-placeholder">
+
+            <i class="fa-solid fa-ring"></i>
+
             <span>WEDDING FAVOURS</span>
+
           </div>
+
         </div>
 
-        <div class="goodies-feature-copy">
-          <p class="section-kicker">LOVE, WRAPPED NICELY</p>
-          <h2>Tiny boxes.<br>Big smiles.</h2>
-          <p>
-            Perfect for wedding favours, bridal showers, engagement celebrations
-            and intimate receptions.
+
+        <div class="gift-feature-copy">
+
+          <p class="gifts-kicker">
+            LOVE, WRAPPED NICELY
           </p>
+
+          <h2>
+            Tiny boxes.<br>
+            Big smiles.
+          </h2>
+
+          <p>
+            Perfect for wedding favours, bridal showers,
+            engagements and intimate celebrations.
+          </p>
+
           <a
             href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20enquire%20about%20wedding%20favours."
             target="_blank"
             rel="noopener noreferrer"
           >
             ENQUIRE ABOUT WEDDINGS
-            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <i class="fa-solid fa-arrow-right"></i>
           </a>
+
         </div>
+
       </article>
 
-      <article class="goodies-feature goodies-feature-birthday">
-        <div class="goodies-feature-copy">
-          <p class="section-kicker">MAKE A WISH</p>
-          <h2>Birthdays deserve better cookies.</h2>
-          <p>
-            Celebration boxes, party favours and sweet surprises for birthdays
-            big, small and everything in between.
+
+
+      <!-- BIRTHDAYS -->
+
+      <article class="gift-feature gift-feature-birthday">
+
+        <div class="gift-feature-copy">
+
+          <p class="gifts-kicker">
+            MAKE A WISH
           </p>
+
+          <h2>
+            Birthdays deserve<br>
+            better cookies.
+          </h2>
+
+          <p>
+            Celebration boxes, party favours and sweet surprises
+            for birthdays big, small and everything in between.
+          </p>
+
           <a
             href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20enquire%20about%20birthday%20cookies."
             target="_blank"
             rel="noopener noreferrer"
           >
             PLAN A BIRTHDAY
-            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <i class="fa-solid fa-arrow-right"></i>
           </a>
+
         </div>
 
-        <div class="goodies-feature-visual">
-          <div class="goodies-visual-placeholder">
-            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+
+        <div class="gift-feature-visual">
+
+          <div class="gift-art-placeholder">
+
+            <i class="fa-solid fa-cake-candles"></i>
+
             <span>BIRTHDAY BOXES</span>
+
           </div>
+
         </div>
+
       </article>
 
-      <article class="goodies-feature goodies-feature-corporate">
-        <div class="goodies-feature-visual">
-          <div class="goodies-visual-placeholder">
-            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+
+
+      <!-- CORPORATE -->
+
+      <article class="gift-feature gift-feature-corporate">
+
+        <div class="gift-feature-visual">
+
+          <div class="gift-art-placeholder">
+
+            <i class="fa-solid fa-briefcase"></i>
+
             <span>CORPORATE GIFTING</span>
+
           </div>
+
         </div>
 
-        <div class="goodies-feature-copy">
-          <p class="section-kicker">MAKE BUSINESS TASTE BETTER</p>
-          <h2>Your clients won’t forget these.</h2>
-          <p>
-            Thank your clients, welcome new staff, celebrate milestones or make
-            the meeting room significantly happier.
+
+        <div class="gift-feature-copy">
+
+          <p class="gifts-kicker">
+            MAKE BUSINESS TASTE BETTER
           </p>
+
+          <h2>
+            Your clients won't<br>
+            forget these.
+          </h2>
+
+          <p>
+            Thank your clients, welcome new staff, celebrate
+            milestones or make the meeting room significantly happier.
+          </p>
+
           <a
             href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20enquire%20about%20corporate%20gifting."
             target="_blank"
             rel="noopener noreferrer"
           >
             ENQUIRE ABOUT CORPORATE GIFTS
-            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <i class="fa-solid fa-arrow-right"></i>
           </a>
+
         </div>
+
       </article>
+
+
     </section>
 
-    <section class="goodies-bulk-banner">
-      <div>
-        <p class="section-kicker">SCHOOL, EVENTS & BULK ORDERS</p>
-        <h2>Need lots of cookies?</h2>
-        <p>
-          No problem. Tell us your event, quantity and preferred date, and we’ll
-          help plan the delicious part.
+
+
+    <!-- ================= BULK ORDERS ================= -->
+
+    <section class="gifts-bulk">
+
+      <div class="gifts-bulk-copy">
+
+        <p class="gifts-kicker">
+          SCHOOL, EVENTS & BULK ORDERS
         </p>
+
+        <h2>
+          NEED LOTS OF<br>
+          COOKIES?
+        </h2>
+
+        <p>
+          Tell us your event, quantity and preferred date.
+          We'll help plan the delicious part.
+        </p>
+
       </div>
 
+
       <a
+        class="gifts-bulk-button"
         href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20enquire%20about%20a%20bulk%20order."
         target="_blank"
         rel="noopener noreferrer"
       >
         START A BULK ENQUIRY
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
+
     </section>
 
-    <section class="goodies-why">
-      <div class="goodies-why-heading">
-        <p class="section-kicker">WHY GOOKIE?</p>
-        <h2>Made with care, from first cookie to final ribbon.</h2>
+
+
+    <!-- ================= WHY GOOKIE ================= -->
+
+    <section class="gifts-why">
+
+      <div class="gifts-why-heading">
+
+        <p class="gifts-kicker">
+          WHY GOOKIE?
+        </p>
+
+        <h2>
+          Made with care,<br>
+          from first cookie to final ribbon.
+        </h2>
+
       </div>
 
-      <div class="goodies-why-grid">
+
+      <div class="gifts-why-grid">
+
+
         <article>
-          <i class="fa-solid fa-mitten" aria-hidden="true"></i>
+
+          <div class="gifts-why-icon">
+            <i class="fa-solid fa-cookie-bite"></i>
+          </div>
+
           <h3>BAKED FRESH</h3>
-          <p>Prepared in small batches for the best taste and texture.</p>
+
+          <p>
+            Prepared in small batches for the best taste and texture.
+          </p>
+
         </article>
 
+
         <article>
-          <i class="fa-solid fa-heart" aria-hidden="true"></i>
+
+          <div class="gifts-why-icon">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+
           <h3>LESS SWEET</h3>
-          <p>Balanced flavour that keeps people reaching for another.</p>
+
+          <p>
+            Balanced flavour that keeps people reaching for another.
+          </p>
+
         </article>
 
+
         <article>
-          <i class="fa-solid fa-gift" aria-hidden="true"></i>
+
+          <div class="gifts-why-icon">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+
           <h3>BEAUTIFULLY PACKED</h3>
-          <p>Presentation designed to feel thoughtful before the first bite.</p>
+
+          <p>
+            Made to feel special before the first bite.
+          </p>
+
         </article>
 
+
         <article>
-          <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+
+          <div class="gifts-why-icon">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+
           <h3>DELIVERED WITH CARE</h3>
-          <p>Available for delivery throughout Peninsular Malaysia.</p>
+
+          <p>
+            Available for delivery throughout Peninsular Malaysia.
+          </p>
+
         </article>
+
+
       </div>
+
     </section>
 
-    <section class="goodies-final-cta">
-      <p class="section-kicker">LET’S MAKE SOMETHING SPECIAL</p>
-      <h2>Your happy moment deserves Gookies.</h2>
-      <p>
-        Tell us what you’re celebrating and we’ll help with the rest.
+
+
+    <!-- ================= FINAL CTA ================= -->
+
+    <section class="gifts-final">
+
+      <p class="gifts-kicker">
+        LET'S MAKE SOMETHING SPECIAL
       </p>
+
+      <h2>
+        Your happy moment<br>
+        deserves Gookies.
+      </h2>
+
+      <p>
+        Tell us what you're celebrating and we'll help with the rest.
+      </p>
+
       <a
+        class="gifts-button"
         href="https://wa.me/60102810487?text=Hi%20Gookie!%20I%27d%20like%20to%20plan%20something%20special."
         target="_blank"
         rel="noopener noreferrer"
       >
         WHATSAPP US
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
+
     </section>
+
+
   </main>
 
-  <footer class="goodies-footer">
-    <a class="goodies-footer-brand" href="index.html">GOOKIE</a>
-    <p>Baked with ❤️ in Malaysia.</p>
 
-    <nav aria-label="Footer navigation">
-      <a href="gookies.html">Meet the Gookies</a>
-      <a href="order.html">Get Your Gookies</a>
-      <a href="goodies.html">Goodies</a>
-      <a href="about.html">About</a>
-    </nav>
 
-    <p class="goodies-footer-thanks">Thank you for supporting us. ♡</p>
+  <!-- ================= TEMPORARY FOOTER ================= -->
+
+  <footer class="site-footer" id="footer">
+
+    <div class="section-shell footer-grid">
+
+      <div class="footer-brand">
+
+        <img src="logo.png" alt="Gookie">
+
+        <p>
+          Soft cookies. Brighter days.
+        </p>
+
+      </div>
+
+
+      <nav
+        class="footer-links"
+        aria-label="Footer navigation"
+      >
+
+        <a href="order.html">Shop</a>
+        <a href="#">FAQ</a>
+        <a href="#">Delivery</a>
+        <a href="#">Storage & Reheating</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund & Replacement</a>
+
+      </nav>
+
+
+      <div class="footer-social">
+
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Facebook">FB</a>
+
+      </div>
+
+    </div>
+
+
+    <p class="footer-bottom">
+      © 2026 Gookie. Baked with love in Malaysia.
+    </p>
+
   </footer>
 
-  <script src="goodies.js?v=1.0"></script>
-  <script src="responsive-modal.js?v=1.0"></script>
 
-<section class="modal search-modal" id="searchModal" aria-hidden="true" aria-label="Search Gookie">
-  <div class="modal-card search-modal-card">
-    <div class="search-modal-header">
-      <div><p class="search-modal-eyebrow">FIND YOUR GOOKIE</p><h2>What are you craving?</h2></div>
-      <button class="modal-close-button" id="searchModalClose" type="button" aria-label="Close search">×</button>
-    </div>
-    <div class="search-input-wrap">
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <input id="siteSearchInput" type="search" placeholder="Search cookies, boxes or add-ons..." autocomplete="off" aria-label="Search Gookie products" />
-    </div>
-    <div class="search-results" id="siteSearchResults" aria-live="polite"></div>
-  </div>
-</section>
 
-  <script src="site-search.js?v=1.0"></script>
+  <!-- ================= GIFTS INTERACTIONS ================= -->
+
+  <script>
+
+    /* MENU */
+
+    const menuOpen =
+      document.getElementById("menu-open");
+
+    const menuClose =
+      document.getElementById("menu-close");
+
+    const menuOverlay =
+      document.getElementById("menu-overlay");
+
+
+    function openMenu() {
+
+      menuOverlay.hidden = false;
+
+      requestAnimationFrame(() => {
+        menuOverlay.classList.add("is-open");
+      });
+
+      menuOpen.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      document.body.classList.add(
+        "menu-open"
+      );
+    }
+
+
+    function closeMenu() {
+
+      menuOverlay.classList.remove(
+        "is-open"
+      );
+
+      menuOpen.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+      setTimeout(() => {
+        menuOverlay.hidden = true;
+      }, 220);
+    }
+
+
+    menuOpen.addEventListener(
+      "click",
+      openMenu
+    );
+
+
+    menuClose.addEventListener(
+      "click",
+      closeMenu
+    );
+
+
+    menuOverlay.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === menuOverlay) {
+          closeMenu();
+        }
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(".menu-links a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      });
+
+
+
+    /* SEARCH */
+
+    const searchButton =
+      document.querySelector(".search-btn");
+
+    const searchPanel =
+      document.getElementById("search-panel");
+
+    const searchInput =
+      document.getElementById("site-search-input");
+
+    const searchCloseButton =
+      document.getElementById("search-close-btn");
+
+
+    searchButton.addEventListener(
+      "click",
+      () => {
+
+        searchPanel.classList.toggle(
+          "is-open"
+        );
+
+        if (
+          searchPanel.classList.contains(
+            "is-open"
+          )
+        ) {
+
+          setTimeout(() => {
+            searchInput.focus();
+          }, 150);
+
+        }
+
+      }
+    );
+
+
+    searchCloseButton.addEventListener(
+      "click",
+      () => {
+
+        searchPanel.classList.remove(
+          "is-open"
+        );
+
+      }
+    );
+
+
+
+    /* CART */
+
+    const cartButton =
+      document.querySelector(".cart-btn");
+
+    const cartOverlay =
+      document.getElementById("cart-overlay");
+
+    const cartCloseButton =
+      document.getElementById("cart-close-btn");
+
+    const cartShopButton =
+      document.getElementById("cart-shop-btn");
+
+
+    function openCart() {
+
+      cartOverlay.hidden = false;
+
+      requestAnimationFrame(() => {
+
+        cartOverlay.classList.add(
+          "is-open"
+        );
+
+      });
+
+      document.body.classList.add(
+        "cart-open"
+      );
+    }
+
+
+    function closeCart() {
+
+      cartOverlay.classList.remove(
+        "is-open"
+      );
+
+      document.body.classList.remove(
+        "cart-open"
+      );
+
+      setTimeout(() => {
+
+        cartOverlay.hidden = true;
+
+      }, 280);
+    }
+
+
+    cartButton.addEventListener(
+      "click",
+      openCart
+    );
+
+
+    cartCloseButton.addEventListener(
+      "click",
+      closeCart
+    );
+
+
+    cartOverlay.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === cartOverlay) {
+          closeCart();
+        }
+
+      }
+    );
+
+
+    cartShopButton.addEventListener(
+      "click",
+      closeCart
+    );
+
+
+    /* ESC CLOSE */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key !== "Escape") return;
+
+        if (
+          menuOverlay.classList.contains(
+            "is-open"
+          )
+        ) {
+          closeMenu();
+        }
+
+        if (
+          cartOverlay.classList.contains(
+            "is-open"
+          )
+        ) {
+          closeCart();
+        }
+
+        searchPanel.classList.remove(
+          "is-open"
+        );
+
+      }
+    );
+
+  </script>
+
+
 </body>
 </html>
