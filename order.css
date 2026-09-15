@@ -750,8 +750,8 @@
 }
 
 .shop-category-button.is-active{
- background: #F8C8D0;
-  color: #00169E;
+ background:var(--blue);
+  color:var(--pink);
    border: 4px solid var(--blue);
 }
 
