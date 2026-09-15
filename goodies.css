@@ -195,60 +195,57 @@
    ========================================================= */
 
 .gifts-occasions{
-  padding:0 5% 110px;
+  padding:0;
   background:#fff;
 }
 
 .gift-feature{
-  max-width:1240px;
-  min-height:470px;
-  margin:0 auto 55px;
+  width:100%;
+  min-height:520px;
+  margin:0;
 
   display:grid;
   grid-template-columns:1fr 1fr;
 
+  border:0;
+  border-radius:0;
+  box-shadow:none;
   overflow:hidden;
-
-  border:3px solid var(--gookie-blue);
-  border-radius:28px;
-
-  box-shadow:8px 8px 0 var(--gookie-blue);
 }
 
-.gift-feature:last-child{
-  margin-bottom:0;
-}
 
-.gift-feature-visual{
-  min-height:470px;
-  padding:40px;
+/* WEDDING */
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.gift-feature-wedding .gift-feature-visual{
+.gift-feature-wedding{
   background:var(--gookie-pink);
 }
 
-.gift-feature-birthday .gift-feature-visual{
+
+/* BIRTHDAY */
+
+.gift-feature-birthday{
   background:var(--gookie-cream);
 }
 
-.gift-feature-corporate .gift-feature-visual{
+
+/* CORPORATE */
+
+.gift-feature-corporate{
   background:#DCE5FF;
 }
 
+
+/* COPY */
+
 .gift-feature-copy{
-  padding:65px clamp(40px,6vw,80px);
+  padding:80px clamp(55px,8vw,130px);
 
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
 
-  background:#fff;
+  background:transparent;
 }
 
 .gift-feature-copy .gifts-kicker{
@@ -257,15 +254,19 @@
 
 .gift-feature h2{
   margin:0;
+
   color:var(--gookie-blue);
-  font-size:clamp(40px,4vw,58px);
+
+  font-size:clamp(42px,4vw,60px);
   line-height:1;
 }
 
 .gift-feature-copy > p:not(.gifts-kicker){
   max-width:500px;
   margin:22px 0;
-  color:#333;
+
+  color:#252525;
+
   font-size:16px;
   line-height:1.65;
 }
@@ -275,14 +276,14 @@
   align-items:center;
   gap:9px;
 
+  padding-bottom:4px;
+
   color:var(--gookie-blue);
+  border-bottom:3px solid var(--gookie-blue);
 
   font-family:"Titan One",sans-serif;
   font-size:14px;
   text-decoration:none;
-
-  border-bottom:3px solid var(--gookie-pink);
-  padding-bottom:4px;
 }
 
 .gift-feature-copy > a i{
@@ -295,11 +296,26 @@
 
 
 /* =========================================================
-   TEMPORARY OCCASION ART
+   OCCASION VISUALS
+   Temporary until real Gookie artwork is added
    ========================================================= */
 
+.gift-feature-visual{
+  min-height:520px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:60px;
+  background:transparent;
+}
+
+
+/* playful sticker-style shape */
+
 .gift-art-placeholder{
-  width:min(330px,80%);
+  width:min(330px,72%);
   aspect-ratio:1;
 
   position:relative;
@@ -308,37 +324,77 @@
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:20px;
+  gap:18px;
 
-  border:4px solid var(--gookie-blue);
-  border-radius:50%;
+  border:0;
+  border-radius:46% 54% 58% 42% / 48% 43% 57% 52%;
 
   background:#fff;
 
-  box-shadow:8px 8px 0 var(--gookie-blue);
+  box-shadow:none;
 
-  transform:rotate(-3deg);
+  transform:rotate(-4deg);
 }
 
 .gift-feature-birthday .gift-art-placeholder{
-  transform:rotate(3deg);
+  transform:rotate(4deg);
+}
+
+.gift-feature-corporate .gift-art-placeholder{
+  transform:rotate(-3deg);
+}
+
+.gift-art-placeholder::before{
+  content:"";
+
+  position:absolute;
+  inset:-12px;
+
+  border:3px solid var(--gookie-blue);
+  border-radius:inherit;
+
+  transform:rotate(6deg);
+
+  pointer-events:none;
 }
 
 .gift-art-placeholder i{
+  position:relative;
+  z-index:1;
+
   color:var(--gookie-blue);
-  font-size:82px;
+  font-size:72px;
 }
 
 .gift-art-placeholder span{
-  max-width:210px;
+  position:relative;
+  z-index:1;
+
+  max-width:220px;
+
   color:var(--gookie-blue);
 
   font-family:"Titan One",sans-serif;
-  font-size:20px;
+  font-size:19px;
   line-height:1.1;
   text-align:center;
 }
 
+
+/* little decorative dots */
+
+.gift-art-placeholder::after{
+  content:"✦";
+
+  position:absolute;
+  top:25px;
+  right:35px;
+
+  color:var(--gookie-red);
+  font-size:30px;
+
+  transform:rotate(15deg);
+}
 
 /* =========================================================
    BULK ORDERS
