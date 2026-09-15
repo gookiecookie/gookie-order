@@ -750,19 +750,49 @@
   }
 
   .gifts-why-grid{
-    grid-template-columns:1fr;
-    gap:15px;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
   }
 
   .gifts-why-grid article{
-    padding:25px 20px;
+    min-height:205px;
+    padding:20px 12px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    border-width:2px;
+    border-radius:16px;
+
+    box-shadow:4px 4px 0 var(--gookie-blue);
   }
 
   .gifts-why-icon{
-    width:62px;
-    height:62px;
-    margin-bottom:15px;
-    font-size:24px;
+    width:54px;
+    height:54px;
+    margin:0 auto 14px;
+
+    flex:0 0 54px;
+
+    font-size:21px;
+  }
+
+  .gifts-why-grid h3{
+    margin:0 0 8px;
+
+    font-size:15px;
+    line-height:1.08;
+    text-align:center;
+  }
+
+  .gifts-why-grid p{
+    margin:0;
+
+    font-size:11px;
+    line-height:1.4;
+    text-align:center;
   }
 
 
