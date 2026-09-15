@@ -754,8 +754,8 @@
   color:var(--pink);
    border: 4px solid var(--blue);
      box-shadow:
-    0 0 0 3px rgba(248, 200, 208, 0.45),
-    0 0 18px 7px rgba(248, 200, 208, 0.65);
+   0 0 0 3px rgba(255, 214, 74, 0.45),
+    0 0 18px 7px rgba(255, 214, 74, 0.55);
 }
 
 /* NO BACKGROUND BEHIND LARGE BOX IMAGE */
