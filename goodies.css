@@ -295,50 +295,17 @@
 
 
 /* =========================================================
-   TEMPORARY OCCASION ART
+   OCCASION ART
    ========================================================= */
 
-.gift-art-placeholder{
-  width:min(330px,80%);
-  aspect-ratio:1;
+.gift-feature-image{
+  display:block;
 
-  position:relative;
+  width:min(430px, 88%);
+  height:auto;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:20px;
-
-  border:4px solid var(--gookie-blue);
-  border-radius:50%;
-
-  background:#fff;
-
-  box-shadow:8px 8px 0 var(--gookie-blue);
-
-  transform:rotate(-3deg);
+  object-fit:contain;
 }
-
-.gift-feature-birthday .gift-art-placeholder{
-  transform:rotate(3deg);
-}
-
-.gift-art-placeholder i{
-  color:var(--gookie-blue);
-  font-size:82px;
-}
-
-.gift-art-placeholder span{
-  max-width:210px;
-  color:var(--gookie-blue);
-
-  font-family:"Titan One",sans-serif;
-  font-size:20px;
-  line-height:1.1;
-  text-align:center;
-}
-
 
 /* =========================================================
    BULK ORDERS
