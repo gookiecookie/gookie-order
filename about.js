@@ -1,48 +1,114 @@
 "use strict";
 
-const body = document.body;
-const pageOverlay = document.getElementById("pageOverlay");
-const menuButton = document.getElementById("menuButton");
-const menuDrawer = document.getElementById("menuDrawer");
-const menuCloseButton = document.getElementById("menuCloseButton");
+/* =========================================================
+   GOOKIE — ABOUT PAGE INTERACTIONS
+   Uses the same header/menu/search/cart structure as Goodies.
+   ========================================================= */
+
+const menuOpen = document.getElementById("menu-open");
+const menuClose = document.getElementById("menu-close");
+const menuOverlay = document.getElementById("menu-overlay");
 
 function openMenu() {
-  menuDrawer.classList.add("is-open");
-  menuDrawer.setAttribute("aria-hidden", "false");
-  menuButton.setAttribute("aria-expanded", "true");
+  menuOverlay.hidden = false;
 
-  pageOverlay.hidden = false;
   requestAnimationFrame(() => {
-    pageOverlay.classList.add("is-visible");
+    menuOverlay.classList.add("is-open");
   });
 
-  body.classList.add("no-scroll");
+  menuOpen.setAttribute("aria-expanded", "true");
+  document.body.classList.add("menu-open");
 }
 
 function closeMenu() {
-  menuDrawer.classList.remove("is-open");
-  menuDrawer.setAttribute("aria-hidden", "true");
-  menuButton.setAttribute("aria-expanded", "false");
-  pageOverlay.classList.remove("is-visible");
-  body.classList.remove("no-scroll");
+  menuOverlay.classList.remove("is-open");
+  menuOpen.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
 
-  window.setTimeout(() => {
-    if (!menuDrawer.classList.contains("is-open")) {
-      pageOverlay.hidden = true;
-    }
-  }, 260);
+  setTimeout(() => {
+    menuOverlay.hidden = true;
+  }, 220);
 }
 
-menuButton.addEventListener("click", openMenu);
-menuCloseButton.addEventListener("click", closeMenu);
-pageOverlay.addEventListener("click", closeMenu);
+menuOpen?.addEventListener("click", openMenu);
+menuClose?.addEventListener("click", closeMenu);
 
-document.querySelectorAll(".premium-menu-nav a").forEach((link) => {
+menuOverlay?.addEventListener("click", (event) => {
+  if (event.target === menuOverlay) closeMenu();
+});
+
+document.querySelectorAll(".menu-links a").forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
+
+/* SEARCH */
+
+const searchButton = document.querySelector(".search-btn");
+const searchPanel = document.getElementById("search-panel");
+const searchInput = document.getElementById("site-search-input");
+const searchCloseButton = document.getElementById("search-close-btn");
+
+searchButton?.addEventListener("click", () => {
+  searchPanel?.classList.toggle("is-open");
+
+  if (searchPanel?.classList.contains("is-open")) {
+    setTimeout(() => searchInput?.focus(), 150);
   }
+});
+
+searchCloseButton?.addEventListener("click", () => {
+  searchPanel?.classList.remove("is-open");
+});
+
+
+/* CART */
+
+const cartButton = document.querySelector(".cart-btn");
+const cartOverlay = document.getElementById("cart-overlay");
+const cartCloseButton = document.getElementById("cart-close-btn");
+const cartShopButton = document.getElementById("cart-shop-btn");
+
+function openCart() {
+  if (!cartOverlay) return;
+
+  cartOverlay.hidden = false;
+
+  requestAnimationFrame(() => {
+    cartOverlay.classList.add("is-open");
+  });
+
+  document.body.classList.add("cart-open");
+}
+
+function closeCart() {
+  if (!cartOverlay) return;
+
+  cartOverlay.classList.remove("is-open");
+  document.body.classList.remove("cart-open");
+
+  setTimeout(() => {
+    cartOverlay.hidden = true;
+  }, 280);
+}
+
+cartButton?.addEventListener("click", openCart);
+cartCloseButton?.addEventListener("click", closeCart);
+
+cartOverlay?.addEventListener("click", (event) => {
+  if (event.target === cartOverlay) closeCart();
+});
+
+cartShopButton?.addEventListener("click", closeCart);
+
+
+/* ESC CLOSE */
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+
+  if (menuOverlay?.classList.contains("is-open")) closeMenu();
+  if (cartOverlay?.classList.contains("is-open")) closeCart();
+
+  searchPanel?.classList.remove("is-open");
 });
