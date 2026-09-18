@@ -1,0 +1,39 @@
+:root{--c-blue:#00169E;--c-pink:#F8C8D0;--c-cream:#F8F0DF;--c-red:#D9272E;--c-light:#DCE5FF;--c-text:#252525}
+.contact-page{margin:0;background:#fff;color:var(--c-blue);font-family:"DM Sans",sans-serif}
+.contact-page *{box-sizing:border-box}.contact-page main{overflow:hidden}
+.contact-kicker{margin:0 0 10px;color:var(--c-red);font-size:12px;font-weight:800;letter-spacing:.14em}
+.contact-page h1,.contact-page h2,.contact-page h3{font-family:"Titan One",sans-serif;font-weight:400}
+.contact-hero{padding:100px 24px;text-align:center;background:var(--c-cream)}
+.contact-hero h1{margin:0;font-size:clamp(58px,8vw,96px);line-height:.9}
+.contact-hero-text{max-width:600px;margin:24px auto 0;color:var(--c-text);font-size:17px;line-height:1.6}
+.contact-choices{padding:95px 6%}.contact-heading{max-width:780px;margin:0 auto 45px;text-align:center}
+.contact-heading h2{margin:0;font-size:clamp(40px,5vw,60px);line-height:1}
+.contact-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.contact-grid article{position:relative;min-height:350px;padding:34px 28px;display:flex;flex-direction:column;align-items:flex-start;border:3px solid var(--c-blue);border-radius:20px;box-shadow:6px 6px 0 var(--c-blue)}
+.contact-grid article:nth-child(2){background:var(--c-cream)}.contact-grid article:nth-child(3){background:var(--c-pink)}
+.contact-number{position:absolute;right:20px;top:18px;color:var(--c-pink);font-family:"Titan One";font-size:22px}
+.contact-grid article:nth-child(2) .contact-number{color:var(--c-red)}.contact-grid article:nth-child(3) .contact-number{color:#fff}
+.contact-icon{width:64px;height:64px;margin-bottom:25px;display:grid;place-items:center;border-radius:50%;background:var(--c-light);font-size:25px}
+.contact-grid article:nth-child(2) .contact-icon{background:var(--c-pink)}.contact-grid article:nth-child(3) .contact-icon{background:#fff}
+.contact-grid h3{margin:0 0 12px;font-size:24px}.contact-grid p{margin:0 0 25px;color:var(--c-text);font-size:15px;line-height:1.6}
+.contact-grid a{margin-top:auto;padding-bottom:4px;border-bottom:3px solid var(--c-pink);color:var(--c-blue);font-family:"Titan One";font-size:13px;text-decoration:none}.contact-grid article:nth-child(3) a{border-color:#fff}
+.contact-quick{padding:90px 7%;display:grid;grid-template-columns:.85fr 1.15fr;gap:75px;align-items:center;background:var(--c-pink)}
+.contact-quick h2{margin:0;font-size:clamp(44px,5vw,64px);line-height:.95}.contact-quick-copy{color:var(--c-text)}
+.contact-links{border-top:3px solid var(--c-blue)}.contact-links a{min-height:70px;padding:0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--c-blue);color:var(--c-blue);font-family:"Titan One";font-size:17px;text-decoration:none}
+.contact-whatsapp{padding:68px 7%;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;background:var(--c-blue);color:#fff}
+.contact-whatsapp .contact-kicker{color:var(--c-pink)}.contact-whatsapp h2{margin:0;color:#fff;font-size:clamp(34px,4vw,48px);line-height:1}.contact-whatsapp p:last-child{margin:12px 0 0}
+.contact-whatsapp-icon{width:84px;height:84px;display:grid;place-items:center;border-radius:50%;background:var(--c-pink);color:var(--c-blue);font-size:40px}
+.contact-button{min-height:52px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:3px solid var(--c-blue);border-radius:11px;font-family:"Titan One";font-size:13px;text-decoration:none}
+.contact-button-light{border-color:#fff;background:var(--c-pink);color:var(--c-blue);box-shadow:5px 5px 0 #fff}.contact-button-primary{background:var(--c-red);color:#fff;box-shadow:5px 5px 0 var(--c-blue)}
+.contact-final{padding:80px 7%;display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center;background:var(--c-cream)}
+.contact-cookie{width:min(360px,80%);aspect-ratio:1;margin:auto;display:grid;place-items:center;border-radius:50%;background:var(--c-light)}
+.contact-cookie img{width:72%;filter:drop-shadow(0 14px 12px rgba(0,0,0,.12))}
+.contact-final-copy h2{margin:0;font-size:clamp(42px,5vw,64px);line-height:.96}.contact-final-copy>p:not(.contact-kicker){max-width:520px;margin:20px 0 26px;color:var(--c-text);line-height:1.6}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;max-width:650px}.contact-grid article{min-height:0}.contact-quick{grid-template-columns:1fr;gap:40px}.contact-whatsapp{grid-template-columns:auto 1fr}.contact-whatsapp .contact-button{grid-column:1/-1;justify-self:start}}
+@media(max-width:600px){
+.contact-kicker{font-size:10px}.contact-hero{padding:70px 22px}.contact-hero h1{font-size:52px}.contact-hero-text{font-size:15px}
+.contact-choices{padding:68px 18px}.contact-heading{margin-bottom:32px}.contact-heading h2{font-size:37px}.contact-grid{gap:15px}.contact-grid article{padding:27px 23px;border-radius:18px;box-shadow:5px 5px 0 var(--c-blue)}.contact-icon{width:56px;height:56px;margin-bottom:19px;font-size:21px}.contact-grid h3{font-size:21px}.contact-grid p{font-size:14px}
+.contact-quick{padding:68px 22px;gap:34px}.contact-quick h2{font-size:40px}.contact-links a{min-height:60px;font-size:13px}
+.contact-whatsapp{padding:58px 22px;grid-template-columns:1fr;gap:20px}.contact-whatsapp-icon{width:66px;height:66px;font-size:32px}.contact-whatsapp h2{font-size:35px}.contact-whatsapp .contact-button{grid-column:auto;width:100%}
+.contact-final{padding:68px 22px;grid-template-columns:1fr;gap:38px}.contact-cookie{width:235px}.contact-final-copy{text-align:center}.contact-final-copy h2{font-size:39px}.contact-final-copy>p:not(.contact-kicker){margin:17px auto 23px;font-size:14px}.contact-final .contact-button{width:100%}
+}
