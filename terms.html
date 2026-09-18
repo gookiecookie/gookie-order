@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions — Gookie</title>
+  <meta name="description" content="Soft, chunky cookies baked fresh in small batches. Less sweet, big on comfort.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+>
+  
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+ <header class="site-header">
+
+  <!-- HAMBURGER -->
+  <button
+    class="menu-btn"
+    id="menu-open"
+    type="button"
+    aria-label="Open menu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+
+  <!-- LOGO -->
+  <a href="index.html" class="brand" aria-label="Gookie home">
+    <img src="logo.png" alt="Gookie">
+  </a>
+
+
+  <!-- RIGHT SIDE ICONS -->
+  <div class="header-actions">
+
+    <!-- SEARCH -->
+    <button
+      class="header-icon-btn search-btn"
+      type="button"
+      aria-label="Search"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+
+    <!-- CART / BASKET -->
+    <button
+      class="header-icon-btn cart-btn"
+      type="button"
+      aria-label="Open cart"
+    >
+      <i class="fa-solid fa-basket-shopping"></i>
+
+      <span class="cart-count">
+        0
+      </span>
+    </button>
+
+  </div>
+
+</header>
+
+<!-- ================= SEARCH PANEL ================= -->
+<div class="search-panel" id="search-panel">
+
+  <div class="search-panel-inner">
+
+    <input
+      type="search"
+      id="site-search-input"
+      placeholder="Search Gookies..."
+      aria-label="Search Gookies"
+    >
+
+    <div
+  class="search-suggestions"
+  id="search-suggestions"
+></div>
+
+    <button
+      type="button"
+      class="search-close-btn"
+      id="search-close-btn"
+      aria-label="Close search"
+    >
+      ×
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ================= CART DRAWER ================= -->
+
+<div class="cart-overlay" id="cart-overlay" hidden>
+
+  <aside class="cart-drawer" id="cart-drawer">
+
+    <div class="cart-header">
+      <h2>YOUR GOOKIE CART</h2>
+
+      <button
+        type="button"
+        class="cart-close-btn"
+        id="cart-close-btn"
+        aria-label="Close cart"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="cart-body" id="cart-body">
+
+      <div class="cart-empty" id="cart-empty">
+        <p class="cart-empty-title">
+          Your box is lonely.
+        </p>
+
+        <p>
+          Add some Gookies to make it happier.
+        </p>
+
+        <a href="#build-box" class="cart-shop-btn" id="cart-shop-btn">
+          BUILD A BOX
+        </a>
+      </div>
+
+    </div>
+
+  </aside>
+
+</div>
+  
+  <!-- ================= MENU DRAWER ================= -->
+<div class="menu-overlay" id="menu-overlay" hidden>
+
+  <aside class="menu-panel" aria-label="Site menu">
+
+    <button
+      class="menu-close"
+      id="menu-close"
+      type="button"
+      aria-label="Close menu"
+    >
+      ×
+    </button>
+
+    <p class="menu-title">MENU</p>
+
+   <nav class="menu-links" aria-label="Main navigation">
+
+  <a href="index.html">HOME</a>
+  <a href="gookies.html">COOKIES</a>
+  <a href="order.html">SHOP</a>
+  <a href="goodies.html">GIFTS</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
+  <a href="help.html">HELP</a>
+
+</nav>
+
+   <div class="menu-socials">
+  <a href="https://www.instagram.com/gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+  <a href="https://facebook.com/gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="https://www.threads.com/@gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Threads"><i class="fa-brands fa-threads"></i></a>
+</div>
+  </aside>
+
+</div>
+
+  <!-- ================= ANNOUNCEMENT ================= -->
+  <div class="announcement-bar">
+  <div class="announcement-track">
+
+    <div class="announcement-group">
+      <span>BAKED FRESH</span><i>•</i>
+      <span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i>
+      <span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i>
+    </div>
+
+    <div class="announcement-group" aria-hidden="true">
+      <span>BAKED FRESH</span><i>•</i>
+      <span>SHIPPING ACROSS SEMENANJUNG</span><i>•</i>
+      <span>SOFT COOKIES. BRIGHTER DAYS.</span><i>•</i>
+    </div>
+
+  </div>
+</div>
+
+  <main class="terms-page">
+    <section class="legal-hero">
+      <p class="legal-kicker">THE SMALL PRINT. MADE SIMPLE.</p>
+      <h1>TERMS &amp;<br>CONDITIONS.</h1>
+      <p>Please read these terms before placing an order with Gookie.</p>
+      <span>Last updated: 18 September 2026</span>
+    </section>
+
+    <nav class="legal-jump" aria-label="Terms sections">
+      <a href="#orders">ORDERS</a><a href="#delivery">DELIVERY</a>
+      <a href="#products">PRODUCTS</a><a href="#problems">PROBLEMS</a>
+    </nav>
+
+    <section class="legal-intro"><p>These Terms &amp; Conditions apply when you use the Gookie website or place an order with Gookie Enterprise (“Gookie”, “we”, “us” or “our”). By placing an order, you agree to the terms below.</p></section>
+
+    <section class="legal-section" id="orders">
+      <div class="legal-heading"><span>01</span><div><p class="legal-kicker">BEFORE WE START BAKING</p><h2>Orders &amp;<br>payment.</h2></div></div>
+      <div class="legal-copy">
+        <h3>PLACING AN ORDER</h3><p>Please check your items, quantities, delivery details and contact information before submitting your order. An order is confirmed after the required payment has been received and the order has been accepted by Gookie.</p>
+        <h3>PRICES &amp; PAYMENT</h3><p>Prices are shown in Malaysian Ringgit (RM). Delivery charges and applicable add-ons are shown separately where relevant. Payment must be made using the payment method provided during checkout.</p>
+        <h3>CHANGES &amp; CANCELLATIONS</h3><p>You may request a change or cancellation while your order has not entered preparation. Requests are subject to our ability to accommodate them and do not automatically qualify for a refund. Once preparation has started, changes or cancellations may no longer be possible because our products are made fresh for each order.</p>
+        <h3>AVAILABILITY</h3><p>Products, flavours, add-ons and availability may change. If we cannot fulfil a confirmed order as placed, we will contact you to discuss the available options.</p>
+      </div>
+    </section>
+
+    <section class="legal-section legal-pink" id="delivery">
+      <div class="legal-heading"><span>02</span><div><p class="legal-kicker">FROM GOOKIE TO YOU</p><h2>Delivery.</h2></div></div>
+      <div class="legal-copy">
+        <h3>DELIVERY AREA</h3><p>We currently deliver throughout Peninsular Malaysia. Delivery to Sabah and Sarawak is not available at the moment. Gookie currently does not offer self pick-up or same-day delivery.</p>
+        <h3>DELIVERY DETAILS</h3><p>You are responsible for providing a complete and accurate delivery address, postcode and contact number. Please contact us as soon as possible if you notice an error.</p>
+        <h3>FAILED DELIVERY &amp; REDELIVERY</h3><p>If delivery cannot be completed because the address or contact information supplied by the customer is incorrect or incomplete, or the recipient cannot be reached, any additional redelivery cost will be borne by the customer.</p>
+        <h3>COURIER &amp; TIMING</h3><p>Delivery estimates are estimates rather than guaranteed arrival times. Circumstances outside Gookie’s reasonable control may affect delivery timing after a parcel is handed to the courier. Tracking information will be provided when available.</p>
+      </div>
+    </section>
+
+    <section class="legal-section" id="products">
+      <div class="legal-heading"><span>03</span><div><p class="legal-kicker">ABOUT THE GOOD STUFF</p><h2>Products &amp;<br>food info.</h2></div></div>
+      <div class="legal-copy">
+        <h3>FRESHLY MADE PRODUCTS</h3><p>Gookies are food products made in batches. Small variations in shape, colour, size, texture and appearance can naturally occur and are not necessarily defects.</p>
+        <h3>ALLERGENS</h3><p>Our products may contain or come into contact with common allergens including wheat/gluten, milk, eggs, soy, peanuts and tree nuts. If you have a food allergy or dietary concern, please contact us before ordering. We cannot guarantee an allergen-free production environment.</p>
+        <h3>STORAGE &amp; REHEATING</h3><p>For the best experience, follow the storage and reheating guidance provided by Gookie. Product quality may be affected by improper storage, excessive heat, prolonged exposure or handling after delivery.</p>
+        <h3>PRODUCT IMAGES</h3><p>Website and promotional images are for presentation and reference. Because our cookies are made in batches, the product you receive may not look exactly identical to a photograph.</p>
+      </div>
+    </section>
+
+    <section class="legal-section legal-cream" id="problems">
+      <div class="legal-heading"><span>04</span><div><p class="legal-kicker">WHEN SOMETHING ISN'T RIGHT</p><h2>Refunds &amp;<br>replacements.</h2></div></div>
+      <div class="legal-copy">
+        <h3>DAMAGED, INCORRECT OR MISSING ITEMS</h3><p>If your order arrives damaged, incorrect or with an item missing, please contact us within 24 hours of receiving the parcel. Include your order details and clear photographs of the product and its packaging so we can review what happened.</p>
+        <h3>REFUND OR REPLACEMENT REQUESTS</h3><p>Requests are reviewed based on the circumstances of the order and the supporting information provided. Where appropriate, Gookie may offer a replacement, refund or another reasonable resolution. A request does not automatically guarantee a refund or replacement.</p>
+        <h3>CHANGE OF MIND</h3><p>Because our cookies are perishable food products, we generally cannot accept returns or provide refunds simply because of a change of mind or personal taste preference.</p>
+        <h3>CONTACT US QUICKLY</h3><p>Please keep the affected product and packaging until we have reviewed your request.</p>
+      </div>
+    </section>
+
+    <section class="legal-section legal-pink" id="gifts">
+      <div class="legal-heading"><span>05</span><div><p class="legal-kicker">THE EXTRA-SPECIAL ORDERS</p><h2>Gifts, events<br>&amp; bulk orders.</h2></div></div>
+      <div class="legal-copy">
+        <h3>CUSTOM &amp; BULK REQUESTS</h3><p>Wedding, birthday, corporate, event and bulk orders may involve separate quantities, lead times, packaging, customisation or payment arrangements. Any special terms agreed with you for that order will form part of the order agreement.</p>
+        <h3>PERSONALISED DETAILS</h3><p>Please check names, messages, dates and other personalised information carefully before confirming. Once personalised items have entered production, changes may not be possible.</p>
+      </div>
+    </section>
+
+    <section class="legal-section" id="website">
+      <div class="legal-heading"><span>06</span><div><p class="legal-kicker">A FEW WEBSITE BITS</p><h2>Website &amp;<br>general terms.</h2></div></div>
+      <div class="legal-copy">
+        <h3>WEBSITE CONTENT</h3><p>We try to keep product information, pricing and availability accurate. We may correct errors or update website content when necessary.</p>
+        <h3>INTELLECTUAL PROPERTY</h3><p>Gookie branding, original website content, graphics and other original materials may not be copied, reproduced or used commercially without permission, except where permitted by law.</p>
+        <h3>CHANGES TO THESE TERMS</h3><p>We may update these Terms &amp; Conditions from time to time. The version published on this page at the time of your order will apply to that order, subject to applicable law.</p>
+        <h3>APPLICABLE LAW</h3><p>These terms are governed by the laws of Malaysia. Nothing in these terms is intended to exclude or limit rights that cannot lawfully be excluded under applicable Malaysian law.</p>
+      </div>
+    </section>
+
+    <section class="legal-end"><p class="legal-kicker">STILL HAVE A QUESTION?</p><h2>Talk cookies<br>with us.</h2><p>We’d rather make things clear before you order.</p><a href="contact.html">CONTACT GOOKIE →</a></section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="section-shell footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Gookie">
+        <p>Soft cookies. Brighter days.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="order.html">Shop</a>
+        <a href="help.html">FAQ</a>
+        <a href="help.html#delivery">Delivery</a>
+        <a href="help.html#storage">Storage &amp; Reheating</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="help.html#refund">Refund &amp; Replacement</a>
+      </nav>
+
+      <div class="footer-social" aria-label="Gookie social media">
+        <a href="https://www.instagram.com/gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://facebook.com/gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.threads.com/@gookie.my" target="_blank" rel="noopener noreferrer" aria-label="Gookie on Threads"><i class="fa-brands fa-threads"></i></a>
+      </div>
+    </div>
+
+    <p class="footer-bottom">© 2026 Gookie. Baked with love in Malaysia.</p>
+  </footer>
+
+  <!-- Existing cookie carousel logic -->
+  <script src="script.js"></script>
+
+  <!-- Design A interactions -->
+  <script>
+    const menuOpen = document.getElementById("menu-open");
+    const menuClose = document.getElementById("menu-close");
+    const menuOverlay = document.getElementById("menu-overlay");
+
+    function openMenu() {
+      menuOverlay.hidden = false;
+      requestAnimationFrame(() => menuOverlay.classList.add("is-open"));
+      menuOpen.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMenu() {
+      menuOverlay.classList.remove("is-open");
+      menuOpen.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+      setTimeout(() => { menuOverlay.hidden = true; }, 220);
+    }
+
+    menuOpen.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
+    menuOverlay.addEventListener("click", (event) => {
+      if (event.target === menuOverlay) closeMenu();
+    });
+    document.querySelectorAll(".menu-links a").forEach((link) => link.addEventListener("click", closeMenu));
+
+  const promoSlides = [...document.querySelectorAll("[data-promo-slide]")];
+const promoDots = [...document.querySelectorAll("[data-promo-dot]")];
+const promoPrevious = document.querySelector(".promo-arrow-left");
+const promoNext = document.querySelector(".promo-arrow-right");
+
+let promoIndex = 0;
+let promoTimer;
+
+function showPromo(index) {
+  promoIndex = (index + promoSlides.length) % promoSlides.length;
+
+  promoSlides.forEach((slide, i) => {
+    slide.classList.toggle("is-active", i === promoIndex);
+  });
+
+  promoDots.forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === promoIndex);
+  });
+}
+
+function startPromoTimer() {
+  clearInterval(promoTimer);
+
+  promoTimer = setInterval(() => {
+    showPromo(promoIndex + 1);
+  }, 5000);
+}
+
+promoPrevious.addEventListener("click", () => {
+  showPromo(promoIndex - 1);
+  startPromoTimer();
+});
+
+promoNext.addEventListener("click", () => {
+  showPromo(promoIndex + 1);
+  startPromoTimer();
+});
+
+promoDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    showPromo(index);
+    startPromoTimer();
+  });
+});
+
+startPromoTimer();
+
+    /* Automatically mirror the Monthly Wonder item from your existing cookieLineup array. */
+    try {
+      const monthlyWonder =
+        cookieLineup.find((cookie) => cookie.sticker === "MONTHLY WONDER") ||
+        cookieLineup[cookieLineup.length - 1];
+
+      if (monthlyWonder) {
+        const name = document.getElementById("monthly-hero-name");
+        const image = document.getElementById("monthly-hero-image");
+        const description = document.getElementById("monthly-hero-description");
+
+        name.innerHTML = monthlyWonder.name.trim().split(/\s+/).join("<br>");
+        image.src = monthlyWonder.image;
+        image.alt = monthlyWonder.name + " Monthly Wonder cookie";
+        description.textContent = monthlyWonder.description;
+      }
+    } catch (error) {
+      console.log("Monthly Wonder hero is using its HTML fallback.");
+    }
+
+/* ----------------------------------------
+   SEARCH PANEL
+---------------------------------------- */
+
+const searchButton = document.querySelector(".search-btn");
+const searchPanel = document.getElementById("search-panel");
+const searchInput = document.getElementById("site-search-input");
+const searchCloseButton = document.getElementById("search-close-btn");
+
+searchButton.addEventListener("click", () => {
+  searchPanel.classList.toggle("is-open");
+
+  if (searchPanel.classList.contains("is-open")) {
+    setTimeout(() => {
+      searchInput.focus();
+    }, 150);
+  }
+});
+
+searchCloseButton.addEventListener("click", () => {
+  searchPanel.classList.remove("is-open");
+});
+
+/* ----------------------------------------
+   SEARCH COOKIE BY NAME
+---------------------------------------- */
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+
+  const keyword = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  if (!keyword) return;
+
+  const foundIndex = cookieLineup.findIndex((cookie) =>
+    cookie.name.toLowerCase().includes(keyword)
+  );
+
+  if (foundIndex === -1) {
+    alert("Cookie not found.");
+    return;
+  }
+
+  currentCookieIndex = foundIndex;
+  showCookie(currentCookieIndex);
+
+  document
+    .getElementById("cookie-lineup")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+  searchPanel.classList.remove("is-open");
+});
+
+/* ----------------------------------------
+   SEARCH SUGGESTIONS
+---------------------------------------- */
+
+const searchSuggestions =
+  document.getElementById("search-suggestions");
+
+function openCookieFromSearch(index) {
+  currentCookieIndex = index;
+  showCookie(currentCookieIndex);
+
+  document
+    .getElementById("cookie-lineup")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+  searchPanel.classList.remove("is-open");
+  searchSuggestions.classList.remove("is-open");
+  searchInput.value = "";
+}
+
+searchInput.addEventListener("input", () => {
+
+  const keyword =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  searchSuggestions.innerHTML = "";
+
+  if (!keyword) {
+    searchSuggestions.classList.remove("is-open");
+    return;
+  }
+
+  const matches = cookieLineup
+    .map((cookie, index) => ({
+      cookie,
+      index
+    }))
+    .filter(({ cookie }) =>
+      cookie.name
+        .toLowerCase()
+        .includes(keyword)
+    );
+
+  if (matches.length === 0) {
+    searchSuggestions.classList.remove("is-open");
+    return;
+  }
+
+  matches.forEach(({ cookie, index }) => {
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+    button.className =
+      "search-suggestion-item";
+
+    button.textContent =
+      cookie.name;
+
+    button.addEventListener("click", () => {
+      openCookieFromSearch(index);
+    });
+
+    searchSuggestions.appendChild(button);
+  });
+
+  searchSuggestions.classList.add("is-open");
+});
+
+/* ----------------------------------------
+   CART DRAWER
+---------------------------------------- */
+
+const cartButton =
+  document.querySelector(".cart-btn");
+
+const cartOverlay =
+  document.getElementById("cart-overlay");
+
+const cartCloseButton =
+  document.getElementById("cart-close-btn");
+
+const cartShopButton =
+  document.getElementById("cart-shop-btn");
+
+
+function openCart() {
+
+  cartOverlay.hidden = false;
+
+  requestAnimationFrame(() => {
+    cartOverlay.classList.add("is-open");
+  });
+
+  document.body.classList.add("cart-open");
+}
+
+
+function closeCart() {
+
+  cartOverlay.classList.remove("is-open");
+
+  document.body.classList.remove("cart-open");
+
+  setTimeout(() => {
+    cartOverlay.hidden = true;
+  }, 280);
+}
+
+
+cartButton.addEventListener("click", openCart);
+
+cartCloseButton.addEventListener("click", closeCart);
+
+
+cartOverlay.addEventListener("click", (event) => {
+
+  if (event.target === cartOverlay) {
+    closeCart();
+  }
+
+});
+
+
+cartShopButton.addEventListener("click", () => {
+  closeCart();
+});
+    
+  </script>
+
+</body>
+</html>
