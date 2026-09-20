@@ -1726,3 +1726,57 @@ body.cart-open {
   }
 
 }
+
+/* ========================================
+   BUILD YOUR BOX — HERO IMAGE
+======================================== */
+.promo-box-visual .promo-box-image {
+  width: min(100%, 590px) !important;
+  max-width: 590px !important;
+  max-height: 470px !important;
+  object-fit: contain;
+}
+
+/* ========================================
+   CART — ITEMS & SUBTOTAL
+======================================== */
+.cart-overlay[hidden], .cart-footer[hidden] { display: none !important; }
+.cart-body { min-height: 0; overflow-y: auto; }
+.cart-items { display: grid; gap: 14px; }
+.cart-item {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 13px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0,22,158,.15);
+}
+.cart-item-image { width: 68px; height: 68px; object-fit: contain; }
+.cart-item-name { margin: 0 0 5px; font-size: 15px; font-weight: 800; }
+.cart-item-details { margin: 0 0 8px; font-size: 12px; line-height: 1.5; }
+.cart-item-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cart-item-price { font-size: 14px; font-weight: 800; }
+.cart-qty { display: flex; align-items: center; gap: 10px; }
+.cart-qty button {
+  width: 27px; height: 27px; border: 1.5px solid var(--blue);
+  border-radius: 50%; background: transparent; color: var(--blue);
+  font-weight: 800; cursor: pointer;
+}
+.cart-qty span { font-size: 13px; font-weight: 800; }
+.cart-remove { margin-top: 9px; padding: 0; border: 0; background: none;
+  color: var(--blue); text-decoration: underline; font-size: 11px; cursor: pointer; }
+.cart-footer { padding: 18px 26px 26px; border-top: 1px solid rgba(0,22,158,.15); }
+.cart-total { display: flex; justify-content: space-between; align-items: center; font-weight: 800; }
+.cart-total strong { font-size: 20px; }
+.cart-footer p { margin: 8px 0 16px; font-size: 12px; }
+.cart-checkout-btn { display: flex; min-height: 48px; align-items: center;
+  justify-content: center; border-radius: 999px; background: var(--red);
+  color: white; font-size: 12px; font-weight: 800; text-decoration: none; }
+@media (max-width: 700px) {
+  .promo-box-visual .promo-box-image {
+    width: min(90vw, 380px) !important;
+    max-height: 330px !important;
+  }
+  .cart-header { padding: 0 20px; }
+  .cart-body { padding: 22px 20px; }
+  .cart-footer { padding: 16px 20px 24px; }
+}

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.0">
 
   <link
   rel="stylesheet"
@@ -131,11 +131,17 @@
           Add some Gookies to make it happier.
         </p>
 
-        <a href="#build-box" class="cart-shop-btn" id="cart-shop-btn">
+        <a href="order.html" class="cart-shop-btn" id="cart-shop-btn">
           BUILD A BOX
         </a>
       </div>
 
+    </div>
+
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="cart-total"><span>SUBTOTAL</span><strong id="cart-subtotal">RM0.00</strong></div>
+      <p>Delivery is calculated at checkout.</p>
+      <a class="cart-checkout-btn" href="order.html">CONTINUE TO SHOP</a>
     </div>
 
   </aside>
@@ -224,10 +230,8 @@
           <p class="promo-description">Pick your favourites and make the box yours.</p>
           <a href="#build-box" class="btn btn-red">LET'S BUILD A BOX</a>
         </div>
-        <div class="promo-visual promo-stack" aria-hidden="true">
-          <img src="wonder-chip.png" alt="">
-          <img src="red-bloom.png" alt="">
-          <img src="biscoff-boom.png" alt="">
+        <div class="promo-visual promo-box-visual">
+          <img src="buildyourbox.png" alt="A Gookie box ready to take home" class="promo-box-image">
         </div>
       </div>
 
@@ -393,7 +397,7 @@
           <p class="build-kicker">YOUR FAVOURITES. YOUR WAY.</p>
           <h2>BUILD YOUR BOX</h2>
           <p>Pick your favourites and make it yours.</p>
-          <a href="#" class="btn btn-red">LET'S BUILD A BOX</a>
+          <a href="order.html" class="btn btn-red">LET'S BUILD A BOX</a>
         </div>
         <div class="build-cookies" aria-hidden="true">
           <img src="wonder-chip.png" alt="">
@@ -681,66 +685,8 @@ searchInput.addEventListener("input", () => {
   searchSuggestions.classList.add("is-open");
 });
 
-/* ----------------------------------------
-   CART DRAWER
----------------------------------------- */
-
-const cartButton =
-  document.querySelector(".cart-btn");
-
-const cartOverlay =
-  document.getElementById("cart-overlay");
-
-const cartCloseButton =
-  document.getElementById("cart-close-btn");
-
-const cartShopButton =
-  document.getElementById("cart-shop-btn");
-
-
-function openCart() {
-
-  cartOverlay.hidden = false;
-
-  requestAnimationFrame(() => {
-    cartOverlay.classList.add("is-open");
-  });
-
-  document.body.classList.add("cart-open");
-}
-
-
-function closeCart() {
-
-  cartOverlay.classList.remove("is-open");
-
-  document.body.classList.remove("cart-open");
-
-  setTimeout(() => {
-    cartOverlay.hidden = true;
-  }, 280);
-}
-
-
-cartButton.addEventListener("click", openCart);
-
-cartCloseButton.addEventListener("click", closeCart);
-
-
-cartOverlay.addEventListener("click", (event) => {
-
-  if (event.target === cartOverlay) {
-    closeCart();
-  }
-
-});
-
-
-cartShopButton.addEventListener("click", () => {
-  closeCart();
-});
-    
   </script>
+  <script src="cart.js?v=1.0" defer></script>
 
 </body>
 </html>
