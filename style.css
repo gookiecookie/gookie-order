@@ -1780,3 +1780,38 @@ body.cart-open {
   .cart-body { padding: 22px 20px; }
   .cart-footer { padding: 16px 20px 24px; }
 }
+
+/* ========================================
+   GOOKIE CART — EDIT ORDER POPUP
+======================================== */
+.cart-edit { display: inline-block; margin: 10px 12px 0 0; padding: 0; border: 0; background: transparent; color: #00169E; font: 800 11px "DM Sans",sans-serif; text-decoration: underline; cursor: pointer; }
+.gookie-edit-overlay[hidden] { display: none !important; }
+.gookie-edit-overlay { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 18px; background: rgba(0, 16, 86, .65); }
+.gookie-edit-modal { width: min(100%, 560px); max-height: min(90vh, 820px); display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: #fffaf0; color: #00169E; box-shadow: 0 18px 65px #00104450; }
+.gookie-edit-top { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; border-bottom: 1px solid #00169e25; }
+.gookie-edit-top h2 { margin: 0; font: 400 clamp(21px, 4vw, 28px) "Titan One",sans-serif; }
+.gookie-edit-top button { border: 0; background: transparent; color: #00169E; font-size: 30px; cursor: pointer; }
+.gookie-edit-content { overflow-y: auto; padding: 22px 24px; }
+.gookie-edit-product { margin: 0 0 22px; font-weight: 800; }
+.gookie-edit-content h3 { display: flex; justify-content: space-between; margin: 22px 0 12px; font: 800 13px "DM Sans",sans-serif; letter-spacing: .04em; }
+.gookie-edit-picked { font-weight: 700; }
+.gookie-edit-flavour { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 48px; border-bottom: 1px solid #00169e20; font-size: 14px; font-weight: 700; }
+.gookie-edit-qty { display: flex; align-items: center; gap: 12px; }
+.gookie-edit-qty button { width: 29px; height: 29px; border: 1px solid #00169E; border-radius: 50%; background: #fff; color: #00169E; cursor: pointer; font-size: 17px; }
+.gookie-edit-qty button:disabled { opacity: .3; cursor: not-allowed; }
+.gookie-edit-qty b { min-width: 12px; text-align: center; }
+.gookie-edit-addons { display: grid; gap: 8px; }
+.gookie-edit-addons label, .gookie-edit-sticker { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #00169e25; border-radius: 10px; background: #fff; font-size: 13px; font-weight: 700; cursor: pointer; }
+.gookie-edit-message { margin-top: 14px; }
+.gookie-edit-message[hidden] { display: none; }
+.gookie-edit-message label { display: block; margin-bottom: 7px; font-size: 12px; font-weight: 800; }
+.gookie-edit-message textarea { width: 100%; padding: 10px; border: 1px solid #00169e55; border-radius: 10px; font: 14px "DM Sans",sans-serif; resize: vertical; }
+.gookie-edit-sticker { margin-top: 16px; }
+.gookie-edit-fixed { font-size: 13px; line-height: 1.5; }
+.gookie-edit-bottom { padding: 16px 24px 22px; border-top: 1px solid #00169e25; background: #fffaf0; }
+.gookie-edit-error { min-height: 17px; margin: 0 0 7px; color: #c31927; font-size: 12px; font-weight: 800; }
+.gookie-edit-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 800; }
+.gookie-edit-total strong { font-size: 22px; }
+.gookie-edit-save { width: 100%; min-height: 46px; border: 0; border-radius: 999px; background: #D9272E; color: #fff; font: 800 12px "DM Sans",sans-serif; cursor: pointer; }
+body.gookie-edit-open { overflow: hidden; }
+@media (max-width: 600px) { .gookie-edit-overlay { padding: 8px; } .gookie-edit-modal { max-height: 94vh; } .gookie-edit-top, .gookie-edit-content, .gookie-edit-bottom { padding-left: 16px; padding-right: 16px; } }
