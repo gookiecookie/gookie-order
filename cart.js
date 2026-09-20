@@ -13,7 +13,7 @@
   function load() {
     try {
       const value = JSON.parse(localStorage.getItem(KEY) || "[]");
-      return Array.isArray(value) ? value : [];
+      return Array.isArray(value) ? value.filter(item => item && typeof item.id === "string" && typeof item.name === "string" && Number.isFinite(item.price) && item.price >= 0 && Number.isInteger(item.quantity) && item.quantity > 0) : [];
     } catch { return []; }
   }
 
@@ -24,7 +24,7 @@
   })[char]);
 
   function save() {
-    localStorage.setItem(KEY, JSON.stringify(items));
+    try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (error) { console.warn("Cart could not be saved", error); }
     render();
     window.dispatchEvent(new CustomEvent("gookie:cart-updated", { detail: { items: items.slice() } }));
   }
@@ -96,10 +96,9 @@
       if (!item || typeof item.id !== "string" || typeof item.name !== "string" ||
           !Number.isFinite(item.price) || item.price < 0) return false;
       const quantity = Math.max(1, Math.floor(Number(item.quantity) || 1));
-      const existing = items.find(entry => entry.id === item.id && entry.details === (item.details || ""));
+      const existing = items.find(entry => entry.id === item.id && entry.details === (item.details || "") && entry.price === item.price);
       if (existing) existing.quantity += quantity;
-      else items.push({ id: item.id, name: item.name, price: item.price,
-        quantity, details: item.details || "", image: item.image || "" });
+      else items.push({ ...item, quantity, details: item.details || "", image: item.image || "" });
       save();
       open();
       return true;

@@ -53,31 +53,8 @@ searchCloseButton?.addEventListener("click", () => {
 });
 
 
-/* ---------- CART DRAWER ---------- */
-const cartButton = document.querySelector(".cart-btn");
-const cartOverlay = document.getElementById("cart-overlay");
-const cartCloseButton = document.getElementById("cart-close-btn");
-
-function openCart() {
-  if (!cartOverlay) return;
-  cartOverlay.hidden = false;
-  requestAnimationFrame(() => cartOverlay.classList.add("is-open"));
-  document.body.classList.add("cart-open");
-}
-
-function closeCart() {
-  if (!cartOverlay) return;
-  cartOverlay.classList.remove("is-open");
-  document.body.classList.remove("cart-open");
-  setTimeout(() => { cartOverlay.hidden = true; }, 280);
-}
-
-cartButton?.addEventListener("click", openCart);
-cartCloseButton?.addEventListener("click", closeCart);
-cartOverlay?.addEventListener("click", (event) => {
-  if (event.target === cartOverlay) closeCart();
-});
-
+/* ---------- SHARED CART ---------- */
+// cart.js handles the drawer, badge, quantities and browser storage.
 
 /* ---------- SHOP TABS ---------- */
 const shopTabs = [...document.querySelectorAll("[data-shop-tab]")];
@@ -111,11 +88,11 @@ const capacityEl = document.getElementById("builderBoxCapacity");
 const totalEl = document.getElementById("builderTotal");
 const addButton = document.getElementById("addBuildBoxToBasket");
 const fillBestSellers = document.getElementById("fillBestSellers");
-const cartCount = document.querySelector(".cart-count");
+
 
 let selectedBoxSize = 4;
 let selectedBoxPrice = 39;
-let basketCount = 0;
+
 
 const quantities = Object.fromEntries(
   cookieCards.map((card) => [card.dataset.cookieId, 0])
@@ -217,40 +194,29 @@ fillBestSellers?.addEventListener("click", () => {
 });
 
 addButton?.addEventListener("click", () => {
-  if (totalPicked() !== selectedBoxSize) return;
-  if (!validateGiftAddon("build")) return;
+  if (totalPicked() !== selectedBoxSize || !validateGiftAddon("build")) return;
 
-  basketCount += 1;
-  if (cartCount) cartCount.textContent = String(basketCount);
-
-  const selectedSummary = Object.entries(quantities)
+  const flavours = Object.entries(quantities)
     .filter(([, qty]) => qty > 0)
-    .map(([id, qty]) => {
-      const card = document.querySelector(`[data-cookie-id="${id}"]`);
-      const name = card?.querySelector("h3")?.textContent || id;
-      return `${qty}× ${name}`;
-    })
-    .join(", ");
-
-  const cartBody = document.getElementById("cart-body");
-  const cartEmpty = document.getElementById("cart-empty");
-
-  if (cartBody) {
-    if (cartEmpty) cartEmpty.style.display = "none";
-
-    const item = document.createElement("div");
-    item.className = "order-cart-build-item";
-    item.innerHTML = `
-      <strong>Build Your Cookie Box · ${selectedBoxSize}</strong>
-      <span>${selectedSummary}${giftAddonSummary("build")}</span>
-      <b>RM${selectedBoxPrice + (getGiftAddon("build")?.price || 0)}</b>
-    `;
-    cartBody.appendChild(item);
+    .map(([id, qty]) => ({ id, quantity: qty, name: document.querySelector(`[data-cookie-id="${id}"] h3`)?.textContent?.trim() || id }));
+  const addon = getGiftAddon("build");
+  const details = flavours.map(f => `${f.quantity}× ${f.name}`).join(", ") + giftAddonSummary("build");
+  const added = window.GookieCart?.add({
+    id: `build-${selectedBoxSize}`,
+    name: `Build Your Box · ${selectedBoxSize} pcs`,
+    price: selectedBoxPrice + (addon?.price || 0),
+    quantity: 1,
+    details,
+    image: "chunky-box.png",
+    productType: "build-box",
+    boxSize: selectedBoxSize,
+    flavours,
+    addon: addon ? { ...addon } : null
+  });
+  if (added) {
+    resetGiftAddon("build");
+    clearSelection();
   }
-
-  openCart();
-  resetGiftAddon("build");
-  clearSelection();
 });
 
 updateBuilder();
@@ -271,28 +237,16 @@ function updateMiniTotal(){if(miniPriceEl)miniPriceEl.textContent=`RM${59+(getGi
 
 addMiniGookiesToBasket?.addEventListener("click", () => {
   if (!validateGiftAddon("mini")) return;
-  basketCount += 1;
-  if (cartCount) cartCount.textContent = String(basketCount);
-
-  const cartBody = document.getElementById("cart-body");
-  const cartEmpty = document.getElementById("cart-empty");
-
-  if (cartBody) {
-    if (cartEmpty) cartEmpty.style.display = "none";
-
-    const item = document.createElement("div");
-    item.className = "order-cart-build-item";
-    item.innerHTML = `
-      <strong>Mini Gookies · 15 pcs</strong>
-      <span>5× Wonder Chip, 5× Dark Crush, 5× Red Bloom${giftAddonSummary("mini")}</span>
-      <b>RM${59+(getGiftAddon("mini")?.price||0)}</b>
-    `;
-    cartBody.appendChild(item);
-  }
-
-  openCart();
-  resetGiftAddon("mini");
-  updateMiniTotal();
+  const addon = getGiftAddon("mini");
+  const added = window.GookieCart?.add({
+    id: "mini-15", name: "Mini Gookies · 15 pcs",
+    price: 59 + (addon?.price || 0), quantity: 1,
+    details: "5× Wonder Chip, 5× Dark Crush, 5× Red Bloom" + giftAddonSummary("mini"),
+    image: "treat-box.png", productType: "mini-gookies",
+    flavours: [{id:"wonder-chip",quantity:5},{id:"dark-crush",quantity:5},{id:"red-bloom",quantity:5}],
+    addon: addon ? { ...addon } : null
+  });
+  if (added) { resetGiftAddon("mini"); updateMiniTotal(); }
 });
 
 /* GOOKIE BUFFET */
@@ -302,23 +256,24 @@ const addBuffetToBasket=document.getElementById("addBuffetToBasket");
 function getBuffetTotal(){return (buffetCustomSticker?.checked?149:129)+(getGiftAddon("buffet")?.price||0)}
 function updateBuffetPrice(){if(buffetPrice) buffetPrice.textContent=`RM${getBuffetTotal()}`}
 buffetCustomSticker?.addEventListener("change",updateBuffetPrice);
-addBuffetToBasket?.addEventListener("click",()=>{
+addBuffetToBasket?.addEventListener("click", () => {
   if (!validateGiftAddon("buffet")) return;
-  const custom=Boolean(buffetCustomSticker?.checked), price=getBuffetTotal();
-  basketCount+=1; if(cartCount) cartCount.textContent=String(basketCount);
-  const cartBody=document.getElementById("cart-body"), cartEmpty=document.getElementById("cart-empty");
-  if(cartBody){
-    if(cartEmpty) cartEmpty.style.display="none";
-    const item=document.createElement("div");
-    item.className="order-cart-build-item";
-    item.innerHTML=`<strong>Gookie Buffet · 30 pcs</strong><span>10× Wonder Chip, 10× Dark Crush, 10× Red Bloom${giftAddonSummary("buffet")}${custom?" · Customized stickers":""}</span><b>RM${price}</b>`;
-    cartBody.appendChild(item);
+  const custom = Boolean(buffetCustomSticker?.checked);
+  const addon = getGiftAddon("buffet");
+  const added = window.GookieCart?.add({
+    id: "buffet-30", name: "Gookie Buffet · 30 pcs",
+    price: getBuffetTotal(), quantity: 1,
+    details: "10× Wonder Chip, 10× Dark Crush, 10× Red Bloom" + giftAddonSummary("buffet") + (custom ? " · Customized stickers" : ""),
+    image: "cookie-feast.png", productType: "gookie-buffet", customStickers: custom,
+    flavours: [{id:"wonder-chip",quantity:10},{id:"dark-crush",quantity:10},{id:"red-bloom",quantity:10}],
+    addon: addon ? { ...addon } : null
+  });
+  if (added) {
+    if (buffetCustomSticker) buffetCustomSticker.checked = false;
+    resetGiftAddon("buffet"); updateBuffetPrice();
   }
-  openCart();
-  if(buffetCustomSticker) buffetCustomSticker.checked=false;
-  resetGiftAddon("buffet");
-  updateBuffetPrice();
 });
+
 updateBuffetPrice();
 
 updateMiniTotal();
