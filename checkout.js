@@ -431,15 +431,21 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
 
   // Keep checkout updated if the cart changes
   // elsewhere in the same browser.
+ 
   window.addEventListener(
     "gookie:cart-updated",
-    renderCheckout
+    () => {
+      resetDeliveryQuote();
+      renderCheckout();
+    }
   );
 
+ 
   window.addEventListener(
     "storage",
     event => {
       if (event.key === CART_KEY) {
+        resetDeliveryQuote();
         renderCheckout();
       }
     }
