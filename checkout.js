@@ -281,7 +281,8 @@ let quoteVersion = 0;
    
   function resetDeliveryQuote() {
 quoteVersion++;
-     
+     calculateButton.disabled = false;
+calculateButton.textContent = "CALCULATE DELIVERY →";
     shippingElement.textContent = "—";
     totalElement.textContent = "—";
 
@@ -423,32 +424,6 @@ const thisQuoteVersion = ++quoteVersion;
           calculateButton.disabled = false;
           calculateButton.textContent = "CALCULATE DELIVERY →";
         });
-```
-
-### Satu pembetulan kecil lagi
-
-Dalam `resetDeliveryQuote()`, selepas `quoteVersion++;`, tambah dua baris ini:
-
-```js
-calculateButton.disabled = false;
-calculateButton.textContent = "CALCULATE DELIVERY →";
-```
-
-Ini membolehkan customer mengira semula delivery terus selepas menukar poskod, walaupun request lama masih berjalan.
-
-Kemudian **Commit changes**.
-
-## STEP 5M.3 — Uji
-
-Buka [Gookie Checkout](https://gookiecookie.github.io/gookie-order/checkout.html), refresh dan buat ujian ini:
-
-1. Kira delivery untuk `43100`.
-2. Tukar poskod kepada `43101` sebaik sahaja menekan Calculate Delivery.
-3. Pastikan Delivery dan Total kekal `—` sehingga kau tekan Calculate Delivery sekali lagi.
-
-Kalau kau tekan semula untuk poskod baharu, hanya respons request terbaharu patut dipaparkan.
-
-**Nota:** Kita masih belum selesai perlindungan apabila cart berubah; itu langkah seterusnya. Butang pembayaran kekal disabled. 🍪
 
     } catch (error) {
       deliveryMessage.textContent = error.message;
