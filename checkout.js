@@ -274,6 +274,23 @@
     return boxes;
   }
 
+
+  // Reset an old quote when the customer changes postcode.
+  function resetDeliveryQuote() {
+    shippingElement.textContent = "—";
+    totalElement.textContent = "—";
+
+    if (deliveryMessage) {
+      deliveryMessage.textContent =
+        "Postcode changed. Please calculate delivery again.";
+    }
+  }
+
+  postcodeInput?.addEventListener(
+    "input",
+    resetDeliveryQuote
+  );
+   
   calculateButton?.addEventListener("click", () => {
     const postcode = postcodeInput?.value.trim() || "";
 
