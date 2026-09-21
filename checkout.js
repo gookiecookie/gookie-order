@@ -276,7 +276,12 @@
 
 
   // Reset an old quote when the customer changes postcode.
+
+let quoteVersion = 0;
+   
   function resetDeliveryQuote() {
+quoteVersion++;
+     
     shippingElement.textContent = "—";
     totalElement.textContent = "—";
 
@@ -327,6 +332,13 @@
       deliveryMessage.textContent =
         "Checking delivery for your postcode...";
 
+const thisQuoteVersion = ++quoteVersion;
+       
+      
+      const thisQuoteVersion = ++quoteVersion;
+      const requestedPostcode = postcode;
+      const requestedCart = JSON.stringify(getCartItems());
+
       fetch(API_URL, {
         method: "POST",
         headers: {
@@ -337,12 +349,23 @@
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error("Unable to connect to the shipping service.");
+            throw new Error(
+              "Unable to connect to the shipping service."
+            );
           }
 
           return response.json();
         })
         .then(result => {
+          // Ignore a response for an old postcode or cart.
+          if (
+            thisQuoteVersion !== quoteVersion ||
+            postcodeInput.value.trim() !== requestedPostcode ||
+            JSON.stringify(getCartItems()) !== requestedCart
+          ) {
+            return;
+          }
+
           if (!result.ok || !result.totals) {
             throw new Error(
               result.message || "Unable to calculate delivery."
@@ -358,7 +381,9 @@
             !Number.isFinite(shipping) ||
             !Number.isFinite(grandTotal)
           ) {
-            throw new Error("Invalid quote returned by the backend.");
+            throw new Error(
+              "Invalid quote returned by the backend."
+            );
           }
 
           const currentSubtotal = getCartItems().reduce(
@@ -366,7 +391,9 @@
             0
           );
 
-          if (Math.abs(currentSubtotal - backendSubtotal) > 0.01) {
+          if (
+            Math.abs(currentSubtotal - backendSubtotal) > 0.01
+          ) {
             throw new Error(
               "Your cart price has changed. Please refresh your order."
             );
@@ -380,15 +407,48 @@
             "Delivery calculated successfully!";
         })
         .catch(error => {
+          // An old request must not erase a newer quote.
+          if (thisQuoteVersion !== quoteVersion) return;
+
           shippingElement.textContent = "—";
           totalElement.textContent = "—";
+
           deliveryMessage.textContent =
             error.message || "Unable to calculate delivery.";
         })
         .finally(() => {
+          // An old request must not change the newer button state.
+          if (thisQuoteVersion !== quoteVersion) return;
+
           calculateButton.disabled = false;
           calculateButton.textContent = "CALCULATE DELIVERY →";
         });
+```
+
+### Satu pembetulan kecil lagi
+
+Dalam `resetDeliveryQuote()`, selepas `quoteVersion++;`, tambah dua baris ini:
+
+```js
+calculateButton.disabled = false;
+calculateButton.textContent = "CALCULATE DELIVERY →";
+```
+
+Ini membolehkan customer mengira semula delivery terus selepas menukar poskod, walaupun request lama masih berjalan.
+
+Kemudian **Commit changes**.
+
+## STEP 5M.3 — Uji
+
+Buka [Gookie Checkout](https://gookiecookie.github.io/gookie-order/checkout.html), refresh dan buat ujian ini:
+
+1. Kira delivery untuk `43100`.
+2. Tukar poskod kepada `43101` sebaik sahaja menekan Calculate Delivery.
+3. Pastikan Delivery dan Total kekal `—` sehingga kau tekan Calculate Delivery sekali lagi.
+
+Kalau kau tekan semula untuk poskod baharu, hanya respons request terbaharu patut dipaparkan.
+
+**Nota:** Kita masih belum selesai perlindungan apabila cart berubah; itu langkah seterusnya. Butang pembayaran kekal disabled. 🍪
 
     } catch (error) {
       deliveryMessage.textContent = error.message;
