@@ -301,12 +301,77 @@
         boxes
       };
 
-      // Temporary test: verify the exact request before
-      // connecting the Apps Script endpoint.
-      console.log("GOOKIE QUOTE REQUEST:", payload);
+     
+      const API_URL =
+        "https://script.google.com/macros/s/AKfycbw4ih8Y-a3wiKZLPC7SmVTV6NbUfrEOg37VjtGayYdvmdRawGJ1RZWLxOnAplMkRSIs/exec";
 
+      calculateButton.disabled = true;
+      calculateButton.textContent = "CALCULATING...";
       deliveryMessage.textContent =
-        "Quote request prepared. Backend connection is next.";
+        "Checking delivery for your postcode...";
+
+      fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload),
+        redirect: "follow"
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Unable to connect to the shipping service.");
+          }
+
+          return response.json();
+        })
+        .then(result => {
+          if (!result.ok || !result.totals) {
+            throw new Error(
+              result.message || "Unable to calculate delivery."
+            );
+          }
+
+          const backendSubtotal = Number(result.totals.subtotal);
+          const shipping = Number(result.totals.shippingCharge);
+          const grandTotal = Number(result.totals.grandTotal);
+
+          if (
+            !Number.isFinite(backendSubtotal) ||
+            !Number.isFinite(shipping) ||
+            !Number.isFinite(grandTotal)
+          ) {
+            throw new Error("Invalid quote returned by the backend.");
+          }
+
+          const currentSubtotal = getCartItems().reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+
+          if (Math.abs(currentSubtotal - backendSubtotal) > 0.01) {
+            throw new Error(
+              "Your cart price has changed. Please refresh your order."
+            );
+          }
+
+          subtotalElement.textContent = money(backendSubtotal);
+          shippingElement.textContent = money(shipping);
+          totalElement.textContent = money(grandTotal);
+
+          deliveryMessage.textContent =
+            "Delivery calculated successfully!";
+        })
+        .catch(error => {
+          shippingElement.textContent = "—";
+          totalElement.textContent = "—";
+          deliveryMessage.textContent =
+            error.message || "Unable to calculate delivery.";
+        })
+        .finally(() => {
+          calculateButton.disabled = false;
+          calculateButton.textContent = "CALCULATE DELIVERY →";
+        });
 
     } catch (error) {
       deliveryMessage.textContent = error.message;
