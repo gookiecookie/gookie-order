@@ -333,9 +333,6 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
       deliveryMessage.textContent =
         "Checking delivery for your postcode...";
 
-const thisQuoteVersion = ++quoteVersion;
-       
-      
       const thisQuoteVersion = ++quoteVersion;
       const requestedPostcode = postcode;
       const requestedCart = JSON.stringify(getCartItems());
