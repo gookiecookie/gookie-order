@@ -208,7 +208,7 @@
 
       const combined = new Map();
 
-      for (const flavour of flavours) {
+     for (const flavour of flavours.filter(f => Number(f.quantity) > 0)) {
         const productId = productIds[flavour.id];
 
         if (!productId) {
