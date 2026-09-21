@@ -1,0 +1,190 @@
+
+:root {
+  --blue: #00169E;
+  --cream: #F8F0DF;
+  --pink: #F8C8D0;
+  --white: #FFFFFF;
+  --ink: #172052;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+
+.checkout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 5%;
+  background: var(--white);
+  border-bottom: 3px solid var(--blue);
+}
+
+.back-link {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.checkout-logo {
+  font-family: "Titan One", sans-serif;
+  font-size: 28px;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.checkout-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 50px 22px 80px;
+}
+
+.checkout-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--blue);
+}
+
+.checkout-heading h1 {
+  margin: 12px 0;
+  font-family: "Titan One", sans-serif;
+  font-size: clamp(44px, 8vw, 76px);
+  color: var(--blue);
+}
+
+.checkout-heading p {
+  font-size: 15px;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.checkout-panel {
+  min-width: 0;
+  padding: 30px;
+  background: var(--white);
+  border: 2px solid var(--blue);
+  border-radius: 22px;
+  box-shadow: 6px 6px 0 var(--blue);
+}
+
+.checkout-panel h2 {
+  margin: 0 0 28px;
+  font-family: "Titan One", sans-serif;
+  font-size: 21px;
+  color: var(--blue);
+}
+
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#checkout-form label {
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+#checkout-form input,
+#checkout-form textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1.5px solid var(--blue);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+}
+
+#checkout-form input:focus,
+#checkout-form textarea:focus {
+  outline: 3px solid var(--pink);
+  outline-offset: 1px;
+}
+
+#checkout-items {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.summary-total {
+  border-top: 2px solid var(--blue);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--blue);
+}
+
+#checkout-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 17px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  background: var(--pink);
+  color: var(--blue);
+  font-family: "Titan One", sans-serif;
+  font-size: 17px;
+}
+
+#checkout-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.checkout-notice {
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .checkout-header {
+    padding: 16px 20px;
+  }
+
+  .checkout-logo {
+    font-size: 23px;
+  }
+
+  .checkout-container {
+    padding-top: 32px;
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-panel {
+    padding: 22px;
+    box-shadow: 4px 4px 0 var(--blue);
+  }
+}
