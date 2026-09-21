@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Checkout | Gookie</title>
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Titan+One&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+  <header class="checkout-header">
+    <a href="order.html" class="back-link">
+      ← BACK TO SHOP
+    </a>
+
+    <a href="index.html" class="checkout-logo">
+      GOOKIE
+    </a>
+  </header>
+
+  <main class="checkout-container">
+
+    <div class="checkout-heading">
+      <span class="eyebrow">ALMOST THERE!</span>
+      <h1>CHECKOUT</h1>
+      <p>Your chunky wonders are one step away.</p>
+    </div>
+
+    <div class="checkout-grid">
+
+      <section class="checkout-panel">
+        <h2>01. DELIVERY DETAILS</h2>
+
+        <form id="checkout-form">
+
+          <label for="customer-name">Full Name</label>
+          <input id="customer-name"
+                 name="name"
+                 autocomplete="name"
+                 required>
+
+          <label for="customer-phone">Phone Number</label>
+          <input id="customer-phone"
+                 name="phone"
+                 type="tel"
+                 autocomplete="tel"
+                 required>
+
+          <label for="customer-email">Email</label>
+          <input id="customer-email"
+                 name="email"
+                 type="email"
+                 autocomplete="email"
+                 required>
+
+          <label for="customer-address">Delivery Address</label>
+          <textarea id="customer-address"
+                    name="address"
+                    rows="4"
+                    autocomplete="street-address"
+                    required></textarea>
+
+          <label for="customer-postcode">Postcode</label>
+          <input id="customer-postcode"
+                 name="postcode"
+                 inputmode="numeric"
+                 maxlength="5"
+                 pattern="[0-9]{5}"
+                 autocomplete="postal-code"
+                 required>
+
+          <label for="customer-notes">
+            Order Notes (Optional)
+          </label>
+          <textarea id="customer-notes"
+                    name="notes"
+                    rows="3"></textarea>
+
+        </form>
+      </section>
+
+      <aside class="checkout-panel order-summary">
+        <h2>02. YOUR ORDER</h2>
+
+        <div id="checkout-items">
+          <p>Your cart summary will appear here.</p>
+        </div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong id="checkout-subtotal">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Delivery</span>
+          <strong id="checkout-shipping">
+            Calculated at checkout
+          </strong>
+        </div>
+
+        <div class="summary-row summary-total">
+          <span>TOTAL</span>
+          <strong id="checkout-total">—</strong>
+        </div>
+
+        <button type="button"
+                id="checkout-button"
+                disabled>
+          CHECKOUT COMING SOON
+        </button>
+
+        <p class="checkout-notice">
+          Online checkout is being prepared.
+          No payment will be collected on this page yet.
+        </p>
+      </aside>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
