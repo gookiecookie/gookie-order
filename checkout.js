@@ -476,9 +476,21 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
       }
       const boxes = makeQuoteBoxes(cart);
       if (!boxes.length) throw new Error("Your cart is empty.");
-      // Preview intentionally omits clientRequestId: create it only for an actual submission.
+      // Stable ID for this exact checkout draft. Never use a new ID on retry.
+      const draftFingerprint = JSON.stringify({customer, boxes});
+      const draftKey = "gookieCheckoutDraftV1";
+      let draft;
+      try { draft = JSON.parse(sessionStorage.getItem(draftKey) || "null"); } catch (_) { draft = null; }
+      if (!draft || draft.fingerprint !== draftFingerprint || !draft.clientRequestId) {
+        if (!globalThis.crypto || !crypto.randomUUID) {
+          throw new Error("Secure request ID unavailable. Please use an updated browser.");
+        }
+        draft = {fingerprint: draftFingerprint, clientRequestId: crypto.randomUUID()};
+        sessionStorage.setItem(draftKey, JSON.stringify(draft));
+      }
       const preview = {
         action: "createOrder",
+        clientRequestId: draft.clientRequestId,
         customer,
         boxes,
         previewTotals: {
@@ -487,7 +499,15 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
           grandTotal: confirmedQuote.grandTotal
         }
       };
-      previewOutput.textContent = JSON.stringify(preview, null, 2);
+      // Display a safe preview: never expose private customer details or the full request ID.
+      const safePreview = {
+        action: preview.action,
+        clientRequestId: "GENERATED (hidden)",
+        customer: {name: "[hidden]", phone: "[hidden]", email: "[hidden]", address: "[hidden]", postcode: customer.postcode, notes: customer.notes ? "[hidden]" : ""},
+        boxes: preview.boxes,
+        previewTotals: preview.previewTotals
+      };
+      previewOutput.textContent = JSON.stringify(safePreview, null, 2);
       previewOutput.hidden = false;
     } catch (error) {
       previewOutput.textContent = error.message || "Unable to preview order.";
