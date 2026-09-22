@@ -546,22 +546,36 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
         postcode,
         notes: document.getElementById("customer-notes").value.trim()
       };
-      if (customer.name !== "GOOKIE TEST WISH CARD" ||
-          !customer.notes.includes("TEST ONLY — DO NOT BAKE OR SHIP")) {
-        throw new Error('For this test, set Full Name to "GOOKIE TEST ORDER" and Notes to "TEST ONLY — DO NOT BAKE OR SHIP".');
-      }
-      const boxes = makeQuoteBoxes(cart);
-     if (
-  boxes.length !== 1 ||
-  boxes[0].boxId !== "BOX001" ||
-  boxes[0].items.reduce((n, item) => n + item.qty, 0) !== 4 ||
-  boxes[0].addons.length !== 1 ||
-  boxes[0].addons[0].addonId !== "ADDON002" ||
-  boxes[0].addons[0].qty !== 1 ||
-  boxes[0].addons[0].message !== "happybirthday!"
+      
+if (
+  customer.name !== "GOOKIE TEST MINI 15" ||
+  !customer.notes.includes("TEST ONLY — DO NOT BAKE OR SHIP")
 ) {
   throw new Error(
-    "Test requires one Build Your Box (4 pcs) with one Wish Card and message happybirthday!."
+    'For this test, set Full Name to "GOOKIE TEST MINI 15" and include "TEST ONLY — DO NOT BAKE OR SHIP" in Order Notes.'
+  );
+}
+
+const boxes = makeQuoteBoxes(cart);
+
+if (
+  boxes.length !== 1 ||
+  boxes[0].boxId !== "BOX004" ||
+  boxes[0].selectionType !== "GOOKIES_CHOICE" ||
+  boxes[0].items.length !== 3 ||
+  ![
+    ["PRD012", 5],
+    ["PRD013", 5],
+    ["PRD014", 5]
+  ].every(([productId, qty]) =>
+    boxes[0].items.some(
+      item => item.productId === productId && item.qty === qty
+    )
+  ) ||
+  boxes[0].addons.length !== 0
+) {
+  throw new Error(
+    "Test requires exactly one Mini Gookies 15 box: 5 Wonder Chip, 5 Dark Crush, 5 Red Bloom, without add-ons."
   );
 }
       const fingerprint = JSON.stringify({customer, boxes});
