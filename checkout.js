@@ -551,11 +551,19 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
         throw new Error('For this test, set Full Name to "GOOKIE TEST ORDER" and Notes to "TEST ONLY — DO NOT BAKE OR SHIP".');
       }
       const boxes = makeQuoteBoxes(cart);
-      if (boxes.length !== 1 || boxes[0].boxId !== "BOX001" ||
-          boxes[0].items.reduce((n, item) => n + item.qty, 0) !== 4 ||
-          boxes[0].addons.length) {
-        throw new Error("Test is restricted to one Build Your Box (4 pcs), without add-ons.");
-      }
+     if (
+  boxes.length !== 1 ||
+  boxes[0].boxId !== "BOX001" ||
+  boxes[0].items.reduce((n, item) => n + item.qty, 0) !== 4 ||
+  boxes[0].addons.length !== 1 ||
+  boxes[0].addons[0].addonId !== "ADDON002" ||
+  boxes[0].addons[0].qty !== 1 ||
+  boxes[0].addons[0].message !== "happybirthday!"
+) {
+  throw new Error(
+    "Test requires one Build Your Box (4 pcs) with one Wish Card and message happybirthday!."
+  );
+}
       const fingerprint = JSON.stringify({customer, boxes});
       const draftKey = "gookieCheckoutDraftV1";
       let draft;
