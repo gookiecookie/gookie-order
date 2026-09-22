@@ -515,6 +515,100 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
     }
   });
 
+  /* STEP 5P.5 — controlled test only. Real Google Sheets rows are created. */
+  const testMode = new URLSearchParams(location.search).get("gookieTest") === "1";
+  const testButton = document.getElementById("test-create-order-button");
+  const testResult = document.getElementById("test-create-order-result");
+  let sendingTest = false;
+  let completedTest = false;
+  if (testMode && testButton) testButton.hidden = false;
+
+  testButton?.addEventListener("click", async () => {
+    if (!testMode || sendingTest || completedTest || !testResult) return;
+    testResult.hidden = false;
+    testResult.textContent = "";
+    if (!checkoutForm?.reportValidity()) return;
+    try {
+      const cart = getCartItems();
+      const postcode = postcodeInput.value.trim();
+      if (!confirmedQuote || confirmedQuote.postcode !== postcode ||
+          confirmedQuote.cart !== JSON.stringify(cart)) {
+        throw new Error("Calculate delivery again before submitting the test order.");
+      }
+      const customer = {
+        name: document.getElementById("customer-name").value.trim(),
+        phone: document.getElementById("customer-phone").value.trim(),
+        email: document.getElementById("customer-email").value.trim(),
+        address: document.getElementById("customer-address").value.trim(),
+        postcode,
+        notes: document.getElementById("customer-notes").value.trim()
+      };
+      if (customer.name !== "GOOKIE TEST ORDER" ||
+          !customer.notes.includes("TEST ONLY — DO NOT BAKE OR SHIP")) {
+        throw new Error('For this test, set Full Name to "GOOKIE TEST ORDER" and Notes to "TEST ONLY — DO NOT BAKE OR SHIP".');
+      }
+      const boxes = makeQuoteBoxes(cart);
+      if (boxes.length !== 1 || boxes[0].boxId !== "BOX001" ||
+          boxes[0].items.reduce((n, item) => n + item.qty, 0) !== 4 ||
+          boxes[0].addons.length) {
+        throw new Error("Test is restricted to one Build Your Box (4 pcs), without add-ons.");
+      }
+      const fingerprint = JSON.stringify({customer, boxes});
+      const draftKey = "gookieCheckoutDraftV1";
+      let draft;
+      try { draft = JSON.parse(sessionStorage.getItem(draftKey) || "null"); }
+      catch (_) { draft = null; }
+      if (!draft || draft.fingerprint !== fingerprint || !draft.clientRequestId) {
+        if (!globalThis.crypto?.randomUUID) throw new Error("Secure request ID unavailable.");
+        draft = {fingerprint, clientRequestId: crypto.randomUUID()};
+        sessionStorage.setItem(draftKey, JSON.stringify(draft));
+      }
+      const doneKey = "gookieTestCompletedV1:" + draft.clientRequestId;
+      const saved = sessionStorage.getItem(doneKey);
+      if (saved) {
+        completedTest = true;
+        testButton.disabled = true;
+        testResult.textContent = "Already submitted in this tab: " + saved + ". Check Google Sheets.";
+        return;
+      }
+      if (!window.confirm("REAL TEST ORDER: This will create a PENDING order in Google Sheets. Submit exactly once?")) return;
+      sendingTest = true;
+      testButton.disabled = true;
+      testButton.textContent = "SENDING TEST ORDER...";
+      const payload = {action: "createOrder", clientRequestId: draft.clientRequestId, customer, boxes};
+      const response = await fetch("https://script.google.com/macros/s/AKfycbw4ih8Y-a3wiKZLPC7SmVTV6NbUfrEOg37VjtGayYdvmdRawGJ1RZWLxOnAplMkRSIs/exec", {
+        method: "POST",
+        headers: {"Content-Type": "text/plain;charset=utf-8"},
+        body: JSON.stringify(payload),
+        redirect: "follow"
+      });
+      if (!response.ok) throw new Error("Server connection failed.");
+      const result = await response.json();
+      if (!result.ok || !result.orderId || result.clientRequestId !== draft.clientRequestId) {
+        throw new Error(result.message || "Backend did not confirm the order.");
+      }
+      sessionStorage.setItem(doneKey, result.orderId);
+      completedTest = true;
+      const expected = confirmedQuote?.grandTotal;
+      const actual = Number(result.quote?.grandTotal);
+      testResult.textContent = "ORDER CREATED: " + result.orderId +
+        "\nPayment status: " + result.paymentStatus +
+        "\nBackend total: RM" + (Number.isFinite(actual) ? actual.toFixed(2) : "unknown") +
+        "\nPreviously quoted: RM" + (Number.isFinite(expected) ? expected.toFixed(2) : "unknown") +
+        "\nReplay: " + Boolean(result.idempotentReplay) +
+        "\nCheck Sheets before any further action. No payment was verified.";
+      testButton.textContent = "TEST ORDER SUBMITTED";
+    } catch (error) {
+      testResult.textContent = (error.message || "Unknown error") +
+        "\nIf a request may have reached the backend, CHECK SHEETS FIRST. Do not generate a new ID or repeatedly click submit.";
+      if (!completedTest) testButton.textContent = "TEST CREATE ORDER — CHECK SHEETS BEFORE RETRY";
+    } finally {
+      sendingTest = false;
+      // Deliberately keep the button disabled after any submission attempt.
+      // An uncertain network response must be investigated in Sheets first.
+    }
+  });
+
   renderCheckout();
 
   // Keep checkout updated if the cart changes

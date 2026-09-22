@@ -140,6 +140,13 @@
         <pre id="order-preview-output" hidden
              style="white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px; max-height:320px; overflow:auto;"></pre>
 
+        <button type="button" id="test-create-order-button" hidden
+                style="width:100%; margin:12px 0; background:#ffe7a1; color:#00169e; padding:12px; font-weight:700;">
+          TEST CREATE ORDER — WRITES TO SHEETS
+        </button>
+        <pre id="test-create-order-result" hidden role="status" aria-live="polite"
+             style="white-space:pre-wrap; overflow-wrap:anywhere; font-size:12px;"></pre>
+
         <button type="button"
                 id="checkout-button"
                 disabled>
@@ -147,7 +154,7 @@
         </button>
 
         <p class="checkout-notice">
-          Test preview only. Do not share customer details from the preview.
+          Test mode creates real PENDING records in Sheets. Never use real customer details for tests.
           No payment will be collected on this page yet.
         </p>
       </aside>
