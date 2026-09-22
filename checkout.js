@@ -278,6 +278,7 @@
   // Reset an old quote when the customer changes postcode.
 
 let quoteVersion = 0;
+let confirmedQuote = null;
    
   function resetDeliveryQuote() {
     confirmedQuote = null;
