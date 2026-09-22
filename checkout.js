@@ -485,7 +485,10 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
         if (!globalThis.crypto || !crypto.randomUUID) {
           throw new Error("Secure request ID unavailable. Please use an updated browser.");
         }
-        draft = {fingerprint: draftFingerprint, clientRequestId: crypto.randomUUID()};
+        draft = {fingerprint: draftFingerprint, clientRequestId: "CRQ" + crypto.randomUUID()
+  .replace(/-/g, "")
+  .slice(0, 12)
+  .toUpperCase()};
         sessionStorage.setItem(draftKey, JSON.stringify(draft));
       }
       const preview = {
@@ -560,7 +563,10 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
       catch (_) { draft = null; }
       if (!draft || draft.fingerprint !== fingerprint || !draft.clientRequestId) {
         if (!globalThis.crypto?.randomUUID) throw new Error("Secure request ID unavailable.");
-        draft = {fingerprint, clientRequestId: crypto.randomUUID()};
+        draft = {fingerprint, clientRequestId: "CRQ" + crypto.randomUUID()
+  .replace(/-/g, "")
+  .slice(0, 12)
+  .toUpperCase()};
         sessionStorage.setItem(draftKey, JSON.stringify(draft));
       }
       const doneKey = "gookieTestCompletedV1:" + draft.clientRequestId;
