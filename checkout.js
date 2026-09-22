@@ -280,6 +280,7 @@
 let quoteVersion = 0;
    
   function resetDeliveryQuote() {
+    confirmedQuote = null;
 quoteVersion++;
      calculateButton.disabled = false;
 calculateButton.textContent = "CALCULATE DELIVERY →";
@@ -300,6 +301,7 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
   calculateButton?.addEventListener("click", () => {
     const postcode = postcodeInput?.value.trim() || "";
 
+    confirmedQuote = null;
     deliveryMessage.textContent = "";
     shippingElement.textContent = "—";
     totalElement.textContent = "—";
@@ -397,6 +399,7 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
             );
           }
 
+          confirmedQuote = {postcode: requestedPostcode, cart: requestedCart, subtotal: backendSubtotal, shipping, grandTotal};
           subtotalElement.textContent = money(backendSubtotal);
           shippingElement.textContent = money(shipping);
           totalElement.textContent = money(grandTotal);
@@ -408,6 +411,7 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
           // An old request must not erase a newer quote.
           if (thisQuoteVersion !== quoteVersion) return;
 
+          confirmedQuote = null;
           shippingElement.textContent = "—";
           totalElement.textContent = "—";
 
@@ -427,6 +431,69 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
     }
   });
    
+
+  /* STEP 5P — LOCAL PREVIEW ONLY. NO createOrder REQUEST. */
+  const previewButton = document.getElementById("preview-order-button");
+  const previewOutput = document.getElementById("order-preview-output");
+  const checkoutForm = document.getElementById("checkout-form");
+
+  function invalidatePreview() {
+    if (previewOutput) {
+      previewOutput.hidden = true;
+      previewOutput.textContent = "";
+    }
+  }
+  checkoutForm?.addEventListener("input", invalidatePreview);
+  postcodeInput?.addEventListener("input", invalidatePreview);
+  window.addEventListener("gookie:cart-updated", invalidatePreview);
+  window.addEventListener("storage", event => {
+    if (event.key === CART_KEY) invalidatePreview();
+  });
+
+  previewButton?.addEventListener("click", () => {
+    invalidatePreview();
+    if (!checkoutForm || !previewOutput) return;
+    if (!checkoutForm.reportValidity()) return;
+    try {
+      const cart = getCartItems();
+      const postcode = postcodeInput.value.trim();
+      if (!confirmedQuote ||
+          confirmedQuote.postcode !== postcode ||
+          confirmedQuote.cart !== JSON.stringify(cart)) {
+        throw new Error("Calculate delivery again before previewing your order.");
+      }
+      const customer = {
+        name: document.getElementById("customer-name").value.trim(),
+        phone: document.getElementById("customer-phone").value.trim(),
+        email: document.getElementById("customer-email").value.trim(),
+        address: document.getElementById("customer-address").value.trim(),
+        postcode,
+        notes: document.getElementById("customer-notes").value.trim()
+      };
+      if (!customer.name || !customer.phone || !customer.address || !/^[0-9]{5}$/.test(postcode)) {
+        throw new Error("Please complete your delivery details.");
+      }
+      const boxes = makeQuoteBoxes(cart);
+      if (!boxes.length) throw new Error("Your cart is empty.");
+      // Preview intentionally omits clientRequestId: create it only for an actual submission.
+      const preview = {
+        action: "createOrder",
+        customer,
+        boxes,
+        previewTotals: {
+          subtotal: confirmedQuote.subtotal,
+          shippingCharge: confirmedQuote.shipping,
+          grandTotal: confirmedQuote.grandTotal
+        }
+      };
+      previewOutput.textContent = JSON.stringify(preview, null, 2);
+      previewOutput.hidden = false;
+    } catch (error) {
+      previewOutput.textContent = error.message || "Unable to preview order.";
+      previewOutput.hidden = false;
+    }
+  });
+
   renderCheckout();
 
   // Keep checkout updated if the cart changes
