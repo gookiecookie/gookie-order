@@ -548,11 +548,11 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
       };
       
 if (
-  customer.name !== "GOOKIE TEST MINI 15" ||
+  customer.name !== "GOOKIE TEST BUFFET 30" ||
   !customer.notes.includes("TEST ONLY — DO NOT BAKE OR SHIP")
 ) {
   throw new Error(
-    'For this test, set Full Name to "GOOKIE TEST MINI 15" and include "TEST ONLY — DO NOT BAKE OR SHIP" in Order Notes.'
+    'For this test, set Full Name to "GOOKIE TEST BUFFET 30" and include "TEST ONLY — DO NOT BAKE OR SHIP" in Order Notes.'
   );
 }
 
@@ -560,24 +560,30 @@ const boxes = makeQuoteBoxes(cart);
 
 if (
   boxes.length !== 1 ||
-  boxes[0].boxId !== "BOX004" ||
+  boxes[0].boxId !== "BOX005" ||
   boxes[0].selectionType !== "GOOKIES_CHOICE" ||
   boxes[0].items.length !== 3 ||
   ![
-    ["PRD012", 5],
-    ["PRD013", 5],
-    ["PRD014", 5]
+    ["PRD012", 10],
+    ["PRD013", 10],
+    ["PRD014", 10]
   ].every(([productId, qty]) =>
     boxes[0].items.some(
       item => item.productId === productId && item.qty === qty
     )
   ) ||
-  boxes[0].addons.length !== 0
+  boxes[0].addons.length !== 1 ||
+  !boxes[0].addons.some(
+    addon =>
+      addon.addonId === "ADDON003" &&
+      addon.qty === 1
+  )
 ) {
   throw new Error(
-    "Test requires exactly one Mini Gookies 15 box: 5 Wonder Chip, 5 Dark Crush, 5 Red Bloom, without add-ons."
+    "Test requires exactly one Gookie Buffet 30 box: 10 Mini Wonder Chip, 10 Mini Dark Crush, 10 Mini Red Bloom, with Customized Stickers."
   );
-}
+}       
+       
       const fingerprint = JSON.stringify({customer, boxes});
       const draftKey = "gookieCheckoutDraftV1";
       let draft;
