@@ -546,7 +546,7 @@ calculateButton.textContent = "CALCULATE DELIVERY →";
         postcode,
         notes: document.getElementById("customer-notes").value.trim()
       };
-      if (customer.name !== "GOOKIE TEST ORDER" ||
+      if (customer.name !== "GOOKIE TEST WISH CARD" ||
           !customer.notes.includes("TEST ONLY — DO NOT BAKE OR SHIP")) {
         throw new Error('For this test, set Full Name to "GOOKIE TEST ORDER" and Notes to "TEST ONLY — DO NOT BAKE OR SHIP".');
       }
