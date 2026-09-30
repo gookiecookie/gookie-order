@@ -400,6 +400,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .promo-dots { position: absolute; left: 50%; bottom: 24px; display: flex; gap: 9px; transform: translateX(-50%); }
 .promo-dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(248,200,208,.8); cursor: pointer; }
 .promo-dots button.is-active { background: var(--blue); }
+/* =========================================
+   NEW GOOKIE PROMO LOOK
+   ========================================= */
+
+.promo-hero {
+  background: var(--cream);
+}
+
+/* Yellow carousel buttons */
+.promo-arrow {
+  background: #FECF02;
+  color: var(--blue);
+}
+
+/* Carousel dots */
+.promo-dots button {
+  background: rgba(0, 61, 184, 0.20);
+}
+
+.promo-dots button.is-active {
+  background: var(--blue);
+}
 
 /* STORY */
 .story-section { background: var(--cream); }
