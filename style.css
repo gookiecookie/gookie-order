@@ -423,6 +423,59 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: var(--blue);
 }
 
+/* =========================================
+   FUNKY BUILD YOUR BOX TITLE
+   ========================================= */
+
+.promo-build-slide .funky-build-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0;
+
+  font-family: "Titan One", sans-serif;
+  line-height: .78;
+  letter-spacing: -.045em;
+}
+
+.promo-build-slide .funky-build-title span {
+  display: inline-block;
+}
+
+/* BUILD - satu baris */
+.promo-build-slide .funky-build {
+  flex-basis: 100%;
+  font-size: 1em;
+
+  transform:
+    rotate(-2deg)
+    translateX(6px);
+}
+
+/* YOUR */
+.promo-build-slide .funky-your {
+  font-size: .92em;
+
+  transform:
+    rotate(1.5deg)
+    translateY(5px);
+}
+
+/* BOX */
+.promo-build-slide .funky-box {
+  font-size: 1.06em;
+
+  margin-left: .10em;
+
+  transform:
+    rotate(-2.5deg)
+    translateY(-1px);
+}
+
 /* STORY */
 .story-section { background: var(--cream); }
 .story-grid {
