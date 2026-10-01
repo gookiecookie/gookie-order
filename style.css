@@ -3,12 +3,12 @@
 ======================================== */
 
 :root {
-  --blue: #003DB8;
-  --red: #FECF02;
-  --pink: #FFEE6B;
-  --cream: #FFFBF3;
+  --blue: #F45116;
+  --red: #F45116;
+  --pink: #FFC515;
+  --cream: #FFF9ED;
   --white: #FFFFFF;
-  --line: rgba(1, 83, 179, 0.10);
+  --line: rgba(244, 81, 22, 0.12);
   --header-height: 82px;
 }
 
