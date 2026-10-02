@@ -1562,6 +1562,7 @@ body.cart-open {
   display: flex;
   align-items: center;
   width: max-content;
+   color: #000000;
 
   animation: announcement-scroll 26s linear infinite;
 }
@@ -1589,7 +1590,7 @@ body.cart-open {
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   line-height: 1;
 }
 
