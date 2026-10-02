@@ -303,6 +303,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .09em;
+   color: #000000;
 }
 .announcement-track i { color: var(--red); font-style: normal; }
 
@@ -1128,7 +1129,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
   border-radius: 999px;
 
-  background: var(--red);
+  background: #E52B2F;
   color: var(--white);
 
   font-size: 10px;
