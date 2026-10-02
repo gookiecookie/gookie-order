@@ -4,7 +4,7 @@
 
 :root {
   --blue: #F45116;
-  --red: #000000;
+  --red: #F45116;
   --pink: #FBCC1A;
   --cream: #FFF9ED;
   --white: #FFFFFF;
@@ -301,11 +301,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: 8px 18px;
   white-space: nowrap;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: .09em;
    color: #000000;
 }
-.announcement-track i { color: var(--red); font-style: normal; }
+.announcement-track i { color: #000000; font-style: normal; }
 
 /* PROMO HERO */
 .promo-hero { position: relative; min-height: 590px; overflow: hidden; background: var(--white); }
