@@ -1838,3 +1838,16 @@ body.cart-open {
 .gookie-edit-save { width: 100%; min-height: 46px; border: 0; border-radius: 999px; background: #D9272E; color: #fff; font: 800 12px "DM Sans",sans-serif; cursor: pointer; }
 body.gookie-edit-open { overflow: hidden; }
 @media (max-width: 600px) { .gookie-edit-overlay { padding: 8px; } .gookie-edit-modal { max-height: 94vh; } .gookie-edit-top, .gookie-edit-content, .gookie-edit-bottom { padding-left: 16px; padding-right: 16px; } }
+
+/* Force announcement text to black */
+.announcement-bar,
+.announcement-track,
+.announcement-group,
+.announcement-group span {
+  color: #000000;
+}
+
+.announcement-track i,
+.announcement-group i {
+  color: #000000;
+}
