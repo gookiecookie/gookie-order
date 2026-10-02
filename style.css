@@ -76,7 +76,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   width: 150px;
   max-height: 58px;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* remove when you upload a real white logo */
 }
 .menu-btn, .cart-btn {
   width: 48px;
