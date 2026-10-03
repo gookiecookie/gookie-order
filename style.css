@@ -25,17 +25,6 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
-
-@media (max-width: 768px) {
-  body 
-   font-family: "DM Sans", sans-serif;
-    background-image: url("gookie-bg-mobile.png");
-  background-color: #FFF9ED;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  }
 }
 body.menu-open { overflow: hidden; }
 img { max-width: 100%; }
