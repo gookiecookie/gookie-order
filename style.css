@@ -16,6 +16,8 @@
 html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
+   font-family: "DM Sans", sans-serif;
+  color: var(--blue);
   background-color: #FFF9ED;
   background-image: url("gookie-bg-desktop.png");
   background-repeat: no-repeat;
