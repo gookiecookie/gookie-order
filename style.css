@@ -29,6 +29,11 @@ body {
 @media (max-width: 768px) {
   body {
     background-image: url("gookie-bg-mobile.png");
+  background-color: #FFF9ED;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   }
 }
 body.menu-open { overflow: hidden; }
