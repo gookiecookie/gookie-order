@@ -480,7 +480,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* COOKIE LINEUP */
-.lineup-section { background: var(--white); }
+.lineup-section { background: transparent; }
 .lineup-shell { padding-top: 74px; padding-bottom: 76px; }
 .cookie-feature { width: min(100%, 720px); margin: 26px auto 0; text-align: center; }
 .cookie-stage { position: relative; min-height: 390px; display: grid; place-items: center; }
@@ -566,7 +566,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 
 /* GUIDE */
-.guide-section { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.guide-section { background: transparent; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .guide-section .section-shell { padding-top: 60px; padding-bottom: 58px; }
 .guide-heading h2 { font-size: clamp(38px, 4.5vw, 56px); }
 .guide-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); }
