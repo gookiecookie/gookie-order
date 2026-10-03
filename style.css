@@ -23,7 +23,7 @@ body {
   background-image: url("gookie-bg.png");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: 100% auto;
   background-attachment: fixed;
 }
 body.menu-open { overflow: hidden; }
