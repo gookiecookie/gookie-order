@@ -16,15 +16,18 @@
 html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: "DM Sans", sans-serif;
-  color: var(--blue);
-
-  background-color: var(--cream);
-  background-image: url("gookie-bg.png");
+  background-color: #FFF9ED;
+  background-image: url("gookie-bg-desktop.png");
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100% auto;
+  background-position: center;
+  background-size: cover;
   background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url("gookie-bg-mobile.png");
+  }
 }
 body.menu-open { overflow: hidden; }
 img { max-width: 100%; }
