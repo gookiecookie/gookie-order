@@ -38,6 +38,45 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .section-shell { width: min(100% - 44px, 1120px); margin: 0 auto; }
 
+/* =========================================
+   GOOKIE FIXED RETRO BACKGROUND
+   ========================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 420px 300px at -80px 5%,
+      #F45116 0 48%,
+      transparent 49%
+    ),
+
+    radial-gradient(
+      ellipse 460px 330px at -70px 9%,
+      #FBCC1A 0 52%,
+      transparent 53%
+    ),
+
+    radial-gradient(
+      ellipse 500px 340px at 105% 82%,
+      #F45116 0 45%,
+      transparent 46%
+    ),
+
+    radial-gradient(
+      ellipse 560px 380px at 108% 88%,
+      #FBCC1A 0 50%,
+      transparent 51%
+    );
+
+  background-color: #FFF9ED;
+}
+
 /* BUTTONS */
 .btn {
   display: inline-flex;
@@ -403,7 +442,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
    ========================================= */
 
 .promo-hero {
-  background: var(--cream);
+  background: transparent;
 }
 
 /* Yellow carousel buttons */
