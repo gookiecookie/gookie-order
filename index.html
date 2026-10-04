@@ -486,8 +486,6 @@
 
   const promoSlides = [...document.querySelectorAll("[data-promo-slide]")];
 const promoDots = [...document.querySelectorAll("[data-promo-dot]")];
-const promoPrevious = document.querySelector(".promo-arrow-left");
-const promoNext = document.querySelector(".promo-arrow-right");
 
 let promoIndex = 0;
 let promoTimer;
@@ -511,16 +509,6 @@ function startPromoTimer() {
     showPromo(promoIndex + 1);
   }, 5000);
 }
-
-promoPrevious.addEventListener("click", () => {
-  showPromo(promoIndex - 1);
-  startPromoTimer();
-});
-
-promoNext.addEventListener("click", () => {
-  showPromo(promoIndex + 1);
-  startPromoTimer();
-});
 
 promoDots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
