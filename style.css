@@ -370,7 +370,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 44% 56% 48% 52% / 54% 46% 54% 46%;
   background: var(--pink);
   font-family: "Titan One", sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   line-height: .95;
   text-align: center;
   transform: rotate(6deg);
