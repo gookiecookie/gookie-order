@@ -720,7 +720,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
   .promo-copy { order: 1; }
   .promo-visual { order: 2; min-height: 300px; }
-  .promo-kicker { margin-bottom: 10px; font-size: 10px; color: var:(--black);}
+  .promo-kicker { margin-bottom: 10px; font-size: 10px; color: var(--black);}
   .promo-copy h1, .promo-copy h2 { font-size: clamp(50px, 15vw, 68px); line-height: .86; }
   .promo-description { max-width: 320px; margin: 16px auto 19px; font-size: 15px; }
   .promo-visual > img { width: min(82vw, 360px); max-height: 340px; }
