@@ -116,7 +116,7 @@
 
 .build-box-image{
   position:sticky;
-  top:-100px;
+  top:-200px;
   display:grid;
   place-items:center;
   min-height:520px;
