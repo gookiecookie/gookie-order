@@ -376,7 +376,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   z-index: 3;
   width: 112px;
   aspect-ratio: 1;
-  display: grid;
   place-items: center;
   padding: 16px;
   border-radius: 44% 56% 48% 52% / 54% 46% 54% 46%;
