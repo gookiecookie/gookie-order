@@ -347,7 +347,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   width: min(100%, 360px);
   height: auto;
   object-fit: contain;
-  margin: 10px 0 18px;
+  margin: -12px 0 18px;
 }
 .promo-copy h1, .promo-copy h2 {
   margin: 0;
