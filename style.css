@@ -340,7 +340,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 }
 .promo-copy { position: relative; z-index: 2; }
-.promo-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+.promo-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 900; letter-spacing: .16em; }
 
 /* MONTHLY WONDER TITLE IMAGE */
 .monthly-title-image {
