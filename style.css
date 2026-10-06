@@ -356,7 +356,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   max-width: none;
   max-height: 510px;
   object-fit: contain;
-  filter: drop-shadow(0 22px 25px rgba(43,28,13,.13));
 }
 .promo-blob {
   position: absolute;
