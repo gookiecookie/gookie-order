@@ -368,6 +368,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   object-fit: contain;
 }
 .promo-blob {
+   display: none;
   position: absolute;
   top: 36px;
   right: 10px;
