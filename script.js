@@ -70,11 +70,11 @@ const cookieLineup = [
   // ========================================
 
   {
-    name: "BERRY BLAST",
-    image: "berry-blast.png",
-    description: "A berry-packed limited drop, here for this month only.",
-    sticker: "MONTHLY WONDER"
-  }
+  name: "DARK CRUSH",
+  image: "monthly-wonder-dc.png",
+  description: "Deep, dark chocolate with a sea salt finish. Here for this month only.",
+  sticker: "MONTHLY WONDER"
+}
 
 ];
 
