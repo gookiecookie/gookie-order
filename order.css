@@ -92,6 +92,7 @@
   font-family:"Titan One",sans-serif;
   font-weight:400;
   color:var(--blue);
+  display: none;
 }
 
 .build-box-heading h1{
@@ -115,7 +116,7 @@
 
 .build-box-image{
   position:sticky;
-  top:150px;
+  top:0px;
   display:grid;
   place-items:center;
   min-height:520px;
