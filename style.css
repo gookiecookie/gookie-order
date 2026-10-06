@@ -340,6 +340,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .promo-copy { position: relative; z-index: 2; }
 .promo-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+
+/* MONTHLY WONDER TITLE IMAGE */
+.monthly-title-image {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  object-fit: contain;
+  margin: 10px 0 18px;
+}
 .promo-copy h1, .promo-copy h2 {
   margin: 0;
   font-family: "Titan One", sans-serif;
@@ -348,6 +357,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   line-height: .84;
   letter-spacing: -.035em;
 }
+
 .promo-description { max-width: 380px; margin: 24px 0 27px; font-size: 18px; font-weight: 500; line-height: 1.45; }
 .promo-visual { position: relative; min-height: 440px; display: grid; place-items: center; }
 .promo-visual > img {
