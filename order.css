@@ -128,7 +128,6 @@
   width:min(90%,500px);
   max-height:500px;
   object-fit:contain;
-  filter:drop-shadow(0 22px 20px rgba(0,0,0,.12));
 }
 
 .build-box-controls{
