@@ -1415,21 +1415,3 @@
   }
 
 }
-
-@media (min-width: 701px) {
-  .build-box-shell {
-    padding-top: 20px;
-  }
-}
-
-@media (max-width: 700px) {
-  .build-box-image {
-    overflow: visible;
-  }
-
-  .build-box-image img {
-    width: 110%;
-    max-width: none;
-    max-height: none;
-  }
-}

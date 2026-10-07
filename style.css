@@ -318,6 +318,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   min-height: 590px;
   margin: 0 auto;
   padding: 54px 0 74px;
+  display: none;
   grid-template-columns: .92fr 1.08fr;
   align-items: center;
   gap: 42px;
@@ -339,19 +340,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   }
 }
 .promo-copy { position: relative; z-index: 2; }
-.promo-kicker {
-  margin: 0 0 14px;
-  font-family: "Titan One", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: .02em;
-  color: var(--orange);
-}
+.promo-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 900; letter-spacing: .16em; }
 
 /* MONTHLY WONDER TITLE IMAGE */
 .monthly-title-image {
-  display: none;
+  display: block;
   width: min(100%, 360px);
   height: auto;
   object-fit: contain;
@@ -370,9 +363,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .promo-visual { position: relative; min-height: 440px; display: grid; place-items: center; }
 .promo-visual > img {
   display: block;
-  width: min(100%, 500px);
-  max-width: 500px;
-  max-height: 410px;
+  width: min(125%, 650px);
+  max-width: none;
+  max-height: 510px;
   object-fit: contain;
 }
 .promo-blob {
@@ -725,14 +718,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
     text-align: center;
   }
   .promo-copy { order: 1; }
-  .promo-visual { order: 2; min-height: 400px; }
- .promo-kicker {
-  margin-bottom: 14px;
-  font-size: 18px;
-}
+  .promo-visual { order: 2; min-height: 300px; }
+  .promo-kicker { margin-bottom: 10px; font-size: 10px; color: var(--black); }
   .promo-copy h1, .promo-copy h2 { font-size: clamp(50px, 15vw, 68px); line-height: .86; }
   .promo-description { max-width: 320px; margin: 16px auto 19px; font-size: 15px; }
-  .promo-visual > img { width: min(82vw, 360px); max-height: 400px; }
+  .promo-visual > img { width: min(82vw, 360px); max-height: 340px; }
   .promo-blob { top: 6px; right: 0; width: 84px; font-size: 13px; }
   .promo-stack { min-height: 310px; }
   .promo-stack img { width: min(55vw, 220px); }
@@ -822,6 +812,75 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 }
 
+/* ========================================
+   PROMO HERO — COMPACT VERSION
+======================================== */
+
+.promo-carousel {
+  min-height: 520px;
+}
+
+.promo-slide {
+  min-height: 520px;
+  padding: 55px 5%;
+}
+
+.promo-slide-inner {
+  max-width: 1250px;
+  gap: 50px;
+}
+
+.promo-copy h1 {
+  font-size: clamp(58px, 6vw, 92px);
+  line-height: 0.88;
+}
+
+.promo-copy p {
+  max-width: 520px;
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.promo-visual img,
+.promo-hero-cookies {
+  max-width: 500px !important;
+  max-height: 410px !important;
+  object-fit: contain;
+}
+
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .promo-carousel,
+  .promo-slide {
+    min-height: auto;
+  }
+
+  .promo-slide {
+    padding: 42px 24px 48px;
+  }
+
+  .promo-slide-inner {
+    gap: 24px;
+  }
+
+  .promo-copy h1 {
+    font-size: clamp(46px, 13vw, 62px);
+    line-height: 0.9;
+  }
+
+  .promo-copy p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .promo-visual img,
+  .promo-hero-cookies {
+    width: min(82vw, 330px) !important;
+    max-height: 300px !important;
+  }
+}
 
 /* ========================================
    HELLO WE'RE GOOKIE — SHOP IMAGE
