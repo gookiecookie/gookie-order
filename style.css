@@ -370,9 +370,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .promo-visual { position: relative; min-height: 440px; display: grid; place-items: center; }
 .promo-visual > img {
   display: block;
-  width: min(125%, 650px);
-  max-width: none;
-  max-height: 620px;
+  width: min(100%, 500px);
+  max-width: 500px;
+  max-height: 410px;
   object-fit: contain;
 }
 .promo-blob {
