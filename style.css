@@ -726,7 +726,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
     text-align: center;
   }
   .promo-copy { order: 1; }
-  .promo-visual { order: 2; min-height: 300px; }
+  .promo-visual { order: 2; min-height: 400px; }
  .promo-kicker {
   margin-bottom: 14px;
   font-size: 18px;
