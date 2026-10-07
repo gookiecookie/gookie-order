@@ -1320,3 +1320,98 @@
    text-align:center;
   }
 }
+
+/* ========================================
+   GOOKIE IMAGE CATEGORY NAV — FINAL
+======================================== */
+
+.shop-category-nav-wrap {
+  padding: 22px 14px 14px;
+  background: #fff;
+}
+
+.shop-category-nav {
+  width: min(100%, 720px);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* REMOVE OLD BUTTON DESIGN */
+.shop-category-button,
+.shop-category-button.is-active {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+
+/* THE PNG ITSELF */
+.shop-category-button-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  transition: transform 0.15s ease;
+}
+
+
+/* LITTLE PRESS EFFECT */
+.shop-category-button:active .shop-category-button-image {
+  transform: translateY(3px);
+}
+
+
+/* ACTIVE TAB */
+.shop-category-button.is-active .shop-category-button-image {
+  transform: scale(1.04);
+}
+
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .shop-category-nav-wrap {
+    padding: 18px 10px 12px;
+  }
+
+  .shop-category-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+}
+
+
+/* SMALL MOBILE */
+@media (max-width: 420px) {
+
+  .shop-category-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px;
+  }
+
+  .shop-category-button:last-child {
+    grid-column: auto;
+  }
+
+}
