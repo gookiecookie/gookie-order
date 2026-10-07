@@ -365,7 +365,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   display: block;
   width: min(125%, 650px);
   max-width: none;
-  max-height: 510px;
+  max-height: 620px;
   object-fit: contain;
 }
 .promo-blob {
