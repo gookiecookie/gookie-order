@@ -1856,3 +1856,16 @@ body.gookie-edit-open { overflow: hidden; }
 .announcement-group i {
   color: #000000;
 }
+
+/* GOOKIE OF THE MONTH HERO TITLE */
+
+#monthly-hero-name .monthly-title-main,
+#monthly-hero-name .monthly-title-sub {
+  display: block;
+}
+
+#monthly-hero-name .monthly-title-sub {
+  font-size: 0.55em;
+  white-space: nowrap;
+  margin-top: 2px;
+}
