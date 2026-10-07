@@ -318,7 +318,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   min-height: 590px;
   margin: 0 auto;
   padding: 54px 0 74px;
-  display: none;
   grid-template-columns: .92fr 1.08fr;
   align-items: center;
   gap: 42px;
