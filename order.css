@@ -1415,3 +1415,9 @@
   }
 
 }
+
+@media (min-width: 701px) {
+  .build-box-shell {
+    padding-top: 20px;
+  }
+}
