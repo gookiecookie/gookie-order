@@ -1865,7 +1865,12 @@ body.gookie-edit-open { overflow: hidden; }
 
 #monthly-hero-name .monthly-title-sub {
   display: block;
-  font-size: 0.48em;
+  margin-top: 8px;
+
+  font-family: "Titan One", sans-serif;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.035em;
+
   white-space: nowrap;
-  margin-top: -4px;
 }
