@@ -297,9 +297,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ANNOUNCEMENT */
-.announcement-bar { overflow: hidden; background: var(--pink); border-bottom: 1px solid rgba(217,39,46,.10); }
+.announcement-bar { overflow: hidden; background: #FFF9C4; border-bottom: 1px solid rgba(217,39,46,.10); }
 .announcement-track {
-  min-height: 36px;
+  min-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
