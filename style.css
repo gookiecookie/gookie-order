@@ -1561,7 +1561,7 @@ body.cart-open {
 
 .announcement-bar {
   overflow: hidden;
-  background: var(--pink);
+  background: #FFF9C4;
 }
 
 /* Moving track */
