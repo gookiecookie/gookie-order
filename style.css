@@ -4,15 +4,22 @@
 
 
 :root {
-  --blue: #7B5CE7;
-  --red: #7C3AED;
-  --pink: #F8D7ED;
-  --cream: #FFF9C4;
+  --blue: #48158E;
+  --red: #7B5CE7;
+  --pink: #C9B3FF;
+  --cream: #FFF9ED;
   --white: #FFFFFF;
-  --black: #000000;
-  --line: rgba(91, 33, 182, 0.12);
+  --black: #1A1A1A;
+  --yellow: #FFF3A5;
+
+  --purple-dark: #48158E;
+  --purple: #7B5CE7;
+  --lavender: #C9B3FF;
+
+  --line: rgba(72, 21, 142, 0.12);
   --header-height: 82px;
 }
+
 
 
 * { box-sizing: border-box; }
