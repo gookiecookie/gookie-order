@@ -307,7 +307,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: 8px 18px;
   white-space: nowrap;
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 1000;
   letter-spacing: .09em;
    color: #000000;
 }
